@@ -14,6 +14,7 @@ const authController = {
         username: req.body.username,
         email: req.body.email,
         password: hashed,
+        role: '6335369ee1caa255ab840cd4'
       });
 
       await newUser.save();

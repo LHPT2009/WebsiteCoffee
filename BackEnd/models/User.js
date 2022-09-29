@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
         minlength: 6
     },
     role: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Role",
     },
 }, { timestamps: true }

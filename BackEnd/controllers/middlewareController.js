@@ -5,11 +5,11 @@ const middlewareController = {
         const token = req.headers.token;
         if (token) {
             const accessToken = token.split(" ")[1];
-            jwt.verify(accessToken, process.env.JWT_ACCESS_KEY, (err, user) => {
+            jwt.verify(accessToken, process.env.JWT_ACCESS_KEY, (err, userId) => {
                 if (err) {
                     return res.status(403).json("Token is not valid");
                 }
-                req.user = user;
+                req.userId = userId;
                 next();
             });
         }
@@ -18,14 +18,21 @@ const middlewareController = {
         }
     },
 
-    verifyTokenAndAdmin: (req, res, next) => {
-        middlewareController.verifyToken(req, res, () => {
-            if (req.user.id == req.params.id || req.user.admin) {
-                next();
-            } else {
-                return res.status(403).json("you're not allowed to delete other");
-            }
-        });
+    verifyTokenAndAdmin: async (req, res, next) => {
+        try {
+            middlewareController.verifyToken(req, res, () => {
+                console.log(req.userId);
+                const user = User.findOne({ _id: req.userId });
+                console.log(user);
+                if (req.user.id == req.params.id || req.user.admin) {
+                    next();
+                } else {
+                    return res.status(403).json("you're not allowed to delete other");
+                }
+            });
+        } catch (error) {
+
+        }
     },
 };
 
