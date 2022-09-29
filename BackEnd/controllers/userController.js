@@ -3,13 +3,8 @@ const User = require('../models/User');
 const UserController = {
   getAllUsers: async (req, res) => {
     try {
-      const user = await User.find({ status: PUBLIC })
-        .populate([
-          {
-            path: 'role',
-            select: ['rolename']
-          }
-        ]);
+      //const user = await User.find().populate('role', ['rolename', '_id']);
+      const user = await User.find().populate('role', ['rolename']);
       res.status(200).json(user);
     } catch (err) {
       res.status(500).json(err);
