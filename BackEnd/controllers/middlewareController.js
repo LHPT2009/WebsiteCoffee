@@ -1,4 +1,6 @@
 const jwt = require("jsonwebtoken");
+const User = require("../models/User");
+const Role = require("../models/Role");
 
 const middlewareController = {
     verifyToken: (req, res, next) => {
@@ -18,20 +20,31 @@ const middlewareController = {
         }
     },
 
-    verifyTokenAndAdmin: async (req, res, next) => {
+    AuthAdmin: async (req, res, next) => {
         try {
-            middlewareController.verifyToken(req, res, () => {
-                console.log(req.userId);
-                const user = User.findOne({ _id: req.userId });
-                console.log(user);
-                if (req.user.id == req.params.id || req.user.admin) {
-                    next();
-                } else {
-                    return res.status(403).json("you're not allowed to delete other");
-                }
-            });
+            const user = await User.findById(req.userId.id).populate('role');
+            if (user.role.rolename == 'Admin' || user.role.rolename == 'SuperAdmin') {
+                next();
+            } else {
+                return res.status(400).json("You're not Admin");
+            }
         } catch (error) {
+            console.log(error);
+            return res.status(500).json("Server Error!!!");
+        }
+    },
 
+    AuthSuperAdmin: async (req, res, next) => {
+        try {
+            const user = await User.findById(req.userId.id).populate('role');
+            if (user.role.rolename == "SuperAdmin") {
+                next();
+            } else {
+                return res.status(403).json("You're not Super Admin");
+            }
+            next();
+        } catch (error) {
+            return res.status(500).json("Server Error!!!");
         }
     },
 };
