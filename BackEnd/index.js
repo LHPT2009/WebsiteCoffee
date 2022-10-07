@@ -6,6 +6,10 @@ const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
 const roleRoute = require('./routes/role');
+const productRoute = require('./routes/product');
+const categoryProductRoute = require('./routes/categoryProduct');
+const advertisementRoute = require('./routes/advertisement');
+const advertisingContractRoute = require('./routes/advertisingContract');
 
 dotenv.config();
 const app = express();
@@ -25,6 +29,10 @@ app.use(express.json());
 app.use('/auth', authRoute);
 app.use('/user', userRoute);
 app.use('/role', roleRoute);
+app.use('/product', productRoute);
+app.use('/category', categoryProductRoute);
+app.use('/advertisement', advertisementRoute);
+app.use('/advertisingcontract', advertisingContractRoute);
 
 app.listen(8000, () => {
   console.log('Server is running...');
