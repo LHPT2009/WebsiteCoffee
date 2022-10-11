@@ -8,7 +8,7 @@ const Header = () => {
           <img src="" alt="" />
           <li className="px-4 py-[19px] text-left list-none">
             <a
-              className="text-[#46270b] font-semibold leading-[22px] text-left hover:text-[#f0bf4c]"
+              className="text-[#46270b] font-GoogleSansBlack text-left hover:text-[#f0bf4c]"
               href=""
             >
               Cà phê
@@ -16,7 +16,7 @@ const Header = () => {
           </li>
           <li className="px-4 py-[19px] text-left list-none">
             <a
-              className="text-[#46270b] font-semibold leading-[22px] text-left hover:text-[#f0bf4c]"
+              className="text-[#46270b] font-GoogleSansMedium leading-[22px] text-left hover:text-[#f0bf4c]"
               href=""
             >
               Trà
@@ -24,7 +24,7 @@ const Header = () => {
           </li>
           <li className="px-4 py-[19px] text-left list-none">
             <a
-              className="text-[#46270b] font-semibold leading-[22px] text-left hover:text-[#f0bf4c]"
+              className="text-[#46270b] font-GoogleSansThin leading-[22px] text-left hover:text-[#f0bf4c]"
               href=""
             >
               Bánh
