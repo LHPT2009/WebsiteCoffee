@@ -1,13 +1,32 @@
-import React from "react";
+import React from 'react'
+import './button.css'
 
-const Button = (props) => {
+const STYLES = [
+  'btn--primary--solid',
+  'btn--warning--solid',
+  'btn--success--solid',
+  'btn--danger--solid',
+  'btn--primary--outline',
+  'btn--warning--outline',
+  'btn--success--outline',
+  'btn--danger--outline',
+]
+
+const SIZES = ['btn--small', 'btn--medium']
+
+const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0]
+const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
+
+const Button = ({ children, type, onClick, buttonStyle, buttonSize }) => {
   return (
-    <div className="text-center items-center">
-      <button className="bg-[#F8567B] rounded-full inline-flex justify-center mb-[20px] py-[10px] px-[12px] font-[700] text-white shadow-lg hover:bg-[#FB98AD] hover:rounded-[10px] hover:border-[2px] hover:border-style:solid hover:border-[#F8567B] w-[400px]">
-        <p>{props.nameButton}</p>
-      </button>
-    </div>
-  );
-};
+    <button
+      className={`btn ${setButtonStyle} ${setButtonSize}`}
+      onClick={onClick}
+      type={type}
+    >
+      {children}
+    </button>
+  )
+}
 
-export default Button;
+export default Button
