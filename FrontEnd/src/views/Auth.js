@@ -1,11 +1,11 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode";
+import React from 'react'
+import { useEffect, useState } from 'react'
+import jwt_decode from 'jwt-decode'
 
-import { LogoTop } from "../components/LogoTop";
-import SignUp from "../components/SignUp/SignUp";
+import { LogoTop } from '../components/LogoTop'
+import SignUp from '../views/SignUp/SignUp'
 
-const google = window.google;
+const google = window.google
 
 const HeaderText = (props) => {
   return (
@@ -14,44 +14,44 @@ const HeaderText = (props) => {
         {props.title}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const Auth = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({})
 
   function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID Token: " + response.credential);
-    var userObject = jwt_decode(response.credential);
-    console.log(userObject);
-    setUser(userObject);
-    document.getElementById("signInDiv").hidden = true;
+    console.log('Encoded JWT ID Token: ' + response.credential)
+    var userObject = jwt_decode(response.credential)
+    console.log(userObject)
+    setUser(userObject)
+    document.getElementById('signInDiv').hidden = true
   }
 
   function handleSignOut(event) {
-    setUser({}); //Obj rong do luu trong state thi dung cai nay duoc
-    document.getElementById("signInDiv").hidden = false;
+    setUser({}) //Obj rong do luu trong state thi dung cai nay duoc
+    document.getElementById('signInDiv').hidden = false
   }
 
   useEffect(() => {
     // global google
     google.accounts.id.initialize({
       client_id:
-        "989548599284-4sgbc6lgo1sug19q3oou61sq4bip3knf.apps.googleusercontent.com",
+        '989548599284-4sgbc6lgo1sug19q3oou61sq4bip3knf.apps.googleusercontent.com',
       callback: handleCallbackResponse,
-    });
+    })
 
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
+    google.accounts.id.renderButton(document.getElementById('signInDiv'), {
+      theme: 'outline',
+      size: 'large',
       width: 400,
       height: 44,
       longtitle: true,
-      login_hint: "false",
-    });
+      login_hint: 'false',
+    })
 
-    google.accounts.id.prompt(); //Goi y nhung tai khoan dang nhap gan day
-  }, []);
+    google.accounts.id.prompt() //Goi y nhung tai khoan dang nhap gan day
+  }, [])
 
   return (
     <div>
@@ -84,7 +84,7 @@ const Auth = () => {
       </main>
       <footer></footer>
     </div>
-  );
-};
+  )
+}
 
-export default Auth;
+export default Auth

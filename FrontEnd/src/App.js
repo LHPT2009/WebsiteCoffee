@@ -1,12 +1,12 @@
-import Auth from "./views/Auth";
-import Home from "./views/Home";
+import Auth from './views/Auth'
+import Home from './views/Home'
 
 function App() {
   return (
     <div className="font-roboto">
-      <Auth />
+      <Home />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
