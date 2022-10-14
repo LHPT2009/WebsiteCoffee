@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <header className="bg-[#fffc] text-[14px] leading-5 sticky top-0 left-0 h-[60px] w-full z-[999]">
+    <header className="bg-outline-var text-[14px] leading-5 sticky top-0 left-0 h-[60px] w-full z-[999]">
       <div className="px-[15px] mx-[350px]">
         <div className="flex">
           <img src="" alt="" />
