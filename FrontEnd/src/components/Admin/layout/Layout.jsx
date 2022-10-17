@@ -10,7 +10,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
 
-import ThemeAction from '../../redux/actions/ThemeAction'
+import ThemeAction from '../../../redux/actions/ThemeAction'
 
 const Layout = () => {
 

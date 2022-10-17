@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Table from '../components/table/Table'
+import Table from '../../components/Admin/table/Table'
 
-import customerList from '../assets/JsonData/customers-list.json'
+import customerList from '../../assets/JsonData/customers-list.json'
 
 const customerTableHead = [
     '',
@@ -32,7 +32,7 @@ const Customers = () => {
     return (
         <div>
             <h2 className="page-header">
-                Test
+                Khách hàng
             </h2>
             <div className="row">
                 <div className="col-12">
