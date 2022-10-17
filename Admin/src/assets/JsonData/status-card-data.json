@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "bx bx-shopping-bag",
+        "count": "1,995",
+        "title": "Tổng doanh thu"
+    },
+    {
+        "icon": "bx bx-cart",
+        "count": "2,001",
+        "title": "Lượng truy cập"
+    },
+    {
+        "icon": "bx bx-dollar-circle",
+        "count": "$2,632",
+        "title": "Tổng thu nhập"
+    },
+    {
+        "icon": "bx bx-receipt",
+        "count": "1,711",
+        "title": "Tổng đơn hàng"
+    }
+]
