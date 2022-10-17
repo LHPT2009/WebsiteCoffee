@@ -2,13 +2,13 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <header className="bg-[#fffc] text-[14px] leading-5 sticky top-0 left-0 h-[60px] w-full z-[999]">
+    <header className="bg-outline-var text-[14px] leading-5 sticky top-0 left-0 h-[60px] w-full z-[999]">
       <div className="px-[15px] md:mx-[100px] lg:mx-[350px]">
         <div className="flex">
           <img src="" alt="" />
           <li className="px-4 py-[19px] text-left list-none">
             <a
-              className="text-[#46270b] font-semibold leading-[22px] text-left hover:text-[#f0bf4c]"
+              className="text-[#46270b] font-GoogleSansBlack text-left hover:text-[#f0bf4c]"
               href=""
             >
               Cà phê
@@ -16,7 +16,7 @@ const Header = () => {
           </li>
           <li className="px-4 py-[19px] text-left list-none">
             <a
-              className="text-[#46270b] font-semibold leading-[22px] text-left hover:text-[#f0bf4c]"
+              className="text-[#46270b] font-GoogleSansMedium leading-[22px] text-left hover:text-[#f0bf4c]"
               href=""
             >
               Trà
@@ -24,7 +24,7 @@ const Header = () => {
           </li>
           <li className="px-4 py-[19px] text-left list-none">
             <a
-              className="text-[#46270b] font-semibold leading-[22px] text-left hover:text-[#f0bf4c]"
+              className="text-[#46270b] font-GoogleSansThin leading-[22px] text-left hover:text-[#f0bf4c]"
               href=""
             >
               Bánh

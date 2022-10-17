@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
         require: true,
         minlength: 6
     },
+    confirmemail: {
+        type: Boolean
+    },
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role",

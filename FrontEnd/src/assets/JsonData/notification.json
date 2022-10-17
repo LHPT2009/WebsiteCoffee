@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "bx bx-error",
+        "content": "Thông báo 1!"
+    },
+    {
+        "icon": "bx bx-package",
+        "content": "Thông báo 2!"
+    },
+    {
+        "icon": "bx bx-cart",
+        "content": "Thông báo 3!"
+    },
+    {
+        "icon": "bx bx-error",
+        "content": "Thông báo 4!"
+    },
+    {
+        "icon": "bx bx-cart",
+        "content": "Thông báo 5!"
+    }
+]
