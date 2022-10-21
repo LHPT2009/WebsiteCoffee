@@ -12,7 +12,6 @@ const middlewareController = {
                     return res.status(403).json("Token is not valid");
                 }
                 req.userId = userId;
-                console.log(userId);
                 next();
             });
         }

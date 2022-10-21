@@ -28,7 +28,8 @@ const authController = {
   generateAccessToken: (user) => {
     return jwt.sign(
       {
-        id: user.id
+        id: user.id,
+        role: user.role.rolename
       },
       process.env.JWT_ACCESS_KEY,
       { expiresIn: '1d' }
@@ -37,7 +38,7 @@ const authController = {
 
   loginUser: async (req, res) => {
     try {
-      const user = await User.findOne({ username: req.body.username }).populate('role', ['rolename']);
+      const user = await User.findOne({ username: req.body.username }).populate('role', ['rolename']).then().catch();
       if (!user) {
         return res.status(404).json('Wrong username!');
       }

@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import { useState , createContext, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-
 const Login = () => {
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
     const LoginUser = async (e) => {
         e.preventDefault();
         try {
@@ -23,7 +22,6 @@ const Login = () => {
             console.log(err);
         }
     };
-
     return (
         <div>
             <Navbar/>
