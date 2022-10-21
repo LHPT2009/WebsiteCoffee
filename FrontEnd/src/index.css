@@ -5,11 +5,31 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "GoogleSans";
-    src: url("../public/fonts/GoogleSans-Regular.otf");
-    src: url("../public/fonts/GoogleSans-Light.otf");
-    src: url("../public/fonts/GoogleSans-Medium.otf");
-    src: url("../public/fonts/GoogleSans-Bold.otf");
-    src: url("../public/fonts/GoogleSans-Thin.otf");
-    src: url("../public/fonts/GoogleSans-Black.otf");
-  }
+  font-family: "GoogleSans-Thin";
+  src: url("../public/fonts/GoogleSans-Thin.otf");
+}
+
+@font-face {
+  font-family: "GoogleSans-Light";
+  src: url("../public/fonts/GoogleSans-Light.otf");
+}
+
+@font-face {
+  font-family: "GoogleSans-Regular";
+  src: url("../public/fonts/GoogleSans-Regular.otf");
+}
+
+@font-face {
+  font-family: "GoogleSans-Medium";
+  src: url("../public/fonts/GoogleSans-Medium.otf");
+}
+
+@font-face {
+  font-family: "GoogleSans-Bold";
+  src: url("../public/fonts/GoogleSans-Bold.otf");
+}
+
+@font-face {
+  font-family: "GoogleSans-Black";
+  src: url("../public/fonts/GoogleSans-Black.otf");
+}

@@ -1,26 +1,20 @@
 import React from 'react'
 import './button.css'
 
-const STYLES = [
-  'btn--primary--solid',
-  'btn--warning--solid',
-  'btn--success--solid',
-  'btn--danger--solid',
-  'btn--primary--outline',
-  'btn--warning--outline',
-  'btn--success--outline',
-  'btn--danger--outline',
-]
+const STYLES = ['btn--primary--fill', 'btn--primary--outline']
 
-const SIZES = ['btn--small', 'btn--medium']
-
-const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0]
-const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
+const SIZES = ['btn--medium', 'btn--large']
 
 const Button = ({ children, type, onClick, buttonStyle, buttonSize }) => {
+  const checkButtonStyle = STYLES.includes(buttonStyle)
+    ? buttonStyle
+    : STYLES[0]
+
+  const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
+
   return (
     <button
-      className={`btn ${setButtonStyle} ${setButtonSize}`}
+      className={`btn ${checkButtonStyle} ${checkButtonSize}`}
       onClick={onClick}
       type={type}
     >
