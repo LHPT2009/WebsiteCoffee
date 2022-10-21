@@ -4,7 +4,7 @@ const Role = require("../models/Role");
 
 const middlewareController = {
     verifyToken: (req, res, next) => {
-        const token = req.headers.token;
+        const token = req.headers.authtoken;
         if (token) {
             const accessToken = token.split(" ")[1];
             jwt.verify(accessToken, process.env.JWT_ACCESS_KEY, (err, userId) => {
@@ -12,6 +12,7 @@ const middlewareController = {
                     return res.status(403).json("Token is not valid");
                 }
                 req.userId = userId;
+                console.log(userId);
                 next();
             });
         }

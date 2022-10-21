@@ -61,6 +61,15 @@ const UserController = {
       res.status(500).json('Error!!!');
     }
   },
+
+  checkUserToken: async (req, res) => {
+    try {
+      const user = await User.findById(req.userId._id);
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
 
 module.exports = UserController;

@@ -17,7 +17,6 @@ router.post("/", userController.addUser);
 
 router.put("/:id", userController.updateUser);
 
-
-
+router.get("/check",middlewareController.verifyToken,userController.checkUserToken);
 
 module.exports = router;
