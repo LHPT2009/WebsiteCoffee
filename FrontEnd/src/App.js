@@ -4,14 +4,19 @@ import Coffee from './views/Collections/Coffee'
 import Home from './views/Home'
 import Dashboard from './views/Admin/Dashboard'
 import Layout from './components/Admin/layout/Layout'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Button from '../src/components/Button/Button'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="font-roboto">
+    <div className="font-googleSansMedium p-6">
       {/* <Home /> */}
       {/* <Coffee /> */}
-      <Router>
+      <Button type="button" buttonStyle="btn--primary--outline">
+        Câu ca du dưỡng vảng á ớ bờ
+      </Button>
+
+      {/* <Router>
       <Route path="/" exact>
           <Home></Home>
       </Route>
@@ -20,7 +25,7 @@ function App() {
         <Dashboard></Dashboard>
         </Layout>
       </Route>
-      </Router>
+      </Router> */}
     </div>
   )
 }

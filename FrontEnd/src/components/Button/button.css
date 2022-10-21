@@ -1,33 +1,45 @@
 :root {
-  --primary: #4628ff;
+  --primary: #6750A4;
   --warning: #ffd028;
   --danger: #eb3f27;
   --success: #74fa83;
+  --border: #79747E;
 }
 
 .btn {
-  font-weight: 400;
-  border-radius: 999px;
+  font-weight: 500;
+  border-radius: 100px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: border-radius 200ms cubic-bezier(0.2, 0, 0, 1);
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-}
-
-.btn--primary--solid {
+.btn--primary--fill {
   background-color: var(--primary);
   color: white;
   border: none;
 }
 
-.btn--medium {
-  padding: 10px 20px;
-  font-size: 18px;
+/* 
+.btn:hover {
+  border-radius: 8px;
+} */
+
+.btn:active {
+  border-radius: 1rem;
 }
 
-.btn--small {
+.btn--primary--outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: solid 1px var(--border);
+}
+
+.btn--medium {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+.btn--large {
   padding: 15px 30px;
-  font-size: 18px;
+  font-size: 14px;
 }
