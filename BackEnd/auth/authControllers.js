@@ -2,8 +2,6 @@ const User = require('../models/User.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-let refreshTokens = [];
-
 const authController = {
   registerUser: async (req, res) => {
     try {
@@ -54,15 +52,7 @@ const authController = {
     } catch (err) {
       res.status(500).json(err);
     }
-  },
-
-   userLogout: async (req, res) => {
-  //   res.clearCookie('accessToken');
-  //   accessTokens = accessTokens.filter(
-  //     (token) => token !== req.cookies.accessToken
-  //   );
-  //   res.status(200).json('logged out!');
- },
+  }
 };
 
 module.exports = authController;
