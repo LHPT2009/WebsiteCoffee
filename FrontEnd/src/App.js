@@ -11,18 +11,6 @@ function App() {
   return (
     <div className="">
       <Home />
-      {/* <Coffee /> */}
-
-      {/* <Router>
-      <Route path="/" exact>
-          <Home></Home>
-      </Route>
-      <Route path='/admin'>
-        <Layout>
-        <Dashboard></Dashboard>
-        </Layout>
-      </Route>
-      </Router> */}
     </div>
   )
 }
