@@ -9,12 +9,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="font-googleSansMedium p-6">
-      {/* <Home /> */}
+    <div className="">
+      <Home />
       {/* <Coffee /> */}
-      <Button type="button" buttonStyle="btn--primary--outline">
-        Câu ca du dưỡng vảng á ớ bờ
-      </Button>
 
       {/* <Router>
       <Route path="/" exact>

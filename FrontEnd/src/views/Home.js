@@ -4,7 +4,7 @@ import BannerHome from '../components/Main/BannerHome'
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <Header />
       <main>
         <BannerHome />
