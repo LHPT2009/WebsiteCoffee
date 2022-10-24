@@ -1,22 +1,30 @@
 :root {
-  --primary: #6750A4;
+  --primary: #3d685e;
+  --primary-container: #6750a4;
+  --primary-on-container: #093830;
+  --border-variant: rgba(115, 130, 126, 0.6);
+  --white: #f9f9f9;
   --warning: #ffd028;
   --danger: #eb3f27;
   --success: #74fa83;
-  --border: #79747E;
+  --border: #79747e;
 }
-
+//Default   ----------------------------------------------------------
 .btn {
+  font-family: GoogleSans;
   font-weight: 500;
   border-radius: 100px;
   cursor: pointer;
-  transition: border-radius 200ms cubic-bezier(0.2, 0, 0, 1);
+  background: var(--primary);
+  color: var(--white);
+  border: solid 1px var(--border);
+  
+  /* transition: border-radius 200ms cubic-bezier(0.2, 0, 0, 1); */
 }
 
+//Styles   ----------------------------------------------------------
 .btn--primary--fill {
-  background-color: var(--primary);
-  color: white;
-  border: none;
+  
 }
 
 /* 
@@ -24,22 +32,28 @@
   border-radius: 8px;
 } */
 
-.btn:active {
+/* .btn:active {
   border-radius: 1rem;
-}
+} */
 
 .btn--primary--outline {
   background-color: transparent;
   color: var(--primary);
   border: solid 1px var(--border);
 }
-
+//Size   ----------------------------------------------------------
 .btn--medium {
-  padding: 10px 24px;
+  height: 44px;
+  padding: 12px 24px;
   font-size: 14px;
 }
 
 .btn--large {
-  padding: 15px 30px;
-  font-size: 14px;
+  
+}
+//Icon--------------------
+.btn--icon--false {
+}
+
+.btn--icon--true {
 }
