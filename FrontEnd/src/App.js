@@ -4,7 +4,7 @@ import Coffee from './views/Collections/Coffee'
 import Home from './views/Home'
 import Dashboard from './views/Admin/Dashboard'
 import Layout from './components/Admin/layout/Layout'
-import Button from '../src/components/Button/Button'
+import Button from './components/Button/Button'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
@@ -12,9 +12,13 @@ function App() {
     <div className="font-googleSansMedium p-6">
       {/* <Home /> */}
       {/* <Coffee /> */}
-      <Button type="button" buttonStyle="btn--primary--outline">
-        Câu ca du dưỡng vảng á ớ bờ
+      <Button type="button">
+        Testing button
       </Button>
+      <Button type="button" buttonStyle="btn--primary-outline">
+        Testing buthjton
+      </Button>
+
 
       {/* <Router>
       <Route path="/" exact>
