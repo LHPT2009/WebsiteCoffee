@@ -16,6 +16,10 @@ import './assets/css/index.css'
 
 import Coffee from './views/Collections/Coffee'
 import ItemDetail from './components/Item/ItemDetail'
+import SendMail from './views/ResetPassword/SendMail'
+import CheckCode from './views/ResetPassword/CheckCode'
+import ResetPassword from './views/ResetPassword/ResetPassword'
+
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -27,6 +31,11 @@ root.render(
           <Route path="/" element={<App />} />
           <Route path="/product" element={<Coffee />} />
           <Route path="/product/:id" element={<ItemDetail />} />
+          
+          <Route path="/sendmail" element={<SendMail />} />
+          <Route path="/checkcode" element={<CheckCode />} />
+          <Route path="/reset" element={<ResetPassword />} />
+        
         </Routes>
       </BrowserRouter>
     </React.StrictMode>
