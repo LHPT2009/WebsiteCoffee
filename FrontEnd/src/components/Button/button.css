@@ -9,51 +9,42 @@
   --success: #74fa83;
   --border: #79747e;
 }
-//Default   ----------------------------------------------------------
+
+/* DEFAULT */
 .btn {
-  font-family: GoogleSans;
   font-weight: 500;
   border-radius: 100px;
   cursor: pointer;
   background: var(--primary);
   color: var(--white);
-  border: solid 1px var(--border);
-  
-  /* transition: border-radius 200ms cubic-bezier(0.2, 0, 0, 1); */
 }
 
-//Styles   ----------------------------------------------------------
+/* STYLES */
 .btn--primary--fill {
-  
+  background-color: var(--primary);
+  color: var(--white);
 }
 
-/* 
-.btn:hover {
-  border-radius: 8px;
-} */
-
-/* .btn:active {
+.btn:active {
   border-radius: 1rem;
-} */
+}
 
 .btn--primary--outline {
   background-color: transparent;
   color: var(--primary);
   border: solid 1px var(--border);
 }
-//Size   ----------------------------------------------------------
+
+/* SIZES */
 .btn--medium {
   height: 44px;
   padding: 12px 24px;
   font-size: 14px;
 }
 
-.btn--large {
-  
-}
-//Icon--------------------
-.btn--icon--false {
-}
+.btn--large {}
 
-.btn--icon--true {
-}
+/* ICONS */
+.btn--icon--false {}
+
+.btn--icon--true {}
