@@ -2,21 +2,21 @@
     {
         "icon": "bx bx-shopping-bag",
         "count": "1,995",
-        "title": "Tổng doanh thu"
+        "title": "Doanh thu"
     },
     {
         "icon": "bx bx-cart",
         "count": "2,001",
-        "title": "Lượng truy cập"
+        "title": "Truy cập"
     },
     {
         "icon": "bx bx-dollar-circle",
         "count": "$2,632",
-        "title": "Tổng thu nhập"
+        "title": "Thu nhập"
     },
     {
         "icon": "bx bx-receipt",
         "count": "1,711",
-        "title": "Tổng đơn hàng"
+        "title": "Đơn hàng"
     }
 ]

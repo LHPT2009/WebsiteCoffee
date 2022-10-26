@@ -1,5 +1,6 @@
 .layout {
     color: var(--txt-color);
+    overflow-x: hidden;
 }
 
 .layout__content {

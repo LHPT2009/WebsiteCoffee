@@ -4,8 +4,6 @@ import './layout.css'
 
 import Sidebar from '../sidebar/Sidebar'
 import TopNav from '../topnav/TopNav'
-import Dashboard from '../../../views/Admin/Dashboard'
-import Routes from '../Routes'
 
 import { Outlet } from 'react-router-dom'
 

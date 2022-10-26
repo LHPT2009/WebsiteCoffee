@@ -22,6 +22,8 @@ import ResetPassword from './views/ResetPassword/ResetPassword'
 import Dashboard from './views/Admin/Dashboard'
 import Layout from './components/Admin/layout/Layout'
 import Customers from './views/Admin/Customers'
+import Products from './views/Admin/Products'
+import Orders from './views/Admin/Orders'
 
 
 const store = createStore(rootReducer)
@@ -39,9 +41,12 @@ root.render(
           <Route path="/checkcode" element={<CheckCode />} />
           <Route path="/reset" element={<ResetPassword />} />
 
-          <Route path="/admin" element={<><Layout/><Dashboard/></>} />
-          <Route path="/admin/customers" element={<><Layout/><Customers/></>} />
-        
+          <Route path="/admin" element={<Layout/>}>
+          <Route index element={<Dashboard />} />
+          <Route path="customers" element={<Customers />} />
+          <Route path="products" element={<Products />} />
+          <Route path="orders" element={<Orders />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </React.StrictMode>
