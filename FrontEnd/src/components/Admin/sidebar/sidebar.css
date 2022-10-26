@@ -6,6 +6,7 @@
     top: 0;
     background-color: var(--main-bg);
     box-shadow: var(--box-shadow);
+    z-index: 2;
 }
 
 .sidebar__logo {

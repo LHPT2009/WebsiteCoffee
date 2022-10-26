@@ -19,6 +19,9 @@ import ItemDetail from './components/Item/ItemDetail'
 import SendMail from './views/ResetPassword/SendMail'
 import CheckCode from './views/ResetPassword/CheckCode'
 import ResetPassword from './views/ResetPassword/ResetPassword'
+import Dashboard from './views/Admin/Dashboard'
+import Layout from './components/Admin/layout/Layout'
+import Customers from './views/Admin/Customers'
 
 
 const store = createStore(rootReducer)
@@ -35,6 +38,9 @@ root.render(
           <Route path="/sendmail" element={<SendMail />} />
           <Route path="/checkcode" element={<CheckCode />} />
           <Route path="/reset" element={<ResetPassword />} />
+
+          <Route path="/admin" element={<><Layout/><Dashboard/></>} />
+          <Route path="/admin/customers" element={<><Layout/><Customers/></>} />
         
         </Routes>
       </BrowserRouter>

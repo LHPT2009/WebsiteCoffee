@@ -5,7 +5,6 @@
 .layout__content {
     padding-left: var(--sidebar-width);
     background-color: var(--second-bg);
-    min-height: 100vh;
 }
 
 .layout__content-main {

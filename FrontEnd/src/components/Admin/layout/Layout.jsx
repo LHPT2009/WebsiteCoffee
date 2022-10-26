@@ -4,9 +4,10 @@ import './layout.css'
 
 import Sidebar from '../sidebar/Sidebar'
 import TopNav from '../topnav/TopNav'
+import Dashboard from '../../../views/Admin/Dashboard'
 import Routes from '../Routes'
 
-import { BrowserRouter, Route } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -29,19 +30,15 @@ const Layout = () => {
     }, [dispatch])
 
     return (
-        <BrowserRouter>
-            <Route render={(props) => (
-                <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
-                    <Sidebar {...props}/>
-                    <div className="layout__content">
-                        <TopNav/>
-                        <div className="layout__content-main">
-                            <Routes/>
-                        </div>
-                    </div>
-                </div>
-            )}/>
-        </BrowserRouter>
+        <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
+        <Sidebar />
+            <div className="layout__content">
+                <TopNav />
+                <div className="layout__content-main">
+                    <Outlet />
+                </div> 
+            </div>
+        </div>
     )
 }
 
