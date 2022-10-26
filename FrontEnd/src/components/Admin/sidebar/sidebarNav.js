@@ -3,31 +3,31 @@ const sidebarNav = [
         link: '/admin',
         section: 'home',
         icon: <i className='bx bx-home-alt'></i>,
-        text: 'Home'
+        text: 'Trang chủ'
     },
     {
         link: '/admin/orders',
         section: 'orders',
         icon: <i className='bx bx-receipt' ></i>,
-        text: 'Orders'
+        text: 'Đơn hàng'
     },
     {
         link: '/admin/products',
         section: 'products',
         icon: <i className='bx bx-cube'></i>,
-        text: 'Products'
+        text: 'Sản phẩm'
     },
     {
         link: '/admin/customers',
         section: 'customers',
         icon: <i className='bx bx-user'></i>,
-        text: 'Customers'
+        text: 'Khách hàng'
     },
     {
         link: '/admin/stats',
         section: 'stats',
         icon: <i className='bx bx-line-chart'></i>,
-        text: 'Stats'
+        text: 'Thống kê'
     }
 ]
 
