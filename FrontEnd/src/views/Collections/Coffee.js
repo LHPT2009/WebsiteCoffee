@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../../components/Header/Header'
 import ItemCard from '../../components/Item/ItemCard'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+
+import Header from '../../components/Header/Header'
 
 const Coffee = () => {
   const [product, setProduct] = useState([])
