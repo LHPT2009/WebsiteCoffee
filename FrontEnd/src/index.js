@@ -14,6 +14,8 @@ import './assets/css/grid.css'
 import './assets/css/theme.css'
 import './assets/css/index.css'
 
+import ListProductProvider from './context/ListProductContext'
+
 import Coffee from './views/Collections/Coffee'
 import ItemDetail from './components/Item/ItemDetail'
 import SendMail from './views/ResetPassword/SendMail'
@@ -24,31 +26,35 @@ import Layout from './components/Admin/layout/Layout'
 import Customers from './views/Admin/Customers'
 import Products from './views/Admin/Products'
 import Orders from './views/Admin/Orders'
-
+import Cart from './views/Cart/Cart'
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <Provider store={store}>
     <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/product" element={<Coffee />} />
-          <Route path="/product/:id" element={<ItemDetail />} />
-          
-          <Route path="/sendmail" element={<SendMail />} />
-          <Route path="/checkcode" element={<CheckCode />} />
-          <Route path="/reset" element={<ResetPassword />} />
+      <ListProductProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/product" element={<Coffee />} />
+            <Route path="/product/:id" element={<ItemDetail />} />
+            
+            <Route path="/sendmail" element={<SendMail />} />
+            <Route path="/checkcode" element={<CheckCode />} />
+            <Route path="/reset" element={<ResetPassword />} />
+            <Route path="/cart" element={<Cart />} />
 
-          <Route path="/admin" element={<Layout/>}>
-          <Route index element={<Dashboard />} />
-          <Route path="customers" element={<Customers />} />
-          <Route path="products" element={<Products />} />
-          <Route path="orders" element={<Orders />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            <Route path="/admin" element={<Layout/>}>
+            <Route index element={<Dashboard />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="products" element={<Products />} />
+            <Route path="orders" element={<Orders />} />
+
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </ListProductProvider>
     </React.StrictMode>
   </Provider>
 )
