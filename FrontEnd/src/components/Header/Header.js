@@ -1,18 +1,19 @@
 import React, { useContext, useEffect } from 'react'
 import logoBugOn from '../../assets/images/logo.png'
+import logo2 from '../../assets/images/logo_2.png'
 import { Link } from 'react-router-dom'
 import {ListProductContext} from '../../context/ListProductContext'
 
 const Header = () => {
   const {products} = useContext(ListProductContext);
   return (
-    <header className="bg-outline-var text-[14px] leading-5 sticky top-0 left-0 h-[60px] w-full z-[999] font-googleSansBold">
-      <div className="px-[15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
+    <header className="flex h-[56px] bg-s1 text-[14px] leading-5 sticky top-0 left-0 w-full shadow-3 z-[999] font-googleSansRegular">
+      <div className="px-[15px] mx-10 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         <div className="flex">
           <Link to="/">
             <img
-              className="inline-block h-[55px] pt-[5px]"
-              src={logoBugOn}
+              className="inline-block h-[48px] pt-[5px]"
+              src={logo2}
               alt="logo-coffee-bug-on"
             />
           </Link>

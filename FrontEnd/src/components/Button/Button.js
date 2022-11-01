@@ -1,7 +1,7 @@
 import React from 'react'
 import './button.css'
 
-const STYLES = ['btn--primary--fill', 'btn--primary--outline']
+const STYLES = ['btn--primary--fill', 'btn--primary--outline', 'btn--primary--text', 'btn--primary--elevate', 'btn--primary--tonal']
 
 const ICON = ['btn--icon--false', 'btn--icon--true']
 
@@ -10,7 +10,6 @@ const SIZES = ['btn--medium', 'btn--large']
 const Button = ({
   children,
   type,
-  icon,
   onClick,
   buttonStyle,
   buttonIcon,
@@ -20,9 +19,13 @@ const Button = ({
     ? buttonStyle
     : STYLES[0]
 
-  const checkButtonIcon = ICON.includes(buttonIcon) ? buttonIcon : ICON[0]
+  const checkButtonIcon = ICON.includes(buttonIcon) 
+    ? buttonIcon 
+    : ICON[0]
 
-  const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
+  const checkButtonSize = SIZES.includes(buttonSize) 
+    ? buttonSize 
+    : SIZES[0]
 
   return (
     <button
@@ -30,9 +33,6 @@ const Button = ({
       onClick={onClick}
       type={type}
     >
-      <span className="mr-2">
-        <ion-icon name={`${icon}`}></ion-icon>
-      </span>
       {children}
     </button>
   )
