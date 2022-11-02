@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer'
 import BannerHome from '../components/Main/BannerHome'
 import Introduce from '../components/Main/Introduce'
 import MenuHome from '../components/Main/MenuHome'
@@ -15,9 +16,10 @@ const Home = () => {
         <BannerHome />
         <MenuHome />
         <Introduce />
-        <Cart />
+        
       </main>
-      <footer></footer>
+      <Footer/>
+      
     </div>
   )
 }
