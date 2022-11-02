@@ -12,34 +12,54 @@
 
 /* DEFAULT */
 .btn {
-  font-weight: 500;
-  border-radius: 100px;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  letter-spacing: 0.03em;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 8px;
+  height: 44px;
   background: var(--primary);
   color: var(--white);
+  border-radius: 22px;
 }
 
 /* STYLES */
 .btn--primary--fill {
-  background-color: var(--primary);
-  color: var(--white);
+  
 }
 
-.btn:active {
-  border-radius: 1rem;
+.btn--primary--fill:hover {
+  
+}
+
+.btn--primary--fill:active {
+  
 }
 
 .btn--primary--outline {
   background-color: transparent;
   color: var(--primary);
-  border: solid 1px var(--border);
+  border: solid 1px var(--border-variant);
 }
 
+.btn--primary--text  {
+
+}
+
+.btn--primary--elevate  {
+
+}
+
+.btn--primary--tonal  {
+
+}
 /* SIZES */
 .btn--medium {
-  height: 44px;
-  padding: 12px 24px;
-  font-size: 14px;
+  
 }
 
 .btn--large {}

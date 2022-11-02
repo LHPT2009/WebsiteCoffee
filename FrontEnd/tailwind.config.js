@@ -41,6 +41,8 @@ module.exports = {
       'on-surface': '#07221B',
       insurface: '#222524',
       'on-insurface': '#FCFDFD',
+      //shadowcolor
+      'sd1': 'rgba(115, 130, 126, 0.6);',
       //outline
       outline: '#5E6E6A',
       'outline-var': 'rgba(115, 130, 126, 0.6);',
@@ -63,10 +65,35 @@ module.exports = {
         googleSansBlack: ['GoogleSans-Black', 'Arial', 'san-serif'],
         roboto: ['Roboto', 'Arial'],
       },
+      //box shadow
+      boxShadow: {
+        '1': [
+            '0 1px 2px rgba(96, 119, 114, 0.15)',
+            '0 1px 3px 1px rgba(101, 94, 112, 0.15)'
+        ],
+        '2': [
+          '0px 1px 2px rgba(96, 119, 114, 0.15)',
+          '0px 2px 6px 2px rgba(101, 94, 112, 0.15)'
+        ],
+        '3': [
+          '0px 4px 8px 3px rgba(96, 119, 114, 0.15)',
+          '0px 1px 3px rgba(101, 94, 112, 0.3)'
+        ],
+        '4': [
+        '0px 6px 10px 3px rgba(96, 119, 114, 0.15)',
+        '0px 2px 3px rgba(101, 94, 112, 0.3)'
+        ],
+        '5': [
+          '0px 8px 12px 4px rgba(96, 119, 114, 0.15)',
+          '0px 4px 4px rgba(101, 94, 112, 0.3)'
+        ],      
+      }
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      
+    },
   },
   plugins: [],
 }
