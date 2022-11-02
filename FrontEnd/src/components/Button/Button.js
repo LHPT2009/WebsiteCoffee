@@ -1,39 +1,39 @@
 import React from 'react'
 import './button.css'
 
-const STYLES = ['btn--primary--fill', 'btn--primary--outline', 'btn--primary--text', 'btn--primary--elevate', 'btn--primary--tonal']
-
-const ICON = ['btn--icon--false', 'btn--icon--true']
-
-const SIZES = ['btn--medium', 'btn--large']
+const STYLES = ['btn--primary--fill', 'btn--primary--outline']
 
 const Button = ({
   children,
   type,
+  icon,
   onClick,
   buttonStyle,
-  buttonIcon,
   buttonSize,
+  buttonCSS,
 }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
     : STYLES[0]
 
-  const checkButtonIcon = ICON.includes(buttonIcon) 
-    ? buttonIcon 
-    : ICON[0]
+  const onlyIcon = <ion-icon name={`${icon}`}></ion-icon>
 
-  const checkButtonSize = SIZES.includes(buttonSize) 
-    ? buttonSize 
-    : SIZES[0]
+  const iconText = (
+    <div className="flex">
+      <span className="mr-2">
+        <ion-icon name={`${icon}`}></ion-icon>
+      </span>
+      <span>{children}</span>
+    </div>
+  )
 
   return (
     <button
-      className={`btn ${checkButtonStyle} ${checkButtonIcon} ${checkButtonSize} transition-all font-googleSansRegular`}
+      className={`btn ${checkButtonStyle} ${buttonCSS} transition-all font-googleSansRegular`}
       onClick={onClick}
       type={type}
     >
-      {children}
+      {children === '' ? onlyIcon : iconText}
     </button>
   )
 }

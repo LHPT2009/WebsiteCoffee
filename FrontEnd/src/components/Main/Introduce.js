@@ -18,6 +18,7 @@ const Introduce = () => {
                   alt="img-title"
                 />
               </div>
+              {/* description */}
               <div className="text-base text-black mb-4">
                 Vừa êm mượt dịu dàng, vừa bùng nổ nồng nàn, BST Trà Sữa CloudTea
                 Hương Vị Nụ Hôn Đầu mang đến trải nghiệm đầy mới mẻ. Chạm môi là
