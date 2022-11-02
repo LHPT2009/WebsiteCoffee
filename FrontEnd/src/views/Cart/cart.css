@@ -1,0 +1,32 @@
+:root {
+  --primary: #3d685e;
+  --primary-container: #6750a4;
+  --primary-on-container: #093830;
+  --border-variant: rgba(115, 130, 126, 0.6);
+  --white: #f9f9f9;
+  --warning: #ffd028;
+  --danger: #eb3f27;
+  --success: #74fa83;
+  --border: #79747e;
+}
+
+table {
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  border-collapse: inherit;
+  padding: 0.5rem;
+}
+
+/* thead {
+  border-radius: 28px;
+  background-color: antiquewhite;
+}
+
+th, td {
+  text-transform: none;
+}
+
+tbody {
+  background-color: #3d685e;
+  border-radius: 2rem;
+} */

@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useContext} from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import Header from '../Header/Header'
@@ -9,26 +9,26 @@ import { ListProductContext } from '../../context/ListProductContext'
 const ItemDetail = () => {
   const { id } = useParams()
   const [info, setInfo] = useState([])
-  const {addProduct} = useContext(ListProductContext);
-  
-  const add = (e) => {
-    e.preventDefault();
-    const id = info._id;
-    const name = info.name;
-    const price = info.price;
-    const amount = 1;
-    const product = {id,name,price,amount};
-    addProduct(product);
-  };
-
-  axios.get(`http://localhost:8000/product/${id}`).then((res) => setInfo(res.data))
+  axios
+    .get(`http://localhost:8000/product/${id}`)
+    .then((res) => setInfo(res.data))
 
   const [product, setProduct] = useState([])
-  useEffect(() => {
-    axios.get('http://localhost:8000/product').then((res) => {
-      setProduct(res.data)
-    })
-  }, [])
+  axios.get('http://localhost:8000/product').then((res) => {
+    setProduct(res.data)
+  })
+
+  const { addProduct } = useContext(ListProductContext)
+
+  const add = (e) => {
+    e.preventDefault()
+    const id = info._id
+    const name = info.name
+    const price = info.price
+    const amount = 1
+    const product = { id, name, price, amount }
+    addProduct(product)
+  }
 
   return (
     <div>
@@ -53,10 +53,11 @@ const ItemDetail = () => {
             <div className="items-center mt-4">
               <Button
                 type="button"
-                buttonSize="btn--medium"
+                // buttonSize="btn--medium"
                 buttonStyle="btn--primary--fill"
                 icon="cart-outline"
                 onClick={add}
+                buttonCSS={'h-[44px] px-6 py-3'}
               >
                 Thêm vào giỏ hàng
               </Button>
