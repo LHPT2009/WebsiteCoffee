@@ -24,6 +24,7 @@ import Customers from './views/Admin/Customers'
 import Products from './views/Admin/Products'
 import Orders from './views/Admin/Orders'
 import Cart from './views/Cart/Cart'
+
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
 import EnterEmail from './components/Auth/EnterEmail'
@@ -42,6 +43,7 @@ root.render(
             <Route path="/product" element={<Coffee />} />
             <Route path="/product/:id" element={<ItemDetail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/loadfile" element={<Form />} />
 
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
