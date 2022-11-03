@@ -1,44 +1,60 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-import Table from '../../components/Admin/table/Table'
+import axios from 'axios'
 
-import productList from '../../assets/JsonData/products-list.json'
+import logo from '../../assets/images/icon.png'
 
-const productTableHead = [
-    '',
-    'name',
-    'amount',
-    'price'
-]
+import { Link } from 'react-router-dom'
 
-const renderHead = (item, index) => <th key={index}>{item}</th>
-
-const renderBody = (item, index) => (
-    <tr key={index}>
-        <td>{item.id}</td>
-        <td>{item.name}</td>
-        <td>{item.amount}</td>
-        <td>{item.price}</td>
-    </tr>
-)
+import Button from '../../components/Button/Button'
 
 const Products = () => {
+    const [RowData, SetRowData] = useState([])
+    const [id,setId] = useState("");
+    const [product, setProduct] = useState([])
+    useEffect(() => {
+      axios.get('http://localhost:8000/product').then((res) => {
+        setProduct(res.data)
+      })
+    }, [])
     return (
         <div>
             <h2 className="page-header">
                 Sản phẩm
             </h2>
+            <Button type="button">
+                <a href="./AddProduct">
+                Thêm sản phẩm
+                </a>
+            </Button>
             <div className="row">
                 <div className="col-12">
                     <div className="card">
                         <div className="card__body">
-                            <Table
-                                limit='10'
-                                headData={productTableHead}
-                                renderHead={(item, index) => renderHead(item, index)}
-                                bodyData={productList}
-                                renderBody={(item, index) => renderBody(item, index)}
-                            />
+                        <table className='table table-striped table-hover table-bordered'>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Hình</th>
+                                <th>Tên</th>
+                                <th>Giá</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {product.map((item) =>
+                                <tr key={item._id}>
+                                    <td></td>
+                                    <td><img src={logo} alt='' width={50} height={50}></img></td>
+                                    <td>{item.name}</td>
+                                    <td>{item.price} đ</td>
+                                    <td style={{ minWidth: 100 }}>
+                                        <Button><Link to={'/admin/EditProduct/' + item._id}>Sửa</Link></Button>|
+                                        <Button><Link to={'/admin/DeleteProduct/' + item._id}>Xóa</Link></Button>|
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
                         </div>
                     </div>
                 </div>

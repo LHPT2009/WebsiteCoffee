@@ -27,6 +27,9 @@ import Customers from './views/Admin/Customers'
 import Products from './views/Admin/Products'
 import Orders from './views/Admin/Orders'
 import Cart from './views/Cart/Cart'
+import AddProduct from './views/Admin/AddProduct'
+import EditProduct from './views/Admin/EditProduct'
+import DeleteProduct from './views/Admin/DeleteProduct'
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -50,6 +53,9 @@ root.render(
             <Route path="customers" element={<Customers />} />
             <Route path="products" element={<Products />} />
             <Route path="orders" element={<Orders />} />
+            <Route path="addproduct" element={<AddProduct />} />
+            <Route path="editproduct/:id" element={<EditProduct />} />
+            <Route path="deleteproduct/:id" element={<DeleteProduct />} />
 
             </Route>
           </Routes>
