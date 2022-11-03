@@ -43,7 +43,6 @@ root.render(
             <Route path="/product" element={<Coffee />} />
             <Route path="/product/:id" element={<ItemDetail />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/loadfile" element={<Form />} />
 
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
