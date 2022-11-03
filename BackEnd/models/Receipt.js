@@ -1,19 +1,11 @@
 const mongoose = require("mongoose");
 
 const receiptSchema = new mongoose.Schema({
-    staffid: {
+    userid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Staff"
+        ref: "User"
     },
-    customerid: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Customer"
-    },
-    receiptappid: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "ReceiptApp"
-    },
-    total: {
+    price: {
         type: Number
     }
 });

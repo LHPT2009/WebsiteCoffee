@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+
 import logo2 from '../../assets/images/logo_2.png'
 import { Link } from 'react-router-dom'
 import { ListProductContext } from '../../context/ListProductContext'
@@ -16,8 +17,7 @@ const Header = () => {
               src={logo2}
               alt="logo-coffee-bug-on"
             />
-          </Link>
-
+          </Link>8
           <div className="flex flex-col items-start">
             <div
               onClick={() => setOpen(!open)}

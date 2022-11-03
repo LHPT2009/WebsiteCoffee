@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Header from '../Header/Header'
 import Button from '../Button/Button'
+import TextInput from '../Input/TextInput'
 
 const SignIn = () => {
   const [username, setUsername] = useState('')
@@ -20,46 +21,38 @@ const SignIn = () => {
       if (Auth.data.role.rolename == 'Admin') {
         navigate('/admin')
       } else {
-        navigate('/user')
+        navigate('/')
       }
     } catch (err) {
       console.log(err)
     }
   }
   return (
-    <div>
+    <div className="text-center">
       <Header />
-      <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
+      <div className="h-10"></div>
+      <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] justify-center">
         <form onSubmit={loginUser}>
           <div>
-            <input
+            <TextInput
               name="username"
               onChange={(e) => setUsername(e.target.value)}
               type="text"
               placeholder="Tên đăng nhập"
-              className="inline w-[400px] border-[2px] border-[#dddddd] border-style: solid rounded-full text-[18px] leading-[24px] mb-[10px] pt-[13px] px-[12px] pb-[13px] 
-                hover:border-[#FB98AD] hover:duration-200 hover:rounded-[10px]
-                focus:border-[#F8567B] focus:rounded-[10px] focus:duration-300"
             />
           </div>
-
           <div>
-            <input
+            <TextInput
               name="password"
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Mật khẩu"
-              className="inline w-[400px] border-[2px] border-[#dddddd] border-style: solid rounded-full text-[18px] leading-[24px] mb-[10px] pt-[13px] px-[12px] pb-[13px] 
-                hover:border-[#FB98AD] hover:duration-200 hover:rounded-[10px]
-                focus:border-[#F8567B] focus:rounded-[10px] focus:duration-300"
             />
           </div>
         </form>
-        <div className="justify-items-center">
-          <Button onClick={loginUser} icon="log-in-outline">
-            Đăng nhập
-          </Button>
-        </div>
+        <Button onClick={loginUser} icon="login" buttonCSS="mt-4">
+          Đăng nhập
+        </Button>
       </div>
     </div>
   )
