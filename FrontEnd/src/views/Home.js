@@ -14,8 +14,8 @@ const Home = () => {
       <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         <MenuHome />
         <Introduce />
-      </div>
-      <Footer />
+    </div>
+    <Footer/>
     </div>
   )
 }
