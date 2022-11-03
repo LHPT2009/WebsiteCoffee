@@ -59,7 +59,7 @@ const ItemDetail = () => {
               <Button
                 type="button"
                 buttonStyle="btn--primary--fill"
-                icon="cart-outline"
+                icon="add_shopping_cart"
                 onClick={add}
                 buttonCSS={'h-[44px] px-6 py-3'}
               >

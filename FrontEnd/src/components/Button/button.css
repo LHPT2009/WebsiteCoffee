@@ -14,12 +14,11 @@
 .btn {
   font-style: normal;
   font-size: 16px;
-  display: flex;
+  /* display: flex; */
   letter-spacing: 0.03em;
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  padding: 12px 24px;
   gap: 8px;
   height: 44px;
   background: var(--primary);
@@ -28,17 +27,11 @@
 }
 
 /* STYLES */
-.btn--primary--fill {
-  
-}
+.btn--primary--fill {}
 
-.btn--primary--fill:hover {
-  
-}
+.btn--primary--fill:hover {}
 
-.btn--primary--fill:active {
-  
-}
+.btn--primary--fill:active {}
 
 .btn--primary--outline {
   background-color: transparent;
@@ -46,21 +39,14 @@
   border: solid 1px var(--border-variant);
 }
 
-.btn--primary--text  {
+.btn--primary--text {}
 
-}
+.btn--primary--elevate {}
 
-.btn--primary--elevate  {
+.btn--primary--tonal {}
 
-}
-
-.btn--primary--tonal  {
-
-}
 /* SIZES */
-.btn--medium {
-  
-}
+.btn--medium {}
 
 .btn--large {}
 

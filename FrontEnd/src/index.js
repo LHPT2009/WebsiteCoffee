@@ -18,9 +18,6 @@ import ListProductProvider from './context/ListProductContext'
 
 import Coffee from './views/Collections/Coffee'
 import ItemDetail from './components/Item/ItemDetail'
-import SendMail from './views/ResetPassword/SendMail'
-import CheckCode from './views/ResetPassword/CheckCode'
-import ResetPassword from './views/ResetPassword/ResetPassword'
 import Dashboard from './views/Admin/Dashboard'
 import Layout from './components/Admin/layout/Layout'
 import Customers from './views/Admin/Customers'
@@ -29,6 +26,9 @@ import Orders from './views/Admin/Orders'
 import Cart from './views/Cart/Cart'
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
+import EnterEmail from './components/Auth/EnterEmail'
+import Repass from './components/Auth/Repass'
+import CheckCode from './components/Auth/CheckCode'
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -41,14 +41,13 @@ root.render(
             <Route path="/" element={<App />} />
             <Route path="/product" element={<Coffee />} />
             <Route path="/product/:id" element={<ItemDetail />} />
-
-            <Route path="/sendmail" element={<SendMail />} />
-            <Route path="/checkcode" element={<CheckCode />} />
-            <Route path="/reset" element={<ResetPassword />} />
             <Route path="/cart" element={<Cart />} />
 
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/enteremail" element={<EnterEmail />} />
+            <Route path="/checkcode" element={<CheckCode />} />
+            <Route path="/repass" element={<Repass />} />
 
             <Route path="/admin" element={<Layout />}>
               <Route index element={<Dashboard />} />
