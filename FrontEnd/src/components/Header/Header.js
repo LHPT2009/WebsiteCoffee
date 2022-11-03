@@ -17,7 +17,7 @@ const Header = () => {
               src={logo2}
               alt="logo-coffee-bug-on"
             />
-          </Link>8
+          </Link>
           <div className="flex flex-col items-start">
             <div
               onClick={() => setOpen(!open)}
@@ -49,14 +49,6 @@ const Header = () => {
                   Product
                 </a>
               </li>
-              <li className="flex items-center px-[16px] h-full text-center text-l2 list-none hover:bg-s5 rounded-[16px]">
-                <Link
-                  className="text-black text-left hover:text-primary w-full"
-                  to="/cart"
-                >
-                  Giỏ hàng {products.length}
-                </Link>
-              </li>
             </ul>
           </div>
         </div>
@@ -64,9 +56,10 @@ const Header = () => {
           <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48]">
             <Link
               className="text-black text-center hover:text-primary h-[48] w-[48]"
-              to="/search"
+              to="/cart"
             >
               <span class="material-symbols-outlined">shopping_cart</span>
+              {products.length}
             </Link>
           </div>
           <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48]">

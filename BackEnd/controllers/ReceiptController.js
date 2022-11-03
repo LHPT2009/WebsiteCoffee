@@ -36,7 +36,6 @@ const ReceiptController = {
             });
             await newReceipt.save();
             
-            console.log(req.body.products);
             (req.body.products).forEach( ele => {
                 const newReceiptDetail = new ReceiptDetail({
                     productid: ele.id,
