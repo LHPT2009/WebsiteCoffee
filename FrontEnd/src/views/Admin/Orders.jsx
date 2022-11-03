@@ -6,11 +6,11 @@ import Badge from '../../components/Admin/badge/Badge'
 
 const latestOrders = {
     header: [
-        "order id",
-        "user",
-        "total price",
-        "date",
-        "status"
+        "Mã đơn",
+        "Tên khách",
+        "Tổng tiền",
+        "Ngày",
+        "Tình trạng"
     ],
     body: [
         {
