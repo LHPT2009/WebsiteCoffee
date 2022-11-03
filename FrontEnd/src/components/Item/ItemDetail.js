@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useContext} from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import Header from '../Header/Header'
@@ -8,20 +8,13 @@ import { ListProductContext } from '../../context/ListProductContext'
 
 const ItemDetail = () => {
   const { id } = useParams()
-  const [info, setInfo] = useState([])
-  const {addProduct} = useContext(ListProductContext);
-  
-  const add = (e) => {
-    e.preventDefault();
-    const id = info._id;
-    const name = info.name;
-    const price = info.price;
-    const amount = 1;
-    const product = {id,name,price,amount};
-    addProduct(product);
-  };
 
-  axios.get(`http://localhost:8000/product/${id}`).then((res) => setInfo(res.data))
+  const [info, setInfo] = useState([])
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/product/${id}`)
+      .then((res) => setInfo(res.data))
+  }, [id])
 
   const [product, setProduct] = useState([])
   useEffect(() => {
@@ -30,18 +23,30 @@ const ItemDetail = () => {
     })
   }, [])
 
+  const { addProduct } = useContext(ListProductContext)
+
+  const add = (e) => {
+    e.preventDefault()
+    const id = info._id
+    const name = info.name
+    const price = info.price
+    const amount = 1
+    const product = { id, name, price, amount }
+    addProduct(product)
+  }
+
   return (
     <div>
       <Header />
       <div className="h-20"></div>
       <div className="sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] font-googleSansRegular">
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 md:gap-10 sm:gap-8">
           <img
             className="rounded-[1.5rem] hover:rounded-[2rem] transition-all"
             src={info.image}
             alt="product-thumbnail"
           />
-          <div>
+          <div className="pt-5">
             <p className="text-[26px] mb-[18px] text-black leading-6">
               {info.name}
             </p>
@@ -53,10 +58,10 @@ const ItemDetail = () => {
             <div className="items-center mt-4">
               <Button
                 type="button"
-                buttonSize="btn--medium"
                 buttonStyle="btn--primary--fill"
-                icon="cart-outline"
+                icon="add_shopping_cart"
                 onClick={add}
+                buttonCSS={'h-[44px] px-6 py-3'}
               >
                 Thêm vào giỏ hàng
               </Button>

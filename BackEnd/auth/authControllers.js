@@ -1,6 +1,6 @@
-const User = require('../models/User.js');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const User = require("../models/User.js");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const authController = {
   registerUser: async (req, res) => {
@@ -12,7 +12,7 @@ const authController = {
         username: req.body.username,
         email: req.body.email,
         password: hashed,
-        role: '6335369ee1caa255ab840cd4'
+        role: "6335aaa724e48c7daf722fdb",
       });
 
       await newUser.save();
@@ -27,22 +27,28 @@ const authController = {
     return jwt.sign(
       {
         id: user.id,
-        role: user.role.rolename
+        role: user.role.rolename,
       },
       process.env.JWT_ACCESS_KEY,
-      { expiresIn: '1d' }
+      { expiresIn: "1d" }
     );
   },
 
   loginUser: async (req, res) => {
     try {
-      const user = await User.findOne({ username: req.body.username }).populate('role', ['rolename']);
+      const user = await User.findOne({ username: req.body.username }).populate(
+        "role",
+        ["rolename"]
+      );
       if (!user) {
-        return res.status(404).json('Wrong username!');
+        return res.status(404).json("Wrong username!");
       }
-      const validPassword = await bcrypt.compare(req.body.password, user.password);
+      const validPassword = await bcrypt.compare(
+        req.body.password,
+        user.password
+      );
       if (!validPassword) {
-        return res.status(404).json('Wrong Password!');
+        return res.status(404).json("Wrong Password!");
       }
       if (user && validPassword) {
         const accessToken = authController.generateAccessToken(user);
@@ -52,7 +58,7 @@ const authController = {
     } catch (err) {
       res.status(500).json(err);
     }
-  }
+  },
 };
 
 module.exports = authController;
