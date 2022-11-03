@@ -39,14 +39,14 @@ const Cart = () => {
             <Button
               onClick={() => downAmount(n.id)}
               icon="remove-outline"
-              buttonCSS="h-[20px] w-[32px]"
+              buttonCSS="h-[20px] w-[44px]"
               children=""
             />
             <span className="mx-2">{n.amount}</span>
             <Button
               onClick={() => upAmount(n.id)}
               icon="add-outline"
-              buttonCSS="h-[20px] w-[32px]"
+              buttonCSS="h-[20px] w-[44px]"
               children=""
             />
           </td>
@@ -55,7 +55,7 @@ const Cart = () => {
             <Button
               onClick={() => delProduct(n.id)}
               icon="close-outline"
-              buttonCSS="h-[20px] w-[32px]"
+              buttonCSS="h-[20px] w-[44px]"
               children=""
             />
           </td>
