@@ -33,10 +33,3 @@
   font-family: "GoogleSans-Black";
   src: url("../public/fonts/GoogleSans-Black.otf");
 }
-
-ion-icon {
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  font-size: 20px;
-}
