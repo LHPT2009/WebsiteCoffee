@@ -27,6 +27,7 @@ import Customers from './views/Admin/Customers'
 import Products from './views/Admin/Products'
 import Orders from './views/Admin/Orders'
 import Cart from './views/Cart/Cart'
+import Form from './views/LoadFile/Form'
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -44,6 +45,7 @@ root.render(
             <Route path="/checkcode" element={<CheckCode />} />
             <Route path="/reset" element={<ResetPassword />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/loadfile" element={<Form />} />
 
             <Route path="/admin" element={<Layout/>}>
             <Route index element={<Dashboard />} />

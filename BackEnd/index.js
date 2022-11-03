@@ -11,6 +11,7 @@ const categoryProductRoute = require('./routes/categoryProduct');
 const advertisementRoute = require('./routes/advertisement');
 const advertisingContractRoute = require('./routes/advertisingContract');
 const mail = require('./routes/mail');
+const receiptRoute = require('./routes/Receipt');
 
 dotenv.config();
 const app = express();
@@ -35,6 +36,7 @@ app.use('/category', categoryProductRoute);
 app.use('/advertisement', advertisementRoute);
 app.use('/advertisingcontract', advertisingContractRoute);
 app.use('/mail',mail);
+app.use('/receipt',receiptRoute);
 
 app.listen(8000, () => {
   console.log('Server is running...');
