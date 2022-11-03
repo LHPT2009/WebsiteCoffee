@@ -8,16 +8,13 @@ import Cart from './Cart/Cart'
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="font-googleSansRegular">
       <Header />
-
-      <main>
-        <BannerHome />
+      <BannerHome />
+      <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         <MenuHome />
         <Introduce />
-        <Cart />
-      </main>
-      <footer></footer>
+      </div>
     </div>
   )
 }

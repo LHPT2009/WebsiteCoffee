@@ -27,6 +27,8 @@ import Customers from './views/Admin/Customers'
 import Products from './views/Admin/Products'
 import Orders from './views/Admin/Orders'
 import Cart from './views/Cart/Cart'
+import SignIn from './components/Auth/SignIn'
+import SignUp from './components/Auth/SignUp'
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -39,18 +41,20 @@ root.render(
             <Route path="/" element={<App />} />
             <Route path="/product" element={<Coffee />} />
             <Route path="/product/:id" element={<ItemDetail />} />
-            
+
             <Route path="/sendmail" element={<SendMail />} />
             <Route path="/checkcode" element={<CheckCode />} />
             <Route path="/reset" element={<ResetPassword />} />
             <Route path="/cart" element={<Cart />} />
 
-            <Route path="/admin" element={<Layout/>}>
-            <Route index element={<Dashboard />} />
-            <Route path="customers" element={<Customers />} />
-            <Route path="products" element={<Products />} />
-            <Route path="orders" element={<Orders />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
 
+            <Route path="/admin" element={<Layout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="customers" element={<Customers />} />
+              <Route path="products" element={<Products />} />
+              <Route path="orders" element={<Orders />} />
             </Route>
           </Routes>
         </BrowserRouter>

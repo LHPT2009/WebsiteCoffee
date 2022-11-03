@@ -46,14 +46,6 @@ const ListProductProvider = (props) => {
     setProducts([...products])
   }
 
-  // const sumMoney = () => {
-  //   const sum = 0
-  //   products.map((item) => {
-  //     sum = sum + item.price * item.amount
-  //   })
-  //   return sum
-  // }
-
   return (
     <ListProductContext.Provider
       value={{
@@ -62,7 +54,6 @@ const ListProductProvider = (props) => {
         delProduct,
         upAmount,
         downAmount,
-        // sumMoney,
       }}
     >
       {props.children}

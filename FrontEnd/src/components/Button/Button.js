@@ -3,15 +3,7 @@ import './button.css'
 
 const STYLES = ['btn--primary--fill', 'btn--primary--outline']
 
-const Button = ({
-  children,
-  type,
-  icon,
-  onClick,
-  buttonStyle,
-  buttonSize,
-  buttonCSS,
-}) => {
+const Button = ({ children, type, icon, onClick, buttonStyle, buttonCSS }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
     : STYLES[0]
@@ -29,7 +21,7 @@ const Button = ({
 
   return (
     <button
-      className={`btn ${checkButtonStyle} ${buttonCSS} transition-all font-googleSansRegular`}
+      className={`btn ${checkButtonStyle} ${buttonCSS} hover:rounded-2xl active:rounded-2xl transition-all font-googleSansRegular`}
       onClick={onClick}
       type={type}
     >
