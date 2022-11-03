@@ -61,6 +61,7 @@ root.render(
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="editproduct/:id" element={<EditProduct />} />
             <Route path="deleteproduct/:id" element={<DeleteProduct />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </ListProductProvider>
