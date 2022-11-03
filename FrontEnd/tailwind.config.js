@@ -54,6 +54,66 @@ module.exports = {
       disable: '#E8E8E8',
     },
 
+    //font size
+    fontSize: {
+      //body
+      'body': ['16px', {
+        lineHeight: '20px',
+        letterSpacing: '0.04em',
+        fontWeight: '400',
+      }],
+      //display
+      'd1': ['60px', {
+        lineHeight: '115%',
+        letterSpacing: '-0.04em',
+        fontWeight: '700',
+      }],
+      'd2': ['54px', {
+        lineHeight: '120%',
+        letterSpacing: '0.04em',
+        fontWeight: '300',
+      }],
+      //heading
+      'h1': ['42px', {
+        lineHeight: '65px',
+        letterSpacing: '-0.02em',
+        fontWeight: '700',
+      }],
+      'h2': ['32px', {
+        lineHeight: '142%',
+        letterSpacing: '0.02em',
+        fontWeight: '500',
+      }],
+      //title
+      't1': ['24px', {
+        lineHeight: '135%',
+        letterSpacing: '0.015em',
+        fontWeight: '700',
+      }],
+      't2': ['16px', {
+        lineHeight: '145%',
+        letterSpacing: '0.03em',
+        fontWeight: '400',
+      }],
+      //label
+      'l1': ['22px', {
+        lineHeight: '28px',
+        letterSpacing: '0.02em',
+        fontWeight: '700',
+      }],
+      'l2': ['16px', {
+        lineHeight: '20px',
+        letterSpacing: '0.03em',
+        fontWeight: '500',
+      }],
+      //caption
+      'caption': ['14px', {
+        lineHeight: '145%',
+        letterSpacing: '0.05em',
+        fontWeight: '400',
+      }],
+    },
+
     //extend
     extend: {
       fontFamily: {
