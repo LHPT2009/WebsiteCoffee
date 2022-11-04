@@ -30,13 +30,13 @@ const Header = () => {
 
             <ul
               className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[20px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${
-                open ? 'top-[64px]' : 'top-[-420px]'
+                open ? 'top-[56pxpx]' : 'top-[-420px]'
               } `}
             >
-              <li className="flex items-center px-[16px] h-full text-center text-l2 list-none hover:bg-s5 rounded-[16px]">
+              <li className=" px-[16px] text-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px]">
                 <Link
-                  className="text-black text-left hover:text-primary w-full"
-                  to="/product"
+                  className="text-black text-left hover:text-primary w-full h-full items-center"
+                  to="/product flex items-center"
                 >
                   Homepage
                 </Link>
