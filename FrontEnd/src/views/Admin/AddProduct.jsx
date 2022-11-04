@@ -6,7 +6,7 @@ import Button from '../../components/Button/Button'
 
 const AddProduct = () => {
     const [name, setName] = useState("");
-    const [amount, setAmount] = useState("");
+    // const [amount, setAmount] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState(null);
 

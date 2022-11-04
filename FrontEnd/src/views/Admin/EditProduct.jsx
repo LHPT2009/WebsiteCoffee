@@ -4,27 +4,31 @@ import axios from 'axios'
 
 import Button from '../../components/Button/Button'
 
+import { useParams } from "react-router-dom";
+
 const EditProduct = () => {
-    const [RowData, SetRowData] = useState([])
     const [name, setName] = useState("");
-    const [amount, setAmount] = useState("");
     const [price, setPrice] = useState("");
-    const [image, setImage] = useState(null);
+    //const [image, setImage] = useState(null);
+    const [dataProduct, setDataProduct] = useState([]);
+    
+    const {id} = useParams();
+    
+    axios.get(`http://localhost:8000/product/${id}`).then((res) => {
+        setDataProduct(res.data);
+    });
+    
 
     const handleEdit = (e) => {
         e.preventDefault();
-        const url = 'http://localhost:8000/product/${id}'
-            const Credentials = { name, price, image }
-            axios.put(url, Credentials)
+            axios.put(`http://localhost:8000/product/${id}`,{name,price})
                 .then(res => {
                     const result = res.data;
-                    const { status, message } = result;
-                    if (status !== 'SUCCESS') {
-                        alert(message, status)
+                    if (result) {
+                        alert("sửa dữ liệu thành công!")
                     }
                     else {
-                        alert(message)
-                        window.location.reload()
+                        alert("Dự liệu của bạn ko sửa dc!!!")
                     }
                 })
                 .catch(err => {
@@ -39,8 +43,12 @@ const EditProduct = () => {
             </h2>
             <div>
                 <h1>Tên sản phẩm</h1>
-                <input type={"text"} placeholder={"Tên sản phẩm"} onChange={(e) => setName(e.target.value)} defaultValue={RowData.name} /> <br/>
-                <div>
+                <input 
+                type={"text"} 
+                onChange={(e) => setName(e.target.value)}
+                defaultValue={dataProduct.name}
+                /><br/>
+                {/* <div>
                 <h1>Hình ảnh</h1>
                 {image && (
                     <div>
@@ -58,10 +66,15 @@ const EditProduct = () => {
                     }}
                     defaultValue={RowData.image}
                 />
-                </div>
+                </div> */}
 
                 <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"} onChange={(e) => setPrice(e.target.value)} defaultValue={RowData.price}/> <br/>
+                <input 
+                type={"text"} 
+                defaultValue={dataProduct.price}
+                onChange={(e) => setPrice(e.target.value)}
+                />
+                <br/>
             </div>
             <div>
             <Button type="button">

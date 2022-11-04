@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo2 from '../../assets/images/logo_2.png'
 import { Link } from 'react-router-dom'
 import { ListProductContext } from '../../context/ListProductContext'
+import jwtdecode from '../../header/jwt-decode'
 
 const Header = () => {
   const { products } = useContext(ListProductContext)
@@ -29,30 +30,42 @@ const Header = () => {
             </div>
 
             <ul
-              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[20px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${
-                open ? 'top-[64px]' : 'top-[-420px]'
-              } `}
+              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[20px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${open ? 'top-[64px]' : 'top-[-420px]'
+                } `}
             >
               <li className="flex items-center px-[16px] h-full text-center text-l2 list-none hover:bg-s5 rounded-[16px]">
                 <Link
                   className="text-black text-left hover:text-primary w-full"
                   to="/product"
                 >
-                  Homepage
+                  Product
                 </Link>
               </li>
               <li className="flex items-center px-[16px] h-full text-center text-l2 list-none hover:bg-s5 rounded-[16px]">
-                <a
+                <Link
                   className="text-black text-left hover:text-primary w-full"
-                  href=""
+                  to="/product"
                 >
-                  Product
-                </a>
+                  ....
+                </Link>
+              </li>
+              <li className="flex items-center px-[16px] h-full text-center text-l2 list-none hover:bg-s5 rounded-[16px]">
+                <Link
+                  className="text-black text-left hover:text-primary w-full"
+                  to="/product"
+                >
+                  ....
+                </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="flex items-center gap-[16px] h-[48px]">
+
+          <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48]">
+
+          </div>
+
           <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48]">
             <Link
               className="text-black text-center hover:text-primary h-[48] w-[48]"
