@@ -2,23 +2,13 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
     username: {
-        type: String,
-        require: true,
-        minlength: 6,
-        maxlength: 20,
-        unique: true
+        type: String
     },
     email: {
-        type: String,
-        require: true,
-        minlength: 10,
-        maxlength: 50,
-        unique: true
+        type: String
     },
     password: {
-        type: String,
-        require: true,
-        minlength: 6
+        type: String
     },
     confirmemail: {
         type: Boolean
@@ -26,6 +16,15 @@ const userSchema = new mongoose.Schema({
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role",
+    },
+    firstname: {
+        type: String
+    },
+    lastname: {
+        type: String
+    },
+    numberphone: {
+        type: String
     },
 }, { timestamps: true }
 );

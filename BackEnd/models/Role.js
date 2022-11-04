@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 const roleSchema = new mongoose.Schema({
     rolename: {
-        type: String,
-        require: true,
-        unique: true
+        type: String
     }
 }, { timestamps: true }
 );

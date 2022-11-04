@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const earnpointsSchema = new mongoose.Schema({
-    customerid: {
+    userid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Customer"
+        ref: "User"
     },
     point: {
         type: Number

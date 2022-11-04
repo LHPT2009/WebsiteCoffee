@@ -7,32 +7,28 @@ import Button from '../Button/Button'
 import TextInput from '../Input/TextInput'
 
 const SignUp = () => {
-  const [inputs, setInputs] = useState({
-    username: '',
-    email: '',
-    password: '',
-  })
 
-  const { username, email, password } = inputs
-
-  const handleChange = (event) => {
-    setInputs({
-      ...inputs,
-      [event.target.name]: event.target.value,
-    })
-  }
+  const [firstname, setFirstName] = useState('')
+  const [lastname, setLastName] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [rePassword, setRePassword] = useState('')
 
   const addUser = () => {
-    axios
-      .post('http://localhost:8000/auth/register', {
-        ...inputs,
-      })
-      .then(function (response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+    if (password == rePassword) {
+      axios
+        .post('http://localhost:8000/auth/register', { firstname, lastname, username, email, password })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
+    else {
+      alert("password xác nhận của bạn ko đúng!!!");
+    }
   }
   return (
     <div className="text-center">
@@ -43,14 +39,14 @@ const SignUp = () => {
           <div>
             <TextInput
               name="lastName"
-              onChange={''}
+              onChange={(e) => setLastName(e.target.value)}
               type="text"
               placeholder="Họ"
               className="w-[198px] mr-2"
             />
             <TextInput
               name="firstName"
-              onChange={''}
+              onChange={(e) => setFirstName(e.target.value)}
               type="text"
               placeholder="Tên"
               className="w-[198px]"
@@ -59,7 +55,7 @@ const SignUp = () => {
           <div>
             <TextInput
               name="username"
-              onChange={''}
+              onChange={(e) => setUsername(e.target.value)}
               type="text"
               placeholder="Tên đăng nhập"
             />
@@ -67,7 +63,7 @@ const SignUp = () => {
           <div>
             <TextInput
               name="password"
-              onChange={''}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Mật khẩu"
             />
@@ -75,7 +71,7 @@ const SignUp = () => {
           <div>
             <TextInput
               name="re-password"
-              onChange={''}
+              onChange={(e) => setRePassword(e.target.value)}
               type="password"
               placeholder="Xác nhận mật khẩu"
             />
@@ -83,13 +79,13 @@ const SignUp = () => {
           <div>
             <TextInput
               name="email"
-              onChange={''}
-              type="password"
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
               placeholder="Email"
             />
           </div>
         </form>
-        <Button onClick={''} icon="login" buttonCSS="mt-4">
+        <Button onClick={addUser} icon="login" buttonCSS="mt-4">
           Tạo tài khoản
         </Button>
       </div>

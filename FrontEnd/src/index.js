@@ -24,6 +24,9 @@ import Customers from './views/Admin/Customers'
 import Products from './views/Admin/Products'
 import Orders from './views/Admin/Orders'
 import Cart from './views/Cart/Cart'
+import AddProduct from './views/Admin/AddProduct'
+import EditProduct from './views/Admin/EditProduct'
+import DeleteProduct from './views/Admin/DeleteProduct'
 
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
@@ -50,11 +53,14 @@ root.render(
             <Route path="/checkcode" element={<CheckCode />} />
             <Route path="/repass" element={<Repass />} />
 
-            <Route path="/admin" element={<Layout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="customers" element={<Customers />} />
-              <Route path="products" element={<Products />} />
-              <Route path="orders" element={<Orders />} />
+            <Route path="/admin" element={<Layout/>}>
+            <Route index element={<Dashboard />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="products" element={<Products />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="addproduct" element={<AddProduct />} />
+            <Route path="editproduct/:id" element={<EditProduct />} />
+            <Route path="deleteproduct/:id" element={<DeleteProduct />} />
             </Route>
           </Routes>
         </BrowserRouter>

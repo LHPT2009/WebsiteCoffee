@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const receiptingredientdetailsSchema = new mongoose.Schema({
-    ingredientid: {
+    supplierid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Ingredient"
+        ref: "Supplier"
     },
     receiptingredientid: {
         type: mongoose.Schema.Types.ObjectId,
@@ -11,6 +11,9 @@ const receiptingredientdetailsSchema = new mongoose.Schema({
     },
     amount: {
         type: Number
+    },
+    unit: {
+        type: String
     }
 }, { timestamps: true }
 );

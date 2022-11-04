@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo2 from '../../assets/images/logo_2.png'
 import { Link } from 'react-router-dom'
 import { ListProductContext } from '../../context/ListProductContext'
+import jwtdecode from '../../header/jwt-decode'
 
 const Header = () => {
   const { products } = useContext(ListProductContext)
@@ -38,21 +39,34 @@ const Header = () => {
                   className="text-black text-left hover:text-primary w-full h-full items-center"
                   to="/product flex items-center"
                 >
-                  Homepage
+                  Product
                 </Link>
               </li>
               <li className="flex items-center px-[16px] h-full text-center text-l2 list-none hover:bg-s5 rounded-[16px]">
-                <a
+                <Link
                   className="text-black text-left hover:text-primary w-full"
-                  href=""
+                  to="/product"
                 >
-                  Product
-                </a>
+                  ....
+                </Link>
+              </li>
+              <li className="flex items-center px-[16px] h-full text-center text-l2 list-none hover:bg-s5 rounded-[16px]">
+                <Link
+                  className="text-black text-left hover:text-primary w-full"
+                  to="/product"
+                >
+                  ....
+                </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="flex items-center gap-[16px] h-[48px]">
+
+          <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48]">
+
+          </div>
+
           <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48]">
             <Link
               className="text-black text-center hover:text-primary h-[48] w-[48]"
