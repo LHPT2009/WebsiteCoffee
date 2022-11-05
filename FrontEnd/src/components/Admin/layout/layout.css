@@ -1,7 +1,6 @@
 .layout {
     color: var(--txt-color);
     overflow-x: hidden;
-    overflow-y: scroll;
 }
 
 .layout__content {

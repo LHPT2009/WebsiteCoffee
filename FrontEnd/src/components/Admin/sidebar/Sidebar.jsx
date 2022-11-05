@@ -8,6 +8,8 @@ import logo from '../../../assets/images/logo.png'
 
 import sidebarNav from './sidebarNav'
 
+import SubMenu from './subMenu';
+
 const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0)
     const location = useLocation()
@@ -26,13 +28,9 @@ const Sidebar = () => {
             </div>
             <div className="sidebar__item">
                 {
-                    sidebarNav.map((nav, index) => (
-                        <Link to={nav.link} key={`nav-${index}`} className={`sidebar__item-inner ${activeIndex === index && 'active'}`}>
-                            <div className="sidebar__item-inner">
-                                {nav.icon}{nav.text}
-                            </div>
-                        </Link>
-                    ))
+                    sidebarNav.map((nav, index) => {
+                        return <SubMenu item={nav} key={`nav-${index}`} />;
+                    })
                 }
             </div>
         </div>

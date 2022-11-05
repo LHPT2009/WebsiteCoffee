@@ -202,25 +202,8 @@ const Dashboard = () => {
                         />
                     </div>
                 </div>
-                <div className="col-4">
-                    <div className="card">
-                        <div className="card__header">
-                            <h3>Top Khách hàng</h3>
-                        </div>
-                        <div className="card__body">
-                            <Table
-                                headData={topCustomers.head}
-                                renderHead={(item, index) => renderCusomerHead(item, index)}
-                                bodyData={topCustomers.body}
-                                renderBody={(item, index) => renderCusomerBody(item, index)}
-                            />
-                        </div>
-                        <div className="card__footer">
-                            <Link to='/'>Xem tất cả</Link>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-8">
+                
+                <div className="col-12">
                     <div className="card">
                         <div className="card__header">
                             <h3>Đơn mới nhất</h3>
@@ -234,7 +217,7 @@ const Dashboard = () => {
                             />
                         </div>
                         <div className="card__footer">
-                            <Link to='/'>Xem tất cả</Link>
+                            <Link to='./Receipts'>Xem tất cả</Link>
                         </div>
                     </div>
                 </div>
