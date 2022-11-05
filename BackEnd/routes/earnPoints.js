@@ -2,14 +2,14 @@ const earnPointsController = require("../controllers/EarnPointsController");
 
 const router = require("express").Router();
 
-router.get("/", earnPointsController.getAllCategoryProducts);
+router.get("/", earnPointsController.getAllEarnPoints);
 
-router.get("/:id", earnPointsController.getCategoryProductById);
+router.get("/:id", earnPointsController.getEarnPointsById);
 
-router.delete("/:id", earnPointsController.deleteCategoryProduct);
+router.delete("/:id", earnPointsController.deleteEarnPoints);
 
-router.post("/", earnPointsController.addCategoryProduct);
+router.post("/", earnPointsController.addEarnPoints);
 
-router.put("/:id", earnPointsController.updateCategoryProduct);
+router.put("/:id", earnPointsController.updateEarnPoints);
 
 module.exports = router;

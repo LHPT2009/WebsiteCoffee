@@ -2,14 +2,14 @@ const staffController = require("../controllers/StaffController");
 
 const router = require("express").Router();
 
-router.get("/", staffController.getAllReceipts);
+router.get("/", staffController.getAllStaff);
 
-router.get("/:id", staffController.getReceiptById);
+router.get("/:id", staffController.getStaffById);
 
-router.delete("/:id", staffController.deleteReceipt);
+router.delete("/:id", staffController.deleteStaff);
 
-router.post("/", staffController.addReceipt);
+router.post("/", staffController.addStaff);
 
-router.put("/:id", staffController.updateReceipt);
+router.put("/:id", staffController.updateStaff);
 
 module.exports = router;

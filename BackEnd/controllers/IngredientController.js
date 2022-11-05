@@ -1,7 +1,7 @@
 const Ingredient = require('../models/Ingredient');
 
 const ingredientController = {
-    getAllIngredientProducts: async (req, res) => {
+    getAllIngredient: async (req, res) => {
         try {
             const ingredient = await Ingredient.find();
             res.status(200).json(ingredient);
@@ -12,7 +12,7 @@ const ingredientController = {
 
     deleteIngredient: async (req, res) => {
         try {
-            const ingredient = await ingredient.findByIdAndDelete(req.params.id);
+            const ingredient = await Ingredient.findByIdAndDelete(req.params.id);
             res.status(200).json('Delete successfully');
         } catch (error) {
             res.status(500).json(error);
@@ -30,28 +30,28 @@ const ingredientController = {
 
     addIngredient: async (req, res) => {
         try {
-            const newEarnPoints = new EarnPoints({
+            const newIngredient = new Ingredient({
                 name: req.body.name,
             });
 
-            await newEarnPoints.save();
+            await newIngredient.save();
             res.status(200).json('Add successfully');
         } catch (error) {
             res.status(500).json(error);
         }
     },
 
-    updateEarnPoints: async (req, res) => {
+    updateIngredient: async (req, res) => {
         try {
-            const updateEarnPoints = req.body;
-            const earnPoints = await EarnPoints.findByIdAndUpdate(req.params.id, updateEarnPoints, {
+            const updateIngredient = req.body;
+            const ingredient = await Ingredient.findByIdAndUpdate(req.params.id, updateIngredient, {
                 new: true,
             });
 
-            if (!earnPoints) {
+            if (!ingredient) {
                 return res.status(404).json('Wrong updateProduct!');
             }
-            res.status(200).json(earnPoints);
+            res.status(200).json(ingredient);
         } catch (error) {
             console.log(error);
             res.status(500).json('Error!!!');

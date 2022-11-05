@@ -2,14 +2,14 @@ const supplierController = require("../controllers/SupplierController");
 
 const router = require("express").Router();
 
-router.get("/", supplierController.getAllReceipts);
+router.get("/", supplierController.getAllSupplier);
 
-router.get("/:id", supplierController.getReceiptById);
+router.get("/:id", supplierController.getSupplierById);
 
-router.delete("/:id", supplierController.deleteReceipt);
+router.delete("/:id", supplierController.deleteSupplier);
 
-router.post("/", supplierController.addReceipt);
+router.post("/", supplierController.addSupplier);
 
-router.put("/:id", supplierController.updateReceipt);
+router.put("/:id", supplierController.updateSupplier);
 
 module.exports = router;

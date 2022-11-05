@@ -2,14 +2,14 @@ const receiptIngRedientController = require("../controllers/ReceiptIngRedientCon
 
 const router = require("express").Router();
 
-router.get("/", receiptIngRedientController.getAllReceipts);
+router.get("/", receiptIngRedientController.getAllReceiptIngredient);
 
-router.get("/:id", receiptIngRedientController.getReceiptById);
+router.get("/:id", receiptIngRedientController.getReceiptIngredientById);
 
-router.delete("/:id", receiptIngRedientController.deleteReceipt);
+router.delete("/:id", receiptIngRedientController.deleteReceiptIngredient);
 
-router.post("/", receiptIngRedientController.addReceipt);
+router.post("/", receiptIngRedientController.addReceiptIngredient);
 
-router.put("/:id", receiptIngRedientController.updateReceipt);
+router.put("/:id", receiptIngRedientController.updateReceiptIngredient);
 
 module.exports = router;

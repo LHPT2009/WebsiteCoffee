@@ -56,7 +56,7 @@ const Footer = () => {
                                 className="text-black text-center hover:text-primary"
                                 to="/product"
                             >
-                                Design by Vịt Hoàng
+                                Design by Team HUTECH
                             </Link>
                         </li>
                         <li className="flex items-center px-0 py-[10px] h-[48px] text-center text-caption list-none">
