@@ -22,11 +22,69 @@ import Dashboard from './views/Admin/Dashboard'
 import Layout from './components/Admin/layout/Layout'
 import Customers from './views/Admin/Customers'
 import Products from './views/Admin/Products'
+import ProductCategories from './views/Admin/ProductCategory/ProductCategories'
 import Orders from './views/Admin/Orders'
+import Users from './views/Admin/User/Users'
+import Roles from './views/Admin/Role/Roles'
+import EarnPoints from './views/Admin/EarnPoint/EarnPoints'
+import Stats from './views/Admin/Stats'
+import Staffs from './views/Admin/Staff/Staffs'
+import Positions from './views/Admin/Position/Positions'
+import Ingredients from './views/Admin/Ingredient/Ingredients'
+import Suppliers from './views/Admin/Supplier/Suppliers'
+import SizeProducts from './views/Admin/SizeProduct/SizeProducts'
+import Recipes from './views/Admin/Recipe/Recipes'
+import Receipts from './views/Admin/Receipt/Receipts'
+import ReceiptDetails from './views/Admin/ReceiptDetail/ReceiptDetails'
+import ReceiptIngredients from './views/Admin/ReceiptIngredient/ReceiptIngredients'
+import ReceiptIngredientDetails from './views/Admin/ReceiptIngredientDetail/ReceiptIngredientDetails'
 import Cart from './views/Cart/Cart'
-import AddProduct from './views/Admin/AddProduct'
-import EditProduct from './views/Admin/EditProduct'
-import DeleteProduct from './views/Admin/DeleteProduct'
+
+import AddProduct from './views/Admin/Product/AddProduct'
+import EditProduct from './views/Admin/Product/EditProduct'
+import DeleteProduct from './views/Admin/Product/DeleteProduct'
+import AddProductCategory from './views/Admin/ProductCategory/AddProductCategory'
+import EditProductCategory from './views/Admin/ProductCategory/EditProductCategory'
+import DeleteProductCategory from './views/Admin/ProductCategory/DeleteProductCategory'
+import AddEarnPoint from './views/Admin/EarnPoint/AddEarnPoint'
+import EditEarnPoint from './views/Admin/EarnPoint/EditEarnPoint'
+import DeleteEarnPoint from './views/Admin/EarnPoint/DeleteEarnPoint'
+import AddUser from './views/Admin/User/AddUser'
+import EditUser from './views/Admin/User/EditUser'
+import DeleteUser from './views/Admin/User/DeleteUser'
+import AddRole from './views/Admin/Role/AddRole'
+import EditRole from './views/Admin/Role/EditRole'
+import DeleteRole from './views/Admin/Role/DeleteRole'
+import AddPosition from './views/Admin/Position/AddPosition'
+import EditPosition from './views/Admin/Position/EditPosition'
+import DeletePosition from './views/Admin/Position/DeletePosition'
+import AddStaff from './views/Admin/Staff/AddStaff'
+import EditStaff from './views/Admin/Staff/EditStaff'
+import DeleteStaff from './views/Admin/Staff/DeleteStaff'
+import AddIngredient from './views/Admin/Ingredient/AddIngredient'
+import EditIngredient from './views/Admin/Ingredient/EditIngredient'
+import DeleteIngredient from './views/Admin/Ingredient/DeleteIngredient'
+import AddSupplier from './views/Admin/Supplier/AddSupplier'
+import EditSupplier from './views/Admin/Supplier/EditSupplier'
+import DeleteSupplier from './views/Admin/Supplier/DeleteSupplier'
+import AddSizeProduct from './views/Admin/SizeProduct/AddSizeProduct'
+import EditSizeProduct from './views/Admin/SizeProduct/EditSizeProduct'
+import DeleteSizeProduct from './views/Admin/SizeProduct/DeleteSizeProduct'
+import AddRecipe from './views/Admin/Recipe/AddRecipe'
+import EditRecipe from './views/Admin/Recipe/EditRecipe'
+import DeleteRecipe from './views/Admin/Recipe/DeleteRecipe'
+import AddReceipt from './views/Admin/Receipt/AddReceipt'
+import EditReceipt from './views/Admin/Receipt/EditReceipt'
+import DeleteReceipt from './views/Admin/Receipt/DeleteReceipt'
+import AddReceiptDetail from './views/Admin/ReceiptDetail/AddReceiptDetail'
+import EditReceiptDetail from './views/Admin/ReceiptDetail/EditReceiptDetail'
+import DeleteReceiptDetail from './views/Admin/ReceiptDetail/DeleteReceiptDetail'
+import AddReceiptIngredient from './views/Admin/ReceiptIngredient/AddReceiptIngredient'
+import EditReceiptIngredient from './views/Admin/ReceiptIngredient/EditReceiptIngredient'
+import DeleteReceiptIngredient from './views/Admin/ReceiptIngredient/DeleteReceiptIngredient'
+import AddReceiptIngredientDetail from './views/Admin/ReceiptIngredientDetail/AddReceiptIngredientDetail'
+import EditReceiptIngredientDetail from './views/Admin/ReceiptIngredientDetail/EditReceiptIngredientDetail'
+import DeleteReceiptIngredientDetail from './views/Admin/ReceiptIngredientDetail/DeleteReceiptIngredientDetail'
 
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
@@ -57,10 +115,82 @@ root.render(
             <Route index element={<Dashboard />} />
             <Route path="customers" element={<Customers />} />
             <Route path="products" element={<Products />} />
+            <Route path="productcategories" element={<ProductCategories />} />
             <Route path="orders" element={<Orders />} />
+            <Route path="users" element={<Users />} />
+            <Route path="roles" element={<Roles />} />
+            <Route path="earnpoints" element={<EarnPoints />} />
+            <Route path="stats" element={<Stats />} />
+            <Route path="staffs" element={<Staffs />} />
+            <Route path="positions" element={<Positions />} />
+            <Route path="ingredients" element={<Ingredients />} />
+            <Route path="suppliers" element={<Suppliers />} />
+            <Route path="sizeproducts" element={<SizeProducts />} />
+            <Route path="recipes" element={<Recipes />} />
+            <Route path="receipts" element={<Receipts />} />
+            <Route path="receiptdetails" element={<ReceiptDetails />} />
+            <Route path="receiptingredients" element={<ReceiptIngredients />} />
+            <Route path="receiptingredientdetails" element={<ReceiptIngredientDetails />} />
+
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="editproduct/:id" element={<EditProduct />} />
             <Route path="deleteproduct/:id" element={<DeleteProduct />} />
+
+            <Route path="addproductcategory" element={<AddProductCategory />} />
+            <Route path="editproductcategory" element={<EditProductCategory />} />
+            <Route path="deleteproductcategory" element={<DeleteProductCategory />} />
+
+            <Route path="adduser" element={<AddUser />} />
+            <Route path="edituser" element={<EditUser />} />
+            <Route path="deleteuser" element={<DeleteUser />} />
+
+            <Route path="addrole" element={<AddRole />} />
+            <Route path="editrole" element={<EditRole />} />
+            <Route path="deleterole" element={<DeleteRole />} />
+
+            <Route path="addearnpoint" element={<AddEarnPoint />} />
+            <Route path="editearnpoint" element={<EditEarnPoint />} />
+            <Route path="deleteearnpoint" element={<DeleteEarnPoint />} />
+
+            <Route path="addstaff" element={<AddStaff />} />
+            <Route path="editstaff" element={<EditStaff />} />
+            <Route path="deletestaff" element={<DeleteStaff />} />
+
+            <Route path="addposition" element={<AddPosition />} />
+            <Route path="editposition" element={<EditPosition />} />
+            <Route path="deleteposition" element={<DeletePosition />} />
+
+            <Route path="addingredient" element={<AddIngredient />} />
+            <Route path="editingredient" element={<EditIngredient />} />
+            <Route path="deleteingredient" element={<DeleteIngredient />} />
+
+            <Route path="addsupplier" element={<AddSupplier />} />
+            <Route path="editsupplier" element={<EditSupplier />} />
+            <Route path="deletesupplier" element={<DeleteSupplier />} />
+
+            <Route path="addsizeproduct" element={<AddSizeProduct />} />
+            <Route path="editsizeproduct" element={<EditSizeProduct />} />
+            <Route path="deletesizeproduct" element={<DeleteSizeProduct />} />
+
+            <Route path="addrecipe" element={<AddRecipe />} />
+            <Route path="editrecipe" element={<EditRecipe />} />
+            <Route path="deleterecipe" element={<DeleteRecipe />} />
+
+            <Route path="addreceipt" element={<AddReceipt />} />
+            <Route path="editreceipt" element={<EditReceipt />} />
+            <Route path="deletereceipt" element={<DeleteReceipt />} />
+
+            <Route path="addreceiptdetail" element={<AddReceiptDetail />} />
+            <Route path="editreceiptdetail" element={<EditReceiptDetail />} />
+            <Route path="deletereceiptdetail" element={<DeleteReceiptDetail />} />
+
+            <Route path="addreceiptingredient" element={<AddReceiptIngredient />} />
+            <Route path="editreceiptingredient" element={<EditReceiptIngredient />} />
+            <Route path="deletereceiptingredient" element={<DeleteReceiptIngredient />} />
+
+            <Route path="addreceiptingredientdetail" element={<AddReceiptIngredientDetail />} />
+            <Route path="editreceiptingredientdetail" element={<EditReceiptIngredientDetail />} />
+            <Route path="deletereceiptingredientdetail" element={<DeleteReceiptIngredientDetail />} />
             </Route>
           </Routes>
         </BrowserRouter>
