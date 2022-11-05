@@ -2,14 +2,14 @@ const positionController = require("../controllers/PositionController");
 
 const router = require("express").Router();
 
-router.get("/", positionController.getAllCategoryProducts);
+router.get("/", positionController.getAllPosition);
 
-router.get("/:id", positionController.getCategoryProductById);
+router.get("/:id", positionController.getPositionById);
 
-router.delete("/:id", positionController.deleteCategoryProduct);
+router.delete("/:id", positionController.deletePosition);
 
-router.post("/", positionController.addCategoryProduct);
+router.post("/", positionController.addPosition);
 
-router.put("/:id", positionController.updateCategoryProduct);
+router.put("/:id", positionController.updatePosition);
 
 module.exports = router;

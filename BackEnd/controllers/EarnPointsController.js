@@ -1,7 +1,7 @@
 const EarnPoints = require('../models/EarnPoints');
 
 const earnPointsController = {
-    getAllEarnPointsProducts: async (req, res) => {
+    getAllEarnPoints: async (req, res) => {
         try {
             const earnPoints = await EarnPoints.find();
             res.status(200).json(earnPoints);
