@@ -2,7 +2,7 @@ const User = require("../models/User.js");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 const authController = {
   registerUser: async (req, res) => {
@@ -18,24 +18,24 @@ const authController = {
         confirmemail: false,
         password: hashed,
         role: "6335aaa724e48c7daf722fdb",
-        numberphone: ""
+        numberphone: "",
       });
       res.status(200).json(newUser);
       await newUser.save();
       let transporter = nodemailer.createTransport({
-        service:"gmail",
+        service: "gmail",
         auth: {
-            user: process.env.USERNAME_MAIL, // generated ethereal user
-            pass: process.env.PASSWORD_MAIL, // generated ethereal password
-            },
+          user: process.env.USERNAME_MAIL, // generated ethereal user
+          pass: process.env.PASSWORD_MAIL, // generated ethereal password
+        },
       });
       let info = await transporter.sendMail({
-          from: process.env.USERNAME_MAIL, // sender address
-          to: req.body.email, // list of receivers
-          subject: "Confirm Email", // Subject line
-          text: "Confirm Email!", // plain text body
-          html: `<h1>thử demo trang Confirm Email</h1>`, // html body
-      })
+        from: process.env.USERNAME_MAIL, // sender address
+        to: req.body.email, // list of receivers
+        subject: "Confirm Email", // Subject line
+        text: "Confirm Email!", // plain text body
+        html: `<h1>thử demo trang Confirm Email</h1>`, // html body
+      });
     } catch (error) {
       console.log(error);
       res.status(500).json(error);

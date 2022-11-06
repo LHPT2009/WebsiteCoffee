@@ -14,43 +14,27 @@
 .btn {
   font-style: normal;
   font-size: 16px;
-  /* display: flex; */
-  letter-spacing: 0.03em;
-  cursor: pointer;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  height: 44px;
   background: var(--primary);
   color: var(--white);
-  border-radius: 22px;
+  border-radius: 6rem;
 }
 
 /* STYLES */
-.btn--primary--fill {}
+.btn-fill {
+  background-color: var(--primary);
+  color: var(--white);
+}
 
-.btn--primary--fill:hover {}
-
-.btn--primary--fill:active {}
-
-.btn--primary--outline {
+.btn-outline {
   background-color: transparent;
   color: var(--primary);
   border: solid 1px var(--border-variant);
 }
 
-.btn--primary--text {}
-
-.btn--primary--elevate {}
-
-.btn--primary--tonal {}
-
-/* SIZES */
-.btn--medium {}
-
-.btn--large {}
-
-/* ICONS */
-.btn--icon--false {}
-
-.btn--icon--true {}
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+}
