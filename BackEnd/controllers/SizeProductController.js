@@ -31,10 +31,9 @@ const SizeProductController = {
     addSizeProduct: async (req, res) => {
         try {
             const newSizeProduct = new SizeProduct({
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password,
-                role: req.roleId,
+                name: req.body.name,
+                productid: req.body.productid,
+                price: req.body.price
             });
 
             await newSizeProduct.save();

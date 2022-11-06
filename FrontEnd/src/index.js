@@ -35,9 +35,7 @@ import Suppliers from './views/Admin/Supplier/Suppliers'
 import SizeProducts from './views/Admin/SizeProduct/SizeProducts'
 import Recipes from './views/Admin/Recipe/Recipes'
 import Receipts from './views/Admin/Receipt/Receipts'
-import ReceiptDetails from './views/Admin/ReceiptDetail/ReceiptDetails'
 import ReceiptIngredients from './views/Admin/ReceiptIngredient/ReceiptIngredients'
-import ReceiptIngredientDetails from './views/Admin/ReceiptIngredientDetail/ReceiptIngredientDetails'
 import Cart from './views/Cart/Cart'
 
 import AddProduct from './views/Admin/Product/AddProduct'
@@ -76,15 +74,9 @@ import DeleteRecipe from './views/Admin/Recipe/DeleteRecipe'
 import AddReceipt from './views/Admin/Receipt/AddReceipt'
 import EditReceipt from './views/Admin/Receipt/EditReceipt'
 import DeleteReceipt from './views/Admin/Receipt/DeleteReceipt'
-import AddReceiptDetail from './views/Admin/ReceiptDetail/AddReceiptDetail'
-import EditReceiptDetail from './views/Admin/ReceiptDetail/EditReceiptDetail'
-import DeleteReceiptDetail from './views/Admin/ReceiptDetail/DeleteReceiptDetail'
 import AddReceiptIngredient from './views/Admin/ReceiptIngredient/AddReceiptIngredient'
 import EditReceiptIngredient from './views/Admin/ReceiptIngredient/EditReceiptIngredient'
 import DeleteReceiptIngredient from './views/Admin/ReceiptIngredient/DeleteReceiptIngredient'
-import AddReceiptIngredientDetail from './views/Admin/ReceiptIngredientDetail/AddReceiptIngredientDetail'
-import EditReceiptIngredientDetail from './views/Admin/ReceiptIngredientDetail/EditReceiptIngredientDetail'
-import DeleteReceiptIngredientDetail from './views/Admin/ReceiptIngredientDetail/DeleteReceiptIngredientDetail'
 
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
@@ -111,86 +103,76 @@ root.render(
             <Route path="/checkcode" element={<CheckCode />} />
             <Route path="/repass" element={<Repass />} />
 
-            <Route path="/admin" element={<Layout/>}>
-            <Route index element={<Dashboard />} />
-            <Route path="customers" element={<Customers />} />
-            <Route path="products" element={<Products />} />
-            <Route path="productcategories" element={<ProductCategories />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="users" element={<Users />} />
-            <Route path="roles" element={<Roles />} />
-            <Route path="earnpoints" element={<EarnPoints />} />
-            <Route path="stats" element={<Stats />} />
-            <Route path="staffs" element={<Staffs />} />
-            <Route path="positions" element={<Positions />} />
-            <Route path="ingredients" element={<Ingredients />} />
-            <Route path="suppliers" element={<Suppliers />} />
-            <Route path="sizeproducts" element={<SizeProducts />} />
-            <Route path="recipes" element={<Recipes />} />
-            <Route path="receipts" element={<Receipts />} />
-            <Route path="receiptdetails" element={<ReceiptDetails />} />
-            <Route path="receiptingredients" element={<ReceiptIngredients />} />
-            <Route path="receiptingredientdetails" element={<ReceiptIngredientDetails />} />
+            <Route path="/admin" element={<Layout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="customers" element={<Customers />} />
+              <Route path="products" element={<Products />} />
+              <Route path="productcategories" element={<ProductCategories />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="users" element={<Users />} />
+              <Route path="roles" element={<Roles />} />
+              <Route path="earnpoints" element={<EarnPoints />} />
+              <Route path="stats" element={<Stats />} />
+              <Route path="staffs" element={<Staffs />} />
+              <Route path="positions" element={<Positions />} />
+              <Route path="ingredients" element={<Ingredients />} />
+              <Route path="suppliers" element={<Suppliers />} />
+              <Route path="sizeproducts" element={<SizeProducts />} />
+              <Route path="recipes" element={<Recipes />} />
+              <Route path="receipts" element={<Receipts />} />
+              <Route path="receiptingredients" element={<ReceiptIngredients />} />
 
-            <Route path="addproduct" element={<AddProduct />} />
-            <Route path="editproduct/:id" element={<EditProduct />} />
-            <Route path="deleteproduct/:id" element={<DeleteProduct />} />
+              <Route path="addproduct" element={<AddProduct />} />
+              <Route path="editproduct/:id" element={<EditProduct />} />
+              <Route path="deleteproduct/:id" element={<DeleteProduct />} />
 
-            <Route path="addproductcategory" element={<AddProductCategory />} />
-            <Route path="editproductcategory" element={<EditProductCategory />} />
-            <Route path="deleteproductcategory" element={<DeleteProductCategory />} />
+              <Route path="addproductcategory" element={<AddProductCategory />} />
+              <Route path="editproductcategory" element={<EditProductCategory />} />
+              <Route path="deleteproductcategory" element={<DeleteProductCategory />} />
 
-            <Route path="adduser" element={<AddUser />} />
-            <Route path="edituser" element={<EditUser />} />
-            <Route path="deleteuser" element={<DeleteUser />} />
+              <Route path="adduser" element={<AddUser />} />
+              <Route path="edituser" element={<EditUser />} />
+              <Route path="deleteuser" element={<DeleteUser />} />
 
-            <Route path="addrole" element={<AddRole />} />
-            <Route path="editrole" element={<EditRole />} />
-            <Route path="deleterole" element={<DeleteRole />} />
+              <Route path="addrole" element={<AddRole />} />
+              <Route path="editrole" element={<EditRole />} />
+              <Route path="deleterole" element={<DeleteRole />} />
 
-            <Route path="addearnpoint" element={<AddEarnPoint />} />
-            <Route path="editearnpoint" element={<EditEarnPoint />} />
-            <Route path="deleteearnpoint" element={<DeleteEarnPoint />} />
+              <Route path="addearnpoint" element={<AddEarnPoint />} />
+              <Route path="editearnpoint" element={<EditEarnPoint />} />
+              <Route path="deleteearnpoint" element={<DeleteEarnPoint />} />
 
-            <Route path="addstaff" element={<AddStaff />} />
-            <Route path="editstaff" element={<EditStaff />} />
-            <Route path="deletestaff" element={<DeleteStaff />} />
+              <Route path="addstaff" element={<AddStaff />} />
+              <Route path="editstaff" element={<EditStaff />} />
+              <Route path="deletestaff" element={<DeleteStaff />} />
 
-            <Route path="addposition" element={<AddPosition />} />
-            <Route path="editposition" element={<EditPosition />} />
-            <Route path="deleteposition" element={<DeletePosition />} />
+              <Route path="addposition" element={<AddPosition />} />
+              <Route path="editposition" element={<EditPosition />} />
+              <Route path="deleteposition" element={<DeletePosition />} />
 
-            <Route path="addingredient" element={<AddIngredient />} />
-            <Route path="editingredient" element={<EditIngredient />} />
-            <Route path="deleteingredient" element={<DeleteIngredient />} />
+              <Route path="addingredient" element={<AddIngredient />} />
+              <Route path="editingredient" element={<EditIngredient />} />
+              <Route path="deleteingredient" element={<DeleteIngredient />} />
 
-            <Route path="addsupplier" element={<AddSupplier />} />
-            <Route path="editsupplier" element={<EditSupplier />} />
-            <Route path="deletesupplier" element={<DeleteSupplier />} />
+              <Route path="addsupplier" element={<AddSupplier />} />
+              <Route path="editsupplier" element={<EditSupplier />} />
+              <Route path="deletesupplier" element={<DeleteSupplier />} />
 
-            <Route path="addsizeproduct" element={<AddSizeProduct />} />
-            <Route path="editsizeproduct" element={<EditSizeProduct />} />
-            <Route path="deletesizeproduct" element={<DeleteSizeProduct />} />
+              <Route path="addsizeproduct" element={<AddSizeProduct />} />
+              <Route path="editsizeproduct" element={<EditSizeProduct />} />
+              <Route path="deletesizeproduct" element={<DeleteSizeProduct />} />
 
-            <Route path="addrecipe" element={<AddRecipe />} />
-            <Route path="editrecipe" element={<EditRecipe />} />
-            <Route path="deleterecipe" element={<DeleteRecipe />} />
+              <Route path="addrecipe" element={<AddRecipe />} />
+              <Route path="editrecipe" element={<EditRecipe />} />
+              <Route path="deleterecipe" element={<DeleteRecipe />} />
 
-            <Route path="addreceipt" element={<AddReceipt />} />
-            <Route path="editreceipt" element={<EditReceipt />} />
-            <Route path="deletereceipt" element={<DeleteReceipt />} />
+              <Route path="addreceipt" element={<AddReceipt />} />
+              <Route path="editreceipt" element={<EditReceipt />} />
+              <Route path="deletereceipt" element={<DeleteReceipt />} />
 
-            <Route path="addreceiptdetail" element={<AddReceiptDetail />} />
-            <Route path="editreceiptdetail" element={<EditReceiptDetail />} />
-            <Route path="deletereceiptdetail" element={<DeleteReceiptDetail />} />
-
-            <Route path="addreceiptingredient" element={<AddReceiptIngredient />} />
-            <Route path="editreceiptingredient" element={<EditReceiptIngredient />} />
-            <Route path="deletereceiptingredient" element={<DeleteReceiptIngredient />} />
-
-            <Route path="addreceiptingredientdetail" element={<AddReceiptIngredientDetail />} />
-            <Route path="editreceiptingredientdetail" element={<EditReceiptIngredientDetail />} />
-            <Route path="deletereceiptingredientdetail" element={<DeleteReceiptIngredientDetail />} />
+              <Route path="addreceiptingredient" element={<AddReceiptIngredient />} />
+              <Route path="editreceiptingredient" element={<EditReceiptIngredient />} />
+              <Route path="deletereceiptingredient" element={<DeleteReceiptIngredient />} />
             </Route>
           </Routes>
         </BrowserRouter>
