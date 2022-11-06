@@ -47,7 +47,7 @@ const Header = () => {
                   className="text-black text-left hover:text-primary w-full"
                   to="/product"
                 >
-                  Trà
+                  ...
                 </Link>
               </li>
               <li className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px]">
