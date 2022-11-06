@@ -51,8 +51,8 @@ const Staffs = () => {
                                             <td>{item.cardid}</td>
                                             <td>{item.positionid.name}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={'/admin/EditPosition/'}>Sửa</Link></Button>|
-                                                <Button><Link to={'/admin/DeletePosition/'}>Xóa</Link></Button>|
+                                                <Button><Link to={`/admin/editstaff/${item._id}`}>Sửa</Link></Button>|
+                                                <Button><Link to={`/admin/deletestaff/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

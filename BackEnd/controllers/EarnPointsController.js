@@ -31,7 +31,10 @@ const earnPointsController = {
     addEarnPoints: async (req, res) => {
         try {
             const newEarnPoints = new EarnPoints({
-                name: req.body.name,
+                userid: req.body.userid,
+                point: req.body.point,
+                startdate: req.body.startdate,
+                finaldate: req.body.finaldate
             });
 
             await newEarnPoints.save();

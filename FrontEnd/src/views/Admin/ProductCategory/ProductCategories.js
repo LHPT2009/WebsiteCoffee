@@ -43,8 +43,8 @@ const ProductCategories = () => {
                                             <td>{item._id}</td>
                                             <td>{item.name}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={'/admin/EditProductCategories/'}>Sửa</Link></Button>|
-                                                <Button><Link to={'/admin/DeleteProductCategories/'}>Xóa</Link></Button>|
+                                                <Button><Link to={`/admin/editproductcategory/${item._id}`}>Sửa</Link></Button>|
+                                                <Button><Link to={`/admin/deleteproductcategory/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}
