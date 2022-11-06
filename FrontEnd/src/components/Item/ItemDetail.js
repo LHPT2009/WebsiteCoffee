@@ -58,10 +58,10 @@ const ItemDetail = () => {
             <div className="items-center mt-4">
               <Button
                 type="button"
-                buttonStyle="btn--primary--fill"
+                btnStyle="btn-fill"
                 icon="add_shopping_cart"
                 onClick={add}
-                buttonCSS={'h-[44px] px-6 py-3'}
+                btnCSS={'h-[44px] px-6 py-3'}
               >
                 Thêm vào giỏ hàng
               </Button>

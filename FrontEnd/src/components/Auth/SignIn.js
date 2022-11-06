@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Header from '../Header/Header'
 import Button from '../Button/Button'
@@ -28,7 +28,7 @@ const SignIn = () => {
     }
   }
   return (
-    <div className="text-center">
+    <div className="text-center font-googleSansRegular">
       <Header />
       <div className="h-10"></div>
       <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] justify-center">
@@ -39,6 +39,7 @@ const SignIn = () => {
               onChange={(e) => setUsername(e.target.value)}
               type="text"
               placeholder="Tên đăng nhập"
+              className={'w-[400px]'}
             />
           </div>
           <div>
@@ -47,12 +48,22 @@ const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Mật khẩu"
+              className={'w-[400px]'}
             />
           </div>
         </form>
-        <Button onClick={loginUser} icon="login" buttonCSS="mt-4">
+        <Button
+          type="button"
+          btnStyle="btn-fill"
+          icon="login"
+          onClick={loginUser}
+          btnCSS={'h-[44px] px-6 py-3 mt-2'}
+        >
           Đăng nhập
         </Button>
+        <Link to="/signup" className="hover:text-primary mt-5 block">
+          Tạo tài khoản
+        </Link>
       </div>
     </div>
   )

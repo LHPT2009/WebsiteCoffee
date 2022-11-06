@@ -41,28 +41,29 @@ const Cart = () => {
       <td>{n.name}</td>
       <td>{n.price}</td>
       <td>
-        <Button
-          onClick={() => downAmount(n.id)}
-          buttonStyle="btn--primary--fill"
-          icon="remove"
-          buttonCSS="h-[20px] w-[44px]"
-        />
-        <span className="mx-2">{n.amount}</span>
-        <Button
-          onClick={() => upAmount(n.id)}
-          buttonStyle="btn--primary--fill"
-          icon="add"
-          buttonCSS="h-[20px] w-[44px]"
-        />
+        <div className="flex h-[47px]">
+          <button onClick={() => downAmount(n.id)}>
+            <span className="material-symbols-rounded">remove</span>
+          </button>
+          <input
+            className="mx-2 rounded-full hover:text-black focus:text-black text-center w-20 h-10 bg-[transparent]"
+            type="text"
+            value={n.amount}
+          />
+          <button onClick={() => upAmount(n.id)}>
+            <span className="material-symbols-rounded">add</span>
+          </button>
+        </div>
       </td>
       <td className="lowercase">{n.price * n.amount} đ</td>
       <td>
         <Button
           onClick={() => delProduct(n.id)}
-          buttonStyle="btn--primary--fill"
+          btnStyle="btn-outline"
           icon="delete"
-          buttonCSS="h-[20px] w-[44px]"
+          btnCSS="h-[12px] w-[64px] px-0 leading-3 text-[13px]"
           type="button"
+          children=""
         />
       </td>
     </tr>
@@ -81,13 +82,13 @@ const Cart = () => {
         </thead>
         <tbody>{orderList}</tbody>
       </table>
-      <h1>Tồng tiền: {price}</h1>
+      <h1 className="mt-10 mb-5">Tồng tiền: {price}</h1>
       <Button
         type="button"
-        buttonStyle="btn--primary--fill"
+        btnStyle="btn-fill"
         icon="payments"
         onClick={addOrder}
-        buttonCSS={'h-[44px] px-6 py-3'}
+        btnCSS={'h-[47px] px-6 py-3'}
       >
         Thanh toán
       </Button>
@@ -99,7 +100,7 @@ const Cart = () => {
   )
 
   return (
-    <div>
+    <div className="font-googleSansRegular">
       <Header />
       <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {products.length != 0 ? formorderList : cartEmpty}
