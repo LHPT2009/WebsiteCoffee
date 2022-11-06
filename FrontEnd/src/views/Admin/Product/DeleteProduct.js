@@ -4,33 +4,15 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
-const DeleteProduct = () => {
-    const [RowData, SetRowData] = useState([])
-    const [name, setName] = useState("");
-    const [amount, setAmount] = useState("");
-    const [price, setPrice] = useState("");
-    const [image, setImage] = useState(null);
+import { useParams } from "react-router-dom";
 
-    const handleDelete = (e) => {
-        e.preventDefault();
-        const url = 'http://localhost:8000/product/${id}'
-            axios.delete(url)
-                .then(res => {
-                    const result = res.data;
-                    const { status, message } = result;
-                    if (status !== 'SUCCESS') {
-                        alert(message, status)
-                    }
-                    else {
-                        alert(message)
-                        window.location.reload()
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-    }
-    
+const DeleteProduct = () => {
+    const { id } = useParams();
+    const [product, setProduct] = useState([]);
+    useEffect(() => {
+        axios.get(`http://localhost:8000/product/${id}`).then((res) => setProduct(res.data));
+    }, []);
+
     return (
         <div>
             <h2 className="page-header">
@@ -38,38 +20,37 @@ const DeleteProduct = () => {
             </h2>
             <div>
                 <h1>Tên sản phẩm</h1>
-                <input type={"text"} placeholder={"Tên sản phẩm"} value={RowData.name} readOnly/> <br/>
-                <div>
-                <h1>Hình ảnh</h1>
-                {image && (
-                    <div>
-                    <img alt="Không tìm thấy" width={"250px"} src={URL.createObjectURL(image)}/>
-                    <br />
-                    <Button onClick={()=>setImage(null)}>Xóa hình</Button>
-                    </div>
-                )}
-                <input
-                    type="file"
-                    name="myImage"
-                    value={RowData.image}
-                    readOnly
-                />
-                </div>
-
+                <input type={"text"} placeholder={"Tên sản phẩm"} value={product.name} /> <br />
+                {/* <div>
+                    <h1>Hình ảnh</h1>
+                    {image && (
+                        <div>
+                            <img alt="Không tìm thấy" width={"250px"} />
+                            <br />
+                            <Button onClick={() => setImage(null)}>Xóa hình</Button>
+                        </div>
+                    )}
+                    <input
+                        type="file"
+                        name="myImage"
+                        value={product.image}
+                        readOnly
+                    />
+                </div> */}
                 <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"} value={RowData.price} readOnly /> <br/>
+                <input type={"text"} placeholder={"Giá"} value={product.price} /> <br />
             </div>
             <div>
-            <Button type="button">
-                <a onClick={handleDelete}>
-                Xóa
-                </a>
-            </Button>
-            <Button type="button">
-                <a href="../Products">
-                Quay về
-                </a>
-            </Button>
+                <Button type="button">
+                    <a>
+                        Xóa
+                    </a>
+                </Button>
+                <Button type="button">
+                    <a href="../Products">
+                        Quay về
+                    </a>
+                </Button>
             </div>
         </div>
     )

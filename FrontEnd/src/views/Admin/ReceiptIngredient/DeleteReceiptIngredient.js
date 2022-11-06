@@ -4,7 +4,16 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
+import { useParams } from "react-router-dom";
+
 const DeleteReceiptIngredient = () => {
+    const [receiptIngredient, setReceiptIngredient] = useState([]);
+
+    const { id } = useParams();
+
+    axios.get(`http://localhost:8000/receiptingredient/${id}`).then((res) => {
+        setReceiptIngredient(res.data);
+    });
     return (
         <div>
             <h2 className="page-header">
@@ -12,21 +21,21 @@ const DeleteReceiptIngredient = () => {
             </h2>
             <div>
                 <h1>Ngày nhập</h1>
-                <input type={"text"} placeholder={"Ngày nhập"}/> <br/>
+                <input type={"text"} placeholder={"Ngày nhập"} defaultValue={receiptIngredient.date} /> <br />
                 <h1>Mã nhân viên</h1>
-                <input type={"text"} placeholder={"Mã nhân viên"}/> <br/>
+                <input type={"text"} placeholder={"Mã nhân viên"} defaultValue={receiptIngredient.staffid} /> <br />
             </div>
             <div>
-            <Button type="button">
-                <a>
-                Xóa
-                </a>
-            </Button>
-            <Button type="button">
-                <a href="./ReceiptIngredients">
-                Quay về
-                </a>
-            </Button>
+                <Button type="button">
+                    <a>
+                        Xóa
+                    </a>
+                </Button>
+                <Button type="button">
+                    <a href="./ReceiptIngredients">
+                        Quay về
+                    </a>
+                </Button>
             </div>
         </div>
     )
