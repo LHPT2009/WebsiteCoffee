@@ -81,8 +81,8 @@ import DeleteReceiptIngredient from './views/Admin/ReceiptIngredient/DeleteRecei
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
 import EnterEmail from './components/Auth/EnterEmail'
-import Repass from './components/Auth/Repass'
 import CheckCode from './components/Auth/CheckCode'
+import Repass from './components/Auth/Repass'
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -120,15 +120,27 @@ root.render(
               <Route path="sizeproducts" element={<SizeProducts />} />
               <Route path="recipes" element={<Recipes />} />
               <Route path="receipts" element={<Receipts />} />
-              <Route path="receiptingredients" element={<ReceiptIngredients />} />
+              <Route
+                path="receiptingredients"
+                element={<ReceiptIngredients />}
+              />
 
               <Route path="addproduct" element={<AddProduct />} />
               <Route path="editproduct/:id" element={<EditProduct />} />
               <Route path="deleteproduct/:id" element={<DeleteProduct />} />
 
-              <Route path="addproductcategory" element={<AddProductCategory />} />
-              <Route path="editproductcategory" element={<EditProductCategory />} />
-              <Route path="deleteproductcategory" element={<DeleteProductCategory />} />
+              <Route
+                path="addproductcategory"
+                element={<AddProductCategory />}
+              />
+              <Route
+                path="editproductcategory"
+                element={<EditProductCategory />}
+              />
+              <Route
+                path="deleteproductcategory"
+                element={<DeleteProductCategory />}
+              />
 
               <Route path="adduser" element={<AddUser />} />
               <Route path="edituser" element={<EditUser />} />
@@ -170,9 +182,18 @@ root.render(
               <Route path="editreceipt" element={<EditReceipt />} />
               <Route path="deletereceipt" element={<DeleteReceipt />} />
 
-              <Route path="addreceiptingredient" element={<AddReceiptIngredient />} />
-              <Route path="editreceiptingredient" element={<EditReceiptIngredient />} />
-              <Route path="deletereceiptingredient" element={<DeleteReceiptIngredient />} />
+              <Route
+                path="addreceiptingredient"
+                element={<AddReceiptIngredient />}
+              />
+              <Route
+                path="editreceiptingredient"
+                element={<EditReceiptIngredient />}
+              />
+              <Route
+                path="deletereceiptingredient"
+                element={<DeleteReceiptIngredient />}
+              />
             </Route>
           </Routes>
         </BrowserRouter>
