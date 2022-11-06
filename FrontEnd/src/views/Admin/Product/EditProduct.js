@@ -37,20 +37,18 @@ const EditProduct = () => {
   }
 
   return (
-    <div className="font-googleSansRegular">
+    <div>
       <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
         Chỉnh sửa sản phẩm
       </h1>
       <div>
-        <TextInput
-          placeholder={'Tên sản phẩm'}
-          type="text"
-          required={'required'}
+        <h1>Tên sản phẩm</h1>
+        <input
+          type={'text'}
           onChange={(e) => setName(e.target.value)}
-          className="block w-[400px]"
           defaultValue={dataProduct.name}
         />
-
+        <br />
         {/* <div>
                 <h1>Hình ảnh</h1>
                 {image && (
@@ -70,28 +68,21 @@ const EditProduct = () => {
                     defaultValue={RowData.image}
                 />
                 </div> */}
-        <TextInput
-          placeholder={'Giá'}
-          type="text"
-          required={'required'}
-          onChange={(e) => setPrice(e.target.value)}
-          className="block w-[400px]"
+
+        <h1>Giá</h1>
+        <input
+          type={'text'}
           defaultValue={dataProduct.price}
+          onChange={(e) => setPrice(e.target.value)}
         />
+        <br />
       </div>
-      <div className="mt-10">
-        <Button
-          type="button"
-          onClick={handleEdit}
-          btnCSS="h-11 mr-2"
-          icon="edit"
-        >
-          Chỉnh sửa
+      <div>
+        <Button type="button">
+          <a onClick={handleEdit}>Sửa</a>
         </Button>
-        <Button type="button" btnCSS="h-11" icon="navigate_before">
-          <Link className="hover:text-white" to="../products">
-            Quay về
-          </Link>
+        <Button type="button">
+          <a href="../Products">Quay về</a>
         </Button>
       </div>
     </div>

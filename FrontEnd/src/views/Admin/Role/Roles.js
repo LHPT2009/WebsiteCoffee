@@ -43,8 +43,8 @@ const Roles = () => {
                                             <td>{item._id}</td>
                                             <td>{item.rolename}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={'/admin/EditRoles/'}>Sửa</Link></Button>|
-                                                <Button><Link to={'/admin/DeleteRoles/'}>Xóa</Link></Button>|
+                                                <Button><Link to={`/admin/editrole/${item._id}`}>Sửa</Link></Button>|
+                                                <Button><Link to={`/admin/deleterole/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

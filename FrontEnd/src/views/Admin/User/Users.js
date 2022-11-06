@@ -47,8 +47,8 @@ const Users = () => {
                                             <td>{item.numberphone}</td>
                                             <td>{item.role.rolename}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={'/admin/EditUser/'}>Sửa</Link></Button>|
-                                                <Button><Link to={'/admin/DeleteUser/'}>Xóa</Link></Button>|
+                                                <Button><Link to={`/admin/edituser/${item._id}`}>Sửa</Link></Button>|
+                                                <Button><Link to={`/admin/DeleteUser/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

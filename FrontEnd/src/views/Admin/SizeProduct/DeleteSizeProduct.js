@@ -4,7 +4,14 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
+import { useParams } from "react-router-dom";
+
 const DeleteSizeProduct = () => {
+    const { id } = useParams();
+    const [sizeProduct, setSizeProduct] = useState([]);
+    useEffect(() => {
+        axios.get(`http://localhost:8000/sizeproduct/${id}`).then((res) => setSizeProduct(res.data));
+    }, []);
     return (
         <div>
             <h2 className="page-header">
@@ -12,21 +19,21 @@ const DeleteSizeProduct = () => {
             </h2>
             <div>
                 <h1>Tên kích cỡ</h1>
-                <input type={"text"} placeholder={"Tên kích cỡ"}/> <br/>
+                <input type={"text"} placeholder={"Tên kích cỡ"} value={sizeProduct.name} /> <br />
                 <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"}/> <br/>
+                <input type={"text"} placeholder={"Giá"} value={sizeProduct.price} /> <br />
             </div>
             <div>
-            <Button type="button">
-                <a>
-                Xóa
-                </a>
-            </Button>
-            <Button type="button">
-                <a href="./SizeProducts">
-                Quay về
-                </a>
-            </Button>
+                <Button type="button">
+                    <a>
+                        Xóa
+                    </a>
+                </Button>
+                <Button type="button">
+                    <a href="./SizeProducts">
+                        Quay về
+                    </a>
+                </Button>
             </div>
         </div>
     )
