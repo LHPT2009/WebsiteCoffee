@@ -23,6 +23,10 @@ const recipeRoute = require('./routes/Recipe');
 dotenv.config();
 const app = express();
 
+// mongoose.connect(process.env.MONGOOSE_URL, () => {
+//  console.log('DB connected');
+// });
+
 mongoose.connect(process.env.MONGOOSE_URL_LOCALHOST, () => {
   console.log('DB connected');
 });
