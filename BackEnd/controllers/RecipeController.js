@@ -31,10 +31,10 @@ const RecipeController = {
     addRecipe: async (req, res) => {
         try {
             const newRecipe = new Recipe({
-                categoryproductid: req.body.categoryproductid,
-                name: req.body.name,
-                price: req.body.price,
-                image: req.body.image
+                productid: req.body.productid,
+                ingredientid: req.body.ingredientid,
+                amount: req.body.amount,
+                unit: req.body.unit
             });
 
             await newRecipe.save();

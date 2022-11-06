@@ -12,15 +12,6 @@ const sidebarNav = [
         text: 'Đơn hàng',
         iconClosed: <i className='bx bx-down-arrow'></i>,
         iconOpened: <i className='bx bx-up-arrow'></i>,
-
-        subNav: [
-            {
-                link: '/admin/receiptdetails',
-                section: 'receiptdetails',
-                icon: <i className='bx bx-receipt'></i>,
-                text: 'Chi tiết'
-            }
-        ]
     },
     {
         link: '/admin/products',
@@ -66,12 +57,6 @@ const sidebarNav = [
                 icon: <i className='bx bx-receipt'></i>,
                 text: 'Phiếu nhập'
             },
-            {
-                link: '/admin/receiptingredientdetails',
-                section: 'receiptingredientdetails',
-                icon: <i className='bx bx-receipt'></i>,
-                text: 'Chi tiết phiếu nhập'
-            }
         ]
     },
     {

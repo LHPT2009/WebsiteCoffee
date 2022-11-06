@@ -31,10 +31,7 @@ const SupplierController = {
     addSupplier: async (req, res) => {
         try {
             const newSupplier = new Supplier({
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password,
-                role: req.roleId,
+                name: req.body.name
             });
 
             await newSupplier.save();

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
@@ -9,12 +9,12 @@ import { Link } from 'react-router-dom'
 import Button from '../../../components/Button/Button'
 
 const Users = () => {
-    const [id,setId] = useState("");
+    const [id, setId] = useState("");
     const [user, setUser] = useState([])
     useEffect(() => {
-      axios.get('http://localhost:8000/user').then((res) => {
-        setUser(res.data)
-      })
+        axios.get('http://localhost:8000/user').then((res) => {
+            setUser(res.data)
+        })
     }, [])
     return (
         <div>
@@ -23,41 +23,37 @@ const Users = () => {
             </h2>
             <Button type="button">
                 <a href="./AddUser">
-                Thêm tài khoản
+                    Thêm tài khoản
                 </a>
             </Button>
             <div className="row">
                 <div className="col-12">
                     <div className="card">
                         <div className="card__body">
-                        <table className='table table-striped table-hover table-bordered'>
-                        <thead>
-                            <tr>
-                                <th>Mã người dùng</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Tên</th>
-                                <th>Số điện thoại</th>
-                                <th>Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {user.map((item) =>
-                                <tr key={item._id}>
-                                    <td>{item._id}</td>
-                                    <td>{item.username}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.numberphone}</td>
-                                    <td>{item.role}</td>
-                                    <td style={{ minWidth: 100 }}>
-                                        <Button><Link to={'/admin/EditUser/'}>Sửa</Link></Button>|
-                                        <Button><Link to={'/admin/DeleteUser/'}>Xóa</Link></Button>|
-                                    </td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
+                            <table className='table table-striped table-hover table-bordered'>
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Tên</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {user.map((item) =>
+                                        <tr key={item._id}>
+                                            <td>{item.email}</td>
+                                            <td>{item.lastname + " " + item.firstname}</td>
+                                            <td>{item.numberphone}</td>
+                                            <td>{item.role.rolename}</td>
+                                            <td style={{ minWidth: 100 }}>
+                                                <Button><Link to={'/admin/EditUser/'}>Sửa</Link></Button>|
+                                                <Button><Link to={'/admin/DeleteUser/'}>Xóa</Link></Button>|
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

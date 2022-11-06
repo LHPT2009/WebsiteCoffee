@@ -35,14 +35,14 @@ const ReceiptController = {
                 price: req.body.price,
             });
             await newReceipt.save();
-            
-            (req.body.products).forEach( ele => {
+
+            (req.body.products).forEach(ele => {
                 const newReceiptDetail = new ReceiptDetail({
                     productid: ele.id,
                     receiptid: newReceipt._id,
                     amount: ele.amount
                 });
-                newReceiptDetail.save(); 
+                newReceiptDetail.save();
             });
             res.status(200).json('Add successfully');
         } catch (error) {

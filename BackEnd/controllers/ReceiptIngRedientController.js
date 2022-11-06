@@ -31,8 +31,8 @@ const ReceiptIngredientController = {
     addReceiptIngredient: async (req, res) => {
         try {
             const newReceiptIngredient = new ReceiptIngredient({
-                userid: req.body.userid,
-                price: req.body.price,
+                staffid: req.body.staffid,
+                date: Date.now(),
             });
             await newReceiptIngredient.save();
             res.status(200).json('Add successfully');

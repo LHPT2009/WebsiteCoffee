@@ -3,7 +3,7 @@ const Staff = require('../models/Staff');
 const StaffController = {
     getAllStaff: async (req, res) => {
         try {
-            const staff = await Staff.find();
+            const staff = await Staff.find().populate('positionid');
             res.status(200).json(staff);
         } catch (err) {
             res.status(500).json(err);
@@ -31,10 +31,13 @@ const StaffController = {
     addStaff: async (req, res) => {
         try {
             const newStaff = new Staff({
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password,
-                role: req.roleId,
+                firstname: req.body.firstname,
+                middlename: req.body.middlename,
+                lastname: req.body.lastname,
+                address: req.body.address,
+                number: req.body.number,
+                cardid: req.body.cardid,
+                positionid: req.body.positionid
             });
 
             await newStaff.save();
