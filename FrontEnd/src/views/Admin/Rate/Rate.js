@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
-const Products = () => {
+const Rate = () => {
   const [rate, setRate] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8000/rate').then((res) => {
