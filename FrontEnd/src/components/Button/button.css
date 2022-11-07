@@ -36,5 +36,5 @@
 .btn-outline:hover {
   background-color: var(--primary);
   color: var(--white);
-  border: none;
+  border: solid 1px var(--primary);
 }
