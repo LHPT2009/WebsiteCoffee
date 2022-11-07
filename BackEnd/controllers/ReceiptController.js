@@ -1,5 +1,5 @@
-const Receipt = require('../models/Receipt');
-const ReceiptDetail = require('../models/ReceiptDetails');
+const Receipt = require('../models/receipt');
+const ReceiptDetail = require('../models/receiptDetails');
 const ReceiptController = {
     getAllReceipts: async (req, res) => {
         try {

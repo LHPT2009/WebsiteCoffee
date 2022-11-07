@@ -8,24 +8,18 @@ import { Link } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
-const Ingredients = () => {
-    const [id, setId] = useState("");
-    const [ingredient, setIngredient] = useState([])
+const Products = () => {
+    const [disCount, setDisCount] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:8000/ingredient').then((res) => {
-            setIngredient(res.data)
+        axios.get('http://localhost:8000/discount').then((res) => {
+            setDisCount(res.data)
         })
     }, [])
     return (
         <div>
             <h2 className="page-header">
-                Nguyên liệu
+                Mã Phiếu Giảm Giá
             </h2>
-            <Button type="button">
-                <a href="./AddIngredient">
-                    Thêm nguyên liệu
-                </a>
-            </Button>
             <div className="row">
                 <div className="col-12">
                     <div className="card">
@@ -33,18 +27,22 @@ const Ingredients = () => {
                             <table className='table table-striped table-hover table-bordered'>
                                 <thead>
                                     <tr>
-                                        <th>Mã nguyên liệu</th>
-                                        <th>Tên nguyên liệu</th>
+                                        <th>Tên</th>
+                                        <th>Giá</th>
+                                        <th>Bắt đầu</th>
+                                        <th>Kết thúc</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {ingredient.map((item) =>
+                                    {disCount.map((item) =>
                                         <tr key={item._id}>
-                                            <td>{item._id}</td>
                                             <td>{item.name}</td>
+                                            <td>{item.price} đ</td>
+                                            <td>{item.startdate} đ</td>
+                                            <td>{item.enddate} đ</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editingredient/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleteingredient/${item._id}`}>Xóa</Link></Button>|
+                                                <Button><Link to={`/admin/editdiscount/${item._id}`}>Sửa</Link></Button>|
+                                                <Button><Link to={`/admin/deletediscount/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}
@@ -58,4 +56,4 @@ const Ingredients = () => {
     )
 }
 
-export default Ingredients
+export default Products

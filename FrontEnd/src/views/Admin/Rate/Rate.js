@@ -8,24 +8,18 @@ import { Link } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
-const EarnPoints = () => {
-    const [id, setId] = useState("");
-    const [earnPoint, setEarnPoint] = useState([])
+const Products = () => {
+    const [rate, setRate] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:8000/earnpoints').then((res) => {
-            setEarnPoint(res.data)
+        axios.get('http://localhost:8000/rate').then((res) => {
+            setRate(res.data)
         })
     }, [])
     return (
         <div>
             <h2 className="page-header">
-                Tích điểm
+                Đánh giá
             </h2>
-            <Button type="button">
-                <a href="./AddEarnPoint">
-                    Thêm tích điểm
-                </a>
-            </Button>
             <div className="row">
                 <div className="col-12">
                     <div className="card">
@@ -33,24 +27,23 @@ const EarnPoints = () => {
                             <table className='table table-striped table-hover table-bordered'>
                                 <thead>
                                     <tr>
-                                        <th>Mã tích điểm</th>
-                                        <th>Mã người dùng</th>
-                                        <th>Điểm tích lũy</th>
-                                        <th>Ngày bắt đầu</th>
-                                        <th>Ngày kết thúc</th>
+
+                                        <th>Mã sản phẩm</th>
+                                        <th>Mã User</th>
+                                        <th>Điểm</th>
+                                        <th>Nôi Dung</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {earnPoint.map((item) =>
+                                    {rate.map((item) =>
                                         <tr key={item._id}>
-                                            <td>{item._id}</td>
-                                            <td>{item.userid}</td>
+                                            <td>{item.productid}</td>
+                                            <td>{item.usertid}</td>
                                             <td>{item.point}</td>
-                                            <td>{item.startdate}</td>
-                                            <td>{item.finaldate}</td>
+                                            <td>{item.content}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editearnpoint/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleteearnpoint/${item._id}`}>Xóa</Link></Button>|
+                                                <Button><Link to={`/admin/editrate/${item._id}`}>Sửa</Link></Button>|
+                                                <Button><Link to={`/admin/deleterate/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}
@@ -64,4 +57,4 @@ const EarnPoints = () => {
     )
 }
 
-export default EarnPoints
+export default Products
