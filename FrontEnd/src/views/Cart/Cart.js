@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 import Button from '../../components/Button/Button'
 import { ListProductContext } from '../../context/ListProductContext'
 import './cart.css'
@@ -7,7 +8,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
-  const { products, delProduct, upAmount, downAmount } =
+  const { products, delProduct, upAmount, downAmount, clearCart } =
     useContext(ListProductContext)
   const navigate = useNavigate()
   const [price, setPrice] = useState(0)
@@ -30,16 +31,22 @@ const Cart = () => {
     })
     if (rec) {
       alert('Thanh toan thanh cong!')
-      navigate('/admin')
+      clearCart()
+      navigate('/')
     } else {
       alert('Thanh toan that bai!!!')
-      navigate('/admin')
+      navigate('/')
     }
   }
   const orderList = products.map((n) => (
     <tr key={n.id}>
       <td>{n.name}</td>
-      <td>{n.price}</td>
+      <td>
+        {new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        }).format(n.price)}
+      </td>
       <td>
         <div className="flex h-[47px]">
           <button onClick={() => downAmount(n.id)}>
@@ -55,7 +62,12 @@ const Cart = () => {
           </button>
         </div>
       </td>
-      <td className="lowercase">{n.price * n.amount} đ</td>
+      <td className="lowercase">
+        {new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        }).format(n.price * n.amount)}
+      </td>
       <td>
         <Button
           onClick={() => delProduct(n.id)}
@@ -82,7 +94,13 @@ const Cart = () => {
         </thead>
         <tbody>{orderList}</tbody>
       </table>
-      <h1 className="mt-10 mb-5">Tồng tiền: {price}</h1>
+      <h1 className="mt-10 mb-5">
+        Tồng tiền:{' '}
+        {new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        }).format(price)}
+      </h1>
       <Button
         type="button"
         btnStyle="btn-fill"
@@ -105,6 +123,7 @@ const Cart = () => {
       <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {products.length != 0 ? formorderList : cartEmpty}
       </div>
+      <Footer />
     </div>
   )
 }

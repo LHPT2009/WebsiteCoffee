@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 
 import logo2 from '../../assets/images/logo_2.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ListProductContext } from '../../context/ListProductContext'
 import jwtdecode from '../../header/jwt-decode'
 
 const Header = () => {
+  const navigate = useNavigate()
   const { products } = useContext(ListProductContext)
   let [open, setOpen] = useState(false)
   return (
@@ -22,7 +23,7 @@ const Header = () => {
           <div className="flex flex-col items-start">
             <div
               onClick={() => setOpen(!open)}
-              className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48] cursor-pointer md:hidden"
+              className="flex flex-row justify-between items-center p-[12] m-[12px] w-[48] cursor-pointer md:hidden"
             >
               <span class="material-symbols-outlined">
                 {open ? 'close' : 'menu'}
@@ -45,15 +46,15 @@ const Header = () => {
               <li className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px]">
                 <Link
                   className="text-black text-left hover:text-primary w-full"
-                  to="/product"
+                  to="/"
                 >
-                  ...
+                  Trà
                 </Link>
               </li>
               <li className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px]">
                 <Link
                   className="text-black text-left hover:text-primary w-full"
-                  to="/product"
+                  to="/"
                 >
                   Tuyển dụng
                 </Link>
@@ -61,26 +62,27 @@ const Header = () => {
             </ul>
           </div>
         </div>
-        <div className="flex items-center gap-[16px] h-[48px]">
+        <div className="flex items-center gap-[16px] h-[56px] justify-center">
           <div className="hover:bg-s5 rounded-[16px]">
-            <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48]">
+            <div className="flex flex-row justify-between items-center p-[12] m-[12px]">
               <Link
-                className="flex flex-row text-black text-center hover:text-primary h-[48] w-[48] gap-[8px]"
+                className="flex flex-row text-black text-center hover:text-primary w-[48] gap-[8px]"
                 to="/cart"
               >
                 <span class="material-symbols-outlined">shopping_cart</span>
-
-                <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-[12px]">
-                  {products.length}
-                </div>
+                {products.length > 0 && (
+                  <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-[12px]">
+                    {products.length}
+                  </div>
+                )}
               </Link>
             </div>
           </div>
 
           <div className="hover:bg-s5 rounded-[16px]">
-            <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48]">
+            <div className="flex flex-row justify-between items-center m-[12px]">
               <Link
-                className="flex flex-row text-black text-center hover:text-primary h-[48] w-[48]"
+                className="flex flex-row text-black text-center hover:text-primary"
                 to="/search"
               >
                 <span class="material-symbols-outlined">search</span>
@@ -89,9 +91,9 @@ const Header = () => {
           </div>
 
           <div className="hover:bg-s5 rounded-[16px]">
-            <div className="flex flex-row justify-between items-center p-[12] m-[12px] h-[48] w-[48]">
+            <div className="flex flex-row justify-between items-center m-[12px]">
               <Link
-                className="flex flex-row text-black text-center hover:text-primary h-[48] w-[48]"
+                className="flex flex-row text-black text-center hover:text-primary"
                 to="/signin"
               >
                 <span class="material-symbols-outlined">person</span>

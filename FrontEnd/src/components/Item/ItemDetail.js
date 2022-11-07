@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import Button from '../Button/Button'
 import ItemCard from './ItemCard'
 import { ListProductContext } from '../../context/ListProductContext'
+import Footer from '../Footer/Footer'
 
 const ItemDetail = () => {
   const { id } = useParams()
@@ -36,7 +37,7 @@ const ItemDetail = () => {
   }
 
   return (
-    <div>
+    <>
       <Header />
       <div className="h-20"></div>
       <div className="sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] font-googleSansRegular">
@@ -52,7 +53,10 @@ const ItemDetail = () => {
             </p>
             <div className="text-base mt-4">
               <span className="text-[26px] font-semibold mr-[37px]">
-                {info.price} đ
+                {new Intl.NumberFormat('vi-VN', {
+                  style: 'currency',
+                  currency: 'VND',
+                }).format(info.price)}
               </span>
             </div>
             <div className="items-center mt-4">
@@ -93,7 +97,8 @@ const ItemDetail = () => {
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }
 

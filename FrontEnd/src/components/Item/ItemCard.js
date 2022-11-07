@@ -6,7 +6,12 @@ const ItemCard = ({ title, price, image }) => {
     <div className="inline-flex relative items-center justify-between w-full h-full p-0 rounded-[1.5rem] bg-secondary-cont text-black no-underline bg-cover bg-no-repeat flex-col-reverse overflow-hidden hover:bg-tertiary-cont hover:text-black hover:rounded-[2rem] transition-all">
       <div className="grid relative self-start gap-2 m-3">
         <span className="font-googleSansMedium">{title}</span>
-        <span className="font-googleSansLight">{price} đ</span>
+        <span className="font-googleSansLight">
+          {new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+          }).format(price)}
+        </span>
       </div>
 
       <img
