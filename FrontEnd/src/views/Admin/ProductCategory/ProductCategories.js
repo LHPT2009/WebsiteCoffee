@@ -4,11 +4,12 @@ import axios from 'axios'
 
 import logo from '../../../assets/images/icon.png'
 
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
 const ProductCategories = () => {
+  const navigate = useNavigate()
   const [id, setId] = useState('')
   const [productCategory, setProductCategory] = useState([])
   useEffect(() => {
@@ -23,13 +24,13 @@ const ProductCategories = () => {
       </h1>
       <Button
         btnStyle={'btn-outline'}
-        type="button"
         btnCSS={'h-11 mb-10'}
         icon="add"
+        onClick={() => {
+          navigate('../addproductcategory')
+        }}
       >
-        <Link className="hover:text-white" to="../addproductcategory">
-          Thêm mới
-        </Link>
+        Thêm mới
       </Button>
       <div className="row">
         <div className="col-12">
@@ -50,29 +51,23 @@ const ProductCategories = () => {
                       <td style={{ minWidth: 100 }}>
                         <Button
                           btnStyle={'btn-outline'}
-                          type="button"
+                          onClick={() => {
+                            navigate('../editproductcategory/' + item._id)
+                          }}
                           btnCSS={'h-11 mr-2'}
                           icon="edit"
                         >
-                          <Link
-                            className="hover:text-white"
-                            to={'../EditProductCategories/' + item._id}
-                          >
-                            Sửa
-                          </Link>
+                          Sửa
                         </Button>
                         <Button
                           btnStyle={'btn-outline'}
-                          type="button"
+                          onClick={() => {
+                            navigate('../deleteproductcategory/' + item._id)
+                          }}
                           btnCSS={'h-11'}
                           icon="delete"
                         >
-                          <Link
-                            className="hover:text-white"
-                            to={'../DeleteProductCategories/' + item._id}
-                          >
-                            Xóa
-                          </Link>
+                          Xóa
                         </Button>
                       </td>
                     </tr>

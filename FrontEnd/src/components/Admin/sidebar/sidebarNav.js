@@ -1,70 +1,70 @@
 const sidebarNav = [
-    {
-        link: '/admin',
-        section: 'home',
-        icon: <i className='bx bx-home-alt'></i>,
-        text: 'Trang chủ'
-    },
-    {
-        link: '/admin/receipts',
-        section: 'receipts',
-        icon: <i className='bx bx-receipt' ></i>,
-        text: 'Đơn hàng',
-        iconClosed: <i className='bx bx-down-arrow'></i>,
-        iconOpened: <i className='bx bx-up-arrow'></i>,
-    },
-    {
-        link: '/admin/products',
-        section: 'products',
-        icon: <i className='bx bx-cube'></i>,
-        text: 'Sản phẩm',
-        iconClosed: <i className='bx bx-down-arrow'></i>,
-        iconOpened: <i className='bx bx-up-arrow'></i>,
+  {
+    link: '/admin',
+    section: 'home',
+    icon: <span className="material-symbols-rounded">dashboard</span>,
+    text: 'Trang chủ',
+  },
+  {
+    link: '/admin/receipts',
+    section: 'receipts',
+    icon: <span className="material-symbols-rounded">list_alt</span>,
+    text: 'Đơn hàng',
+    iconClosed: <span className="material-symbols-rounded">expand_more</span>,
+    iconOpened: <span className="material-symbols-rounded">expand_less</span>,
+  },
+  {
+    link: '/admin/products',
+    section: 'products',
+    icon: <span className="material-symbols-rounded">inventory_2</span>,
+    text: 'Sản phẩm',
+    iconClosed: <span className="material-symbols-rounded">expand_more</span>,
+    iconOpened: <span className="material-symbols-rounded">expand_less</span>,
 
-        subNav: [
-            {
-                link: '/admin/productcategories',
-                section: 'productcategories',
-                icon: <i className='bx bx-cube'></i>,
-                text: 'Loại sản phẩm'
-            },
-            {
-                link: '/admin/sizeproducts',
-                section: 'sizeproducts',
-                icon: <i className='bx bx-test-tube'></i>,
-                text: 'Kích cỡ',
-            },
-        ]
-    },
-    {
-        link: '/admin/users',
-        section: 'users',
-        icon: <i className='bx bx-user'></i>,
-        text: 'Tài khoản',
-        iconClosed: <i className='bx bx-down-arrow'></i>,
-        iconOpened: <i className='bx bx-up-arrow'></i>,
+    subNav: [
+      {
+        link: '/admin/productcategories',
+        section: 'productcategories',
+        icon: '',
+        text: 'Loại sản phẩm',
+      },
+      {
+        link: '/admin/sizeproducts',
+        section: 'sizeproducts',
+        icon: '',
+        text: 'Kích cỡ',
+      },
+    ],
+  },
+  {
+    link: '/admin/users',
+    section: 'users',
+    icon: <span className="material-symbols-rounded">account_box</span>,
+    text: 'Tài khoản',
+    iconClosed: <span className="material-symbols-rounded">expand_more</span>,
+    iconOpened: <span className="material-symbols-rounded">expand_less</span>,
 
-        subNav: [
-            {
-                link: '/admin/roles',
-                section: 'roles',
-                icon: <i className='bx bx-user'></i>,
-                text: 'Quyền'
-            },
-        ]
-    },
-    {
-        link: '/admin/rate',
-        section: 'receipts',
-        icon: <i className='bx bx-receipt' ></i>,
-        text: 'Đánh giá',
-    },
-    {
-        link: '/admin/discount',
-        section: 'receipts',
-        icon: <i className='bx bx-receipt' ></i>,
-        text: 'Giảm Giá',
-    },
+    subNav: [
+      {
+        link: '/admin/roles',
+        section: 'roles',
+        icon: '',
+        text: 'Quyền',
+      },
+    ],
+  },
+  {
+    link: '/admin/rate',
+    section: 'receipts',
+    icon: <span className="material-symbols-rounded">thumbs_up_down</span>,
+    text: 'Đánh giá',
+  },
+  {
+    link: '/admin/discount',
+    section: 'receipts',
+    icon: <span className="material-symbols-rounded">percent</span>,
+    text: 'Giảm Giá',
+  },
 ]
 
 export default sidebarNav

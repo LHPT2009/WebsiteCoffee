@@ -18,10 +18,9 @@ const Receipts = () => {
   }, [])
   return (
     <div>
-      <h2 className="page-header">Hóa đơn</h2>
-      <Button type="button">
-        <a href="./AddReceipt">Thêm hóa đơn</a>
-      </Button>
+      <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
+        Hóa đơn
+      </h1>
       <div className="row">
         <div className="col-12">
           <div className="card">
@@ -32,6 +31,7 @@ const Receipts = () => {
                     <th>Mã hóa đơn</th>
                     <th>Mã tài khoản</th>
                     <th>Tổng tiền</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,14 +41,26 @@ const Receipts = () => {
                       <td>{item.userid}</td>
                       <td>{item.price}</td>
                       <td style={{ minWidth: 100 }}>
-                        <Button>
-                          <Link to={'/admin/editreceipt/'}>Sửa</Link>
+                        <Button
+                          btnStyle={'btn-outline'}
+                          type="button"
+                          btnCSS={'h-11 mr-2'}
+                          icon="edit"
+                        >
+                          <Link className="hover:text-white" to={''}>
+                            Sửa
+                          </Link>
                         </Button>
-                        |
-                        <Button>
-                          <Link to={'/admin/deletereceipt/'}>Xóa</Link>
+                        <Button
+                          btnStyle={'btn-outline'}
+                          type="button"
+                          btnCSS={'h-11'}
+                          icon="delete"
+                        >
+                          <Link className="hover:text-white" to={''}>
+                            Xóa
+                          </Link>
                         </Button>
-                        |
                       </td>
                     </tr>
                   ))}

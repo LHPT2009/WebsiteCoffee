@@ -2,11 +2,15 @@ import React from 'react'
 import './button.css'
 
 const STYLES = ['btn-fill', 'btn-outline']
+const TYPE = ['button']
 
 const Button = ({ children, type, icon, onClick, btnStyle, btnCSS }) => {
   const checkbtnStyle = STYLES.includes(btnStyle) ? btnStyle : STYLES[0]
+  const checkType = TYPE.includes(type) ? type : TYPE[0]
 
   const onlyIcon = <span className="material-symbols-rounded">{icon}</span>
+
+  const onlyText = <span>{children}</span>
 
   const iconText = (
     <div className="flex">
@@ -21,9 +25,11 @@ const Button = ({ children, type, icon, onClick, btnStyle, btnCSS }) => {
     <button
       className={`btn ${checkbtnStyle} ${btnCSS} hover:rounded-2xl active:rounded-2xl transition-all font-googleSansRegular pt-3 pb-[2.2rem] px-6`}
       onClick={onClick}
-      type={type}
+      type={`${checkType}`}
     >
-      {children === '' ? onlyIcon : iconText}
+      {children === '' && onlyIcon}
+      {icon === '' && onlyText}
+      {children != '' && icon != '' && iconText}
     </button>
   )
 }

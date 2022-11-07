@@ -59,13 +59,37 @@ const ItemDetail = () => {
                 }).format(info.price)}
               </span>
             </div>
-            <div className="items-center mt-4">
+            <div className="mt-6">
+              <h2 className="t1 mb-2">Kích cỡ</h2>
+              <Button
+                btnStyle="btn-outline"
+                icon={''}
+                btnCSS={'h-3 mr-2 font-semibold'}
+              >
+                S
+              </Button>
+              <Button
+                btnStyle="btn-outline"
+                icon={''}
+                btnCSS={'h-3 mr-2 font-semibold'}
+              >
+                M
+              </Button>
+              <Button
+                btnStyle="btn-outline"
+                icon={''}
+                btnCSS={'h-3 font-semibold'}
+              >
+                L
+              </Button>
+            </div>
+            <div className="items-center mt-10">
               <Button
                 type="button"
                 btnStyle="btn-fill"
                 icon="add_shopping_cart"
                 onClick={add}
-                btnCSS={'h-[44px] px-6 py-3'}
+                btnCSS={'h-[44px] px-6 py-5'}
               >
                 Thêm vào giỏ hàng
               </Button>
@@ -81,6 +105,42 @@ const ItemDetail = () => {
             phê mạnh mẽ giúp sảng khoái tức thì, tuôn trào hứng khởi
           </p>
         </div>
+        {/* Rating */}
+        <div className="mt-16">
+          <h4 className="text-[18px] mb-2 font-semibold">Đánh giá sản phẩm</h4>
+          {/* Star */}
+          <div className="my-10">
+            <div className="flex">
+              <div className="text-h1 mr-10">0,0</div>
+              <div className="items-center justify-center">
+                <span className="material-symbols-rounded text-[44px]">
+                  star
+                </span>
+                <span className="material-symbols-rounded text-[44px]">
+                  star
+                </span>
+                <span className="material-symbols-rounded text-[44px]">
+                  star
+                </span>
+                <span className="material-symbols-rounded text-[44px]">
+                  star
+                </span>
+                <span className="material-symbols-rounded text-[44px]">
+                  star
+                </span>
+              </div>
+            </div>
+          </div>
+          {/* Content */}
+          <div>
+            <textarea
+              name="content"
+              placeholder="Nội dung"
+              className="border-[1px] border-outline-var border-solid rounded-3xl text-[18px] leading-[24px] mb-[10px] pt-[13px] px-[12px] pb-[13px] hover:border-outline focus:border-[1px] hover:rounded-2xl focus:border-outline focus:rounded-2xl transition-all w-full min-h-[200px] max-h-[200px]"
+            />
+          </div>
+        </div>
+        {/* Relate */}
         <div className="mt-16">
           <h4 className="text-[18px] mb-2 font-semibold">Sản phẩm liên quan</h4>
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
