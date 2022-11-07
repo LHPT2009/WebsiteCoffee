@@ -5,6 +5,7 @@ import axios from 'axios'
 import Button from '../../../components/Button/Button'
 
 const AddSizeProduct = () => {
+
     return (
         <div>
             <h2 className="page-header">
@@ -12,21 +13,21 @@ const AddSizeProduct = () => {
             </h2>
             <div>
                 <h1>Tên kích cỡ</h1>
-                <input type={"text"} placeholder={"Tên kích cỡ"}/> <br/>
+                <input type={"text"} placeholder={"Tên kích cỡ"} /> <br />
                 <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"}/> <br/>
+                <input type={"text"} placeholder={"Giá"} /> <br />
             </div>
             <div>
-            <Button type="button">
-                <a>
-                Thêm
-                </a>
-            </Button>
-            <Button type="button">
-                <a href="./SizeProducts">
-                Quay về
-                </a>
-            </Button>
+                <Button type="button">
+                    <a>
+                        Thêm
+                    </a>
+                </Button>
+                <Button type="button">
+                    <a href="./SizeProducts">
+                        Quay về
+                    </a>
+                </Button>
             </div>
         </div>
     )

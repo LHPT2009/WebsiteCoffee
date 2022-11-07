@@ -11,14 +11,9 @@ const productRoute = require('./routes/product');
 const categoryProductRoute = require('./routes/categoryProduct');
 const mail = require('./routes/mail');
 const receiptRoute = require('./routes/Receipt');
-const earnPointsRoute = require('./routes/earnPoints');
-const ingredientRoute = require('./routes/ingredient');
-const positionRoute = require('./routes/position');
-const receiptIngredientRoute = require('./routes/ReceiptIngredient');
 const sizeProductRoute = require('./routes/sizeProduct');
-const staffRoute = require('./routes/staff');
-const supplierRoute = require('./routes/supplier');
-const recipeRoute = require('./routes/Recipe');
+const disCountRoute = require('./routes/disCount');
+const rateRoute = require('./routes/rate');
 
 dotenv.config();
 const app = express();
@@ -42,14 +37,9 @@ app.use('/product', productRoute);
 app.use('/category', categoryProductRoute);
 app.use('/mail', mail);
 app.use('/receipt', receiptRoute);
-app.use('/earnpoints', earnPointsRoute);
-app.use('/ingredient', ingredientRoute);
-app.use('/position', positionRoute);
-app.use('/receiptingredient', receiptIngredientRoute);
 app.use('/sizeproduct', sizeProductRoute);
-app.use('/staff', staffRoute);
-app.use('/supplier', supplierRoute);
-app.use('/recipe', recipeRoute);
+app.use('/discount', disCountRoute);
+app.use('/rate', rateRoute);
 
 app.listen(8000, () => {
   console.log('Server is running...');

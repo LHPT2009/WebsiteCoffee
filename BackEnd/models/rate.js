@@ -1,21 +1,21 @@
 const mongoose = require("mongoose");
 
-const RecipeSchema = new mongoose.Schema({
+const rateSchema = new mongoose.Schema({
     productid: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product"
     },
-    ingredientid: {
+    usertid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Ingredient"
+        ref: "User"
     },
-    amount: {
+    point: {
         type: Number
     },
-    unit: {
+    content: {
         type: String
     },
 }, { timestamps: true }
 );
 
-module.exports = mongoose.model("Recipe", RecipeSchema);
+module.exports = mongoose.model("Rate", rateSchema);

@@ -1,7 +1,7 @@
-const SizeProduct = require('../models/SizeProduct');
+const SizeProduct = require("../models/sizeProduct");
 
 const SizeProductController = {
-    getAllSizeProduct: async (req, res) => {
+    getAllSizeProducts: async (req, res) => {
         try {
             const sizeProduct = await SizeProduct.find();
             res.status(200).json(sizeProduct);
@@ -13,7 +13,7 @@ const SizeProductController = {
     deleteSizeProduct: async (req, res) => {
         try {
             const sizeProduct = await SizeProduct.findByIdAndDelete(req.params.id);
-            res.status(200).json('Delete successfully');
+            res.status(200).json("Delete successfully");
         } catch (error) {
             res.status(500).json(error);
         }
@@ -30,14 +30,12 @@ const SizeProductController = {
 
     addSizeProduct: async (req, res) => {
         try {
-            const newSizeProduct = new SizeProduct({
-                name: req.body.name,
-                productid: req.body.productid,
-                price: req.body.price
+            const newSizeProduct = await new SizeProduct({
+                // rolename: req.body.rolename,
             });
 
             await newSizeProduct.save();
-            res.status(200).json('Add successfully');
+            res.status(200).json("Add successfully");
         } catch (error) {
             res.status(500).json(error);
         }
@@ -46,19 +44,20 @@ const SizeProductController = {
     updateSizeProduct: async (req, res) => {
         try {
             const updateSizeProduct = req.body;
-            const sizeProduct = await User.findByIdAndUpdate(req.params.id, updateSizeProduct, {
-                new: true,
-            });
-
+            const sizeProduct = await Role.findByIdAndUpdate(
+                req.params.id,
+                updateSizeProduct,
+                { new: true }
+            );
             if (!sizeProduct) {
-                return res.status(404).json('Wrong updateSizeProduct!');
+                return res.status(404).json("Wrong updateSizeProduct!");
             }
             res.status(200).json(sizeProduct);
         } catch (error) {
             console.log(error);
-            res.status(500).json('Error!!!');
+            res.status(500).json("Error!!!");
         }
-    },
-};
+    }
+}
 
 module.exports = SizeProductController;

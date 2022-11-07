@@ -2,7 +2,7 @@ const sizeProductController = require("../controllers/SizeProductController");
 
 const router = require("express").Router();
 
-router.get("/", sizeProductController.getAllSizeProduct);
+router.get("/", sizeProductController.getAllSizeProducts);
 
 router.get("/:id", sizeProductController.getSizeProductById);
 

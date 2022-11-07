@@ -32,44 +32,9 @@ const sidebarNav = [
                 link: '/admin/sizeproducts',
                 section: 'sizeproducts',
                 icon: <i className='bx bx-test-tube'></i>,
-                text: 'Kích cỡ'
-            },
-            {
-                link: '/admin/recipes',
-                section: 'recipes',
-                icon: <i className='bx bxs-food-menu'></i>,
-                text: 'Công thức'
-            }
-        ]
-    },
-    {
-        link: '/admin/ingredients',
-        section: 'ingredients',
-        icon: <i className='bx bxs-vial' ></i>,
-        text: 'Nguyên liệu',
-        iconClosed: <i className='bx bx-down-arrow'></i>,
-        iconOpened: <i className='bx bx-up-arrow'></i>,
-
-        subNav: [
-            {
-                link: '/admin/receiptingredients',
-                section: 'receiptingredients',
-                icon: <i className='bx bx-receipt'></i>,
-                text: 'Phiếu nhập'
+                text: 'Kích cỡ',
             },
         ]
-    },
-    {
-        link: '/admin/earnpoints',
-        section: 'earnpoints',
-        icon: <i className='bx bx-gift' ></i>,
-        text: 'Tích điểm'
-    },
-    {
-        link: '/admin/suppliers',
-        section: 'suppliers',
-        icon: <i className='bx bxs-truck' ></i>,
-        text: 'Nhà cung cấp'
     },
     {
         link: '/admin/users',
@@ -84,33 +49,22 @@ const sidebarNav = [
                 link: '/admin/roles',
                 section: 'roles',
                 icon: <i className='bx bx-user'></i>,
-                text: 'Loại tài khoản'
+                text: 'Quyền'
             },
         ]
     },
     {
-        link: '/admin/staffs',
-        section: 'staffs',
-        icon: <i className='bx bxs-user-badge'></i>,
-        text: 'Nhân viên',
-        iconClosed: <i className='bx bx-down-arrow'></i>,
-        iconOpened: <i className='bx bx-up-arrow'></i>,
-
-        subNav: [
-            {
-                link: '/admin/positions',
-                section: 'positions',
-                icon: <i className='bx bxs-badge-check'></i>,
-                text: 'Chức vụ'
-            },
-        ]
+        link: '/admin/rate',
+        section: 'receipts',
+        icon: <i className='bx bx-receipt' ></i>,
+        text: 'Đánh giá',
     },
     {
-        link: '/admin/stats',
-        section: 'stats',
-        icon: <i className='bx bx-line-chart'></i>,
-        text: 'Thống kê'
-    }
+        link: '/admin/discount',
+        section: 'receipts',
+        icon: <i className='bx bx-receipt' ></i>,
+        text: 'Giảm Giá',
+    },
 ]
 
 export default sidebarNav
