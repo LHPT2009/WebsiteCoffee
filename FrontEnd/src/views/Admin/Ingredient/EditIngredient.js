@@ -24,12 +24,12 @@ const EditIngredient = () => {
                 <input type={"text"} placeholder={"Tên nguyên liệu"} defaultValue={ingredient.name} /> <br />
             </div>
             <div>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="add">
                     <a>
                         Sửa
                     </a>
                 </Button>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
                     <a href="./Ingredients">
                         Quay về
                     </a>

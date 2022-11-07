@@ -27,12 +27,12 @@ const EditProductCategory = () => {
                 /><br />
             </div>
             <div>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit">
                     <a>
                         Sửa
                     </a>
                 </Button>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
                     <a href="./ProductCategories">
                         Quay về
                     </a>

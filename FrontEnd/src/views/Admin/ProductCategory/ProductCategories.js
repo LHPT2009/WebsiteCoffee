@@ -21,7 +21,7 @@ const ProductCategories = () => {
             <h2 className="page-header">
                 Loại sản phẩm
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddProductCategory">
                     Thêm loại sản phẩm
                 </a>
@@ -35,6 +35,7 @@ const ProductCategories = () => {
                                     <tr>
                                         <th>Mã loại</th>
                                         <th>Tên loại</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,8 +44,8 @@ const ProductCategories = () => {
                                             <td>{item._id}</td>
                                             <td>{item.name}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editproductcategory/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleteproductcategory/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/editproductcategory/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/deleteproductcategory/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

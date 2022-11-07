@@ -21,7 +21,7 @@ const ReceiptIngredients = () => {
             <h2 className="page-header">
                 Phiếu nhập nguyên liệu
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddReceiptIngredient">
                     Thêm phiếu nhập
                 </a>
@@ -36,6 +36,7 @@ const ReceiptIngredients = () => {
                                         <th>Mã phiếu</th>
                                         <th>Ngày nhập</th>
                                         <th>Mã NV</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,8 +46,8 @@ const ReceiptIngredients = () => {
                                             <td>{item.date}</td>
                                             <td>{item.staffid}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editreceiptingredient/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/Deletereceiptingredient/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/editreceiptingredient/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/Deletereceiptingredient/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

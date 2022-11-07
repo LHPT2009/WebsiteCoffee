@@ -28,12 +28,12 @@ const DeleteEarnPoint = () => {
                 <input type={"date"} placeholder={"Ngày kết thúc"} value={earnPoints.finaldate} /> <br />
             </div>
             <div>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete">
                     <a>
                         Xóa
                     </a>
                 </Button>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
                     <a href="./EarnPoints">
                         Quay về
                     </a>

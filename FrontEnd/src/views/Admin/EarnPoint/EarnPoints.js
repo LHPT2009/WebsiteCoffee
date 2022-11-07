@@ -21,7 +21,7 @@ const EarnPoints = () => {
             <h2 className="page-header">
                 Tích điểm
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddEarnPoint">
                     Thêm tích điểm
                 </a>
@@ -38,6 +38,7 @@ const EarnPoints = () => {
                                         <th>Điểm tích lũy</th>
                                         <th>Ngày bắt đầu</th>
                                         <th>Ngày kết thúc</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,8 +50,8 @@ const EarnPoints = () => {
                                             <td>{item.startdate}</td>
                                             <td>{item.finaldate}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editearnpoint/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleteearnpoint/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/editearnpoint/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/deleteearnpoint/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

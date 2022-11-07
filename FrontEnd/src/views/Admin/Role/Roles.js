@@ -21,7 +21,7 @@ const Roles = () => {
             <h2 className="page-header">
                 Loại tài khoản
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddRole">
                     Thêm loại tài khoản
                 </a>
@@ -35,6 +35,7 @@ const Roles = () => {
                                     <tr>
                                         <th>Mã loại</th>
                                         <th>Tên loại</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,8 +44,8 @@ const Roles = () => {
                                             <td>{item._id}</td>
                                             <td>{item.rolename}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editrole/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleterole/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/editrole/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/deleterole/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

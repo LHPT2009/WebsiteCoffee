@@ -21,7 +21,7 @@ const Recipes = () => {
             <h2 className="page-header">
                 Công thức
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddRecipe">
                     Thêm công thức
                 </a>
@@ -37,6 +37,7 @@ const Recipes = () => {
                                         <th>Tên nguyên liệu</th>
                                         <th>Số lượng</th>
                                         <th>Đơn vị</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,8 +48,8 @@ const Recipes = () => {
                                             <td>{item.amount}</td>
                                             <td>{item.unit}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={'/admin/EditRecipe/'}>Sửa</Link></Button>|
-                                                <Button><Link to={'/admin/DeleteRecipe/'}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={'/admin/EditRecipe/'}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={'/admin/DeleteRecipe/'}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

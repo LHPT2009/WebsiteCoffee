@@ -25,12 +25,12 @@ const AddStaff = () => {
                 <input type={"text"} placeholder={"Chức vụ"}/> <br/>
             </div>
             <div>
-            <Button type="button">
+            <Button type="button" btnCSS={'h-[44px] mr-2'} icon="add">
                 <a>
                 Thêm
                 </a>
             </Button>
-            <Button type="button">
+            <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
                 <a href="./Staffs">
                 Quay về
                 </a>

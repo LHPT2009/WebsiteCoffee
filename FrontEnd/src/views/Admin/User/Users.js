@@ -21,7 +21,7 @@ const Users = () => {
             <h2 className="page-header">
                 Tài khoản
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddUser">
                     Thêm tài khoản
                 </a>
@@ -37,6 +37,7 @@ const Users = () => {
                                         <th>Tên</th>
                                         <th>Số điện thoại</th>
                                         <th>Role</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,8 +48,8 @@ const Users = () => {
                                             <td>{item.numberphone}</td>
                                             <td>{item.role.rolename}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/edituser/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/DeleteUser/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/edituser/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/DeleteUser/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

@@ -21,7 +21,7 @@ const Positions = () => {
             <h2 className="page-header">
                 Chức vụ
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddPosition">
                     Thêm chức vụ
                 </a>
@@ -35,6 +35,7 @@ const Positions = () => {
                                     <tr>
                                         <th>Mã chức vụ</th>
                                         <th>Tên chức vụ</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,8 +44,8 @@ const Positions = () => {
                                             <td>{item._id}</td>
                                             <td>{item.name}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editposition/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleteposition/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/editposition/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/deleteposition/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

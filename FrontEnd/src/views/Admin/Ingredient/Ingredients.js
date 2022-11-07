@@ -21,7 +21,7 @@ const Ingredients = () => {
             <h2 className="page-header">
                 Nguyên liệu
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddIngredient">
                     Thêm nguyên liệu
                 </a>
@@ -35,6 +35,7 @@ const Ingredients = () => {
                                     <tr>
                                         <th>Mã nguyên liệu</th>
                                         <th>Tên nguyên liệu</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,8 +44,8 @@ const Ingredients = () => {
                                             <td>{item._id}</td>
                                             <td>{item.name}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editingredient/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleteingredient/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/editingredient/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/deleteingredient/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

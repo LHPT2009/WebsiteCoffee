@@ -21,7 +21,7 @@ const SizeProducts = () => {
             <h2 className="page-header">
                 Kích cỡ
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddSizeProduct">
                     Thêm kích cỡ
                 </a>
@@ -36,6 +36,7 @@ const SizeProducts = () => {
                                         <th>Mã kích cỡ</th>
                                         <th>Tên kích cỡ</th>
                                         <th>Giá</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,8 +46,8 @@ const SizeProducts = () => {
                                             <td>{item.name}</td>
                                             <td>{item.price}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editsizeproduct/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deletesizeproduct/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/editsizeproduct/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/deletesizeproduct/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

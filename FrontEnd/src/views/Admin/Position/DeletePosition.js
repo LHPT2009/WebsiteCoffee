@@ -24,12 +24,12 @@ const DeletePosition = () => {
                 <input type={"text"} placeholder={"Tên chức vụ"} value={position.name} /> <br />
             </div>
             <div>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete">
                     <a>
                         Xóa
                     </a>
                 </Button>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
                     <a href="./Positions">
                         Quay về
                     </a>

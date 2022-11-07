@@ -24,12 +24,12 @@ const DeleteSupplier = () => {
                 <input type={"text"} placeholder={"Tên nhà cung cấp"} value={supplier.name} /> <br />
             </div>
             <div>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete">
                     <a>
                         Xóa
                     </a>
                 </Button>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
                     <a href="./Suppliers">
                         Quay về
                     </a>

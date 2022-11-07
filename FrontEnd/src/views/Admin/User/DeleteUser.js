@@ -32,12 +32,12 @@ const DeleteUser = () => {
                 <input type={"text"} placeholder={"Role"} value={user.role} /> <br />
             </div>
             <div>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete">
                     <a>
                         Xóa
                     </a>
                 </Button>
-                <Button type="button">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
                     <a href="./Users">
                         Quay về
                     </a>

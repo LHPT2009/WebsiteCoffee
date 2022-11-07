@@ -21,7 +21,7 @@ const Receipts = () => {
             <h2 className="page-header">
                 Hóa đơn
             </h2>
-            <Button type="button">
+            <Button type="button" icon="add" btnCSS={'h-[44px] px-6 py-3'}>
                 <a href="./AddReceipt">
                     Thêm hóa đơn
                 </a>
@@ -36,6 +36,7 @@ const Receipts = () => {
                                         <th>Mã hóa đơn</th>
                                         <th>Mã tài khoản</th>
                                         <th>Tổng tiền</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,8 +46,8 @@ const Receipts = () => {
                                             <td>{item.userid}</td>
                                             <td>{item.price}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/EditReceipt/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/DeleteReceipt/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/EditReceipt/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-[44px] px-6 py-3'}><Link to={`/admin/DeleteReceipt/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}
