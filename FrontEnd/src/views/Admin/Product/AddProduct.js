@@ -81,8 +81,9 @@ const AddProduct = () => {
         <Button
           type="button"
           onClick={handleSubmit}
-          btnCSS="h-11 mr-2"
+          btnCSS={'h-[44px] mr-2'}
           icon="add"
+          className="hover:text-white"
         >
           Thêm
         </Button>

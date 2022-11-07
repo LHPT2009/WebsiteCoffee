@@ -21,7 +21,7 @@ import ItemDetail from './components/Item/ItemDetail'
 import Dashboard from './views/Admin/Dashboard'
 import Layout from './components/Admin/layout/Layout'
 import Customers from './views/Admin/Customers'
-import Products from './views/Admin/Products'
+import Products from './views/Admin/Product/Products'
 import ProductCategories from './views/Admin/ProductCategory/ProductCategories'
 import Orders from './views/Admin/Orders'
 import Users from './views/Admin/User/Users'
@@ -133,7 +133,7 @@ root.render(
               <Route path="editreceipt/:id" element={<EditReceipt />} />
               <Route path="deletereceipt/:id" element={<DeleteReceipt />} />
 
-              <Route path="discount" element={<AddDisCount />} />
+              <Route path="adddiscount" element={<AddDisCount />} />
               <Route path="editdiscount/:id" element={<EditDisCount />} />
               <Route path="deletediscount/:id" element={<DeleteDisCount />} />
 

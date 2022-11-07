@@ -22,7 +22,7 @@ const Sidebar = () => {
     }, [location])
 
     return (
-        <div className='sidebar'>
+        <div className='sidebar font-googleSansRegular'>
             <div className="sidebar__logo">
                 <img src={logo} alt="cafe bug on" />
             </div>

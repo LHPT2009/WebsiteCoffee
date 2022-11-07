@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
+import TextInput from '../../../components/Input/TextInput';
+
 import { useParams } from "react-router-dom";
 
 const DeleteProduct = () => {
@@ -16,27 +18,47 @@ const DeleteProduct = () => {
 
     return (
         <div>
-            <h2 className="page-header">
-                <b>Xóa đánh Giá</b>
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
+                <b>Xóa đánh giá</b>
             </h2>
             <div>
-                <h1>Mã sản phẩm</h1>
-                <input type={"text"} placeholder={"Tên sản phẩm"} value={rate.productid} /> <br />
-                <h1>Mã User</h1>
-                <input type={"text"} placeholder={"Giá"} value={rate.usertid} /> <br />
-                <h1>Điểm</h1>
-                <input type={"text"} placeholder={"Tên sản phẩm"} value={rate.point} /> <br />
-                <h1>Nôi dung</h1>
-                <input type={"text"} placeholder={"Giá"} value={rate.content} /> <br />
+                <TextInput
+                    placeholder={'Mã sản phẩm'}
+                    type="text"
+                    defaultValue={rate.productid}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
+                <TextInput
+                    placeholder={'Mã user'}
+                    type="text"
+                    defaultValue={rate.usertid}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
+                <TextInput
+                    placeholder={'Điểm'}
+                    type="text"
+                    defaultValue={rate.point}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
+                <TextInput
+                    placeholder={'Nội dung'}
+                    type="text"
+                    defaultValue={rate.content}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
             </div>
             <div>
-                <Button type="button">
-                    <a>
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete">
+                    <a className="hover:text-white">
                         Xóa
                     </a>
                 </Button>
-                <Button type="button">
-                    <a href="../Products">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                    <a className="hover:text-white" href="../Rate">
                         Quay về
                     </a>
                 </Button>

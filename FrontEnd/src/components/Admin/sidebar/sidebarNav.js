@@ -9,7 +9,7 @@ const sidebarNav = [
         link: '/admin/receipts',
         section: 'receipts',
         icon: <i className='bx bx-receipt' ></i>,
-        text: 'Đơn hàng',
+        text: 'Hóa đơn',
         iconClosed: <i className='bx bx-down-arrow'></i>,
         iconOpened: <i className='bx bx-up-arrow'></i>,
     },
@@ -56,14 +56,14 @@ const sidebarNav = [
     {
         link: '/admin/rate',
         section: 'receipts',
-        icon: <i className='bx bx-receipt' ></i>,
+        icon: <i className='bx bx-star' ></i>,
         text: 'Đánh giá',
     },
     {
         link: '/admin/discount',
         section: 'receipts',
-        icon: <i className='bx bx-receipt' ></i>,
-        text: 'Giảm Giá',
+        icon: <i className='bx bxs-discount' ></i>,
+        text: 'Giảm giá',
     },
 ]
 

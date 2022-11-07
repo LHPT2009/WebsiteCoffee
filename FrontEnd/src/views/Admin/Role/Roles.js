@@ -17,11 +17,16 @@ const Roles = () => {
         })
     }, [])
     return (
-        <div>
-            <h2 className="page-header">
+        <div className="font-googleSansRegular">
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                 Loại tài khoản
             </h2>
-            <Button type="button">
+            <Button
+                btnStyle={'btn-outline'}
+                type="button"
+                btnCSS={'h-11 mb-10'}
+                icon="add"
+            >
                 <a href="./AddRole">
                     Thêm loại tài khoản
                 </a>
@@ -43,8 +48,8 @@ const Roles = () => {
                                             <td>{item._id}</td>
                                             <td>{item.rolename}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editrole/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleterole/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-11 mr-2'}><Link className="hover:text-white" to={`/admin/editrole/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-11'}><Link className="hover:text-white" to={`/admin/deleterole/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

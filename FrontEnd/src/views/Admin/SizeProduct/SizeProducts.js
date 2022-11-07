@@ -17,11 +17,16 @@ const SizeProducts = () => {
         })
     }, [])
     return (
-        <div>
-            <h2 className="page-header">
+        <div className="font-googleSansRegular">
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                 Kích cỡ
             </h2>
-            <Button type="button">
+            <Button
+                btnStyle={'btn-outline'}
+                type="button"
+                btnCSS={'h-11 mb-10'}
+                icon="add"
+            >
                 <a href="./AddSizeProduct">
                     Thêm kích cỡ
                 </a>
@@ -45,8 +50,8 @@ const SizeProducts = () => {
                                             <td>{item.name}</td>
                                             <td>{item.price}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editsizeproduct/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deletesizeproduct/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-11 mr-2'}><Link className="hover:text-white" to={`/admin/editsizeproduct/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-11'}><Link className="hover:text-white" to={`/admin/deletesizeproduct/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}

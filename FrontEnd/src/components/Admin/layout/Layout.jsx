@@ -30,7 +30,7 @@ const Layout = () => {
     return (
         <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
         <Sidebar />
-            <div className="layout__content">
+            <div className="layout__content font-googleSansRegular">
                 <TopNav />
                 <div className="layout__content-main">
                     <Outlet />
