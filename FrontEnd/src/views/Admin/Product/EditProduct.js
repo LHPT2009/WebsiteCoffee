@@ -37,16 +37,18 @@ const EditProduct = () => {
   }
 
   return (
-    <div>
+    <div className="font-googleSansRegular">
       <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
         Chỉnh sửa sản phẩm
       </h1>
       <div>
-        <h1>Tên sản phẩm</h1>
-        <input
-          type={'text'}
+        <TextInput
+          placeholder={'Tên sản phẩm'}
+          type="text"
+          required={'required'}
           onChange={(e) => setName(e.target.value)}
           defaultValue={dataProduct.name}
+          className="block w-[400px]"
         />
         <br />
         {/* <div>
@@ -69,20 +71,22 @@ const EditProduct = () => {
                 />
                 </div> */}
 
-        <h1>Giá</h1>
-        <input
-          type={'text'}
-          defaultValue={dataProduct.price}
+        <TextInput
+          placeholder={'Giá'}
+          type="text"
+          required={'required'}
           onChange={(e) => setPrice(e.target.value)}
+          defaultValue={dataProduct.price}
+          className="block w-[400px]"
         />
         <br />
       </div>
       <div>
-        <Button type="button">
-          <a onClick={handleEdit}>Sửa</a>
+        <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit">
+          <a className="hover:text-white" onClick={handleEdit}>Sửa</a>
         </Button>
-        <Button type="button">
-          <a href="../Products">Quay về</a>
+        <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+          <a className="hover:text-white" href="../Products">Quay về</a>
         </Button>
       </div>
     </div>

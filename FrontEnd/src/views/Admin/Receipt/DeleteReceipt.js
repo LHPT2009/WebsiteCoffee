@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
+import TextInput from '../../../components/Input/TextInput';
+
 import { useParams } from "react-router-dom";
 
 const DeleteReceipt = () => {
@@ -13,24 +15,34 @@ const DeleteReceipt = () => {
         axios.get(`http://localhost:8000/receipt/${id}`).then((res) => setReceipt(res.data));
     }, []);
     return (
-        <div>
-            <h2 className="page-header">
+        <div className="font-googleSansRegular">
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                 <b>Xóa hóa đơn</b>
             </h2>
             <div>
-                <h1>Mã tài khoản</h1>
-                <input type={"text"} placeholder={"Mã tài khoản"} value={receipt.userid} /> <br />
-                <h1>Tổng tiền</h1>
-                <input type={"text"} placeholder={"Tổng tiền"} value={receipt.price} /> <br />
+            <TextInput
+                placeholder={'Mã tài khoản'}
+                type="text"
+                defaultValue={receipt.userid}
+                className="block w-[400px]"
+                disabled={'disabled'}
+            /> <br />
+            <TextInput
+                placeholder={'Tổng tiền'}
+                type="text"
+                defaultValue={receipt.price}
+                className="block w-[400px]"
+                disabled={'disabled'}
+            /> <br />
             </div>
             <div>
-                <Button type="button">
-                    <a>
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete">
+                    <a className="hover:text-white">
                         Xóa
                     </a>
                 </Button>
-                <Button type="button">
-                    <a href="./Receipts">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                    <a className="hover:text-white" href="../Receipts">
                         Quay về
                     </a>
                 </Button>

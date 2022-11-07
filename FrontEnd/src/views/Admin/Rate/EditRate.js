@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
+import TextInput from '../../../components/Input/TextInput';
+
 import { useParams } from "react-router-dom";
 
 const EditProduct = () => {
@@ -17,44 +19,51 @@ const EditProduct = () => {
 
     return (
         <div>
-            <h2 className="page-header">
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                 <b>Chỉnh sửa đánh giá</b>
             </h2>
             <div>
-                <h1>Mã sản phẩm</h1>
-                <input
-                    type={"text"}
+                <TextInput
+                    placeholder={'Mã sản phẩm'}
+                    type="text"
+                    required={'required'}
                     onChange={""}
                     defaultValue={rate.productid}
-                /><br />
-                <h1>Mã User</h1>
-                <input
-                    type={"text"}
+                    className="block w-[400px]"
+                />  <br />
+                <TextInput
+                    placeholder={'Mã user'}
+                    type="text"
+                    required={'required'}
                     onChange={""}
                     defaultValue={rate.usertid}
-                /><br />
-                <h1>Điểm</h1>
-                <input
-                    type={"text"}
+                    className="block w-[400px]"
+                />  <br />
+                <TextInput
+                    placeholder={'Điểm'}
+                    type="text"
+                    required={'required'}
                     onChange={""}
                     defaultValue={rate.point}
-                /><br />
-                <h1>Nội dung</h1>
-                <input
-                    type={"text"}
+                    className="block w-[400px]"
+                />  <br />
+                <TextInput
+                    placeholder={'Nội dung'}
+                    type="text"
+                    required={'required'}
+                    onChange={""}
                     defaultValue={rate.content}
-                    onChange={"(e) => setPrice(e.target.value)"}
-                />
-                <br />
+                    className="block w-[400px]"
+                />  <br />
             </div>
             <div>
-                <Button type="button">
-                    <a onClick={""}>
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit">
+                    <a className="hover:text-white" onClick={""}>
                         Sửa
                     </a>
                 </Button>
-                <Button type="button">
-                    <a href="../Products">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                    <a className="hover:text-white" href="../Rate">
                         Quay về
                     </a>
                 </Button>
