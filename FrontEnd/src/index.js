@@ -62,8 +62,8 @@ import DeleteRate from './views/Admin/Rate/DeleteRate'
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
 import EnterEmail from './components/Auth/EnterEmail'
-import Repass from './components/Auth/Repass'
 import CheckCode from './components/Auth/CheckCode'
+import Repass from './components/Auth/Repass'
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -97,15 +97,22 @@ root.render(
               <Route path="discount" element={<DisCount />} />
               <Route path="rate" element={<Rate />} />
 
-
-
               <Route path="addproduct" element={<AddProduct />} />
               <Route path="editproduct/:id" element={<EditProduct />} />
               <Route path="deleteproduct/:id" element={<DeleteProduct />} />
 
-              <Route path="addproductcategory" element={<AddProductCategory />} />
-              <Route path="editproductcategory/:id" element={<EditProductCategory />} />
-              <Route path="deleteproductcategory/:id" element={<DeleteProductCategory />} />
+              <Route
+                path="addproductcategory"
+                element={<AddProductCategory />}
+              />
+              <Route
+                path="editproductcategory/:id"
+                element={<EditProductCategory />}
+              />
+              <Route
+                path="deleteproductcategory/:id"
+                element={<DeleteProductCategory />}
+              />
 
               <Route path="adduser" element={<AddUser />} />
               <Route path="edituser/:id" element={<EditUser />} />
@@ -117,7 +124,10 @@ root.render(
 
               <Route path="addsizeproduct" element={<AddSizeProduct />} />
               <Route path="editsizeproduct/:id" element={<EditSizeProduct />} />
-              <Route path="deletesizeproduct/:id" element={<DeleteSizeProduct />} />
+              <Route
+                path="deletesizeproduct/:id"
+                element={<DeleteSizeProduct />}
+              />
 
               <Route path="addreceipt" element={<AddReceipt />} />
               <Route path="editreceipt/:id" element={<EditReceipt />} />

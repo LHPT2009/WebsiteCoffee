@@ -2,33 +2,35 @@ import React, { useState } from 'react'
 import Button from '../Button/Button'
 import TextInput from '../Input/TextInput'
 import jwt_decode from 'jwt-decode'
-import { Navigate, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Repass = () => {
-  const [password, setPassword] = useState("");
-  const [rePassword, setrePassword] = useState("");
-  const navigate = useNavigate();
+  const [password, setPassword] = useState('')
+  const [rePassword, setrePassword] = useState('')
+  const navigate = useNavigate()
 
   const ResetPass = async (e) => {
-    e.preventDefault();
-    const rstoken = localStorage.getItem("tokenreset");
-    const email = jwt_decode(rstoken).email;
+    e.preventDefault()
+    const rstoken = localStorage.getItem('tokenreset')
+    const email = jwt_decode(rstoken).email
     if (password == rePassword) {
-      const updateUser = await axios.post("http://localhost:8000/mail/reset", { email: email, password: password });
+      const updateUser = await axios.post('http://localhost:8000/mail/reset', {
+        email: email,
+        password: password,
+      })
       if (updateUser) {
-        localStorage.removeItem("checksuccess");
-        localStorage.removeItem("tokenreset");
-        navigate("/signin");
-      }
-      else {
-        navigate("/repass");
+        localStorage.removeItem('checksuccess')
+        localStorage.removeItem('tokenreset')
+        navigate('/signin')
+      } else {
+        navigate('/repass')
       }
     } else {
-      navigate("/repass");
+      navigate('/repass')
     }
-  };
-  if (localStorage.getItem("checksuccess")) {
+  }
+  if (localStorage.getItem('checksuccess')) {
     return (
       <div className="text-center">
         <form onSubmit={ResetPass}>
@@ -49,7 +51,11 @@ const Repass = () => {
             />
           </div>
           <div>
-            <Button icon={'navigate_next'} onClick={ResetPass}>
+            <Button
+              icon={'navigate_next'}
+              onClick={ResetPass}
+              btnCSS={'h-[44px] px-6 py-3'}
+            >
               Tiếp tục
             </Button>
           </div>
@@ -57,7 +63,7 @@ const Repass = () => {
       </div>
     )
   } else {
-    return <Navigate to={"/checkcode"} />
+    return <Navigate to={'/checkcode'} />
   }
 }
 

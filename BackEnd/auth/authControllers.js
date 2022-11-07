@@ -2,7 +2,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 const authController = {
   registerUser: async (req, res) => {
@@ -18,7 +18,7 @@ const authController = {
         confirmemail: false,
         password: hashed,
         role: "6335aaa724e48c7daf722fdb",
-        numberphone: ""
+        numberphone: "",
       });
       res.status(200).json(newUser);
       await newUser.save();
@@ -35,7 +35,7 @@ const authController = {
         subject: "Confirm Email", // Subject line
         text: "Confirm Email!", // plain text body
         html: `<h1>thử demo trang Confirm Email</h1>`, // html body
-      })
+      });
     } catch (error) {
       console.log(error);
       res.status(500).json(error);

@@ -17,16 +17,10 @@ table {
   padding: 0.5rem;
 }
 
-/* thead {
-  border-radius: 28px;
-  background-color: antiquewhite;
+tr:hover {
+  background: none;
 }
 
 th, td {
   text-transform: none;
 }
-
-tbody {
-  background-color: #3d685e;
-  border-radius: 2rem;
-} */

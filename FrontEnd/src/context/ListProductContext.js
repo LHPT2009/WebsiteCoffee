@@ -45,6 +45,10 @@ const ListProductProvider = (props) => {
     setProducts([...products])
   }
 
+  const clearCart = () => {
+    setProducts([])
+  }
+
   return (
     <ListProductContext.Provider
       value={{
@@ -53,6 +57,7 @@ const ListProductProvider = (props) => {
         delProduct,
         upAmount,
         downAmount,
+        clearCart,
       }}
     >
       {props.children}

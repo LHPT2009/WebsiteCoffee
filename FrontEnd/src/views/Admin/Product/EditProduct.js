@@ -4,30 +4,52 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
-import { useParams } from "react-router-dom";
+import { Link, useParams } from 'react-router-dom'
+import TextInput from '../../../components/Input/TextInput'
 
 const EditProduct = () => {
-    const [Product, setProduct] = useState([]);
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  //const [image, setImage] = useState(null);
+  const [dataProduct, setDataProduct] = useState([])
 
-    const { id } = useParams();
+  const { id } = useParams()
 
-    axios.get(`http://localhost:8000/product/${id}`).then((res) => {
-        setProduct(res.data);
-    });
+  axios.get(`http://localhost:8000/product/${id}`).then((res) => {
+    setDataProduct(res.data)
+  })
 
-    return (
-        <div>
-            <h2 className="page-header">
-                <b>Chỉnh sửa sản phẩm</b>
-            </h2>
-            <div>
-                <h1>Tên sản phẩm</h1>
-                <input
-                    type={"text"}
-                    onChange={""}
-                    defaultValue={Product.name}
-                /><br />
-                {/* <div>
+  const handleEdit = (e) => {
+    e.preventDefault()
+    axios
+      .put(`http://localhost:8000/product/${id}`, { name, price })
+      .then((res) => {
+        const result = res.data
+        if (result) {
+          alert('sửa dữ liệu thành công!')
+        } else {
+          alert('Dự liệu của bạn ko sửa dc!!!')
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  return (
+    <div>
+      <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
+        Chỉnh sửa sản phẩm
+      </h1>
+      <div>
+        <h1>Tên sản phẩm</h1>
+        <input
+          type={'text'}
+          onChange={(e) => setName(e.target.value)}
+          defaultValue={dataProduct.name}
+        />
+        <br />
+        {/* <div>
                 <h1>Hình ảnh</h1>
                 {image && (
                     <div>
@@ -47,28 +69,24 @@ const EditProduct = () => {
                 />
                 </div> */}
 
-                <h1>Giá</h1>
-                <input
-                    type={"text"}
-                    defaultValue={Product.price}
-                    onChange={"(e) => setPrice(e.target.value)"}
-                />
-                <br />
-            </div>
-            <div>
-                <Button type="button">
-                    <a onClick={""}>
-                        Sửa
-                    </a>
-                </Button>
-                <Button type="button">
-                    <a href="../Products">
-                        Quay về
-                    </a>
-                </Button>
-            </div>
-        </div>
-    )
+        <h1>Giá</h1>
+        <input
+          type={'text'}
+          defaultValue={dataProduct.price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+        <br />
+      </div>
+      <div>
+        <Button type="button">
+          <a onClick={handleEdit}>Sửa</a>
+        </Button>
+        <Button type="button">
+          <a href="../Products">Quay về</a>
+        </Button>
+      </div>
+    </div>
+  )
 }
 
 export default EditProduct
