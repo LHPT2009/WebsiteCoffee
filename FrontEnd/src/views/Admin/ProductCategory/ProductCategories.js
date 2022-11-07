@@ -28,7 +28,7 @@ const ProductCategories = () => {
         icon="add"
       >
         <Link className="hover:text-white" to="../addproductcategory">
-          Thêm mới
+          Thêm loại sản phẩm
         </Link>
       </Button>
       <div className="row">
@@ -49,27 +49,25 @@ const ProductCategories = () => {
                       <td>{item.name}</td>
                       <td style={{ minWidth: 100 }}>
                         <Button
-                          btnStyle={'btn-outline'}
                           type="button"
                           btnCSS={'h-11 mr-2'}
                           icon="edit"
                         >
                           <Link
                             className="hover:text-white"
-                            to={'../EditProductCategories/' + item._id}
+                            to={'../EditProductCategory/' + item._id}
                           >
                             Sửa
                           </Link>
                         </Button>
                         <Button
-                          btnStyle={'btn-outline'}
                           type="button"
                           btnCSS={'h-11'}
                           icon="delete"
                         >
                           <Link
                             className="hover:text-white"
-                            to={'../DeleteProductCategories/' + item._id}
+                            to={'../DeleteProductCategory/' + item._id}
                           >
                             Xóa
                           </Link>

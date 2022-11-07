@@ -8,6 +8,7 @@ const TextInput = ({
   className,
   required,
   defaultValue,
+  disabled,
 }) => {
   return (
     <input
@@ -19,6 +20,7 @@ const TextInput = ({
       placeholder={placeholder}
       required={required}
       defaultValue={defaultValue}
+      disabled={disabled}
     ></input>
   )
 }

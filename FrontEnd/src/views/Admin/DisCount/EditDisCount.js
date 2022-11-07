@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
+import TextInput from '../../../components/Input/TextInput';
+
 import { useParams } from "react-router-dom";
 
 const EditProduct = () => {
@@ -17,49 +19,54 @@ const EditProduct = () => {
 
     return (
         <div>
-            <h2 className="page-header">
-                <b>Chỉnh sửa sản phẩm</b>
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
+                <b>Chỉnh sửa mã giảm giá</b>
             </h2>
             <div>
-                <h1>Tên</h1>
-                <input
-                    type={"text"}
-                    onChange={""}
-                    defaultValue={disCount.name}
-                /><br />
+            <TextInput
+                placeholder={'Tên mã'}
+                type="text"
+                required={'required'}
+                onChange={""}
+                defaultValue={disCount.name}
+                className="block w-[400px]"
+            /> <br />
 
+            <TextInput
+                placeholder={'Giá'}
+                type="text"
+                required={'required'}
+                onChange={""}
+                defaultValue={disCount.price}
+                className="block w-[400px]"
+            />  <br />
 
-                <h1>Giá</h1>
-                <input
-                    type={"text"}
-                    defaultValue={disCount.price}
-                    onChange={"(e) => setPrice(e.target.value)"}
-                />
-                <br />
-                <h1>Ngày BD</h1>
-                <input
-                    type={"text"}
-                    onChange={""}
-                    defaultValue={disCount.startdate}
-                /><br />
+            <TextInput
+                placeholder={'Ngày bắt đầu'}
+                type="text"
+                required={'required'}
+                onChange={""}
+                defaultValue={disCount.startdate}
+                className="block w-[400px]"
+            />  <br />
 
-
-                <h1>Ngày KT</h1>
-                <input
-                    type={"text"}
-                    defaultValue={disCount.enddate}
-                    onChange={"(e) => setPrice(e.target.value)"}
-                />
-                <br />
+            <TextInput
+                placeholder={'Ngày kết thúc'}
+                type="text"
+                required={'required'}
+                onChange={""}
+                defaultValue={disCount.enddate}
+                className="block w-[400px]"
+            />  <br />
             </div>
             <div>
-                <Button type="button">
-                    <a onClick={""}>
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit">
+                    <a className="hover:text-white" onClick={""}>
                         Sửa
                     </a>
                 </Button>
-                <Button type="button">
-                    <a href="../Products">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                    <a className="hover:text-white" href="../Discount">
                         Quay về
                     </a>
                 </Button>

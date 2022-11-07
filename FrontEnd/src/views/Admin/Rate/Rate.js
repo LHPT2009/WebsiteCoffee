@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
-const Products = () => {
+const Rate = () => {
     const [rate, setRate] = useState([])
     useEffect(() => {
         axios.get('http://localhost:8000/rate').then((res) => {
@@ -16,8 +16,8 @@ const Products = () => {
         })
     }, [])
     return (
-        <div>
-            <h2 className="page-header">
+        <div className="font-googleSansRegular">
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                 Đánh giá
             </h2>
             <div className="row">
@@ -31,7 +31,7 @@ const Products = () => {
                                         <th>Mã sản phẩm</th>
                                         <th>Mã User</th>
                                         <th>Điểm</th>
-                                        <th>Nôi Dung</th>
+                                        <th>Nội dung</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,8 +42,8 @@ const Products = () => {
                                             <td>{item.point}</td>
                                             <td>{item.content}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editrate/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deleterate/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-11 mr-2'}><Link className="hover:text-white" to={`/admin/editrate/${item._id}`}>Sửa</Link></Button>|
+                                                <Button icon="delete" btnCSS={'h-11'}><Link className="hover:text-white" to={`/admin/deleterate/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>
                                     )}
@@ -57,4 +57,4 @@ const Products = () => {
     )
 }
 
-export default Products
+export default Rate

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
-
+import TextInput from '../../../components/Input/TextInput'
 import { useParams } from "react-router-dom";
 
 const DeleteProduct = () => {
@@ -14,13 +14,18 @@ const DeleteProduct = () => {
     }, []);
 
     return (
-        <div>
-            <h2 className="page-header">
+        <div className="font-googleSansRegular">
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                 <b>Xóa sản phẩm</b>
             </h2>
             <div>
-                <h1>Tên sản phẩm</h1>
-                <input type={"text"} placeholder={"Tên sản phẩm"} value={product.name} /> <br />
+            <TextInput
+                placeholder={'Tên sản phẩm'}
+                type="text"
+                defaultValue={product.name}
+                className="block w-[400px]"
+                disabled={'disabled'}
+            /> <br />
                 {/* <div>
                     <h1>Hình ảnh</h1>
                     {image && (
@@ -37,17 +42,22 @@ const DeleteProduct = () => {
                         readOnly
                     />
                 </div> */}
-                <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"} value={product.price} /> <br />
+                <TextInput
+                    placeholder={'Giá'}
+                    type="text"
+                    defaultValue={product.price}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
             </div>
             <div>
-                <Button type="button">
-                    <a>
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete">
+                    <a className="hover:text-white">
                         Xóa
                     </a>
                 </Button>
-                <Button type="button">
-                    <a href="../Products">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                    <a className="hover:text-white" href="../Products">
                         Quay về
                     </a>
                 </Button>

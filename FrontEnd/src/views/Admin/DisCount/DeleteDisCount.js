@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
+import TextInput from '../../../components/Input/TextInput';
+
 import { useParams } from "react-router-dom";
 
 const DeleteProduct = () => {
@@ -15,27 +17,47 @@ const DeleteProduct = () => {
 
     return (
         <div>
-            <h2 className="page-header">
-                <b>Xóa sản phẩm</b>
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
+                <b>Xóa mã giảm giá</b>
             </h2>
             <div>
-                <h1>Tên sản phẩm</h1>
-                <input type={"text"} placeholder={"Tên sản phẩm"} value={disCount.name} /> <br />
-                <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"} value={disCount.price} /> <br />
-                <h1>Tên sản phẩm</h1>
-                <input type={"text"} placeholder={"Tên sản phẩm"} value={disCount.startdate} /> <br />
-                <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"} value={disCount.enddate} /> <br />
+                <TextInput
+                    placeholder={'Tên mã'}
+                    type="text"
+                    defaultValue={disCount.name}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
+                <TextInput
+                    placeholder={'Giá'}
+                    type="text"
+                    defaultValue={disCount.price}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
+                <TextInput
+                    placeholder={'Ngày bắt đầu'}
+                    type="text"
+                    defaultValue={disCount.startdate}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
+                <TextInput
+                    placeholder={'Ngày kết thúc'}
+                    type="text"
+                    defaultValue={disCount.enddate}
+                    className="block w-[400px]"
+                    disabled={'disabled'}
+                /> <br />
             </div>
             <div>
-                <Button type="button">
-                    <a>
+                <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete">
+                    <a className="hover:text-white">
                         Xóa
                     </a>
                 </Button>
-                <Button type="button">
-                    <a href="../Products">
+                <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                    <a className="hover:text-white" href="../Discount">
                         Quay về
                     </a>
                 </Button>

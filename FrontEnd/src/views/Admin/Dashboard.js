@@ -168,7 +168,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <h2 className="page-header">Dashboard</h2>
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">Dashboard</h2>
             <div className="row">
                 <div className="col-6">
                     <div className="row">

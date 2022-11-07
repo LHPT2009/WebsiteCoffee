@@ -16,10 +16,20 @@ const Products = () => {
         })
     }, [])
     return (
-        <div>
-            <h2 className="page-header">
+        <div className="font-googleSansRegular">
+            <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                 Mã Phiếu Giảm Giá
             </h2>
+            <Button
+                btnStyle={'btn-outline'}
+                type="button"
+                btnCSS={'h-11 mb-10'}
+                icon="add"
+            >
+                <a className="hover:text-white" href="./AddDisCount">
+                    Thêm mã giảm giá
+                </a>
+            </Button>
             <div className="row">
                 <div className="col-12">
                     <div className="card">
@@ -38,11 +48,11 @@ const Products = () => {
                                         <tr key={item._id}>
                                             <td>{item.name}</td>
                                             <td>{item.price} đ</td>
-                                            <td>{item.startdate} đ</td>
-                                            <td>{item.enddate} đ</td>
+                                            <td>{item.startdate}</td>
+                                            <td>{item.enddate}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editdiscount/${item._id}`}>Sửa</Link></Button>|
-                                                <Button><Link to={`/admin/deletediscount/${item._id}`}>Xóa</Link></Button>|
+                                                <Button icon="edit" btnCSS={'h-11 mr-2'}><Link className="hover:text-white" to={`/admin/editdiscount/${item._id}`}>Sửa</Link></Button>
+                                                <Button icon="delete" btnCSS={'h-11'}><Link  className="hover:text-white" to={`/admin/deletediscount/${item._id}`}>Xóa</Link></Button>
                                             </td>
                                         </tr>
                                     )}
