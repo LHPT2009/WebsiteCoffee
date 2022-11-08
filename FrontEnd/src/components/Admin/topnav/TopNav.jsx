@@ -14,8 +14,9 @@ import user_image from '../../../assets/images/icon.png'
 
 import user_menu from '../../../assets/JsonData/user_menus.json'
 
+import jwtdecode from '../../../header/jwt-decode'
 const curr_user = {
-    display_name: 'John Doe',
+    display_name: jwtdecode().name,
     image: user_image
 }
 
@@ -37,7 +38,7 @@ const renderUserToggle = (user) => (
     </div>
 )
 
-const renderUserMenu =(item, index) => (
+const renderUserMenu = (item, index) => (
     <Link to='/' key={index}>
         <div className="notification-item">
             <i className={item.icon}></i>
@@ -73,7 +74,7 @@ const Topnav = () => {
                     {/* dropdown here */}
                 </div>
                 <div className="topnav__right-item">
-                    <ThemeMenu/>
+                    <ThemeMenu />
                 </div>
             </div>
         </div>

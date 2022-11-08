@@ -6,9 +6,14 @@ import { ListProductContext } from '../../context/ListProductContext'
 import jwtdecode from '../../header/jwt-decode'
 
 const Header = () => {
-  const navigate = useNavigate()
   const { products } = useContext(ListProductContext)
   let [open, setOpen] = useState(false)
+  const navigate = useNavigate();
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    navigate("/");
+  }
   const activated = 'active:text-primary'
   const [active, setActive] = useState('')
   useEffect(() => {})
@@ -34,9 +39,8 @@ const Header = () => {
             </div>
 
             <ul
-              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[20px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${
-                open ? 'top-[56px]' : 'top-[-420px]'
-              } `}
+              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[20px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${open ? 'top-[56px]' : 'top-[-420px]'
+                } `}
             >
               <button
                 className={`flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px] text-black hover:text-primary ${activated}`}
@@ -95,12 +99,24 @@ const Header = () => {
 
           <div className="hover:bg-s5 rounded-[16px]">
             <div className="flex flex-row justify-between items-center m-[12px]">
-              <Link
+              {/* <Link
                 className="flex flex-row text-black text-center hover:text-primary"
                 to="/signin"
               >
                 <span class="material-symbols-outlined">person</span>
-              </Link>
+              </Link> */}
+              {localStorage.getItem("token") ?
+                <div>
+                  <p>Hello {jwtdecode().name} <button onClick={logout}> Đăng xuất !!!</button></p>
+                </div>
+                :
+                <Link
+                  className="flex flex-row text-black text-center hover:text-primary"
+                  to="/signin"
+                >
+                  <span class="material-symbols-outlined">person</span>
+                  <p>Đăng nhập</p>
+                </Link>}
             </div>
           </div>
         </div>
