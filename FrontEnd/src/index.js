@@ -50,10 +50,10 @@ import AddReceipt from './views/Admin/Receipt/AddReceipt'
 import EditReceipt from './views/Admin/Receipt/EditReceipt'
 import DeleteReceipt from './views/Admin/Receipt/DeleteReceipt'
 
-import Discount from './views/Admin/Discount/Discount'
-import AddDiscount from './views/Admin/Discount/AddDiscount'
-import EditDiscount from './views/Admin/Discount/EditDiscount'
-import DeleteDiscount from './views/Admin/Discount/DeleteDiscount'
+import DisCount from './views/Admin/DisCount/DisCount'
+import AddDisCount from './views/Admin/DisCount/AddDisCount'
+import EditDisCount from './views/Admin/DisCount/EditDisCount'
+import DeleteDisCount from './views/Admin/DisCount/DeleteDisCount'
 
 import Rate from './views/Admin/Rate/Rate'
 import EditRate from './views/Admin/Rate/EditRate'
@@ -94,7 +94,7 @@ root.render(
               <Route path="roles" element={<Roles />} />
               <Route path="sizeproducts" element={<SizeProducts />} />
               <Route path="receipts" element={<Receipts />} />
-              <Route path="discount" element={<Discount />} />
+              <Route path="discount" element={<DisCount />} />
               <Route path="rate" element={<Rate />} />
 
               <Route path="addproduct" element={<AddProduct />} />
@@ -133,9 +133,9 @@ root.render(
               <Route path="editreceipt/:id" element={<EditReceipt />} />
               <Route path="deletereceipt/:id" element={<DeleteReceipt />} />
 
-              <Route path="discount" element={<AddDiscount />} />
-              <Route path="editdiscount/:id" element={<EditDiscount />} />
-              <Route path="deletediscount/:id" element={<DeleteDiscount />} />
+              <Route path="adddiscount" element={<AddDisCount />} />
+              <Route path="editdiscount/:id" element={<EditDisCount />} />
+              <Route path="deletediscount/:id" element={<DeleteDisCount />} />
 
               <Route path="editrate/:id" element={<EditRate />} />
               <Route path="deleterate/:id" element={<DeleteRate />} />

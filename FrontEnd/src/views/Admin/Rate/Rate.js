@@ -41,9 +41,9 @@ const Rate = () => {
                       <td>{item.point}</td>
                       <td>{item.content}</td>
                       <td style={{ minWidth: 100 }}>
-                        <Button>
+                        {/* <Button>
                           <Link to={`/admin/editrate/${item._id}`}>Sửa</Link>
-                        </Button>
+                        </Button> */}
                         |
                         <Button>
                           <Link to={`/admin/deleterate/${item._id}`}>Xóa</Link>
