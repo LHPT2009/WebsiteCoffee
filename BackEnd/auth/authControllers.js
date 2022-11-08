@@ -47,6 +47,7 @@ const authController = {
       {
         id: user.id,
         role: user.role.rolename,
+        name: user.lastname + " " + user.firstname
       },
       process.env.JWT_ACCESS_KEY,
       { expiresIn: "1d" }
