@@ -38,7 +38,9 @@ const Coffee = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="relative pb-24 lg:pb-12 min-h-screen">
+        <Footer />
+      </div>
     </>
   )
 }
