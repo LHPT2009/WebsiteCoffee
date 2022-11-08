@@ -10,7 +10,7 @@ const Header = () => {
   const { products } = useContext(ListProductContext)
   let [open, setOpen] = useState(false)
   return (
-    <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-3 z-[999]">
+    <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-3 z-[999] text-l2">
       <div className="flex justify-between items-start px-[20] md:px-[60px] py-[8px] bg-s1 mx-10 w-full">
         <div className="flex flex-row items-start gap-[24px] md:gap-[60px]">
           <Link to="/">

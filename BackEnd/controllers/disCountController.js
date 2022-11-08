@@ -1,4 +1,4 @@
-const DisCount = require('../models/disCount');
+const DisCount = require('../models/discount');
 
 const disCountController = {
     getAllDisCount: async (req, res) => {

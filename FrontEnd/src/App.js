@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="font-googleSansRegular">
+    <div className="bg-background font-googleSansRegular relative pb-24 lg:pb-12">
       <Home />
     </div>
   )

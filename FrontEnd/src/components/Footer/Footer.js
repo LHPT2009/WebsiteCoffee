@@ -5,8 +5,7 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <div className="sm:h-[128px] h-16 font-googleSansRegular">
-      <footer className="fixed bottom-0 flex flex-row justify-center items-center px-[20px] md:px-[120px] py-[8] border-t-[1px] border-outline-var bg-s1 w-full z-[100]">
+      <footer className="absolute bottom-0 justify-center items-center px-[20px] md:px-[120px] py-[8] border-t-[1px] border-outline-var bg-s1 w-full z-[100]">
         <div className="flex flex-col lg:flex-row justify-between items-left lg:items-center px-[20px] w-full">
           <div className="flex flex-row justify-between items-center gap-[24px]">
             <img
@@ -74,7 +73,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </div>
+    
   )
 }
 

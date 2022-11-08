@@ -17,7 +17,7 @@ function MenuHome() {
       {/* container */}
       <div className="z-[1] relative mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {/* menu list */}
-        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-[32px] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {product.map((item) => (
             <Link to={'/product/' + item._id}>
               <ItemCard
