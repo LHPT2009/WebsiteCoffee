@@ -42,7 +42,6 @@ const Products = () => {
                                             <td>{item.point}</td>
                                             <td>{item.content}</td>
                                             <td style={{ minWidth: 100 }}>
-                                                <Button><Link to={`/admin/editrate/${item._id}`}>Sửa</Link></Button>|
                                                 <Button><Link to={`/admin/deleterate/${item._id}`}>Xóa</Link></Button>|
                                             </td>
                                         </tr>

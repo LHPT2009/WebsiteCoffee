@@ -6,37 +6,60 @@ import Button from '../../../components/Button/Button'
 
 import { useParams } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+
 const EditSizeProduct = () => {
     const [sizeProduct, setSizeProduct] = useState([]);
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState(0);
+    const navigate = useNavigate();
+
 
     const { id } = useParams();
 
     axios.get(`http://localhost:8000/sizeproduct/${id}`).then((res) => {
         setSizeProduct(res.data);
     });
+
+    const editSizeProduct = async (e) => {
+        e.preventDefault();
+        const edit = await axios.put(`http://localhost:8000/sizeproduct/${id}`, { name, price });
+        if (edit) {
+            navigate("/admin/sizeproducts");
+        } else {
+            alert("Sua ko thanh cong!!!");
+        }
+    }
+
     return (
         <div>
-            <h2 className="page-header">
-                <b>Chỉnh sửa kích cỡ</b>
-            </h2>
-            <div>
-                <h1>Tên kích cỡ</h1>
-                <input type={"text"} placeholder={"Tên kích cỡ"} defaultValue={sizeProduct.name} /> <br />
-                <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"} defaultValue={sizeProduct.price} /> <br />
-            </div>
-            <div>
-                <Button type="button">
-                    <a>
-                        Sửa
-                    </a>
-                </Button>
-                <Button type="button">
-                    <a href="./SizeProducts">
-                        Quay về
-                    </a>
-                </Button>
-            </div>
+            <form onSubmit={editSizeProduct}>
+                <h2 className="page-header">
+                    <b>Chỉnh sửa kích cỡ</b>
+                </h2>
+                <div>
+                    <h1>Tên kích cỡ</h1>
+                    <input type={"text"} placeholder={"Tên kích cỡ"} defaultValue={sizeProduct.name}
+                        onChange={(e) => setName(e.target.value)}
+                    /> <br />
+                    <h1>Giá</h1>
+                    <input type={"text"} placeholder={"Giá"} defaultValue={sizeProduct.price}
+                        onChange={(e) => setPrice(e.target.value)}
+                    /> <br />
+                </div>
+                <div>
+                    <Button type="button" onClick={editSizeProduct}>
+                        <a>
+                            Sửa
+                        </a>
+                    </Button>
+                    <Button type="button">
+                        <a href="./SizeProducts">
+                            Quay về
+                        </a>
+                    </Button>
+                </div>
+            </form>
         </div>
     )
 }

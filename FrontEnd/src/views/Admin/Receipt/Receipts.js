@@ -21,11 +21,6 @@ const Receipts = () => {
             <h2 className="page-header">
                 Hóa đơn
             </h2>
-            <Button type="button">
-                <a href="./AddReceipt">
-                    Thêm hóa đơn
-                </a>
-            </Button>
             <div className="row">
                 <div className="col-12">
                     <div className="card">

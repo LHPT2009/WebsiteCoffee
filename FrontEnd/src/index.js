@@ -37,7 +37,6 @@ import DeleteProduct from './views/Admin/Product/DeleteProduct'
 import AddProductCategory from './views/Admin/ProductCategory/AddProductCategory'
 import EditProductCategory from './views/Admin/ProductCategory/EditProductCategory'
 import DeleteProductCategory from './views/Admin/ProductCategory/DeleteProductCategory'
-import AddUser from './views/Admin/User/AddUser'
 import EditUser from './views/Admin/User/EditUser'
 import DeleteUser from './views/Admin/User/DeleteUser'
 import AddRole from './views/Admin/Role/AddRole'
@@ -46,7 +45,6 @@ import DeleteRole from './views/Admin/Role/DeleteRole'
 import AddSizeProduct from './views/Admin/SizeProduct/AddSizeProduct'
 import EditSizeProduct from './views/Admin/SizeProduct/EditSizeProduct'
 import DeleteSizeProduct from './views/Admin/SizeProduct/DeleteSizeProduct'
-import AddReceipt from './views/Admin/Receipt/AddReceipt'
 import EditReceipt from './views/Admin/Receipt/EditReceipt'
 import DeleteReceipt from './views/Admin/Receipt/DeleteReceipt'
 
@@ -56,7 +54,6 @@ import EditDisCount from './views/Admin/DisCount/EditDisCount'
 import DeleteDisCount from './views/Admin/DisCount/DeleteDisCount'
 
 import Rate from './views/Admin/Rate/Rate'
-import EditRate from './views/Admin/Rate/EditRate'
 import DeleteRate from './views/Admin/Rate/DeleteRate'
 
 import SignIn from './components/Auth/SignIn'
@@ -107,7 +104,6 @@ root.render(
               <Route path="editproductcategory/:id" element={<EditProductCategory />} />
               <Route path="deleteproductcategory/:id" element={<DeleteProductCategory />} />
 
-              <Route path="adduser" element={<AddUser />} />
               <Route path="edituser/:id" element={<EditUser />} />
               <Route path="deleteuser/:id" element={<DeleteUser />} />
 
@@ -119,15 +115,13 @@ root.render(
               <Route path="editsizeproduct/:id" element={<EditSizeProduct />} />
               <Route path="deletesizeproduct/:id" element={<DeleteSizeProduct />} />
 
-              <Route path="addreceipt" element={<AddReceipt />} />
               <Route path="editreceipt/:id" element={<EditReceipt />} />
               <Route path="deletereceipt/:id" element={<DeleteReceipt />} />
 
-              <Route path="discount" element={<AddDisCount />} />
+              <Route path="adddiscount" element={<AddDisCount />} />
               <Route path="editdiscount/:id" element={<EditDisCount />} />
               <Route path="deletediscount/:id" element={<DeleteDisCount />} />
 
-              <Route path="editrate/:id" element={<EditRate />} />
               <Route path="deleterate/:id" element={<DeleteRate />} />
 
             </Route>

@@ -20,6 +20,11 @@ const Products = () => {
             <h2 className="page-header">
                 Mã Phiếu Giảm Giá
             </h2>
+            <Button type="button">
+                <a href="./AddDisCount">
+                    Thêm sản phẩm
+                </a>
+            </Button>
             <div className="row">
                 <div className="col-12">
                     <div className="card">

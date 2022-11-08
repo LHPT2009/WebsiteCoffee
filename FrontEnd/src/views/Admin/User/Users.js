@@ -21,11 +21,6 @@ const Users = () => {
             <h2 className="page-header">
                 Tài khoản
             </h2>
-            <Button type="button">
-                <a href="./AddUser">
-                    Thêm tài khoản
-                </a>
-            </Button>
             <div className="row">
                 <div className="col-12">
                     <div className="card">
