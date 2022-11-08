@@ -9,6 +9,9 @@ const Header = () => {
   const navigate = useNavigate()
   const { products } = useContext(ListProductContext)
   let [open, setOpen] = useState(false)
+  const activated = 'active:text-primary'
+  const [active, setActive] = useState('')
+  useEffect(() => {})
   return (
     <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-3 z-[999] text-l2">
       <div className="flex justify-between items-start px-[20] md:px-[60px] py-[8px] bg-s1 mx-10 w-full">
@@ -35,14 +38,14 @@ const Header = () => {
                 open ? 'top-[56px]' : 'top-[-420px]'
               } `}
             >
-              <li className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px]">
-                <Link
-                  className="block text-black hover:text-primary w-full"
-                  to="/product"
-                >
-                  Cà phê
-                </Link>
-              </li>
+              <button
+                className={`flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px] text-black hover:text-primary ${activated}`}
+                onClick={() => {
+                  navigate('/product')
+                }}
+              >
+                Cà phê
+              </button>
               <li className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px]">
                 <Link
                   className="text-black text-left hover:text-primary w-full"
@@ -71,7 +74,7 @@ const Header = () => {
               >
                 <span class="material-symbols-outlined">shopping_cart</span>
                 {products.length > 0 && (
-                  <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-[12px]">
+                  <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-xl font-medium pt-[2px]">
                     {products.length}
                   </div>
                 )}
