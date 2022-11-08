@@ -37,7 +37,7 @@ const ItemDetail = () => {
   }
 
   return (
-    <>
+    <div className="relative pb-24 lg:pb-12 min-h-screen">
       <Header />
       <div className="h-20"></div>
       <div className="sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] font-googleSansRegular">
@@ -157,10 +157,8 @@ const ItemDetail = () => {
           </div>
         </div>
       </div>
-      <div className="relative pb-24 lg:pb-12 min-h-screen">
-        <Footer />
-      </div>
-    </>
+      <Footer />
+    </div>
   )
 }
 
