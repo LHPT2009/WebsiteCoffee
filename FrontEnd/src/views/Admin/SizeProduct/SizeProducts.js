@@ -54,7 +54,7 @@ const SizeProducts = () => {
                         <Button
                           btnStyle={'btn-outline'}
                           onClick={() => {
-                            navigate('../editproduct/' + item._id)
+                            navigate('../editsizeproduct/' + item._id)
                           }}
                           btnCSS={'h-11 mr-2'}
                           icon="edit"
@@ -64,7 +64,7 @@ const SizeProducts = () => {
                         <Button
                           btnStyle={'btn-outline'}
                           onClick={() => {
-                            navigate('../deleteproduct/' + item._id)
+                            navigate('../deletesizeproduct/' + item._id)
                           }}
                           btnCSS={'h-11'}
                           icon="delete"

@@ -4,31 +4,53 @@ import axios from 'axios'
 
 import Button from '../../../components/Button/Button'
 
+import { useNavigate } from "react-router-dom";
+
 const AddSizeProduct = () => {
+
+    const navigate = useNavigate();
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState(0);
+    const [productid, setProductId] = useState("");
+
+
+    const addSizeProduct = async (e) => {
+        e.preventDefault();
+        const add = await axios.post(`http://localhost:8000/sizeproduct`, { name: name, productid: productid, price: price });
+        if (add) {
+            navigate("/admin/sizeproducts");
+        } else {
+            alert(`them ko thanh cong!!!`);
+        }
+    }
 
     return (
         <div>
-            <h2 className="page-header">
-                <b>Thêm kích cỡ</b>
-            </h2>
-            <div>
-                <h1>Tên kích cỡ</h1>
-                <input type={"text"} placeholder={"Tên kích cỡ"} /> <br />
-                <h1>Giá</h1>
-                <input type={"text"} placeholder={"Giá"} /> <br />
-            </div>
-            <div>
-                <Button type="button">
-                    <a>
-                        Thêm
-                    </a>
-                </Button>
-                <Button type="button">
-                    <a href="./SizeProducts">
-                        Quay về
-                    </a>
-                </Button>
-            </div>
+            <form onSubmit={addSizeProduct}>
+                <h2 className="page-header">
+                    <b>Thêm kích cỡ</b>
+                </h2>
+                <div>
+                    <h1>Tên kích cỡ</h1>
+                    <input type={"text"} placeholder={"Mã sản phẩm"} onChange={(e) => setProductId(e.target.value)} /> <br />
+                    <h1>Tên kích cỡ</h1>
+                    <input type={"text"} placeholder={"Tên kích cỡ"} onChange={(e) => setName(e.target.value)} /> <br />
+                    <h1>Giá</h1>
+                    <input type={"text"} placeholder={"Giá"} onChange={(e) => setPrice(e.target.value)} /> <br />
+                </div>
+                <div>
+                    <Button type="button" onClick={addSizeProduct}>
+                        <a>
+                            Thêm
+                        </a>
+                    </Button>
+                    <Button type="button">
+                        <a href="./SizeProducts">
+                            Quay về
+                        </a>
+                    </Button>
+                </div>
+            </form>
         </div>
     )
 }

@@ -14,6 +14,10 @@ import Badge from '../../components/Admin/badge/Badge'
 
 import statusCards from '../../assets/JsonData/status-card-data.json'
 
+import { Navigate } from "react-router-dom";
+
+import jwtdecode from "../../header/jwt-decode";
+
 const chartOptions = {
   series: [
     {
@@ -166,69 +170,76 @@ const renderOrderBody = (item, index) => (
 
 const Dashboard = () => {
   const themeReducer = useSelector((state) => state.ThemeReducer.mode)
-
-  return (
-    <div>
-      <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
-        Trang chủ
-      </h1>
-      <div className="row">
-        <div className="col-6">
+  if (localStorage.getItem("token")) {
+    if (jwtdecode().role == "Admin" || jwtdecode().role == "SuperAdmin") {
+      return (
+        <div>
+          <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
+            Trang chủ
+          </h1>
           <div className="row">
-            {statusCards.map((item, index) => (
-              <div className="col-6" key={index}>
-                <StatusCard
-                  icon={item.icon}
-                  count={item.count}
-                  title={item.title}
+            <div className="col-6">
+              <div className="row">
+                {statusCards.map((item, index) => (
+                  <div className="col-6" key={index}>
+                    <StatusCard
+                      icon={item.icon}
+                      count={item.count}
+                      title={item.title}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="col-6">
+              <div className="card full-height">
+                {/* chart */}
+                <Chart
+                  options={
+                    themeReducer === 'theme-mode-dark'
+                      ? {
+                        ...chartOptions.options,
+                        theme: { mode: 'dark' },
+                      }
+                      : {
+                        ...chartOptions.options,
+                        theme: { mode: 'light' },
+                      }
+                  }
+                  series={chartOptions.series}
+                  type="line"
+                  height="100%"
                 />
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="col-6">
-          <div className="card full-height">
-            {/* chart */}
-            <Chart
-              options={
-                themeReducer === 'theme-mode-dark'
-                  ? {
-                      ...chartOptions.options,
-                      theme: { mode: 'dark' },
-                    }
-                  : {
-                      ...chartOptions.options,
-                      theme: { mode: 'light' },
-                    }
-              }
-              series={chartOptions.series}
-              type="line"
-              height="100%"
-            />
-          </div>
-        </div>
+            </div>
 
-        <div className="col-12">
-          <div className="card">
-            <div className="card__header">
-              <h3>Đơn mới nhất</h3>
-            </div>
-            <div className="card__body">
-              <Table
-                headData={latestOrders.header}
-                renderHead={(item, index) => renderOrderHead(item, index)}
-                bodyData={latestOrders.body}
-                renderBody={(item, index) => renderOrderBody(item, index)}
-              />
-            </div>
-            <div className="card__footer">
-              <Link to="./Receipts">Xem tất cả</Link>
+            <div className="col-12">
+              <div className="card">
+                <div className="card__header">
+                  <h3>Đơn mới nhất</h3>
+                </div>
+                <div className="card__body">
+                  <Table
+                    headData={latestOrders.header}
+                    renderHead={(item, index) => renderOrderHead(item, index)}
+                    bodyData={latestOrders.body}
+                    renderBody={(item, index) => renderOrderBody(item, index)}
+                  />
+                </div>
+                <div className="card__footer">
+                  <Link to="./Receipts">Xem tất cả</Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
+      );
+    } else {
+      return <Navigate to={"/"} />
+    }
+  } else {
+    return <Navigate to={"/"} />
+  }
 }
 
 export default Dashboard

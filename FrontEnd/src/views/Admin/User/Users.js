@@ -22,16 +22,6 @@ const Users = () => {
       <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
         Tài khoản
       </h1>
-      <Button
-        btnStyle={'btn-outline'}
-        btnCSS={'h-11 mb-10'}
-        icon="add"
-        onClick={() => {
-          navigate('../adduser')
-        }}
-      >
-        Thêm mới
-      </Button>
       <div className="row">
         <div className="col-12">
           <div className="card">

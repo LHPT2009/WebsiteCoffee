@@ -31,7 +31,9 @@ const SizeProductController = {
     addSizeProduct: async (req, res) => {
         try {
             const newSizeProduct = await new SizeProduct({
-                // rolename: req.body.rolename,
+                name: req.body.name,
+                productid: req.body.productid,
+                price: req.body.price
             });
 
             await newSizeProduct.save();

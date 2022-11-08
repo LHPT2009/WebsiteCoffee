@@ -8,8 +8,11 @@ import { Link } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
+import { useNavigate } from 'react-router-dom'
+
 const Receipts = () => {
   const [id, setId] = useState('')
+  const navigate = useNavigate()
   const [receipt, setReceipt] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8000/receipt').then((res) => {
@@ -46,20 +49,22 @@ const Receipts = () => {
                           type="button"
                           btnCSS={'h-11 mr-2'}
                           icon="edit"
+                          onClick={() => {
+                            navigate('../editreceipt/' + item._id)
+                          }}
                         >
-                          <Link className="hover:text-white" to={''}>
-                            Sửa
-                          </Link>
+                          Sửa
                         </Button>
                         <Button
                           btnStyle={'btn-outline'}
                           type="button"
                           btnCSS={'h-11'}
                           icon="delete"
+                          onClick={() => {
+                            navigate('../deletereceipt/' + item._id)
+                          }}
                         >
-                          <Link className="hover:text-white" to={''}>
-                            Xóa
-                          </Link>
+                          Xóa
                         </Button>
                       </td>
                     </tr>
