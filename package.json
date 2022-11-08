@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "mongoose-algolia": "^1.10.1"
-  }
-}
