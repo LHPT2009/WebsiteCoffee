@@ -20,9 +20,9 @@ const Cart = () => {
   })
   const addOrder = async () => {
     const userid = '633538e7ae2e75dd12c59178'
-    if (!userid) {
-      alert('Ban chua dang nhap, moi dang nhap!!!')
-      return navigate('/cart')
+    if (!localStorage.getItem("token")) {
+      alert('Ban chua dang nhap, moi dang nhap!!!');
+      return navigate('/signin');
     }
     const rec = await axios.post('http://localhost:8000/receipt', {
       userid,

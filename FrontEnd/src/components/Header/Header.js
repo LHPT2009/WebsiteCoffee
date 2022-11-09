@@ -16,7 +16,7 @@ const Header = () => {
   }
   const activated = 'active:text-primary'
   const [active, setActive] = useState('')
-  useEffect(() => {})
+  useEffect(() => { })
   return (
     <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-3 z-[999] text-l2">
       <div className="flex justify-between items-start px-[20] md:px-[60px] py-[8px] bg-s1 mx-10 w-full">
