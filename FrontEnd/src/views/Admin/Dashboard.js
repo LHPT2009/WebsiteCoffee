@@ -16,7 +16,7 @@ import statusCards from '../../assets/JsonData/status-card-data.json'
 
 import { Navigate } from "react-router-dom";
 
-import jwtdecode from "../../header/jwt-decode";
+import jwt_decode from "jwt-decode";
 
 const chartOptions = {
   series: [
@@ -171,7 +171,7 @@ const renderOrderBody = (item, index) => (
 const Dashboard = () => {
   const themeReducer = useSelector((state) => state.ThemeReducer.mode)
   if (localStorage.getItem("token")) {
-    if (jwtdecode().role == "Admin" || jwtdecode().role == "SuperAdmin") {
+    if (jwt_decode(localStorage.getItem("token")).role == "Admin" || jwt_decode(localStorage.getItem("token")).role == "SuperAdmin") {
       return (
         <div>
           <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
