@@ -13,6 +13,7 @@ const ReceiptController = {
     deleteReceipt: async (req, res) => {
         try {
             const receipt = await Receipt.findByIdAndDelete(req.params.id);
+            const receiptdetail = await ReceiptDetail.deleteMany({ receiptid: req.params.id });
             res.status(200).json('Delete successfully');
         } catch (error) {
             res.status(500).json(error);
@@ -28,11 +29,22 @@ const ReceiptController = {
         }
     },
 
+    getReceiptDetailById: async (req, res) => {
+        try {
+            const receiptDetail = await ReceiptDetail.find({ receiptid: req.params.id }).populate('productid', ['name']);
+            res.status(200).json(receiptDetail);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+
     addReceipt: async (req, res) => {
         try {
             const newReceipt = new Receipt({
                 userid: req.body.userid,
                 price: req.body.price,
+                statuspayment: req.body.statuspayment,
+                statusdelivery: req.body.statusdelivery,
             });
             await newReceipt.save();
 

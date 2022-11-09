@@ -18,6 +18,9 @@ const productSchema = new mongoose.Schema({
     describe: {
         type: String
     },
+    status: {
+        type: Boolean
+    }
 }, { timestamps: true }
 );
 
@@ -26,7 +29,7 @@ productSchema.plugin(mongooseAlgolia, {
     apiKey: process.env.ADMIN_API_KEY,
     indexName: "product_search",
     selector: "",
-    filter: function (doc){
+    filter: function (doc) {
         return !doc.softdelete;
     },
 });

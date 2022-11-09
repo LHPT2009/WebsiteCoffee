@@ -11,12 +11,11 @@ const AddSizeProduct = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
-    const [productid, setProductId] = useState("");
 
 
     const addSizeProduct = async (e) => {
         e.preventDefault();
-        const add = await axios.post(`http://localhost:8000/sizeproduct`, { name: name, productid: productid, price: price });
+        const add = await axios.post(`http://localhost:8000/sizeproduct`, { name, price });
         if (add) {
             navigate("/admin/sizeproducts");
         } else {
@@ -31,8 +30,6 @@ const AddSizeProduct = () => {
                     <b>Thêm kích cỡ</b>
                 </h2>
                 <div>
-                    <h1>Tên kích cỡ</h1>
-                    <input type={"text"} placeholder={"Mã sản phẩm"} onChange={(e) => setProductId(e.target.value)} /> <br />
                     <h1>Tên kích cỡ</h1>
                     <input type={"text"} placeholder={"Tên kích cỡ"} onChange={(e) => setName(e.target.value)} /> <br />
                     <h1>Giá</h1>

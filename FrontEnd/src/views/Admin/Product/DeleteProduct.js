@@ -40,26 +40,31 @@ const DeleteProduct = () => {
                         className="block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
-                    {/* <div>
                     <h1>Hình ảnh</h1>
-                    {image && (
-                        <div>
-                            <img alt="Không tìm thấy" width={"250px"} />
-                            <br />
-                            <Button onClick={() => setImage(null)}>Xóa hình</Button>
-                        </div>
-                    )}
                     <input
                         type="file"
                         name="myImage"
                         value={product.image}
                         readOnly
                     />
-                </div> */}
                     <TextInput
                         placeholder={'Giá'}
                         type="text"
                         defaultValue={product.price}
+                        className="block w-[400px]"
+                        disabled={'disabled'}
+                    /> <br />
+                    <TextInput
+                        placeholder={'Noi Dung'}
+                        type="text"
+                        defaultValue={product.describe}
+                        className="block w-[400px]"
+                        disabled={'disabled'}
+                    /> <br />
+                    <TextInput
+                        placeholder={'Trang thai'}
+                        type="text"
+                        defaultValue={product.status}
                         className="block w-[400px]"
                         disabled={'disabled'}
                     /> <br />

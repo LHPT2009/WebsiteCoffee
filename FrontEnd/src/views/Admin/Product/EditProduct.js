@@ -13,8 +13,10 @@ import { useNavigate } from "react-router-dom";
 const EditProduct = () => {
   const [categoryproductid, setCategoryProductId] = useState("");
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
   const [price, setPrice] = useState(0);
+  const [image, setImage] = useState("");
+  const [describe, setDescribe] = useState("");
+  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
   const [dataProduct, setDataProduct] = useState([])
 
@@ -26,7 +28,7 @@ const EditProduct = () => {
 
   const editProduct = async (e) => {
     e.preventDefault();
-    const edit = await axios.put(`http://localhost:8000/product/${id}`, { categoryproductid, name, price, image });
+    const edit = await axios.put(`http://localhost:8000/product/${id}`, { name, price, image, describe, status });
     if (edit) {
       navigate("/admin/products");
     } else {
@@ -50,25 +52,25 @@ const EditProduct = () => {
             className="block w-[400px]"
           />
           <br />
-          {/* <div>
-                <h1>Hình ảnh</h1>
-                {image && (
-                    <div>
-                    <img alt="Không tìm thấy" width={"250px"} src={URL.createObjectURL(image)}/>
-                    <br />
-                    <Button onClick={()=>setImage(null)}>Xóa hình</Button>
-                    </div>
-                )}
-                <input
-                    type="file"
-                    name="myImage"
-                    onChange={(event) => {
-                    console.log(event.target.files[0]);
-                    setImage(event.target.files[0]);
-                    }}
-                    defaultValue={RowData.image}
-                />
-                </div> */}
+          <div>
+            <h1>Hình ảnh</h1>
+            {image && (
+              <div>
+                <img alt="Không tìm thấy" width={"250px"} src={URL.createObjectURL(image)} />
+                <br />
+                <Button onClick={() => setImage(null)}>Xóa hình</Button>
+              </div>
+            )}
+            <input
+              type="file"
+              name="myImage"
+              onChange={(event) => {
+                console.log(event.target.files[0]);
+                setImage(event.target.files[0]);
+              }}
+              defaultValue={dataProduct.image}
+            />
+          </div>
 
           <TextInput
             placeholder={'Giá'}
@@ -83,8 +85,8 @@ const EditProduct = () => {
             placeholder={'Tên sản phẩm'}
             type="text"
             required={'required'}
-            onChange={(e) => setName(e.target.value)}
-            defaultValue={dataProduct.name}
+            onChange={(e) => setDescribe(e.target.value)}
+            defaultValue={dataProduct.describe}
             className="block w-[400px]"
           />
           <br />
@@ -92,8 +94,8 @@ const EditProduct = () => {
             placeholder={'Tên sản phẩm'}
             type="text"
             required={'required'}
-            onChange={(e) => setName(e.target.value)}
-            defaultValue={dataProduct.name}
+            onChange={(e) => setStatus(e.target.value)}
+            defaultValue={dataProduct.status}
             className="block w-[400px]"
           />
           <br />

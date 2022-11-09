@@ -13,6 +13,8 @@ const Cart = () => {
   const navigate = useNavigate()
   const [price, setPrice] = useState(0)
   const [userid, setUserId] = useState("");
+  const [statuspayment, setStatusPayment] = useState(false);
+  const [statusdelivery, setStatusDelivery] = useState(false);
   useEffect(() => {
     setUserId(localStorage.getItem("token") ? (jwt_decode(localStorage.getItem("token")).id) : (``));
   }, [])
@@ -31,6 +33,8 @@ const Cart = () => {
       userid,
       price,
       products,
+      statuspayment,
+      statusdelivery
     })
     if (rec) {
       alert('Thanh toan thanh cong!')

@@ -34,7 +34,9 @@ const ProductController = {
                 categoryproductid: req.body.categoryproductid,
                 name: req.body.name,
                 price: req.body.price,
-                image: req.body.image
+                image: req.body.image,
+                describe: req.body.describe,
+                status: req.body.status
             });
 
             await newProduct.save();
