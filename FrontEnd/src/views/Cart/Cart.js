@@ -6,23 +6,26 @@ import { ListProductContext } from '../../context/ListProductContext'
 import './cart.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 
 const Cart = () => {
-  const { products, delProduct, upAmount, downAmount, clearCart } =
-    useContext(ListProductContext)
+  const { products, delProduct, upAmount, downAmount, clearCart } = useContext(ListProductContext)
   const navigate = useNavigate()
   const [price, setPrice] = useState(0)
-
+  const [userid, setUserId] = useState("");
+  useEffect(() => {
+    setUserId(localStorage.getItem("token") ? (jwt_decode(localStorage.getItem("token")).id) : (``));
+  }, [])
   useEffect(() => {
     let ans = 0
     products.map((item) => (ans += item.amount * item.price))
     setPrice(ans)
   })
+
   const addOrder = async () => {
-    const userid = '633538e7ae2e75dd12c59178'
-    if (!userid) {
-      alert('Ban chua dang nhap, moi dang nhap!!!')
-      return navigate('/cart')
+    if (!localStorage.getItem("token")) {
+      alert('Ban chua dang nhap, moi dang nhap!!!');
+      return navigate('/signin');
     }
     const rec = await axios.post('http://localhost:8000/receipt', {
       userid,
@@ -38,6 +41,7 @@ const Cart = () => {
       navigate('/')
     }
   }
+
   const orderList = products.map((n) => (
     <tr key={n.id}>
       <td>{n.name}</td>

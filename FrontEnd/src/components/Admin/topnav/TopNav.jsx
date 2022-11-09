@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './topnav.css'
 
@@ -14,9 +14,11 @@ import user_image from '../../../assets/images/icon.png'
 
 import user_menu from '../../../assets/JsonData/user_menus.json'
 
-const curr_user = {
-    display_name: 'John Doe',
-    image: user_image
+import jwt_decode from 'jwt-decode'
+import { useState } from 'react'
+
+const logout = (e) => {
+    localStorage.removeItem("token");
 }
 
 const renderNotificationItem = (item, index) => (
@@ -37,16 +39,26 @@ const renderUserToggle = (user) => (
     </div>
 )
 
-const renderUserMenu =(item, index) => (
-    <Link to='/' key={index}>
-        <div className="notification-item">
-            <i className={item.icon}></i>
-            <span>{item.content}</span>
-        </div>
-    </Link>
+const renderUserMenu = (item, index) => (
+    <form onSubmit={logout}>
+        <Link to='/' key={index} onClick={logout}>
+            <div className="notification-item">
+                <i className={item.icon}></i>
+                <span>{item.content}</span>
+            </div>
+        </Link>
+    </form>
 )
 
 const Topnav = () => {
+    const [name, setName] = useState("");
+    useEffect(() => {
+        setName(localStorage.getItem("token") ? (jwt_decode(localStorage.getItem("token")).name) : (``))
+    }, []);
+    const curr_user = {
+        display_name: name,
+        image: user_image
+    }
     return (
         <div className='topnav'>
             <div className="topnav__search">
@@ -73,7 +85,7 @@ const Topnav = () => {
                     {/* dropdown here */}
                 </div>
                 <div className="topnav__right-item">
-                    <ThemeMenu/>
+                    <ThemeMenu />
                 </div>
             </div>
         </div>
