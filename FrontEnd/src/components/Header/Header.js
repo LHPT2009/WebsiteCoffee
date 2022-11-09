@@ -3,20 +3,21 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo2 from '../../assets/images/logo_2.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { ListProductContext } from '../../context/ListProductContext'
-import jwtdecode from '../../header/jwt-decode'
+
+import jwt_decode from 'jwt-decode';
 
 const Header = () => {
   const { products } = useContext(ListProductContext)
   let [open, setOpen] = useState(false)
   const navigate = useNavigate();
+
   const logout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
     navigate("/");
   }
   const activated = 'active:text-primary'
-  const [active, setActive] = useState('')
-  useEffect(() => { })
+
   return (
     <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-3 z-[999] text-l2">
       <div className="flex justify-between items-start px-[20] md:px-[60px] py-[8px] bg-s1 mx-10 w-full">
@@ -107,7 +108,9 @@ const Header = () => {
               </Link> */}
               {localStorage.getItem("token") ?
                 <div>
-                  <p>Hello {jwtdecode().name} <button onClick={logout}> Đăng xuất !!!</button></p>
+                  <form onSubmit={logout}>
+                    <p>Hello {jwt_decode(localStorage.getItem("token")).name} <button onClick={logout}> Đăng xuất !!!</button></p>
+                  </form>
                 </div>
                 :
                 <Link
@@ -115,7 +118,6 @@ const Header = () => {
                   to="/signin"
                 >
                   <span class="material-symbols-outlined">person</span>
-                  <p>Đăng nhập</p>
                 </Link>}
             </div>
           </div>
