@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import ItemCard from '../../components/Item/ItemCard'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 
@@ -15,7 +14,7 @@ const Coffee = () => {
   }, [])
 
   return (
-    <>
+    <div className="bg-background relative pb-24 lg:pb-12 min-h-screen">
       <Header />
       <div className="pt-10 pb-[50px]">
         <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
@@ -38,10 +37,8 @@ const Coffee = () => {
           </div>
         </div>
       </div>
-      <div className="relative pb-24 lg:pb-12 min-h-screen">
         <Footer />
-      </div>
-    </>
+    </div>
   )
 }
 
