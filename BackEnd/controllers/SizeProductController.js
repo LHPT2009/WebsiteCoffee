@@ -32,7 +32,6 @@ const SizeProductController = {
         try {
             const newSizeProduct = await new SizeProduct({
                 name: req.body.name,
-                productid: req.body.productid,
                 price: req.body.price
             });
 

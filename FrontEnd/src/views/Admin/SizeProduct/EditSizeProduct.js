@@ -41,7 +41,7 @@ const EditSizeProduct = () => {
                     <h1>Tên kích cỡ</h1>
                     <input type={"text"} placeholder={"Tên kích cỡ"} defaultValue={sizeProduct.name} onChange={(e) => setName(e.target.value)} /> <br />
                     <h1>Giá</h1>
-                    <input type={"text"} placeholder={"Giá"} defaultValue={sizeProduct.price} onChange={(e) => setPrice(e.target.value)} /> <br />
+                    <input type={"number"} placeholder={"Giá"} defaultValue={sizeProduct.price} onChange={(e) => setPrice(e.target.value)} /> <br />
                 </div>
                 <div>
                     <Button type="button" onClick={editSizeProduct}>

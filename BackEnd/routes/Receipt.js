@@ -6,6 +6,8 @@ router.get("/", ReceiptController.getAllReceipts);
 
 router.get("/:id", ReceiptController.getReceiptById);
 
+router.get("/detail/:id", ReceiptController.getReceiptDetailById);
+
 router.delete("/:id", ReceiptController.deleteReceipt);
 
 router.post("/", ReceiptController.addReceipt);

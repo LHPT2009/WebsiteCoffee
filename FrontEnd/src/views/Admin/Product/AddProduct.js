@@ -10,14 +10,16 @@ import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
+  const [describe, setDescribe] = useState("");
+  const [status, setStatus] = useState(false);
 
   const navigate = useNavigate();
 
   const addProduct = async (e) => {
     e.preventDefault();
-    const add = await axios.post(`http://localhost:8000/product`, { name, price, image });
+    const add = await axios.post(`http://localhost:8000/product`, { name, price, image, describe, status });
     if (add) {
       navigate("/admin/products");
     } else {
@@ -41,7 +43,7 @@ const AddProduct = () => {
           />
           <TextInput
             placeholder={'Giá'}
-            type="text"
+            type="number"
             required={'required'}
             onChange={(e) => setPrice(e.target.value)}
             className="block w-[400px]"
@@ -69,6 +71,20 @@ const AddProduct = () => {
               }}
             />
           </div>
+          <TextInput
+            placeholder={'Noi Dung'}
+            type="text"
+            required={'required'}
+            onChange={(e) => setDescribe(e.target.value)}
+            className="block w-[400px]"
+          />
+          <TextInput
+            placeholder={'Trang thai'}
+            type="boolean"
+            required={'required'}
+            onChange={(e) => setStatus(e.target.value)}
+            className="block w-[400px]"
+          />
         </div>
         <div className="mt-10">
           <Button

@@ -7,6 +7,12 @@ const receiptSchema = new mongoose.Schema({
     },
     price: {
         type: Number
+    },
+    statuspayment: {
+        type: Boolean
+    },
+    statusdelivery: {
+        type: Boolean
     }
 });
 
