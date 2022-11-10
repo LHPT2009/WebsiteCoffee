@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 
 const EditSizeProduct = () => {
     const [sizeProduct, setSizeProduct] = useState([]);
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState(0);
+    const [name, setName] = useState(sizeProduct.name);
+    const [price, setPrice] = useState(sizeProduct.price);
     const navigate = useNavigate();
 
 
@@ -23,7 +23,7 @@ const EditSizeProduct = () => {
 
     const editSizeProduct = async (e) => {
         e.preventDefault();
-        const edit = await axios.put(`http://localhost:8000/sizeproduct/${id}`, { name, price });
+        const edit = await axios.patch(`http://localhost:8000/sizeproduct/${id}`, { name: name, price: price });
         if (edit) {
             navigate("/admin/sizeproducts");
         } else {

@@ -11,14 +11,14 @@ import TextInput from '../../../components/Input/TextInput'
 import { useNavigate } from "react-router-dom";
 
 const EditProduct = () => {
-  const [categoryproductid, setCategoryProductId] = useState("");
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [image, setImage] = useState("");
-  const [describe, setDescribe] = useState("");
-  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
   const [dataProduct, setDataProduct] = useState([])
+  const [categoryproductid, setCategoryProductId] = useState(dataProduct.categoryproductid);
+  const [name, setName] = useState(dataProduct.name);
+  const [price, setPrice] = useState(dataProduct.price);
+  const [image, setImage] = useState(dataProduct.image);
+  const [describe, setDescribe] = useState(dataProduct.describe);
+  const [status, setStatus] = useState(dataProduct.status);
 
   const { id } = useParams()
 
@@ -28,7 +28,7 @@ const EditProduct = () => {
 
   const editProduct = async (e) => {
     e.preventDefault();
-    const edit = await axios.put(`http://localhost:8000/product/${id}`, { name, price, image, describe, status });
+    const edit = await axios.put(`http://localhost:8000/product/${id}`, { categoryproductid, name, price, image, describe, status });
     if (edit) {
       navigate("/admin/products");
     } else {
@@ -43,6 +43,14 @@ const EditProduct = () => {
           Chỉnh sửa sản phẩm
         </h1>
         <div>
+          <TextInput
+            placeholder={'Ma loai san pham'}
+            type="text"
+            required={'required'}
+            onChange={(e) => setCategoryProductId(e.target.value)}
+            defaultValue={dataProduct.categoryproductid}
+            className="block w-[400px]"
+          />
           <TextInput
             placeholder={'Tên sản phẩm'}
             type="text"
