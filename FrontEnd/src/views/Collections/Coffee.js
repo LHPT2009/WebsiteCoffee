@@ -4,9 +4,15 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
+import Button from '../../components/Button/Button'
 
 const Coffee = () => {
   const [product, setProduct] = useState([])
+  const [noOfElement, setNoOfElement] = useState(4)
+  const slice = product.slice(0, noOfElement)
+  const loadMore = () => {
+    setNoOfElement(noOfElement + noOfElement)
+  }
   useEffect(() => {
     axios.get('http://localhost:8000/product').then((res) => {
       setProduct(res.data)
@@ -23,8 +29,8 @@ const Coffee = () => {
               Cà Phê
             </span>
           </h3>
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {product.map((item) => (
+          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-10">
+            {slice.map((item) => (
               <Link to={'/product/' + item._id}>
                 <ItemCard
                   key={item._id}
@@ -35,6 +41,16 @@ const Coffee = () => {
               </Link>
             ))}
           </div>
+          {product.length > noOfElement ?
+            <Button 
+            onClick={() => loadMore()}
+            btnStyle={'btn-outline'}
+            btnCSS={'h-11 mb-20'}
+            icon="expand_more">
+              Xem thêm
+            </Button>
+            :null
+          } 
         </div>
       </div>
         <Footer />
