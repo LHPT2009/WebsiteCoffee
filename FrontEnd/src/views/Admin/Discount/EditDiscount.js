@@ -11,10 +11,10 @@ import { useNavigate } from "react-router-dom";
 const EditDisCount = () => {
     const [disCount, setDisCount] = useState([]);
 
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [startdate, setStartDate] = useState("");
-    const [enddate, setEndDate] = useState("");
+    const [name, setName] = useState(disCount.name);
+    const [price, setPrice] = useState(disCount.price);
+    const [startdate, setStartDate] = useState(disCount.startdate);
+    const [enddate, setEndDate] = useState(disCount.enddate);
 
     const navigate = useNavigate();
 
@@ -66,7 +66,7 @@ const EditDisCount = () => {
                     <h1>Ngày KT</h1>
                     <input
                         type={"date"}
-                        defaultValue={disCount.enddate}
+                        defaultValue={Date(disCount.enddate)}
                         onChange={(e) => setEndDate(e.target.value)}
                     />
                     <br />

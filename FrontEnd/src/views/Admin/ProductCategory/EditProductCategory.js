@@ -9,10 +9,10 @@ import TextInput from '../../../components/Input/TextInput';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const EditProductCategory = () => {
-    const [name, setName] = useState('')
     const [category, setCategory] = useState([]);
     const navigate = useNavigate();
     const { id } = useParams();
+    const [name, setName] = useState(category.name);
 
     axios.get(`http://localhost:8000/category/${id}`).then((res) => {
         setCategory(res.data);

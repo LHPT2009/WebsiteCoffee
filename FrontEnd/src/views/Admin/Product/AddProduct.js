@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
+  const [categoryproductid, setCategoryProductId] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
@@ -19,7 +20,7 @@ const AddProduct = () => {
 
   const addProduct = async (e) => {
     e.preventDefault();
-    const add = await axios.post(`http://localhost:8000/product`, { name, price, image, describe, status });
+    const add = await axios.post(`http://localhost:8000/product`, { categoryproductid, name, price, image, describe, status });
     if (add) {
       navigate("/admin/products");
     } else {
@@ -34,6 +35,13 @@ const AddProduct = () => {
           Thêm sản phẩm
         </h1>
         <div>
+          <TextInput
+            placeholder={'Tên sản phẩm'}
+            type="text"
+            required={'required'}
+            onChange={(e) => setCategoryProductId(e.target.value)}
+            className="block w-[400px]"
+          />
           <TextInput
             placeholder={'Tên sản phẩm'}
             type="text"

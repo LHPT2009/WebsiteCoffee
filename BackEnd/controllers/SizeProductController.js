@@ -45,7 +45,7 @@ const SizeProductController = {
     updateSizeProduct: async (req, res) => {
         try {
             const updateSizeProduct = req.body;
-            const sizeProduct = await Role.findByIdAndUpdate(
+            const sizeProduct = await SizeProduct.findByIdAndUpdate(
                 req.params.id,
                 updateSizeProduct,
                 { new: true }
