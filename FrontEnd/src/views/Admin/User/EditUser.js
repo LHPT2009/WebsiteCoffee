@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 const EditUser = () => {
     const [user, setUser] = useState([]);
+    const [listrole, setListRole] = useState([]);
 
     const { id } = useParams();
     const [username, setUsername] = useState(user.username);
@@ -23,6 +24,17 @@ const EditUser = () => {
     axios.get(`http://localhost:8000/user/${id}`).then((res) => {
         setUser(res.data);
     });
+    useEffect(() => {
+        axios.get(`http://localhost:8000/user/${id}`).then((res) => {
+            setUser(res.data);
+            setRole(res.data.role);
+        });
+    }, [])
+    useEffect(() => {
+        axios.get(`http://localhost:8000/role`).then((res) => {
+            setListRole(res.data);
+        })
+    }, [])
 
     const editUser = async (e) => {
         e.preventDefault();
@@ -55,7 +67,13 @@ const EditUser = () => {
                     <h1>Số điện thoại</h1>
                     <input type={"text"} placeholder={"Số điện thoại"} defaultValue={user.numberphone} onChange={(e) => setNumberphone(e.target.value)} /> <br />
                     <h1>Role</h1>
-                    <input type={"text"} placeholder={"Role"} defaultValue={user.role} onChange={(e) => setRole(e.target.value)} /> <br />
+                    {/* <input type={"text"} placeholder={"Role"} defaultValue={user.role} onChange={(e) => setRole(e.target.value)} /> <br /> */}
+                    <select
+                        onChange={(e) => setRole(e.target.value)}
+                        value={role}
+                    >
+                        {listrole.map((item) => <option value={item._id}>{item.rolename}</option>)}
+                    </select>
                 </div>
                 <div>
                     <Button type="button" onClick={editUser}>

@@ -30,15 +30,22 @@ const disCountController = {
 
     addDisCount: async (req, res) => {
         try {
+            // const startdate = new Date(req.body.startdate);
+            // const enddate = new Date(req.body.enddate);
+
             const newDisCount = new DisCount({
                 name: req.body.name,
                 price: req.body.price,
+
+                // startdate: startdate.toDateString(),
+                // enddate: enddate.toDateString()
+
                 startdate: req.body.startdate,
                 enddate: req.body.enddate
             });
 
             await newDisCount.save();
-            res.status(200).json('Add successfully');
+            res.status(200).json(newDisCount);
         } catch (error) {
             res.status(500).json(error);
         }

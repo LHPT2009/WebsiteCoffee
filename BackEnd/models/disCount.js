@@ -8,10 +8,10 @@ const discountSchema = new mongoose.Schema({
         type: Number
     },
     startdate: {
-        type: Date
+        type: String,
     },
     enddate: {
-        type: Date
+        type: String,
     },
 }, { timestamps: true }
 );
