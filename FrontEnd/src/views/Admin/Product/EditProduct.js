@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 const EditProduct = () => {
   const navigate = useNavigate();
   const [dataProduct, setDataProduct] = useState([])
+  const [categoryproduct, setCategoryProduct] = useState([]);
+
   const [categoryproductid, setCategoryProductId] = useState(dataProduct.categoryproductid);
   const [name, setName] = useState(dataProduct.name);
   const [price, setPrice] = useState(dataProduct.price);
@@ -22,9 +24,20 @@ const EditProduct = () => {
 
   const { id } = useParams()
 
-  axios.get(`http://localhost:8000/product/${id}`).then((res) => {
-    setDataProduct(res.data)
-  })
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/product/${id}`).then((res) => {
+        setDataProduct(res.data);
+        setCategoryProductId(res.data.categoryproductid);
+        setStatus(res.data.status);
+      })
+  }, [])
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/category`).then((res) => {
+        setCategoryProduct(res.data);
+      })
+  }, [])
 
   const editProduct = async (e) => {
     e.preventDefault();
@@ -43,14 +56,12 @@ const EditProduct = () => {
           Chỉnh sửa sản phẩm
         </h1>
         <div>
-          <TextInput
-            placeholder={'Ma loai san pham'}
-            type="text"
-            required={'required'}
+          <select
             onChange={(e) => setCategoryProductId(e.target.value)}
-            defaultValue={dataProduct.categoryproductid}
-            className="block w-[400px]"
-          />
+            value={categoryproductid}
+          >
+            {categoryproduct.map((item) => <option value={item._id}>{item.name}</option>)}
+          </select>
           <TextInput
             placeholder={'Tên sản phẩm'}
             type="text"
@@ -98,14 +109,13 @@ const EditProduct = () => {
             className="block w-[400px]"
           />
           <br />
-          <TextInput
-            placeholder={'Tên sản phẩm'}
-            type="text"
-            required={'required'}
+          <select
             onChange={(e) => setStatus(e.target.value)}
-            defaultValue={dataProduct.status}
-            className="block w-[400px]"
-          />
+            value={status}
+          >
+            <option value="true">Đang kinh doanh</option>
+            <option value="false">dừng kinh doanh</option>
+          </select>
           <br />
         </div>
         <div>

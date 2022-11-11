@@ -9,14 +9,23 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
-  const [categoryproductid, setCategoryProductId] = useState("");
+  const [categoryproduct, setCategoryProduct] = useState([]);
+  const [categoryproductid, setCategoryProductId] = useState("633f0b21ec8f7158d548cf35");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [describe, setDescribe] = useState("");
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState("false");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/category`)
+      .then((res) => {
+        setCategoryProduct(res.data)
+      })
+  }, [])
 
   const addProduct = async (e) => {
     e.preventDefault();
@@ -35,13 +44,12 @@ const AddProduct = () => {
           Thêm sản phẩm
         </h1>
         <div>
-          <TextInput
-            placeholder={'Tên sản phẩm'}
-            type="text"
-            required={'required'}
+          <select
             onChange={(e) => setCategoryProductId(e.target.value)}
-            className="block w-[400px]"
-          />
+            value={categoryproductid}
+          >
+            {categoryproduct.map((item) => <option value={item._id}>{item.name}</option>)}
+          </select>
           <TextInput
             placeholder={'Tên sản phẩm'}
             type="text"
@@ -86,13 +94,12 @@ const AddProduct = () => {
             onChange={(e) => setDescribe(e.target.value)}
             className="block w-[400px]"
           />
-          <TextInput
-            placeholder={'Trang thai'}
-            type="boolean"
-            required={'required'}
+          <select
             onChange={(e) => setStatus(e.target.value)}
-            className="block w-[400px]"
-          />
+            value={status}>
+            <option value="true">đang kinh doanh</option>
+            <option value="false">dừng kinh doanh</option>
+          </select>
         </div>
         <div className="mt-10">
           <Button

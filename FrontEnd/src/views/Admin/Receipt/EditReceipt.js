@@ -20,7 +20,11 @@ const EditReceipt = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:8000/receipt/${id}`)
-      .then((res) => setReceipt(res.data))
+      .then((res) => {
+        setReceipt(res.data);
+        setStatusPayment(res.data.statuspayment);
+        setStatusDelivery(res.data.statusdelivery);
+      })
   }, [])
   useEffect(() => {
     axios
@@ -61,20 +65,23 @@ const EditReceipt = () => {
           />{' '}
           <br />
           <h1>Trạng thái thanh toán</h1>
-          <input
-            type={'boolean'}
+
+          <select
             placeholder={'Trạng thái thanh toán'}
-            defaultValue={receipt.statuspayment}
-            onChange={(e) => setStatusPayment(e.target.value)}
-          />{' '}
+            value={statuspayment}
+            onChange={(e) => setStatusPayment(e.target.value)}>
+            <option value="true">Da thanh toan</option>
+            <option value="false">chua thanh toan</option>
+          </select>
           <br />
           <h1>Trạng thái giao hàng</h1>
-          <input
-            type={'boolean'}
-            placeholder={'Trạng thái giao hàng'}
-            defaultValue={receipt.statusdelivery}
-            onChange={(e) => setStatusDelivery(e.target.value)}
-          />{' '}
+          <select
+            placeholder={'Trạng thái thanh toán'}
+            value={statusdelivery}
+            onChange={(e) => setStatusDelivery(e.target.value)}>
+            <option value="true">Da giao</option>
+            <option value="false">chua giao</option>
+          </select>
           <br />
           <h1>Chi tiết đặt hàng</h1>
           {receiptdetail.map((item) => (

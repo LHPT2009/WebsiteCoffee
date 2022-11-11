@@ -66,7 +66,7 @@ const EditDisCount = () => {
                     <h1>Ngày KT</h1>
                     <input
                         type={"date"}
-                        defaultValue={Date(disCount.enddate)}
+                        defaultValue={disCount.enddate}
                         onChange={(e) => setEndDate(e.target.value)}
                     />
                     <br />

@@ -41,6 +41,8 @@ app.use('/sizeproduct', sizeProductRoute);
 app.use('/discount', disCountRoute);
 app.use('/rate', rateRoute);
 
+app.use('/category/one', categoryProductRoute);
+
 app.listen(8000, () => {
   console.log('Server is running...');
 });

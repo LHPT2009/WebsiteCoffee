@@ -53,20 +53,21 @@ const DeleteReceipt = () => {
                         className="block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
-                    <TextInput
+                    <select
                         placeholder={'Trạng thái thanh toán'}
-                        type="text"
-                        defaultValue={receipt.statuspayment}
-                        className="block w-[400px]"
-                        disabled={'disabled'}
-                    /> <br />
-                    <TextInput
-                        placeholder={'Trạng thái giao hàng'}
-                        type="text"
-                        defaultValue={receipt.statusdelivery}
-                        className="block w-[400px]"
-                        disabled={'disabled'}
-                    /> <br />
+                        value={receipt.statuspayment}>
+                        <option value="true">Da thanh toan</option>
+                        <option value="false">chua thanh toan</option>
+                    </select>
+                    <br />
+                    <select
+                        placeholder={'Trạng thái thanh toán'}
+                        value={receipt.statusdelivery}
+                    >
+                        <option value="true">Da thanh toan</option>
+                        <option value="false">chua thanh toan</option>
+                    </select>
+                    <br />
                     <h1>Chi tiết đặt hàng</h1>
                     {receiptdetail.map((item) => (
                         <ul>

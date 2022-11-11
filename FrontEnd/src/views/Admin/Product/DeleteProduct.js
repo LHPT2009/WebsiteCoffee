@@ -40,13 +40,13 @@ const DeleteProduct = () => {
                         className="block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
-                    <h1>Hình ảnh</h1>
-                    <input
-                        type="file"
-                        name="myImage"
-                        value={product.image}
-                        readOnly
-                    />
+                    <TextInput
+                        placeholder={'Hình ảnh'}
+                        type="text"
+                        defaultValue={product.image}
+                        className="block w-[400px]"
+                        disabled={'disabled'}
+                    /> <br />
                     <TextInput
                         placeholder={'Giá'}
                         type="text"

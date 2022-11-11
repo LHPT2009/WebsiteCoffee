@@ -44,14 +44,14 @@ const DeleteDiscount = () => {
           <br />
           <h1>Tên sản phẩm</h1>
           <input
-            type={'text'}
+            type={'date'}
             placeholder={'Tên sản phẩm'}
             value={disCount.startdate}
           />{' '}
           <br />
           <h1>Giá</h1>
           <input
-            type={'text'}
+            type={'date'}
             placeholder={'Giá'}
             value={disCount.enddate}
           />{' '}
