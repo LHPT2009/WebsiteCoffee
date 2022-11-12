@@ -24,7 +24,7 @@ const app = express();
 // });
 
 mongoose.connect(process.env.MONGOOSE_URL_LOCALHOST, () => {
-  console.log('DB connected');
+  console.log("DB connected");
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,19 +33,19 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-app.use('/auth', authRoute);
-app.use('/user', userRoute);
-app.use('/role', roleRoute);
-app.use('/product', productRoute);
-app.use('/category', categoryProductRoute);
-app.use('/mail', mail);
-app.use('/receipt', receiptRoute);
-app.use('/sizeproduct', sizeProductRoute);
-app.use('/discount', disCountRoute);
-app.use('/rate', rateRoute);
+app.use("/auth", authRoute);
+app.use("/user", userRoute);
+app.use("/role", roleRoute);
+app.use("/product", productRoute);
+app.use("/category", categoryProductRoute);
+app.use("/mail", mail);
+app.use("/receipt", receiptRoute);
+app.use("/sizeproduct", sizeProductRoute);
+app.use("/discount", disCountRoute);
+app.use("/rate", rateRoute);
 
-app.use('/category/one', categoryProductRoute);
+app.use("/category/one", categoryProductRoute);
 
 app.listen(8000, () => {
-  console.log('Server is running...');
+  console.log("Server is running...");
 });
