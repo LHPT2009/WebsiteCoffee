@@ -4,8 +4,8 @@ import newLabel from '../../assets/images/newLabel.png'
 const ItemCard = ({ title, price, image }) => {
   return (
     <div className="flex relative self-auto justify-between w-full h-full rounded-[32px] bg-s1 text-on-surface bg-no-repeat flex-col-reverse overflow-hidden hover:bg-s2 hover:shadow-3 transition ease-in active:shadow-1">
-      <div className="flex flex-col items-start gap-[8px] self-stretch px-[32px] py-[24px]"> 
-        <span className="text-t1">{title}</span>
+      <div className="flex flex-col items-start gap-[8px] self-stretch px-[32px] py-[24px]">
+        <span className="text-l1 text-left">{title}</span>
         <span className="text-t2">
           {new Intl.NumberFormat('vi-VN', {
             style: 'currency',
