@@ -17,7 +17,7 @@ const authController = {
         email: req.body.email,
         confirmemail: false,
         password: hashed,
-        role: "6335aaa724e48c7daf722fdb",
+        role: req.body.role,
         numberphone: "",
       });
       res.status(200).json(newUser);

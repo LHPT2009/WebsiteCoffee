@@ -4,6 +4,8 @@ const router = require("express").Router();
 
 router.get("/", roleController.getAllRoles);
 
+router.get("/one", roleController.getRoleUser);
+
 router.get("/:id", roleController.getRoleById);
 
 router.delete("/:id", roleController.deleteRole);
