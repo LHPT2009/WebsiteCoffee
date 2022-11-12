@@ -28,8 +28,9 @@ const EditProduct = () => {
     axios
       .get(`http://localhost:8000/product/${id}`).then((res) => {
         setDataProduct(res.data);
-        setCategoryProductId(res.data.categoryproductid);
+        setCategoryProductId(res.data.categoryproductid._id);
         setStatus(res.data.status);
+        setImage(`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(res.data.image.data.data)))}`)
       })
   }, [])
   useEffect(() => {
@@ -73,21 +74,19 @@ const EditProduct = () => {
           <br />
           <div>
             <h1>Hình ảnh</h1>
-            {image && (
+            {image ? (
               <div>
-                <img alt="Không tìm thấy" width={"250px"} src={URL.createObjectURL(image)} />
+                <img src={image} height="300" width="300" />
                 <br />
-                <Button onClick={() => setImage(null)}>Xóa hình</Button>
               </div>
+            ) : (
+              ""
             )}
             <input
               type="file"
-              name="myImage"
-              onChange={(event) => {
-                console.log(event.target.files[0]);
-                setImage(event.target.files[0]);
-              }}
-              defaultValue={dataProduct.image}
+              id="file"
+              accept=".png"
+              onChange={(e) => setImage(e.target.files[0])}
             />
           </div>
 

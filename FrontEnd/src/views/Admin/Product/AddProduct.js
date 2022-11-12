@@ -13,7 +13,7 @@ const AddProduct = () => {
   const [categoryproductid, setCategoryProductId] = useState("633f0b21ec8f7158d548cf35");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState();
   const [describe, setDescribe] = useState("");
   const [status, setStatus] = useState("false");
 
@@ -29,7 +29,9 @@ const AddProduct = () => {
 
   const addProduct = async (e) => {
     e.preventDefault();
-    const add = await axios.post(`http://localhost:8000/product`, { categoryproductid, name, price, image, describe, status });
+    const add = await axios.post(`http://localhost:8000/product`
+      , { categoryproductid, name, price, image, describe, status }
+      , { headers: { 'content-type': 'multipart/form-data' } });
     if (add) {
       navigate("/admin/products");
     } else {
@@ -68,24 +70,19 @@ const AddProduct = () => {
             <h1>Hình ảnh</h1>
             {image && (
               <div>
-                <img
-                  alt="Không tìm thấy"
-                  width={'250px'}
-                  src={URL.createObjectURL(image)}
-                />
+                <img alt="Không tìm thấy" width={"250px"} src={URL.createObjectURL(image)} />
                 <br />
-                <Button onClick={() => setImage(null)}>Xóa hình</Button>
               </div>
             )}
-            <input
-              type="file"
-              name="myImage"
-              required
-              onChange={(e) => {
-                console.log(e.target.files[0].value)
-                setImage(e.target.files[0].value)
-              }}
-            />
+            <div className="flex">
+              <label htmlFor="file">File</label>
+              <input
+                type="file"
+                id="file"
+                accept=".png"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </div>
           </div>
           <TextInput
             placeholder={'Noi Dung'}

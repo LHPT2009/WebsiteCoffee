@@ -49,8 +49,8 @@ const Discount = () => {
                     <tr key={item._id}>
                       <td>{item.name}</td>
                       <td>{item.price} đ</td>
-                      <td>{item.startdate} đ</td>
-                      <td>{item.enddate} đ</td>
+                      <td>{item.startdate}</td>
+                      <td>{item.enddate}</td>
                       <td style={{ minWidth: 100 }}>
                         <Button
                           btnStyle={'btn-outline'}

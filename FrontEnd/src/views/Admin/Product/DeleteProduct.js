@@ -10,10 +10,19 @@ import { useNavigate } from "react-router-dom";
 const DeleteProduct = () => {
     const { id } = useParams();
     const [product, setProduct] = useState([]);
+    const [image, setImage] = useState();
+    const [rolename, setRoleName] = useState();
+
+
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/product/${id}`).then((res) => setProduct(res.data));
+        axios.get(`http://localhost:8000/product/${id}`).then((res) => {
+            setProduct(res.data);
+            setImage(btoa(String.fromCharCode(...new Uint8Array(res.data.image.data.data))));
+            setRoleName(res.data.categoryproductid.name);
+
+        });
     }, []);
 
     const deleteProduct = async (e) => {
@@ -36,14 +45,14 @@ const DeleteProduct = () => {
                     <TextInput
                         placeholder={'Tên sản phẩm'}
                         type="text"
-                        defaultValue={product.name}
+                        defaultValue={rolename}
                         className="block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
                     <TextInput
-                        placeholder={'Hình ảnh'}
+                        placeholder={'Tên sản phẩm'}
                         type="text"
-                        defaultValue={product.image}
+                        defaultValue={product.name}
                         className="block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
@@ -54,6 +63,8 @@ const DeleteProduct = () => {
                         className="block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
+                    <img src={`data:image/png;base64,${image}`} height="300" width="300" />
+                    <br />
                     <TextInput
                         placeholder={'Noi Dung'}
                         type="text"
