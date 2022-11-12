@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,6 +13,15 @@ const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rePassword, setRePassword] = useState('')
+  const [role, setRole] = useState('')
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    axios.get('http://localhost:8000/role/one').then((res) => {
+      console.log(res.data._id);
+      setRole(res.data._id);
+    })
+  }, [])
 
   const addUser = () => {
     if (password == rePassword) {
@@ -23,9 +32,12 @@ const SignUp = () => {
           username,
           email,
           password,
+          role,
         })
         .then(function (response) {
-          console.log(response)
+          console.log(response);
+          alert("Mời bạn trở lại trang đăng nhập!");
+          navigate("/signin");
         })
         .catch(function (error) {
           console.log(error)
@@ -39,7 +51,7 @@ const SignUp = () => {
       <Header />
       <div className="h-10"></div>
       <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] justify-center">
-        <form onSubmit={''}>
+        <form onSubmit={addUser}>
           <div>
             <TextInput
               name="lastName"

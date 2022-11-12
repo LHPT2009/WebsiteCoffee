@@ -9,7 +9,14 @@ const RoleController = {
             res.status(500).json(err);
         }
     },
-
+    getRoleUser: async (req, res) => {
+        try {
+            const role = await Role.findOne({ "rolename": "User" });
+            res.status(200).json(role);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
     deleteRole: async (req, res) => {
         try {
             const role = await Role.findByIdAndDelete(req.params.id);
