@@ -34,7 +34,7 @@ const Coffee = () => {
   }
 
   return (
-    <div className="bg-background relative pb-24 lg:pb-12 min-h-screen">
+    <div className="bg-background relative pb-24 lg:pb-12 min-h-screen font-googleSansRegular">
       <Header />
       <div className="pt-10 pb-[50px]">
         <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
