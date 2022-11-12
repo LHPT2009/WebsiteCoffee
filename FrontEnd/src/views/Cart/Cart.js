@@ -9,14 +9,19 @@ import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 
 const Cart = () => {
-  const { products, delProduct, upAmount, downAmount, clearCart } = useContext(ListProductContext)
+  const { products, delProduct, upAmount, downAmount, clearCart } =
+    useContext(ListProductContext)
   const navigate = useNavigate()
   const [price, setPrice] = useState(0)
-  const [userid, setUserId] = useState("");
-  const [statuspayment, setStatusPayment] = useState(false);
-  const [statusdelivery, setStatusDelivery] = useState(false);
+  const [userid, setUserId] = useState('')
+  const [statuspayment, setStatusPayment] = useState(false)
+  const [statusdelivery, setStatusDelivery] = useState(false)
   useEffect(() => {
-    setUserId(localStorage.getItem("token") ? (jwt_decode(localStorage.getItem("token")).id) : (``));
+    setUserId(
+      localStorage.getItem('token')
+        ? jwt_decode(localStorage.getItem('token')).id
+        : ``
+    )
   }, [])
   useEffect(() => {
     let ans = 0
@@ -25,16 +30,16 @@ const Cart = () => {
   })
 
   const addOrder = async () => {
-    if (!localStorage.getItem("token")) {
-      alert('Ban chua dang nhap, moi dang nhap!!!');
-      return navigate('/signin');
+    if (!localStorage.getItem('token')) {
+      alert('Ban chua dang nhap, moi dang nhap!!!')
+      return navigate('/signin')
     }
     const rec = await axios.post('http://localhost:8000/receipt', {
       userid,
       price,
       products,
       statuspayment,
-      statusdelivery
+      statusdelivery,
     })
     if (rec) {
       alert('Thanh toan thanh cong!')
@@ -126,7 +131,7 @@ const Cart = () => {
   )
 
   return (
-    <div className="font-googleSansRegular">
+    <div className="relative pb-24 lg:pb-12 min-h-screen">
       <Header />
       <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {products.length != 0 ? formorderList : cartEmpty}

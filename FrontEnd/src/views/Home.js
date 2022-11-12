@@ -10,7 +10,7 @@ import mailLayout from '../components/responsiveEmail/responsiveEmail'
 
 const Home = () => {
   return (
-    <div className="font-googleSansRegular">
+    <>
       <Header />
       <BannerHome />
       <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
@@ -18,7 +18,7 @@ const Home = () => {
         <Introduce />
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
 

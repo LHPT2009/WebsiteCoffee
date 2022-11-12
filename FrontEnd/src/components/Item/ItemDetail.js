@@ -37,7 +37,7 @@ const ItemDetail = () => {
   }
 
   return (
-    <>
+    <div className="relative pb-24 lg:pb-12 min-h-screen">
       <Header />
       <div className="h-20"></div>
       <div className="sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] font-googleSansRegular">
@@ -141,7 +141,7 @@ const ItemDetail = () => {
           </div>
         </div>
         {/* Relate */}
-        <div className="mt-16">
+        <div className="my-16">
           <h4 className="text-[18px] mb-2 font-semibold">Sản phẩm liên quan</h4>
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {product.map((item) => (
@@ -157,10 +157,8 @@ const ItemDetail = () => {
           </div>
         </div>
       </div>
-      <div className="relative pb-24 lg:pb-12 min-h-screen">
-        <Footer />
-      </div>
-    </>
+      <Footer />
+    </div>
   )
 }
 
