@@ -28,7 +28,7 @@ const EditProduct = () => {
     axios
       .get(`http://localhost:8000/product/${id}`).then((res) => {
         setDataProduct(res.data);
-        setCategoryProductId(res.data.categoryproductid);
+        setCategoryProductId(res.data.categoryproductid._id);
         setStatus(res.data.status);
         setImage(`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(res.data.image.data.data)))}`)
       })
