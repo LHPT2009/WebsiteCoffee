@@ -70,7 +70,7 @@ const Coffee = () => {
                   key={item._id}
                   title={item.name}
                   price={item.price}
-                  image={item.image}
+                  image={`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(item.image.data.data)))}`}
                 />
               </Link>
             ))}

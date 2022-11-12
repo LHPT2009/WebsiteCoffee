@@ -1,19 +1,20 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 
-const authRoute = require("./routes/auth");
-const userRoute = require("./routes/user");
-const roleRoute = require("./routes/role");
-const productRoute = require("./routes/product");
-const categoryProductRoute = require("./routes/categoryProduct");
-const mail = require("./routes/mail");
-const receiptRoute = require("./routes/Receipt");
-const sizeProductRoute = require("./routes/sizeProduct");
-const disCountRoute = require("./routes/disCount");
-const rateRoute = require("./routes/rate");
+const authRoute = require('./routes/auth');
+const userRoute = require('./routes/user');
+const roleRoute = require('./routes/role');
+const productRoute = require('./routes/product');
+const categoryProductRoute = require('./routes/categoryProduct');
+const mail = require('./routes/mail');
+const receiptRoute = require('./routes/Receipt');
+const sizeProductRoute = require('./routes/sizeProduct');
+const disCountRoute = require('./routes/disCount');
+const rateRoute = require('./routes/rate');
 
 dotenv.config();
 const app = express();
@@ -26,6 +27,8 @@ mongoose.connect(process.env.MONGOOSE_URL_LOCALHOST, () => {
   console.log("DB connected");
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());

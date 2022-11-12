@@ -1,9 +1,9 @@
 const Product = require('../models/product');
-
+const fs = require("fs");
 const ProductController = {
     getAllProducts: async (req, res) => {
         try {
-            const product = await Product.find();
+            const product = await Product.find().populate('categoryproductid');
             res.status(200).json(product);
         } catch (err) {
             res.status(500).json(product);
@@ -21,7 +21,7 @@ const ProductController = {
 
     getProductById: async (req, res) => {
         try {
-            const product = await Product.findById(req.params.id);
+            const product = await Product.findById(req.params.id).populate('categoryproductid');
             res.status(200).json(product);
         } catch (error) {
             res.status(500).json(error);
@@ -34,7 +34,10 @@ const ProductController = {
                 categoryproductid: req.body.categoryproductid,
                 name: req.body.name,
                 price: req.body.price,
-                image: req.body.image,
+                image: {
+                    data: fs.readFileSync("uploads/" + req.file.filename),
+                    contentType: "image/png",
+                },
                 describe: req.body.describe,
                 status: req.body.status
             });
@@ -48,7 +51,17 @@ const ProductController = {
 
     updateProduct: async (req, res) => {
         try {
-            const updateProduct = req.body;
+            const updateProduct = {
+                categoryproductid: req.body.categoryproductid,
+                name: req.body.name,
+                price: req.body.price,
+                image: {
+                    data: fs.readFileSync("uploads/" + req.file.filename),
+                    contentType: "image/png",
+                },
+                describe: req.body.describe,
+                status: req.body.status
+            };
             const product = await Product.findByIdAndUpdate(req.params.id, updateProduct, {
                 new: true,
             });
