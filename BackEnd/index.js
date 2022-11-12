@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
@@ -26,6 +27,8 @@ mongoose.connect(process.env.MONGOOSE_URL_LOCALHOST, () => {
   console.log('DB connected');
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());

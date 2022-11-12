@@ -17,6 +17,7 @@ const EditProductCategory = () => {
     axios.get(`http://localhost:8000/category/${id}`).then((res) => {
         setCategory(res.data);
     });
+
     const editProductCategory = async (e) => {
         e.preventDefault();
         const edit = await axios.put(`http://localhost:8000/category/${id}`, { name });
@@ -26,6 +27,7 @@ const EditProductCategory = () => {
             alert(`Sửa ko thanh cong!!!`);
         }
     };
+
     return (
         <div>
             <form onSubmit={editProductCategory}>

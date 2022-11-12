@@ -11,10 +11,14 @@ const ItemDetail = () => {
   const { id } = useParams()
 
   const [info, setInfo] = useState([])
+  const [image, setImage] = useState();
   useEffect(() => {
     axios
       .get(`http://localhost:8000/product/${id}`)
-      .then((res) => setInfo(res.data))
+      .then((res) => {
+        setInfo(res.data);
+        setImage(`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(res.data.image.data.data)))}`);
+      })
   }, [id])
 
   const [product, setProduct] = useState([])
@@ -44,7 +48,7 @@ const ItemDetail = () => {
         <div className="grid grid-cols-2 md:gap-10 sm:gap-8">
           <img
             className="rounded-[1.5rem] hover:rounded-[2rem] transition-all"
-            src={info.image}
+            src={image}
             alt="product-thumbnail"
           />
           <div className="pt-5">
@@ -150,7 +154,7 @@ const ItemDetail = () => {
                   key={item._id}
                   title={item.name}
                   price={item.price}
-                  image={item.image}
+                  image={`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(item.image.data.data)))}`}
                 />
               </Link>
             ))}
