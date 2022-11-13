@@ -23,4 +23,5 @@ router.post("/", upload.single("image"), productController.addProduct);
 
 router.put("/:id", productController.updateProduct);
 
+
 module.exports = router;
