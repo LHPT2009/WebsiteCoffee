@@ -131,7 +131,7 @@ const Cart = () => {
   )
 
   return (
-    <div className="relative pb-24 lg:pb-12 min-h-screen">
+    <div className="relative pb-24 lg:pb-12 min-h-screen font-googleSansRegular">
       <Header />
       <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {products.length != 0 ? formorderList : cartEmpty}
