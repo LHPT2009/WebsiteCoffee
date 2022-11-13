@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import './header.css'
 
 import logo2 from '../../assets/images/logo_2.png'
 import { Link, useNavigate } from 'react-router-dom'
@@ -19,8 +20,8 @@ const Header = () => {
   const activated = 'active:text-primary'
 
   return (
-    <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-3 z-[999] text-l2">
-      <div className="flex justify-between items-start mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] py-[8px] bg-s1 w-full">
+    <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-1 z-[999] text-l2">
+      <div className="flex justify-between items-start mx-10 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] py-[12px] md:py-[8px] bg-s1 w-full">
         <div className="flex flex-row items-start gap-[24px] md:gap-[60px]">
           <Link to="/">
             <img
@@ -40,11 +41,12 @@ const Header = () => {
             </div>
 
             <ul
-              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[20px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${open ? 'top-[56px]' : 'top-[-420px]'
-                } `}
+              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[24px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${
+                open ? 'top-[64px]' : 'top-[-420px]'
+              } `}
             >
               <button
-                className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px] text-black hover:text-primary"
+                className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] w-screen md:w-auto h-[56px] text-black hover:text-primary"
                 onClick={() => {
                   navigate('/product')
                 }}
@@ -52,9 +54,9 @@ const Header = () => {
                 Menu
               </button>
               <button
-                className={`flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px] text-black hover:text-primary`}
+                className={`flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] w-screen md:w-auto h-[56px] text-black hover:text-primary`}
                 onClick={() => {
-                  navigate('/')
+                  navigate('/career')
                 }}
               >
                 Tuyển dụng

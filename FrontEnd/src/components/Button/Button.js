@@ -23,7 +23,7 @@ const Button = ({ children, type, icon, onClick, btnStyle, btnCSS }) => {
 
   return (
     <button
-      className={`btn ${checkbtnStyle} ${btnCSS} hover:rounded-2xl active:rounded-2xl transition-all font-googleSansRegular pt-3 pb-[2.2rem] px-6`}
+      className={`btn ${checkbtnStyle} ${btnCSS} transition-all font-googleSansRegular pt-3 pb-[2.2rem] px-6`}
       onClick={onClick}
       type={`${checkType}`}
     >

@@ -42,3 +42,12 @@
     src: url("../public/fonts/GoogleSans-Regular.otf");
   }
 }
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #3d685e;
+  border-radius: 100rem;
+}
