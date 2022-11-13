@@ -54,6 +54,7 @@ const Cart = () => {
   const orderList = products.map((n) => (
     <tr key={n.id}>
       <td>{n.name}</td>
+      {/* <td>size: {n.size}</td> */}
       <td>
         {new Intl.NumberFormat('vi-VN', {
           style: 'currency',
@@ -62,7 +63,7 @@ const Cart = () => {
       </td>
       <td>
         <div className="flex h-[47px]">
-          <button onClick={() => downAmount(n.id)}>
+          <button onClick={() => downAmount(n.id, n.name)}>
             <span className="material-symbols-rounded">remove</span>
           </button>
           <input
@@ -70,7 +71,7 @@ const Cart = () => {
             type="text"
             value={n.amount}
           />
-          <button onClick={() => upAmount(n.id)}>
+          <button onClick={() => upAmount(n.id, n.name)}>
             <span className="material-symbols-rounded">add</span>
           </button>
         </div>
@@ -83,7 +84,7 @@ const Cart = () => {
       </td>
       <td>
         <Button
-          onClick={() => delProduct(n.id)}
+          onClick={() => delProduct(n.name)}
           btnStyle="btn-outline"
           icon="delete"
           btnCSS="h-[12px] w-[64px] px-0 leading-3 text-[13px]"

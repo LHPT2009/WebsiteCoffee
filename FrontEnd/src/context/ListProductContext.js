@@ -5,37 +5,35 @@ const ListProductProvider = (props) => {
   const [products, setProducts] = useState([])
   const addProduct = async (product) => {
     const existedProduct = products.find((item) => {
-      return item.id === product.id //co
+      return item.id === product.id && item.name === product.name
     })
-    //Luong
     if (existedProduct) {
       products.forEach((item) => {
-        if (item.id === product.id) {
+        if (item.id === product.id && item.name === product.name) {
           item.amount += 1
         }
       })
       setProducts([...products])
-      // alert("Sản phẩm đã được thêm 1 !!!")
     } else {
       setProducts([...products, product])
-      // alert("Sản phẩm đã được thêm mới!");
     }
   }
 
-  const delProduct = (id) => setProducts(products.filter((n) => n.id !== id))
 
-  const upAmount = (id) => {
+  const delProduct = (name) => setProducts(products.filter((n) => (n.name !== name)))
+
+  const upAmount = (id, name) => {
     products.forEach((item) => {
-      if (item.id === id) {
+      if (item.id === id && item.name === name) {
         item.amount += 1
       }
     })
     setProducts([...products])
   }
 
-  const downAmount = (id) => {
+  const downAmount = (id, name) => {
     products.forEach((item) => {
-      if (item.id === id) {
+      if (item.id === id && item.name === name) {
         item.amount -= 1
         if (item.amount <= 1) {
           item.amount = 1
