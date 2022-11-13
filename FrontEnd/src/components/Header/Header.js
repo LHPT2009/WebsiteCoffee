@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import './header.css'
 
 import logo2 from '../../assets/images/logo_2.png'
 import { Link, useNavigate } from 'react-router-dom'

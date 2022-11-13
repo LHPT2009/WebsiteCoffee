@@ -4,6 +4,7 @@ import TextInput from '../Input/TextInput'
 import jwt_decode from 'jwt-decode'
 import { Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Footer from '../Footer/Footer'
 
 const Repass = () => {
   const [password, setPassword] = useState('')
@@ -32,7 +33,7 @@ const Repass = () => {
   }
   if (localStorage.getItem('checksuccess')) {
     return (
-      <div className="text-center">
+      <div className="text-center relative pb-24 lg:pb-12 min-h-screen">
         <form onSubmit={ResetPass}>
           <div>
             <TextInput
@@ -60,6 +61,7 @@ const Repass = () => {
             </Button>
           </div>
         </form>
+        <Footer />
       </div>
     )
   } else {

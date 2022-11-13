@@ -4,6 +4,7 @@ import TextInput from '../Input/TextInput'
 import React, { useState } from 'react'
 import jwt_decode from 'jwt-decode'
 import { Navigate, useNavigate } from 'react-router-dom'
+import Footer from '../Footer/Footer'
 
 const CheckCode = () => {
   const [Code, setCode] = useState('')
@@ -22,7 +23,7 @@ const CheckCode = () => {
   }
   if (localStorage.getItem('tokenreset')) {
     return (
-      <div className="text-center">
+      <div className="text-center relative pb-24 lg:pb-12 min-h-screen">
         <form onSubmit={CheckCodeUser}>
           <div>
             <TextInput
@@ -41,6 +42,7 @@ const CheckCode = () => {
             </Button>
           </div>
         </form>
+        <Footer />
       </div>
     )
   } else {
