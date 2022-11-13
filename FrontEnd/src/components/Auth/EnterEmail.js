@@ -3,6 +3,7 @@ import Button from '../Button/Button'
 import TextInput from '../Input/TextInput'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Footer from '../Footer/Footer'
 
 const EnterEmail = () => {
   const [email, setEmail] = useState('')
@@ -25,7 +26,7 @@ const EnterEmail = () => {
     }
   }
   return (
-    <div className="text-center">
+    <div className="text-center relative pb-24 lg:pb-12 min-h-screen">
       <form onSubmit={SendMailUser}>
         <div>
           <TextInput
@@ -44,6 +45,7 @@ const EnterEmail = () => {
           </Button>
         </div>
       </form>
+      <Footer />
     </div>
   )
 }

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Header from '../Header/Header'
 import Button from '../Button/Button'
 import TextInput from '../Input/TextInput'
+import Footer from '../Footer/Footer'
 
 const SignUp = () => {
   const [firstname, setFirstName] = useState('')
@@ -47,7 +48,7 @@ const SignUp = () => {
     }
   }
   return (
-    <div className="text-center font-googleSansRegular">
+    <div className="text-center font-googleSansRegular relative pb-24 lg:pb-12 min-h-screen">
       <Header />
       <div className="h-10"></div>
       <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] justify-center">
@@ -115,6 +116,7 @@ const SignUp = () => {
           Tạo tài khoản
         </Button>
       </div>
+      <Footer />
     </div>
   )
 }
