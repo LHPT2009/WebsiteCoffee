@@ -65,6 +65,8 @@ import EnterEmail from './components/Auth/EnterEmail'
 import CheckCode from './components/Auth/CheckCode'
 import Repass from './components/Auth/Repass'
 
+import Career from './views/Collections/Career'
+
 import ScrollToTop from 'react-scroll-to-top'
 
 const store = createStore(rootReducer)
@@ -89,6 +91,7 @@ root.render(
             <Route path="/product" element={<Coffee />} />
             <Route path="/product/:id" element={<ItemDetail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/career" element={<Career />} />
 
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />

@@ -36,11 +36,8 @@
   src: url("../public/fonts/GoogleSans-Black.otf");
 }
 
-@layer base {
-  html {
-    font-family: "GoogleSans-Regular";
-    src: url("../public/fonts/GoogleSans-Regular.otf");
-  }
+body {
+  font-family: GoogleSans-Regular !important;
 }
 
 body::-webkit-scrollbar {
