@@ -5,20 +5,20 @@ import barista from '../../assets/images/barista.png'
 
 const Career = () => {
   return (
-    <div className="bg-background relative  pb-24 lg:pb-12 min-h-screen font-googleSansRegular">
+    <div className="relative min-h-screen pb-24 bg-background lg:pb-12 font-googleSansRegular">
       <Header />
       <div className="mx-[32px] my-[64px] bg-background lg:mx-40">
-        <div className="flex flex-col text-center gap-10">
-          <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-col gap-10 text-center">
+          <div className="flex flex-col gap-12 lg:flex-row">
             <div className="flex flex-col gap-6">
               <h1 className="text-primary text-d1 lg:text-left">Tuyển dụng</h1>
-              <p className="text-t1 text-black lg:text-left">
+              <p className="text-black text-t1 lg:text-left">
                 Ngôi nhà Bug Ổn luôn có chỗ cho bạn
               </p>
             </div>
             <div className="items-end">
               <img
-                className="border-none px-16 md:px-32 lg:px-40 sm:w-screen h-auto"
+                className="h-auto px-16 border-none md:px-32 lg:px-40 sm:w-screen"
                 src={barista}
                 alt=""
               />
@@ -52,26 +52,28 @@ const Career = () => {
             </p>
           </div>
           {/* Vi tri tuyen dung */}
-          <div className="box-border bg-s3 flex flex-col gap-[16px] px-16 py-12 rounded-[32px] lg:mx-32 ">
-            <h2 className="text-h1 text-on-surface text-center">
+          <div className="box-border bg-s3 flex flex-col gap-[16px] px-16 py-12 rounded-[32px] lg:mx-32">
+            <h2 className="text-center text-h1 text-on-surface">
               Các vị trí hiện tại
             </h2>
             <div className="flex flex-col items-start p-6 rounded-[16px] bg-secondary-cont text-on-secondary-cont border-outline-var border-[2px] hover:bg-secondary hover:text-white transition-all ease-out">
               <p className="text-h2">Quản lí cửa hàng</p>
-              <div className="flex items-start text-left text-l2  gap-2 p-2">
+              <div className="flex items-start gap-2 p-2 text-left text-l2">
                 <span class="material-symbols-outlined">schedule</span>Full-time
               </div>
-              <div className="flex items-start text-left text-l2  gap-2 p-2">
-                <span class="material-symbols-outlined">location_on</span>134 - 136 Điện Biên Phủ, Quận Bình Thạnh, TP. Hồ Chí Minh
+              <div className="flex items-start gap-2 p-2 text-left text-l2">
+                <span class="material-symbols-outlined">location_on</span>134 -
+                136 Điện Biên Phủ, Quận Bình Thạnh, TP. Hồ Chí Minh
               </div>
             </div>
             <div className="flex flex-col items-start p-6 rounded-[16px] bg-secondary-cont text-on-secondary-cont border-outline-var border-[2px] hover:bg-secondary hover:text-white transition-all ease-out">
               <p className="text-h2">Nhân viên bán hàng</p>
-              <div className="flex items-start text-left text-l2  gap-2 p-2">
+              <div className="flex items-start gap-2 p-2 text-left text-l2">
                 <span class="material-symbols-outlined">schedule</span>Part-time
               </div>
-              <div className="flex items-start text-left text-l2  gap-2 p-2">
-                <span class="material-symbols-outlined">location_on</span>134 - 136 Điện Biên Phủ, Quận Bình Thạnh, TP. Hồ Chí Minh
+              <div className="flex items-start gap-2 p-2 text-left text-l2">
+                <span class="material-symbols-outlined">location_on</span>134 -
+                136 Điện Biên Phủ, Quận Bình Thạnh, TP. Hồ Chí Minh
               </div>
             </div>
           </div>
