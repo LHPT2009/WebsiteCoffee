@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const [categoryproduct, setCategoryProduct] = useState([]);
-  const [categoryproductid, setCategoryProductId] = useState("633f0b21ec8f7158d548cf35");
+  const [categoryproductid, setCategoryProductId] = useState("6370b175c7e4d05977ae9b7c");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState();

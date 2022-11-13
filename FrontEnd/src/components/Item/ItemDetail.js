@@ -10,7 +10,7 @@ import Rating from '@mui/material/Rating'
 
 const ItemDetail = () => {
   const { id } = useParams()
-  const [star, setStar] = React.useState(2)
+  const [star, setStar] = React.useState(0)
   const [info, setInfo] = useState([])
   const [image, setImage] = useState();
   useEffect(() => {
@@ -104,10 +104,7 @@ const ItemDetail = () => {
         <div className="mt-16">
           <h4 className="text-[18px] mb-2 font-semibold">Mô tả sản phẩm</h4>
           <p className="leading-6 text-[14px] font-normal">
-            Được sản xuất theo công nghệ Nhật, Cà Phê Sữa Espresso The Coffee
-            House giữ trọn hương vị đậm đà của 100% cà phê Robusta nguyên chất
-            quyện hoà cùng sữa béo thơm lừng. Bật nắp trải nghiệm ngay chất cà
-            phê mạnh mẽ giúp sảng khoái tức thì, tuôn trào hứng khởi
+            {info.describe}
           </p>
         </div>
         {/* Rating */}

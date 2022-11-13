@@ -26,11 +26,16 @@ const Coffee = () => {
     })
   }, [])
 
-  const handleCategories = (categoryId) => {
-    const result = product.filter((currentCate) => {
-      return currentCate.categoryproductid === categoryId
+  const handleCategories = (cateid) => {
+    axios.get(`http://localhost:8000/loadproduct/${cateid}`).then((res) => {
+      setProduct(res.data)
     })
-    setProduct(result)
+  }
+
+  const handleproduct = () => {
+    axios.get('http://localhost:8000/product').then((res) => {
+      setProduct(res.data)
+    })
   }
 
   return (
@@ -48,7 +53,7 @@ const Coffee = () => {
               btnCSS={'h-[44px] mr-2'}
               btnStyle="btn-outline"
               icon=""
-              onClick={() => setProduct(product)}
+              onClick={handleproduct}
             >
               Tất cả
             </Button>

@@ -40,9 +40,8 @@ const Header = () => {
             </div>
 
             <ul
-              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[20px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${
-                open ? 'top-[56px]' : 'top-[-420px]'
-              } `}
+              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[20px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${open ? 'top-[56px]' : 'top-[-420px]'
+                } `}
             >
               <button
                 className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] h-[56px] text-black hover:text-primary"
