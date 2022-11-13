@@ -15,7 +15,11 @@ const ItemDetail = () => {
   const [content, setContent] = useState('')
   const [info, setInfo] = useState([])
   const [ratelist, setRateList] = useState([])
-  const [image, setImage] = useState()
+  const [image, setImage] = useState();
+  const [sizeproduct, setSizeProduct] = useState([]);
+  const [pricesize, setPriceSize] = useState(0);
+  const [size, setSize] = useState("S");
+
   useEffect(() => {
     axios.get(`http://localhost:8000/product/${id}`).then((res) => {
       setInfo(res.data)
@@ -35,14 +39,19 @@ const ItemDetail = () => {
       setProduct(res.data)
     })
   }, [])
+  useEffect(() => {
+    axios.get('http://localhost:8000/sizeproduct').then((res) => {
+      setSizeProduct(res.data)
+    })
+  }, [])
 
   const { addProduct } = useContext(ListProductContext)
 
   const add = (e) => {
     e.preventDefault()
     const id = info._id
-    const name = info.name
-    const price = info.price
+    const name = (info.name + " size:" + size)
+    const price = (info.price + pricesize)
     const amount = 1
     const product = { id, name, price, amount }
     addProduct(product)
@@ -77,39 +86,31 @@ const ItemDetail = () => {
           />
           <div className="pt-5">
             <p className="text-[26px] mb-[18px] text-black leading-6">
-              {info.name}
+              {info.name} - size: {size}
             </p>
             <div className="mt-4 text-base">
               <span className="text-[26px] font-semibold mr-[37px]">
                 {new Intl.NumberFormat('vi-VN', {
                   style: 'currency',
                   currency: 'VND',
-                }).format(info.price)}
+                }).format(info.price + pricesize)}
               </span>
             </div>
             <div className="mt-6">
-              <h2 className="mb-2 t1">Kích cỡ</h2>
-              <Button
-                btnStyle="btn-outline"
-                icon={''}
-                btnCSS={'h-3 mr-2 font-semibold'}
-              >
-                S
-              </Button>
-              <Button
-                btnStyle="btn-outline"
-                icon={''}
-                btnCSS={'h-3 mr-2 font-semibold'}
-              >
-                M
-              </Button>
-              <Button
-                btnStyle="btn-outline"
-                icon={''}
-                btnCSS={'h-3 font-semibold'}
-              >
-                L
-              </Button>
+              <h2 className="t1 mb-2">Kích cỡ</h2>
+              {sizeproduct.map((ele) => (
+                <Button
+                  btnStyle="btn-outline"
+                  icon={''}
+                  btnCSS={'h-3 mr-2 font-semibold'}
+                  onClick={() => {
+                    setPriceSize(ele.price);
+                    setSize(ele.name)
+                  }}
+                >
+                  {ele.name}
+                </Button>
+              ))}
             </div>
             <div className="items-center mt-10">
               <Button
