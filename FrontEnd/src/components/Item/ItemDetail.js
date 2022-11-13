@@ -8,12 +8,27 @@ import { ListProductContext } from '../../context/ListProductContext'
 
 const ItemDetail = () => {
   const { id } = useParams()
+<<<<<<< Updated upstream
 
   const [info, setInfo] = useState([])
   useEffect(() => {
     axios
       .get(`http://localhost:8000/product/${id}`)
       .then((res) => setInfo(res.data))
+=======
+  const [star, setStar] = React.useState(0)
+  const [info, setInfo] = useState([])
+  const [image, setImage] = useState()
+  useEffect(() => {
+    axios.get(`http://localhost:8000/product/${id}`).then((res) => {
+      setInfo(res.data)
+      setImage(
+        `data:image/png;base64,${btoa(
+          String.fromCharCode(...new Uint8Array(res.data.image.data.data))
+        )}`
+      )
+    })
+>>>>>>> Stashed changes
   }, [id])
 
   const [product, setProduct] = useState([])
@@ -36,7 +51,11 @@ const ItemDetail = () => {
   }
 
   return (
+<<<<<<< Updated upstream
     <div>
+=======
+    <div className="relative min-h-screen pb-24 lg:pb-12">
+>>>>>>> Stashed changes
       <Header />
       <div className="h-20"></div>
       <div className="sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] font-googleSansRegular">
@@ -50,12 +69,40 @@ const ItemDetail = () => {
             <p className="text-[26px] mb-[18px] text-black leading-6">
               {info.name}
             </p>
-            <div className="text-base mt-4">
+            <div className="mt-4 text-base">
               <span className="text-[26px] font-semibold mr-[37px]">
                 {info.price} đ
               </span>
             </div>
+<<<<<<< Updated upstream
             <div className="items-center mt-4">
+=======
+            <div className="mt-6">
+              <h2 className="mb-2 t1">Kích cỡ</h2>
+              <Button
+                btnStyle="btn-outline"
+                icon={''}
+                btnCSS={'h-3 mr-2 font-semibold'}
+              >
+                S
+              </Button>
+              <Button
+                btnStyle="btn-outline"
+                icon={''}
+                btnCSS={'h-3 mr-2 font-semibold'}
+              >
+                M
+              </Button>
+              <Button
+                btnStyle="btn-outline"
+                icon={''}
+                btnCSS={'h-3 font-semibold'}
+              >
+                L
+              </Button>
+            </div>
+            <div className="items-center mt-10">
+>>>>>>> Stashed changes
               <Button
                 type="button"
                 btnStyle="btn-fill"
@@ -86,7 +133,13 @@ const ItemDetail = () => {
                   key={item._id}
                   title={item.name}
                   price={item.price}
+<<<<<<< Updated upstream
                   image={item.image}
+=======
+                  image={`data:image/png;base64,${btoa(
+                    String.fromCharCode(...new Uint8Array(item.image.data.data))
+                  )}`}
+>>>>>>> Stashed changes
                 />
               </Link>
             ))}

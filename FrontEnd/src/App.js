@@ -9,7 +9,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (
+<<<<<<< Updated upstream
     <div className="font-googleSansRegular">
+=======
+    <div className="relative pb-24 bg-background font-googleSansRegular lg:pb-12">
+>>>>>>> Stashed changes
       <Home />
     </div>
   )
