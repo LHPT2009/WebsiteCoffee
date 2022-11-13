@@ -19,9 +19,9 @@ const RateController = {
         }
     },
 
-    getRateById: async (req, res) => {
+    getRateByProductId: async (req, res) => {
         try {
-            const rate = await Rate.findById(req.params.id);
+            const rate = await Rate.find({ productid: req.params.id }).populate('usertid');
             res.status(200).json(rate);
         } catch (error) {
             res.status(500).json(error);

@@ -7,21 +7,25 @@ import ItemCard from './ItemCard'
 import { ListProductContext } from '../../context/ListProductContext'
 import Footer from '../Footer/Footer'
 import Rating from '@mui/material/Rating'
+import jwt_decode from 'jwt-decode'
 
 const ItemDetail = () => {
   const { id } = useParams()
-  const [star, setStar] = React.useState(0)
+  const [point, setPoint] = React.useState(0)
+  const [content, setContent] = useState("")
   const [info, setInfo] = useState([])
+  const [ratelist, setRateList] = useState([])
   const [image, setImage] = useState();
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/product/${id}`)
+    axios.get(`http://localhost:8000/product/${id}`)
       .then((res) => {
         setInfo(res.data);
         setImage(`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(res.data.image.data.data)))}`);
       })
+    axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
+      setRateList(res.data)
+    })
   }, [id])
-
   const [product, setProduct] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8000/product').then((res) => {
@@ -41,6 +45,18 @@ const ItemDetail = () => {
     addProduct(product)
   }
 
+  const addrate = (e) => {
+    e.preventDefault()
+    const addrate = axios.post(`http://localhost:8000/rate`, { productid: info._id, usertid: jwt_decode(localStorage.getItem("token")).id, point: point, content: content })
+    if (addrate) {
+      setPoint(0);
+      setContent("");
+      alert("Cảm ơn bạn đã đánh giá sản phẩm này!")
+    }
+    else {
+
+    }
+  }
   return (
     <div className="relative pb-24 lg:pb-12 min-h-screen">
       <Header />
@@ -108,45 +124,59 @@ const ItemDetail = () => {
           </p>
         </div>
         {/* Rating */}
-        <div className="mt-16">
-          <h4 className="text-[18px] mb-2 font-semibold">Đánh giá sản phẩm</h4>
-          {/* Star */}
-          <div className="my-5">
-            <Rating
-              size="large"
-              name="simple-controlled"
-              value={star}
-              onChange={(event, newValue) => {
-                setStar(newValue)
-              }}
-            />
-          </div>
-          {/* Content */}
+        {localStorage.getItem("token") ? <div className="mt-16">
+          <form onSubmit={addrate}>
+            <h4 className="text-[18px] mb-2 font-semibold">Đánh giá sản phẩm</h4>
+            {/* Star */}
+            <div className="my-5">
+              <Rating
+                size="large"
+                name="simple-controlled"
+                value={point}
+                onChange={(event, newValue) => {
+                  setPoint(newValue)
+                }}
+              />
+            </div>
+            {/* Content */}
+            <div>
+              <textarea
+                name="content"
+                placeholder="Nội dung"
+                value={content}
+                className="border-[1px] border-outline-var border-solid rounded-3xl text-[18px] leading-[24px] mb-[10px] pt-[13px] px-[12px] pb-[13px] hover:border-outline focus:border-[1px] hover:rounded-2xl focus:border-outline focus:rounded-2xl transition-all w-full min-h-[200px] max-h-[200px]"
+                onChange={(e) => setContent(e.target.value)}
+              />
+            </div>
+            <div className="text-right">
+              <Button
+                btnStyle={'btn-fill'}
+                icon=""
+                btnCSS={'h-[44px] px-6 py-5'}
+                onClick={addrate}
+              >
+                Đăng
+              </Button>
+            </div>
+            {/* End Content */}
+          </form>
+        </div> :
+          <h3>Mời bạn đăng nhập trước khi muốn đánh giá</h3>
+        }
+        <h1>Cảm nhận về sản phẩm</h1>
+        {ratelist.map((ele) => (
           <div>
-            <textarea
-              name="content"
-              placeholder="Nội dung"
-              className="border-[1px] border-outline-var border-solid rounded-3xl text-[18px] leading-[24px] mb-[10px] pt-[13px] px-[12px] pb-[13px] hover:border-outline focus:border-[1px] hover:rounded-2xl focus:border-outline focus:rounded-2xl transition-all w-full min-h-[200px] max-h-[200px]"
-            />
+            <p>Họ và tên:{ele.usertid.lastname + " " + ele.usertid.firstname}</p>
+            <p>Điểm đánh giá:{ele.point}</p>
+            <p>Nôi dung:{ele.content}</p>
           </div>
-          <div className="text-right">
-            <Button
-              btnStyle={'btn-fill'}
-              icon=""
-              btnCSS={'h-[44px] px-6 py-5'}
-              onClick={''}
-            >
-              Đăng
-            </Button>
-          </div>
-          {/* End Content */}
-        </div>
+        ))}
         {/* Relate */}
         <div className="my-16">
           <h4 className="text-[18px] mb-2 font-semibold">Sản phẩm liên quan</h4>
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {product.map((item) => (
-              <Link to={'/product/' + item._id}>
+              <Link to={`/product/${item._id}`}>
                 <ItemCard
                   key={item._id}
                   title={item.name}
