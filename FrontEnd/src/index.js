@@ -65,11 +65,23 @@ import EnterEmail from './components/Auth/EnterEmail'
 import CheckCode from './components/Auth/CheckCode'
 import Repass from './components/Auth/Repass'
 
+import ScrollToTop from 'react-scroll-to-top'
+
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <Provider store={store}>
     <React.StrictMode>
+      <ScrollToTop
+        smooth
+        top={480}
+        component={
+          <span className="material-symbols-rounded !text-[32px] !text-white">
+            keyboard_arrow_up
+          </span>
+        }
+        className="!z-[101] !w-[52px] !h-[52px] !rounded-full hover:!rounded-2xl !bg-primary transition-transform"
+      />
       <ListProductProvider>
         <BrowserRouter>
           <Routes>
