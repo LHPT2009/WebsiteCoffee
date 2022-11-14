@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const receiptdetailsSchema = new mongoose.Schema({
     productid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product"
+        ref: "Products"
     },
     receiptid: {
         type: mongoose.Schema.Types.ObjectId,
