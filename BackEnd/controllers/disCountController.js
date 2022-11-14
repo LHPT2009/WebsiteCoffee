@@ -28,6 +28,15 @@ const disCountController = {
         }
     },
 
+    getDisCountByName: async (req, res) => {
+        try {
+            const disCount = await DisCount.findOne({ name: req.body.name });
+            res.status(200).json(disCount);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+
     addDisCount: async (req, res) => {
         try {
             // const startdate = new Date(req.body.startdate);
