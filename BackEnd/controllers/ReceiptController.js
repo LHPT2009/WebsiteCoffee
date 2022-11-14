@@ -32,6 +32,7 @@ const ReceiptController = {
     getReceiptDetailById: async (req, res) => {
         try {
             const receiptDetail = await ReceiptDetail.find({ receiptid: req.params.id }).populate('productid', ['name']);
+            // const receiptDetail = await ReceiptDetail.find().populate('productid');
             res.status(200).json(receiptDetail);
         } catch (error) {
             res.status(500).json(error);
