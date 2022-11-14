@@ -1,7 +1,7 @@
 import React from 'react'
 import './button.css'
 
-const STYLES = ['btn-fill', 'btn-outline']
+const STYLES = ['btn-fill', 'btn-outline', 'btn-text', 'btn-elevate', 'btn-tonal']
 const TYPE = ['button']
 
 const Button = ({ children, type, icon, onClick, btnStyle, btnCSS }) => {
@@ -23,7 +23,7 @@ const Button = ({ children, type, icon, onClick, btnStyle, btnCSS }) => {
 
   return (
     <button
-      className={`btn ${checkbtnStyle} ${btnCSS} transition-all font-googleSansRegular pt-3 pb-[2.2rem] px-6 hover:rounded-2xl`}
+      className={`btn ${checkbtnStyle} ${btnCSS} transition-all ease-in-out duration-300 font-googleSansRegular pt-[16px] pb-[36px] px-6`}
       onClick={onClick}
       type={`${checkType}`}
     >
