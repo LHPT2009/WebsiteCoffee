@@ -1,4 +1,5 @@
 import React from 'react'
+import './textinput.css'
 
 const TextInput = ({
   name,
@@ -21,7 +22,7 @@ const TextInput = ({
       required={required}
       defaultValue={defaultValue}
       disabled={disabled}
-    ></input>
+    />
   )
 }
 

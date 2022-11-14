@@ -15,10 +15,10 @@ const ItemDetail = () => {
   const [content, setContent] = useState('')
   const [info, setInfo] = useState([])
   const [ratelist, setRateList] = useState([])
-  const [image, setImage] = useState();
-  const [sizeproduct, setSizeProduct] = useState([]);
-  const [pricesize, setPriceSize] = useState(0);
-  const [size, setSize] = useState("S");
+  const [image, setImage] = useState()
+  const [sizeproduct, setSizeProduct] = useState([])
+  const [pricesize, setPriceSize] = useState(0)
+  const [size, setSize] = useState('S')
 
   useEffect(() => {
     axios.get(`http://localhost:8000/product/${id}`).then((res) => {
@@ -50,8 +50,8 @@ const ItemDetail = () => {
   const add = (e) => {
     e.preventDefault()
     const id = info._id
-    const name = (info.name + " size:" + size)
-    const price = (info.price + pricesize)
+    const name = info.name + ' size:' + size
+    const price = info.price + pricesize
     const amount = 1
     const product = { id, name, price, amount }
     addProduct(product)
@@ -97,14 +97,14 @@ const ItemDetail = () => {
               </span>
             </div>
             <div className="mt-6">
-              <h2 className="t1 mb-2">Kích cỡ</h2>
+              <h2 className="mb-2 t1">Kích cỡ</h2>
               {sizeproduct.map((ele) => (
                 <Button
                   btnStyle="btn-outline"
                   icon={''}
                   btnCSS={'h-3 mr-2 font-semibold'}
                   onClick={() => {
-                    setPriceSize(ele.price);
+                    setPriceSize(ele.price)
                     setSize(ele.name)
                   }}
                 >
