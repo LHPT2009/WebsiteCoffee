@@ -33,12 +33,14 @@ const Cart = () => {
   })
 
   const searchdiscount = (e) => {
-    e.preventDefault();
-    axios.post(`http://localhost:8000/discount/one`, { name: namediscount }).then((res) => {
-      setNameDisCount(res.data.name)
-      setDisCountId(res.data._id)
-      setDiscountPrice(res.data.price)
-    })
+    e.preventDefault()
+    axios
+      .post(`http://localhost:8000/discount/one`, { name: namediscount })
+      .then((res) => {
+        setNameDisCount(res.data.name)
+        setDisCountId(res.data._id)
+        setDiscountPrice(res.data.price)
+      })
   }
 
   const addOrder = async () => {
@@ -55,9 +57,9 @@ const Cart = () => {
       statuspayment,
       statusdelivery,
     })
-    setNameDisCount('');
-    setDiscountPrice(0);
-    setDisCountId('');
+    setNameDisCount('')
+    setDiscountPrice(0)
+    setDisCountId('')
     if (rec) {
       alert('Thanh toan thanh cong!')
       clearCart()
@@ -129,16 +131,19 @@ const Cart = () => {
         <h1>Ma giam gia</h1>
         <input
           value={namediscount}
-          placeholder='ma cua ban'
+          placeholder="ma cua ban"
           onChange={(e) => setNameDisCount(e.target.value)}
         />
         <button onClick={searchdiscount}>nhap ma</button>
-        <button onClick={() => {
-          setNameDisCount('');
-          setDiscountPrice(0);
-          setDisCountId('');
-        }}>xóa mã</button>
-
+        <button
+          onClick={() => {
+            setNameDisCount('')
+            setDiscountPrice(0)
+            setDisCountId('')
+          }}
+        >
+          xóa mã
+        </button>
       </form>
 
       <h2>Mã id:{discountid}</h2>
@@ -160,7 +165,7 @@ const Cart = () => {
       >
         Thanh toán
       </Button>
-    </div >
+    </div>
   )
 
   const cartEmpty = (
@@ -168,7 +173,7 @@ const Cart = () => {
   )
 
   return (
-    <div className="relative pb-24 lg:pb-12 min-h-screen font-googleSansRegular">
+    <div className="relative min-h-screen pb-24 lg:pb-12">
       <Header />
       <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {products.length != 0 ? formorderList : cartEmpty}

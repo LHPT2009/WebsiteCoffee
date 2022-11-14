@@ -17,7 +17,6 @@ const Header = () => {
     localStorage.removeItem('token')
     navigate('/')
   }
-  const activated = 'active:text-primary'
 
   return (
     <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-1 z-[999] text-l2">
