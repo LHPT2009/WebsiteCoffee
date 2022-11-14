@@ -8,6 +8,12 @@ const receiptSchema = new mongoose.Schema({
     price: {
         type: Number
     },
+    discountid: {
+        type: String
+    },
+    discountprice: {
+        type: Number
+    },
     statuspayment: {
         type: Boolean
     },

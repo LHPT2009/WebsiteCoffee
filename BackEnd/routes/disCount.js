@@ -6,6 +6,8 @@ router.get("/", disCountController.getAllDisCount);
 
 router.get("/:id", disCountController.getDisCountById);
 
+router.post("/one", disCountController.getDisCountByName);
+
 router.delete("/:id", disCountController.deleteDisCount);
 
 router.post("/", disCountController.addDisCount);

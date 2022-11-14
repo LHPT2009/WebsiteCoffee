@@ -14,6 +14,9 @@ const Cart = () => {
   const navigate = useNavigate()
   const [price, setPrice] = useState(0)
   const [userid, setUserId] = useState('')
+  const [namediscount, setNameDisCount] = useState('')
+  const [discountid, setDisCountId] = useState('')
+  const [discountprice, setDiscountPrice] = useState(0)
   const [statuspayment, setStatusPayment] = useState(false)
   const [statusdelivery, setStatusDelivery] = useState(false)
   useEffect(() => {
@@ -26,8 +29,17 @@ const Cart = () => {
   useEffect(() => {
     let ans = 0
     products.map((item) => (ans += item.amount * item.price))
-    setPrice(ans)
+    setPrice(ans - discountprice)
   })
+
+  const searchdiscount = (e) => {
+    e.preventDefault();
+    axios.post(`http://localhost:8000/discount/one`, { name: namediscount }).then((res) => {
+      setNameDisCount(res.data.name)
+      setDisCountId(res.data._id)
+      setDiscountPrice(res.data.price)
+    })
+  }
 
   const addOrder = async () => {
     if (!localStorage.getItem('token')) {
@@ -38,9 +50,14 @@ const Cart = () => {
       userid,
       price,
       products,
+      discountid,
+      discountprice,
       statuspayment,
       statusdelivery,
     })
+    setNameDisCount('');
+    setDiscountPrice(0);
+    setDisCountId('');
     if (rec) {
       alert('Thanh toan thanh cong!')
       clearCart()
@@ -108,6 +125,25 @@ const Cart = () => {
         </thead>
         <tbody>{orderList}</tbody>
       </table>
+      <form onSubmit={searchdiscount}>
+        <h1>Ma giam gia</h1>
+        <input
+          value={namediscount}
+          placeholder='ma cua ban'
+          onChange={(e) => setNameDisCount(e.target.value)}
+        />
+        <button onClick={searchdiscount}>nhap ma</button>
+        <button onClick={() => {
+          setNameDisCount('');
+          setDiscountPrice(0);
+          setDisCountId('');
+        }}>xóa mã</button>
+
+      </form>
+
+      <h2>Mã id:{discountid}</h2>
+      <h2>Tiền giảm:{discountprice}</h2>
+
       <h1 className="mt-10 mb-5">
         Tồng tiền:{' '}
         {new Intl.NumberFormat('vi-VN', {
@@ -124,7 +160,7 @@ const Cart = () => {
       >
         Thanh toán
       </Button>
-    </div>
+    </div >
   )
 
   const cartEmpty = (

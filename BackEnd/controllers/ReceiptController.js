@@ -43,6 +43,8 @@ const ReceiptController = {
             const newReceipt = new Receipt({
                 userid: req.body.userid,
                 price: req.body.price,
+                discountid: req.body.discountid,
+                discountprice: req.body.discountprice,
                 statuspayment: req.body.statuspayment,
                 statusdelivery: req.body.statusdelivery,
             });
