@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import barista from '../../assets/images/barista.png'
+import Button from '../../components/Button/Button'
 
 const Career = () => {
   return (

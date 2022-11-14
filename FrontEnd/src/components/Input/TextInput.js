@@ -12,8 +12,8 @@ const TextInput = ({
 }) => {
   return (
     <input
-      className={`${className} border-[1px] border-outline-var border-style: solid rounded-full text-[18px] leading-[24px] mb-[10px] pt-[13px] px-[12px] pb-[13px] 
-      hover:border-outline focus:border-[1px] hover:rounded-2xl focus:border-outline focus:rounded-2xl transition-all`}
+      className={`${className}  border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+      hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300`}
       onChange={onChange}
       type={type}
       name={name}

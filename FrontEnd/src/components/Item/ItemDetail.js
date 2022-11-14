@@ -102,7 +102,7 @@ const ItemDetail = () => {
                 <Button
                   btnStyle="btn-outline"
                   icon={''}
-                  btnCSS={'h-3 mr-2 font-semibold'}
+                  btnCSS={'h-3 mr-2'}
                   onClick={() => {
                     setPriceSize(ele.price);
                     setSize(ele.name)
@@ -123,6 +123,42 @@ const ItemDetail = () => {
                 Thêm vào giỏ hàng
               </Button>
             </div>
+            {/* test */}
+            <div className="items-center mt-10">
+              <Button
+                type="button"
+                btnStyle="btn-text"
+                icon="add_shopping_cart"
+                onClick={add}
+                btnCSS={'h-[44px] px-6 py-5'}
+              >
+                Text button
+              </Button>
+            </div>
+            <div className="items-center mt-10">
+              <Button
+                type="button"
+                btnStyle="btn-elevate"
+                icon=""
+                onClick={add}
+                btnCSS={'h-[44px] px-6 py-5'}
+              >
+                Eleavted button
+              </Button>
+            </div>
+            <div className="items-center mt-10">
+              <Button
+                type="button"
+                btnStyle="btn-tonal"
+                icon="add_shopping_cart"
+                onClick={add}
+                btnCSS={'h-[44px] px-6 py-5'}
+              >
+                Tonal button
+              </Button>
+            </div>
+            
+            {/* end test */}
           </div>
         </div>
         <div className="mt-16">
