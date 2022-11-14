@@ -1,0 +1,25 @@
+.form-field {
+  position: relative;
+}
+
+.form-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 21px;
+  user-select: none;
+  color: #999;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.form-input:not(:placeholder-shown)+.form-label,
+
+.form-input:focus+.form-label {
+  top: 0;
+  left: 11px;
+  padding: 0 10px;
+  display: inline-block;
+  background-color: white;
+  color: #FFC0CB;
+}

@@ -18,7 +18,7 @@ module.exports = {
       transparent: 'transparent',
       //primary
       primary: '#3d685e',
-      'primary-cont': '#ECFEFA',
+      'primary-cont': '#D8FDF4',
       'on-primary-cont': '#093830',
       //secondary
       secondary: '#3E4A48',

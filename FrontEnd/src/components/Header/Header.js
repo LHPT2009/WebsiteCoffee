@@ -65,6 +65,7 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-[16px] h-[56px] justify-center">
+          {/* Cart button */}
           <div className="hover:bg-s5 rounded-[16px]">
             <button
               onClick={() => {
@@ -73,7 +74,7 @@ const Header = () => {
               className="hover:bg-s5 rounded-[16px]"
             >
               <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center hover:text-primary w-[48] gap-[8px]">
-                <span class="material-symbols-outlined">shopping_cart</span>
+                <span className="material-symbols-outlined">shopping_cart</span>
                 {products.length > 0 && (
                   <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-[12px] pt-[2px] font-googleSansBold">
                     {products.length}
@@ -82,41 +83,44 @@ const Header = () => {
               </div>
             </button>
           </div>
-
+          {/* Search button */}
           <div className="hover:bg-s5 rounded-[16px]">
             <div className="flex flex-row justify-between items-center m-[12px]">
               <Link
-                className="flex flex-row text-black text-center hover:text-primary"
+                className="flex flex-row text-center text-black hover:text-primary"
                 to="/search"
               >
-                <span class="material-symbols-outlined">search</span>
+                <span className="material-symbols-outlined">search</span>
               </Link>
             </div>
           </div>
-
-          <button
-            className="hover:bg-s5 rounded-[16px]"
-            onClick={() => {
-              navigate('/signin')
-            }}
-          >
-            <div className="flex flex-row justify-between items-center m-[12px]">
-              {localStorage.getItem('token') ? (
-                <div>
-                  <form onSubmit={logout}>
-                    <p>
-                      Chào {jwt_decode(localStorage.getItem('token')).name}{' '}
-                      <button onClick={logout}> Đăng xuất</button>
-                    </p>
-                  </form>
-                </div>
-              ) : (
-                <div className="flex flex-row text-black text-center hover:text-primary">
-                  <span class="material-symbols-outlined">person</span>
-                </div>
-              )}
-            </div>
-          </button>
+          {/* User / Sign in */}
+          <div className="hover:bg-s5 hover:text-primary rounded-[16px]">
+            {localStorage.getItem('token') ? (
+              <button
+                onClick={() => {
+                  navigate('/profile')
+                }}
+                className="h-[48px] px-4 items-center"
+              >
+                Chào {jwt_decode(localStorage.getItem('token')).name}
+                {/* <button onClick={logout}> Đăng xuất</button> */}
+              </button>
+            ) : (
+              <div className="hover:bg-s5 rounded-[16px]">
+                <button
+                  onClick={() => {
+                    navigate('/signin')
+                  }}
+                  className="hover:bg-s5 rounded-[16px]"
+                >
+                  <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center w-[48] gap-[8px]">
+                    <span className="material-symbols-outlined">person</span>
+                  </div>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>

@@ -29,7 +29,7 @@ const SignIn = () => {
     }
   }
   return (
-    <div className="text-center font-googleSansRegular relative pb-24 lg:pb-12 min-h-screen">
+    <div className="relative min-h-screen pb-24 text-center font-googleSansRegular lg:pb-12">
       <Header />
       <div className="h-10"></div>
       <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] justify-center">
@@ -62,7 +62,7 @@ const SignIn = () => {
         >
           Đăng nhập
         </Button>
-        <Link to="/signup" className="hover:text-primary mt-5 block">
+        <Link to="/signup" className="block mt-5 hover:text-primary">
           Tạo tài khoản
         </Link>
       </div>

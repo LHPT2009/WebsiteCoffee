@@ -15,10 +15,10 @@ const ItemDetail = () => {
   const [content, setContent] = useState('')
   const [info, setInfo] = useState([])
   const [ratelist, setRateList] = useState([])
-  const [image, setImage] = useState();
-  const [sizeproduct, setSizeProduct] = useState([]);
-  const [pricesize, setPriceSize] = useState(0);
-  const [size, setSize] = useState("S");
+  const [image, setImage] = useState()
+  const [sizeproduct, setSizeProduct] = useState([])
+  const [pricesize, setPriceSize] = useState(0)
+  const [size, setSize] = useState('S')
 
   useEffect(() => {
     axios.get(`http://localhost:8000/product/${id}`).then((res) => {
@@ -50,8 +50,8 @@ const ItemDetail = () => {
   const add = (e) => {
     e.preventDefault()
     const id = info._id
-    const name = (info.name + " size:" + size)
-    const price = (info.price + pricesize)
+    const name = info.name + ' size:' + size
+    const price = info.price + pricesize
     const amount = 1
     const product = { id, name, price, amount }
     addProduct(product)
@@ -97,14 +97,14 @@ const ItemDetail = () => {
               </span>
             </div>
             <div className="mt-6">
-              <h2 className="t1 mb-2">Kích cỡ</h2>
+              <h2 className="mb-2 t1">Kích cỡ</h2>
               {sizeproduct.map((ele) => (
                 <Button
                   btnStyle="btn-outline"
                   icon={''}
-                  btnCSS={'h-3 mr-2 font-semibold'}
+                  btnCSS={'h-3 mr-2'}
                   onClick={() => {
-                    setPriceSize(ele.price);
+                    setPriceSize(ele.price)
                     setSize(ele.name)
                   }}
                 >
@@ -123,6 +123,42 @@ const ItemDetail = () => {
                 Thêm vào giỏ hàng
               </Button>
             </div>
+            {/* test */}
+            <div className="items-center mt-10">
+              <Button
+                type="button"
+                btnStyle="btn-text"
+                icon="add_shopping_cart"
+                onClick={add}
+                btnCSS={'h-[44px] px-6 py-5'}
+              >
+                Text button
+              </Button>
+            </div>
+            <div className="items-center mt-10">
+              <Button
+                type="button"
+                btnStyle="btn-elevate"
+                icon=""
+                onClick={add}
+                btnCSS={'h-[44px] px-6 py-5'}
+              >
+                Eleavted button
+              </Button>
+            </div>
+            <div className="items-center mt-10">
+              <Button
+                type="button"
+                btnStyle="btn-tonal"
+                icon="add_shopping_cart"
+                onClick={add}
+                btnCSS={'h-[44px] px-6 py-5'}
+              >
+                Tonal button
+              </Button>
+            </div>
+            
+            {/* end test */}
           </div>
         </div>
         <div className="mt-16">
