@@ -40,7 +40,7 @@ module.exports = {
       s4: '#e2e7e6',
       s5: '#dee4e2',
       'on-surface': '#07221B',
-      insurface: '#222524',
+      insurface: '#272B2A',
       'on-insurface': '#FCFDFD',
       //shadowcolor
       sd1: 'rgba(115, 130, 126, 0.6);',
@@ -61,7 +61,7 @@ module.exports = {
       body: [
         '16px',
         {
-          lineHeight: '20px',
+          lineHeight: '28px',
           letterSpacing: '0.04em',
           fontWeight: '400',
         },
@@ -113,8 +113,8 @@ module.exports = {
         '16px',
         {
           lineHeight: '145%',
-          letterSpacing: '0.03em',
-          fontWeight: '400',
+          letterSpacing: '0.04em',
+          fontWeight: '600',
         },
       ],
       //label

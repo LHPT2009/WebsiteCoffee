@@ -11,7 +11,7 @@ const ItemCard = ({ title, price, image }) => {
       />
       <div className="flex flex-col items-start gap-[8px] self-stretch px-[32px] py-[24px]">
         <span className="text-l1 text-left">{title}</span>
-        <span className="text-t2">
+        <span className="text-t2 text-grey">
           {new Intl.NumberFormat('vi-VN', {
             style: 'currency',
             currency: 'VND',

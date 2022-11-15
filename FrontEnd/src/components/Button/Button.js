@@ -13,7 +13,7 @@ const Button = ({ children, type, icon, onClick, btnStyle, btnCSS }) => {
   const onlyText = <span>{children}</span>
 
   const iconText = (
-    <div className="flex">
+    <div className="flex text-justify">
       <span className="mr-2">
         <span className="material-symbols-rounded">{icon}</span>
       </span>
@@ -23,7 +23,7 @@ const Button = ({ children, type, icon, onClick, btnStyle, btnCSS }) => {
 
   return (
     <button
-      className={`btn ${checkbtnStyle} ${btnCSS} transition-all ease-in-out duration-300 font-googleSansRegular pt-[16px] pb-[36px] px-6`}
+      className={`btn ${checkbtnStyle} ${btnCSS} transition-all ease-in-out duration-300`}
       onClick={onClick}
       type={`${checkType}`}
     >

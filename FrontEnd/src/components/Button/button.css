@@ -16,8 +16,9 @@
 /* DEFAULT */
 .btn {
   justify-content: center;
+  text-align: center;
   align-items: center;
-  height: 44px;
+
   padding: 12px 24px;
   background: var(--primary);
   color: var(--white);
@@ -26,7 +27,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 125%;
   /* identical to box height, or 125% */
   letter-spacing: 0.03em;
 }

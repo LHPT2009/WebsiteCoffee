@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import Header from '../Header/Header'
 import Button from '../Button/Button'
 import ItemCard from './ItemCard'
@@ -19,6 +19,7 @@ const ItemDetail = () => {
   const [sizeproduct, setSizeProduct] = useState([])
   const [pricesize, setPriceSize] = useState(0)
   const [size, setSize] = useState('S')
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios.get(`http://localhost:8000/product/${id}`).then((res) => {
@@ -116,24 +117,24 @@ const ItemDetail = () => {
             <h2 className="mt-6 text-l2 text-black">Chọn size(bắt buộc)</h2>
             <div className="mt-3 flex flex-wrap gap-4">
               {sizeproduct.map((ele) => (
-                  <label className="cursor-pointer">
-                    <input
-                      id="default-radio-1"
-                      type="radio"
-                      name="default-radio"
-                      class="peer sr-only"
-                      onClick={() => {
-                        setPriceSize(ele.price)
-                        setSize(ele.name)
-                      }}             
-                    ></input>
-                    <div className='px-4 py-2.5 items-center text-center text-l2 bg-s4 text-grey border-[1.5px] border-outline-var rounded-full peer-checked:bg-secondary peer-checked:text-white'>
+                <label className="cursor-pointer">
+                  <input
+                    id="default-radio-1"
+                    type="radio"
+                    name="default-radio"
+                    class="peer sr-only"
+                    onClick={() => {
+                      setPriceSize(ele.price)
+                      setSize(ele.name)
+                    }}
+                  ></input>
+                  <div className="px-4 py-2.5 items-center text-center text-l2 bg-s4 text-grey border-[1.5px] border-outline-var rounded-full peer-checked:bg-secondary peer-checked:text-white">
                     {ele.name}
-                    </div>
-                  </label>
+                  </div>
+                </label>
               ))}
             </div>
-            
+
             <div className="items-center mt-10">
               <Button
                 type="button"
@@ -148,11 +149,11 @@ const ItemDetail = () => {
           </div>
         </div>
         <div className="mt-16">
-          <h4 className="mb-5 font-semibold text-l2">Mô tả sản phẩm</h4>
-          <p className="leading-6 text-[14px] font-normal">{info.describe}</p>
+          <h4 className="text-t1 mb-2">Mô tả sản phẩm</h4>
+          <p className="text-body">{info.describe}</p>
         </div>
         {/* Rating */}
-        <h4 className="mt-10 mb-5 font-semibold text-l2">Đánh giá sản phẩm</h4>
+        <h4 className="mt-10 mb-5 text-t1">Đánh giá sản phẩm</h4>
         <div className="box-border flex flex-col gap-[16px] rounded-[32px] w-full">
           {ratelist.map((ele) => (
             <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
@@ -204,13 +205,21 @@ const ItemDetail = () => {
             </form>
           </div>
         ) : (
-          <h3 className="mt-6 text-center text-[18px]">
-            Bạn phải đăng nhập để đánh giá sản phẩm
-          </h3>
+          <div className="mt-6 px-4 py-4 bg-insurface text-center text-t2 text-on-insurface rounded-[16px]">
+            Hãy{' '}
+            <span
+              onClick={() => {
+                navigate('/profile')
+              }}
+            >
+              đăng nhập
+            </span>{' '}
+            để được bình luận😗😗😗
+          </div>
         )}
         {/* Relate */}
         <div className="my-16">
-          <h4 className="mb-5 font-semibold text-l2">Sản phẩm liên quan</h4>
+          <h4 className="mb-5 text-t1">Sản phẩm liên quan</h4>
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {product.map((item) => (
               <Link to={`/product/${item._id}`}>
