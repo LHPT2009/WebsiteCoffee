@@ -113,27 +113,27 @@ const ItemDetail = () => {
               ))}
             </div> */}
             {/* test new radio btn */}
-            <h2 className="mt-6 text-l2 text-black">Chọn size(bắt buộc)</h2>
-            <div className="mt-3 flex flex-wrap gap-4">
+            <h2 className="mt-6 text-black text-l2">Chọn size(bắt buộc)</h2>
+            <div className="flex flex-wrap gap-4 mt-3">
               {sizeproduct.map((ele) => (
-                  <label className="cursor-pointer">
-                    <input
-                      id="default-radio-1"
-                      type="radio"
-                      name="default-radio"
-                      class="peer sr-only"
-                      onClick={() => {
-                        setPriceSize(ele.price)
-                        setSize(ele.name)
-                      }}             
-                    ></input>
-                    <div className='px-4 py-2.5 items-center text-center text-l2 bg-s4 text-grey border-[1.5px] border-outline-var rounded-full peer-checked:bg-secondary peer-checked:text-white'>
+                <label className="cursor-pointer">
+                  <input
+                    id="default-radio-1"
+                    type="radio"
+                    name="default-radio"
+                    class="peer sr-only"
+                    onClick={() => {
+                      setPriceSize(ele.price)
+                      setSize(ele.name)
+                    }}
+                  ></input>
+                  <div className="px-4 py-2.5 items-center text-center text-l2 bg-s4 text-grey border-[1.5px] border-outline-var rounded-full peer-checked:bg-secondary peer-checked:text-white">
                     {ele.name}
-                    </div>
-                  </label>
+                  </div>
+                </label>
               ))}
             </div>
-            
+
             <div className="items-center mt-10">
               <Button
                 type="button"
@@ -205,7 +205,7 @@ const ItemDetail = () => {
           </div>
         ) : (
           <h3 className="mt-6 text-center text-[18px]">
-            Bạn phải đăng nhập để đánh giá sản phẩm
+            Bạn cần đăng nhập để đánh giá sản phẩm
           </h3>
         )}
         {/* Relate */}

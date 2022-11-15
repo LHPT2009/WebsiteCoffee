@@ -11,23 +11,21 @@ import { useNavigate } from 'react-router-dom'
 import TextInput from '../../../components/Input/TextInput'
 
 const EditReceipt = () => {
-  const [receipt, setReceipt] = useState([]);
-  const [receiptdetail, setReceiptDetail] = useState([]);
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [userid, setUserId] = useState(receipt.userid);
-  const [price, setPrice] = useState(receipt.price);
-  const [statuspayment, setStatusPayment] = useState(receipt.statuspayment);
-  const [statusdelivery, setStatusDelivery] = useState(receipt.statusdelivery);
+  const [receipt, setReceipt] = useState([])
+  const [receiptdetail, setReceiptDetail] = useState([])
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const [userid, setUserId] = useState(receipt.userid)
+  const [price, setPrice] = useState(receipt.price)
+  const [statuspayment, setStatusPayment] = useState(receipt.statuspayment)
+  const [statusdelivery, setStatusDelivery] = useState(receipt.statusdelivery)
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/receipt/${id}`)
-      .then((res) => {
-        setReceipt(res.data);
-        setStatusPayment(res.data.statuspayment);
-        setStatusDelivery(res.data.statusdelivery);
-      })
+    axios.get(`http://localhost:8000/receipt/${id}`).then((res) => {
+      setReceipt(res.data)
+      setStatusPayment(res.data.statuspayment)
+      setStatusDelivery(res.data.statusdelivery)
+    })
   }, [])
   useEffect(() => {
     axios
@@ -36,22 +34,27 @@ const EditReceipt = () => {
   }, [])
 
   const editReceipt = async (e) => {
-    e.preventDefault();
-    const edit = await axios.put(`http://localhost:8000/receipt/${id}`, { userid, price, statuspayment, statusdelivery });
+    e.preventDefault()
+    const edit = await axios.put(`http://localhost:8000/receipt/${id}`, {
+      userid,
+      price,
+      statuspayment,
+      statusdelivery,
+    })
     if (edit) {
-      navigate("/admin/receipts");
+      navigate('/admin/receipts')
     } else {
-      alert("sua ko thanh cong!!!")
+      alert('sua ko thanh cong!!!')
     }
   }
   return (
     <div className="font-googleSansRegular">
       <form onSubmit={editReceipt}>
         <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
-          Chỉnh sửa hóa đơn
+          Chỉnh sửa đơn hàng
         </h1>
         <div>
-        <div className="inline-block w-[200px] mr-3">Mã tài khoản</div>
+          <div className="inline-block w-[200px] mr-3">Mã tài khoản</div>
           <TextInput
             placeholder={'Mã tài khoản'}
             type="text"
@@ -60,8 +63,8 @@ const EditReceipt = () => {
             defaultValue={receipt.userid}
             className="inline-block w-[400px]"
           />
-          <br/>
-        <div className="inline-block w-[200px] mr-3">Tổng tiền</div>
+          <br />
+          <div className="inline-block w-[200px] mr-3">Tổng tiền</div>
           <TextInput
             placeholder={'Tổng tiền'}
             type="text"
@@ -70,44 +73,68 @@ const EditReceipt = () => {
             defaultValue={receipt.price}
             className="inline-block w-[400px]"
           />
-        <div className="inline-block w-[200px] mx-3">đ</div>
-          <br/>
-        <div className="inline-block w-[200px] mr-3">Trạng thái thanh toán</div>
+          <div className="inline-block w-[200px] mx-3">đ</div>
+          <br />
+          <div className="inline-block w-[200px] mr-3">
+            Trạng thái thanh toán
+          </div>
           <select
-            className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
-            hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
+            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+            hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
             placeholder={'Trạng thái thanh toán'}
             value={statuspayment}
-            onChange={(e) => setStatusPayment(e.target.value)}>
+            onChange={(e) => setStatusPayment(e.target.value)}
+          >
             <option value="true">Đã thanh toán</option>
             <option value="false">Chưa thanh toán</option>
           </select>
-          <br/>
-        <div className="inline-block w-[200px] mr-3">Trạng thái giao hàng</div>
+          <br />
+          <div className="inline-block w-[200px] mr-3">
+            Trạng thái giao hàng
+          </div>
           <select
-            className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
-            hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
+            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+            hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
             placeholder={'Trạng thái giao hàng'}
             value={statusdelivery}
-            onChange={(e) => setStatusDelivery(e.target.value)}>
+            onChange={(e) => setStatusDelivery(e.target.value)}
+          >
             <option value="true">Đã giao</option>
             <option value="false">Chưa giao</option>
           </select>
-          <br/>
-          <h1 className="font-googleSansBold uppercase text-primary text-[16px] mb-4">Chi tiết đặt hàng</h1>
+          <br />
+          <h1 className="font-googleSansBold uppercase text-primary text-[16px] mb-4">
+            Chi tiết đặt hàng
+          </h1>
           {receiptdetail.map((item) => (
             <ul>
-              <li className="font-googleSansRegular text-secondary mb-5 mx-5"><p>• {item.productid.name} - Số lượng: {item.amount}</p></li>
+              <li className="mx-5 mb-5 font-googleSansRegular text-secondary">
+                <p>
+                  • {item.productid.name} - Số lượng: {item.amount}
+                </p>
+              </li>
             </ul>
           ))}
           <br />
         </div>
         <div>
-          <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit" onClick={editReceipt}>
+          <Button
+            type="button"
+            btnCSS={'h-[44px] mr-2'}
+            icon="edit"
+            onClick={editReceipt}
+          >
             <a className="hover:text-white">Sửa</a>
           </Button>
-          <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
-            <a className="hover:text-white" href="../Receipts">Quay về</a>
+          <Button
+            type="button"
+            btnCSS={'h-[44px]'}
+            icon="navigate_before"
+            onClick={() => {
+              navigate('../Receipts')
+            }}
+          >
+            Quay về
           </Button>
         </div>
       </form>
