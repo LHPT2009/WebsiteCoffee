@@ -50,7 +50,7 @@ const Coffee = () => {
           </h3>
           <div className="mb-10">
             <Button
-              btnCSS={'h-[44px] mr-2'}
+              btnCSS={'h-[44px] mr-2 my-4'}
               btnStyle="btn-outline"
               icon=""
               onClick={handleproduct}
@@ -86,7 +86,7 @@ const Coffee = () => {
             <Button
               onClick={() => loadMore()}
               btnStyle={'btn-outline'}
-              btnCSS={'h-11 mb-20'}
+              btnCSS={'mb-20 h-[44px]'}
               icon="expand_more"
             >
               Xem thêm

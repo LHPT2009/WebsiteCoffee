@@ -4,7 +4,7 @@ import './header.css'
 import logo2 from '../../assets/images/logo_2.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { ListProductContext } from '../../context/ListProductContext'
-
+import Button from '../Button/Button'
 import jwt_decode from 'jwt-decode'
 
 const Header = () => {
@@ -45,12 +45,12 @@ const Header = () => {
               } `}
             >
               <button
-                className="flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] w-screen md:w-auto h-[56px] text-black hover:text-primary"
+                className={`flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] w-screen md:w-auto h-[56px] text-black hover:text-primary`}
                 onClick={() => {
                   navigate('/product')
                 }}
               >
-                Menu
+                Thực đơn
               </button>
               <button
                 className={`flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] w-screen md:w-auto h-[56px] text-black hover:text-primary`}

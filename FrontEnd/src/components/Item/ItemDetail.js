@@ -85,19 +85,19 @@ const ItemDetail = () => {
             width={570}
           />
           <div className="pt-5">
-            <p className="text-[26px] mb-[18px] text-black leading-6">
-              {info.name} - size: {size}
-            </p>
-            <div className="mt-4 text-base">
-              <span className="text-[26px] font-semibold mr-[37px]">
+            <p className="text-h2 text-black font-[700]">{info.name}</p>
+            <div className="">
+              <span className="text-h2 text-primary font-[700]">
                 {new Intl.NumberFormat('vi-VN', {
                   style: 'currency',
                   currency: 'VND',
                 }).format(info.price + pricesize)}
               </span>
             </div>
+            {/* size */}
+            {/* <p>size: {size}</p>
             <div className="mt-6">
-              <h2 className="mb-2 t1">Kích cỡ</h2>
+              <h2 className="mb-2 text-l2">Chọn size(bắt buộc)</h2>
               {sizeproduct.map((ele) => (
                 <Button
                   btnStyle="btn-outline"
@@ -111,54 +111,40 @@ const ItemDetail = () => {
                   {ele.name}
                 </Button>
               ))}
+            </div> */}
+            {/* test new radio btn */}
+            <h2 className="mt-6 text-l2 text-black">Chọn size(bắt buộc)</h2>
+            <div className="mt-3 flex flex-wrap gap-4">
+              {sizeproduct.map((ele) => (
+                  <label className="cursor-pointer">
+                    <input
+                      id="default-radio-1"
+                      type="radio"
+                      name="default-radio"
+                      class="peer sr-only"
+                      onClick={() => {
+                        setPriceSize(ele.price)
+                        setSize(ele.name)
+                      }}             
+                    ></input>
+                    <div className='px-4 py-2.5 items-center text-center text-l2 bg-s4 text-grey border-[1.5px] border-outline-var rounded-full peer-checked:bg-secondary peer-checked:text-white'>
+                    {ele.name}
+                    </div>
+                  </label>
+              ))}
             </div>
+            
             <div className="items-center mt-10">
               <Button
                 type="button"
                 btnStyle="btn-fill"
                 icon="add_shopping_cart"
                 onClick={add}
-                btnCSS={'h-[44px] px-6 py-5'}
+                btnCSS={'h-[56px] px-6 py-5'}
               >
                 Thêm vào giỏ hàng
               </Button>
             </div>
-            {/* test */}
-            {/* <div className="items-center mt-10">
-              <Button
-                type="button"
-                btnStyle="btn-text"
-                icon="add_shopping_cart"
-                onClick={add}
-                btnCSS={'h-[44px] px-6 py-5'}
-              >
-                Text button
-              </Button>
-            </div>
-            <div className="items-center mt-10">
-              <Button
-                type="button"
-                btnStyle="btn-elevate"
-                icon=""
-                onClick={add}
-                btnCSS={'h-[44px] px-6 py-5'}
-              >
-                Eleavted button
-              </Button>
-            </div> 
-            <div className="items-center mt-10">
-              <Button
-                type="button"
-                btnStyle="btn-tonal"
-                icon="add_shopping_cart"
-                onClick={add}
-                btnCSS={'h-[44px] px-6 py-5'}
-              >
-                Tonal button
-              </Button>
-            </div>*/}
-
-            {/* end test */}
           </div>
         </div>
         <div className="mt-16">

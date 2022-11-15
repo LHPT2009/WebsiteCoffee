@@ -17,6 +17,8 @@
 .btn {
   justify-content: center;
   align-items: center;
+  height: 44px;
+  padding: 12px 24px;
   background: var(--primary);
   color: var(--white);
   border-radius: 6rem;
