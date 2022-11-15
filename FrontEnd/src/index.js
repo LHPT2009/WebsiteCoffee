@@ -33,31 +33,20 @@ import Cart from './views/Cart/Cart'
 
 import AddProduct from './views/Admin/Product/AddProduct'
 import EditProduct from './views/Admin/Product/EditProduct'
-import DeleteProduct from './views/Admin/Product/DeleteProduct'
 import AddProductCategory from './views/Admin/ProductCategory/AddProductCategory'
 import EditProductCategory from './views/Admin/ProductCategory/EditProductCategory'
-import DeleteProductCategory from './views/Admin/ProductCategory/DeleteProductCategory'
 import AddUser from './views/Admin/User/AddUser'
 import EditUser from './views/Admin/User/EditUser'
-import DeleteUser from './views/Admin/User/DeleteUser'
 import AddRole from './views/Admin/Role/AddRole'
 import EditRole from './views/Admin/Role/EditRole'
-import DeleteRole from './views/Admin/Role/DeleteRole'
 import AddSizeProduct from './views/Admin/SizeProduct/AddSizeProduct'
 import EditSizeProduct from './views/Admin/SizeProduct/EditSizeProduct'
-import DeleteSizeProduct from './views/Admin/SizeProduct/DeleteSizeProduct'
-import AddReceipt from './views/Admin/Receipt/AddReceipt'
-import EditReceipt from './views/Admin/Receipt/EditReceipt'
-import DeleteReceipt from './views/Admin/Receipt/DeleteReceipt'
 
 import Discount from './views/Admin/Discount/Discount'
 import AddDiscount from './views/Admin/Discount/AddDiscount'
 import EditDiscount from './views/Admin/Discount/EditDiscount'
-import DeleteDiscount from './views/Admin/Discount/DeleteDiscount'
 
 import Rate from './views/Admin/Rate/Rate'
-import EditRate from './views/Admin/Rate/EditRate'
-import DeleteRate from './views/Admin/Rate/DeleteRate'
 
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
@@ -116,7 +105,6 @@ root.render(
 
               <Route path="addproduct" element={<AddProduct />} />
               <Route path="editproduct/:id" element={<EditProduct />} />
-              <Route path="deleteproduct/:id" element={<DeleteProduct />} />
 
               <Route
                 path="addproductcategory"
@@ -126,36 +114,18 @@ root.render(
                 path="editproductcategory/:id"
                 element={<EditProductCategory />}
               />
-              <Route
-                path="deleteproductcategory/:id"
-                element={<DeleteProductCategory />}
-              />
 
               <Route path="adduser" element={<AddUser />} />
               <Route path="edituser/:id" element={<EditUser />} />
-              <Route path="deleteuser/:id" element={<DeleteUser />} />
 
               <Route path="addrole" element={<AddRole />} />
               <Route path="editrole/:id" element={<EditRole />} />
-              <Route path="deleterole/:id" element={<DeleteRole />} />
 
               <Route path="addsizeproduct" element={<AddSizeProduct />} />
               <Route path="editsizeproduct/:id" element={<EditSizeProduct />} />
-              <Route
-                path="deletesizeproduct/:id"
-                element={<DeleteSizeProduct />}
-              />
-
-              <Route path="addreceipt" element={<AddReceipt />} />
-              <Route path="editreceipt/:id" element={<EditReceipt />} />
-              <Route path="deletereceipt/:id" element={<DeleteReceipt />} />
 
               <Route path="adddiscount" element={<AddDiscount />} />
               <Route path="editdiscount/:id" element={<EditDiscount />} />
-              <Route path="deletediscount/:id" element={<DeleteDiscount />} />
-
-              <Route path="editrate/:id" element={<EditRate />} />
-              <Route path="deleterate/:id" element={<DeleteRate />} />
             </Route>
           </Routes>
         </BrowserRouter>

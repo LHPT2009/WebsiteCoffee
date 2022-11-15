@@ -53,16 +53,6 @@ const Users = () => {
                         >
                           Sửa
                         </Button>
-                        <Button
-                          btnStyle={'btn-outline'}
-                          onClick={() => {
-                            navigate('../deleteuser/' + item._id)
-                          }}
-                          btnCSS={'h-11'}
-                          icon="delete"
-                        >
-                          Xóa
-                        </Button>
                       </td>
                     </tr>
                   ))}

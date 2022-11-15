@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Button from '../../../components/Button/Button'
 
 const Rate = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [rate, setRate] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8000/rate').then((res) => {
@@ -41,20 +41,6 @@ const Rate = () => {
                       <td>{item.usertid}</td>
                       <td>{item.point}</td>
                       <td>{item.content}</td>
-                      <td style={{ minWidth: 100 }}>
-                        {/* <Button>
-                          <Link to={`/admin/editrate/${item._id}`}>Sửa</Link>
-                        </Button> */}
-                        <Button
-                        btnStyle={'btn-outline'}
-                        btnCSS={'h-11 mr-2'}
-                        icon="delete"
-                        onClick={() => {
-                          navigate('../deleterate/' + item._id)
-                        }}>
-                          Xóa
-                        </Button>
-                      </td>
                     </tr>
                   ))}
                 </tbody>

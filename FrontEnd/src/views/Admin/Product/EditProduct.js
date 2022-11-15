@@ -8,47 +8,58 @@ import { Link, useParams } from 'react-router-dom'
 
 import TextInput from '../../../components/Input/TextInput'
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 const EditProduct = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [dataProduct, setDataProduct] = useState([])
-  const [categoryproduct, setCategoryProduct] = useState([]);
+  const [categoryproduct, setCategoryProduct] = useState([])
 
-  const [categoryproductid, setCategoryProductId] = useState(dataProduct.categoryproductid);
-  const [name, setName] = useState(dataProduct.name);
-  const [price, setPrice] = useState(dataProduct.price);
-  const [image, setImage] = useState(dataProduct.image);
-  const [describe, setDescribe] = useState(dataProduct.describe);
-  const [status, setStatus] = useState(dataProduct.status);
+  const [categoryproductid, setCategoryProductId] = useState(
+    dataProduct.categoryproductid
+  )
+  const [name, setName] = useState(dataProduct.name)
+  const [price, setPrice] = useState(dataProduct.price)
+  const [image, setImage] = useState(dataProduct.image)
+  const [describe, setDescribe] = useState(dataProduct.describe)
+  const [status, setStatus] = useState(dataProduct.status)
 
   const { id } = useParams()
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/product/${id}`).then((res) => {
-        setDataProduct(res.data);
-        setCategoryProductId(res.data.categoryproductid._id);
-        setStatus(res.data.status);
-        setImage(`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(res.data.image.data.data)))}`)
-      })
+    axios.get(`http://localhost:8000/product/${id}`).then((res) => {
+      setDataProduct(res.data)
+      setCategoryProductId(res.data.categoryproductid._id)
+      setStatus(res.data.status)
+      setImage(
+        `data:image/png;base64,${btoa(
+          String.fromCharCode(...new Uint8Array(res.data.image.data.data))
+        )}`
+      )
+    })
   }, [])
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/category`).then((res) => {
-        setCategoryProduct(res.data);
-      })
+    axios.get(`http://localhost:8000/category`).then((res) => {
+      setCategoryProduct(res.data)
+    })
   }, [])
 
   const editProduct = async (e) => {
-    e.preventDefault();
-    const edit = await axios.put(`http://localhost:8000/product/${id}`, { categoryproductid, name, price, image, describe, status });
+    e.preventDefault()
+    const edit = await axios.put(`http://localhost:8000/product/${id}`, {
+      categoryproductid,
+      name,
+      price,
+      image,
+      describe,
+      status,
+    })
     if (edit) {
-      navigate("/admin/products");
+      navigate('/admin/products')
     } else {
-      alert(`Sửa ko thanh cong!!!`);
+      alert(`Sửa ko thanh cong!!!`)
     }
-  };
+  }
 
   return (
     <div className="font-googleSansRegular">
@@ -57,16 +68,18 @@ const EditProduct = () => {
           Chỉnh sửa sản phẩm
         </h1>
         <div>
-        <div className="inline-block w-[200px] mr-3">Loại sản phẩm</div>
+          <div className="inline-block w-[200px] mr-3">Loại sản phẩm</div>
           <select
-          className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
-          hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
+            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+          hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
             onChange={(e) => setCategoryProductId(e.target.value)}
             value={categoryproductid}
           >
-            {categoryproduct.map((item) => <option value={item._id}>{item.name}</option>)}
+            {categoryproduct.map((item) => (
+              <option value={item._id}>{item.name}</option>
+            ))}
           </select>
-          <br/>
+          <br />
           <div className="inline-block w-[200px] mr-3">Tên sản phẩm</div>
           <TextInput
             placeholder={'Tên sản phẩm'}
@@ -96,7 +109,7 @@ const EditProduct = () => {
                 <br />
               </div>
             ) : (
-              ""
+              ''
             )}
             <input
               type="file"
@@ -105,7 +118,7 @@ const EditProduct = () => {
               onChange={(e) => setImage(e.target.files[0])}
             />
           </div>
-          <br/>
+          <br />
           <div className="inline-block w-[200px] mr-3">Nội dung</div>
           <TextInput
             placeholder={'Nội dung'}
@@ -118,8 +131,8 @@ const EditProduct = () => {
           <br />
           <div className="inline-block w-[200px] mr-3">Trạng thái</div>
           <select
-          className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
-          hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
+            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+          hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
             onChange={(e) => setStatus(e.target.value)}
             value={status}
           >
@@ -129,11 +142,23 @@ const EditProduct = () => {
           <br />
         </div>
         <div className="mt-5">
-          <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit">
-            <a className="hover:text-white" onClick={editProduct}>Sửa</a>
+          <Button
+            type="button"
+            btnCSS={'h-[44px] mr-2'}
+            icon="edit"
+            onClick={editProduct}
+          >
+            Sửa
           </Button>
-          <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
-            <a className="hover:text-white" href="../Products">Quay về</a>
+          <Button
+            type="button"
+            btnCSS={'h-[44px]'}
+            icon="navigate_before"
+            onClick={() => {
+              navigate('../Products')
+            }}
+          >
+            Quay về
           </Button>
         </div>
       </form>

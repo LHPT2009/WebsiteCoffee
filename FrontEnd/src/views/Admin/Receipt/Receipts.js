@@ -22,7 +22,7 @@ const Receipts = () => {
   return (
     <div>
       <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
-        Hóa đơn
+        Đơn hàng
       </h1>
       <div className="row">
         <div className="col-12">
@@ -31,7 +31,7 @@ const Receipts = () => {
               <table className="table table-striped table-hover table-bordered">
                 <thead>
                   <tr>
-                    <th>Mã hóa đơn</th>
+                    <th>Mã đơn</th>
                     <th>Mã tài khoản</th>
                     <th>Tổng tiền</th>
                     <th></th>
@@ -54,17 +54,6 @@ const Receipts = () => {
                           }}
                         >
                           Sửa
-                        </Button>
-                        <Button
-                          btnStyle={'btn-outline'}
-                          type="button"
-                          btnCSS={'h-11'}
-                          icon="delete"
-                          onClick={() => {
-                            navigate('../deletereceipt/' + item._id)
-                          }}
-                        >
-                          Xóa
                         </Button>
                       </td>
                     </tr>

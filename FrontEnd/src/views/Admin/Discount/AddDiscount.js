@@ -1,21 +1,26 @@
 import React, { useState } from 'react'
 import Button from '../../../components/Button/Button'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import TextInput from '../../../components/Input/TextInput';
+import TextInput from '../../../components/Input/TextInput'
 const AddDisCount = () => {
-  const [name, setName] = useState("")
-  const [price, setPrice] = useState("")
-  const [startdate, setStartDate] = useState("")
-  const [enddate, setEndDate] = useState("")
-  const navigate = useNavigate();
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [startdate, setStartDate] = useState('')
+  const [enddate, setEndDate] = useState('')
+  const navigate = useNavigate()
   const addProduct = async (e) => {
-    e.preventDefault();
-    const add = await axios.post(`http://localhost:8000/discount`, { name, price, startdate, enddate });
+    e.preventDefault()
+    const add = await axios.post(`http://localhost:8000/discount`, {
+      name,
+      price,
+      startdate,
+      enddate,
+    })
     if (add) {
-      navigate("/admin/discount");
+      navigate('/admin/discount')
     } else {
-      alert("them ko thanh cong!!!");
+      alert('them ko thanh cong!!!')
     }
   }
   return (
@@ -32,7 +37,8 @@ const AddDisCount = () => {
             required={'required'}
             onChange={(e) => setName(e.target.value)}
             className="inline-block w-[400px]"
-          /><br/>
+          />
+          <br />
           <div className="inline-block w-[200px] mr-3">Giá</div>
           <TextInput
             placeholder={'Giá'}
@@ -42,7 +48,7 @@ const AddDisCount = () => {
             className="inline-block w-[400px]"
           />
           <div className="inline-block w-[200px] mx-3">đ</div>
-          <br/>
+          <br />
           <div className="inline-block w-[200px] mr-3">Ngày bắt đầu</div>
           <TextInput
             placeholder={'Ngày bắt đầu'}
@@ -50,7 +56,8 @@ const AddDisCount = () => {
             required={'required'}
             onChange={(e) => setStartDate(e.target.value)}
             className="inline-block w-[400px]"
-          /><br/>
+          />
+          <br />
           <div className="inline-block w-[200px] mr-3">Ngày kết thúc</div>
           <TextInput
             placeholder={'Ngày kết thúc'}
@@ -58,16 +65,28 @@ const AddDisCount = () => {
             required={'required'}
             onChange={(e) => setEndDate(e.target.value)}
             className="inline-block w-[400px]"
-          /><br/>
+          />
+          <br />
         </div>
         <div className="mt-5">
-          <Button type="button" btnCSS={'h-[44px] mr-2'} icon="add" onClick={addProduct} className="hover:text-white">
-              Thêm
+          <Button
+            type="button"
+            btnCSS={'h-[44px] mr-2'}
+            icon="add"
+            onClick={addProduct}
+            className="hover:text-white"
+          >
+            Thêm
           </Button>
-          <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
-            <a className="hover:text-white" href="./Discount">
-              Quay về
-            </a>
+          <Button
+            type="button"
+            btnCSS={'h-[44px]'}
+            icon="navigate_before"
+            onClick={() => {
+              navigate('../Discount')
+            }}
+          >
+            Quay về
           </Button>
         </div>
       </form>

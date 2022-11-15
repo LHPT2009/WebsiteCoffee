@@ -114,8 +114,8 @@ const ItemDetail = () => {
               ))}
             </div> */}
             {/* test new radio btn */}
-            <h2 className="mt-6 text-l2 text-black">Chọn size(bắt buộc)</h2>
-            <div className="mt-3 flex flex-wrap gap-4">
+            <h2 className="mt-6 text-black text-l2">Chọn size(bắt buộc)</h2>
+            <div className="flex flex-wrap gap-4 mt-3">
               {sizeproduct.map((ele) => (
                 <label className="cursor-pointer">
                   <input
