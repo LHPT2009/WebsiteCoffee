@@ -124,7 +124,7 @@ const ItemDetail = () => {
               </Button>
             </div>
             {/* test */}
-            <div className="items-center mt-10">
+            {/* <div className="items-center mt-10">
               <Button
                 type="button"
                 btnStyle="btn-text"
@@ -145,7 +145,7 @@ const ItemDetail = () => {
               >
                 Eleavted button
               </Button>
-            </div>
+            </div> 
             <div className="items-center mt-10">
               <Button
                 type="button"
@@ -156,8 +156,8 @@ const ItemDetail = () => {
               >
                 Tonal button
               </Button>
-            </div>
-            
+            </div>*/}
+
             {/* end test */}
           </div>
         </div>
@@ -170,24 +170,21 @@ const ItemDetail = () => {
         <div className="box-border flex flex-col gap-[16px] rounded-[32px] w-full">
           {ratelist.map((ele) => (
             <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
-              <span className="mb-3">
+              <span className="text-[14px] font-normal mb-1">
                 {ele.usertid.lastname + ' ' + ele.usertid.firstname}
               </span>
-              <div className="flex items-start gap-2 mb-1 text-left text-l2">
-                {ele.point}
-                <span className="material-symbols-rounded">star</span>
-              </div>
-              <div className="flex items-start gap-2 text-left text-l2">
+              <Rating size="small" readOnly="true" value={ele.point} />
+              <div className="flex items-start gap-2 mt-2 text-left text-l2">
                 <span>{ele.content}</span>
               </div>
             </div>
           ))}
         </div>
         {localStorage.getItem('token') ? (
-          <div className="mt-5">
+          <div className="mt-8">
             <form onSubmit={addrate}>
               {/* Star */}
-              <div className="my-5">
+              <div>
                 <Rating
                   size="large"
                   name="simple-controlled"
@@ -198,7 +195,7 @@ const ItemDetail = () => {
                 />
               </div>
               {/* Content */}
-              <div>
+              <div className="mt-4">
                 <textarea
                   name="content"
                   placeholder="Nội dung"
@@ -221,7 +218,9 @@ const ItemDetail = () => {
             </form>
           </div>
         ) : (
-          <h3>Mời bạn đăng nhập trước khi muốn đánh giá</h3>
+          <h3 className="mt-6 text-center text-[18px]">
+            Bạn phải đăng nhập để đánh giá sản phẩm
+          </h3>
         )}
         {/* Relate */}
         <div className="my-16">
