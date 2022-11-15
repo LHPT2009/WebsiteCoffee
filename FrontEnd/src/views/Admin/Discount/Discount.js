@@ -42,6 +42,7 @@ const Discount = () => {
                     <th>Giá</th>
                     <th>Bắt đầu</th>
                     <th>Kết thúc</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,16 +62,6 @@ const Discount = () => {
                           icon="edit"
                         >
                           Sửa
-                        </Button>
-                        <Button
-                          btnStyle={'btn-outline'}
-                          onClick={() => {
-                            navigate('../deletediscount/' + item._id)
-                          }}
-                          btnCSS={'h-11'}
-                          icon="delete"
-                        >
-                          Xóa
                         </Button>
                       </td>
                     </tr>

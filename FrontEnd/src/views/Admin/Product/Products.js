@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
-import logo from '../../../assets/images/icon.png'
-
 import { useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
@@ -40,19 +38,23 @@ const Products = () => {
               <table className="table table-striped table-hover table-bordered">
                 <thead>
                   <tr>
-                    <th></th>
                     <th>Hình</th>
                     <th>Tên</th>
-                    <th>Giá</th>
+                    <th>Giá bán</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   {product.map((item) => (
                     <tr key={item._id}>
-                      <td></td>
                       <td>
-                        <img src={logo} alt="" width={50} height={50}></img>
+                        <img
+                          src={`data:image/png;base64,${btoa(
+                            String.fromCharCode(...new Uint8Array(item.image))
+                          )}`}
+                          alt="thumbnail"
+                          width={50}
+                        ></img>
                       </td>
                       <td>{item.name}</td>
                       <td>{item.price} đ</td>
@@ -66,16 +68,6 @@ const Products = () => {
                           icon="edit"
                         >
                           Sửa
-                        </Button>
-                        <Button
-                          btnStyle={'btn-outline'}
-                          onClick={() => {
-                            navigate('../deleteproduct/' + item._id)
-                          }}
-                          btnCSS={'h-11'}
-                          icon="delete"
-                        >
-                          Xóa
                         </Button>
                       </td>
                     </tr>

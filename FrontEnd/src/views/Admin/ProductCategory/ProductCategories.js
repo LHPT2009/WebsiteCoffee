@@ -59,16 +59,6 @@ const ProductCategories = () => {
                         >
                           Sửa
                         </Button>
-                        <Button
-                          btnStyle={'btn-outline'}
-                          onClick={() => {
-                            navigate('../deleteproductcategory/' + item._id)
-                          }}
-                          btnCSS={'h-11'}
-                          icon="delete"
-                        >
-                          Xóa
-                        </Button>
                       </td>
                     </tr>
                   ))}

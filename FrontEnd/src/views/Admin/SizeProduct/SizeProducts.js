@@ -61,16 +61,6 @@ const SizeProducts = () => {
                         >
                           Sửa
                         </Button>
-                        <Button
-                          btnStyle={'btn-outline'}
-                          onClick={() => {
-                            navigate('../deletesizeproduct/' + item._id)
-                          }}
-                          btnCSS={'h-11'}
-                          icon="delete"
-                        >
-                          Xóa
-                        </Button>
                       </td>
                     </tr>
                   ))}

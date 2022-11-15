@@ -50,7 +50,7 @@ const Header = () => {
                   navigate('/product')
                 }}
               >
-                Thực đơn
+                Menu
               </button>
               <button
                 className={`flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] w-screen md:w-auto h-[56px] text-black hover:text-primary`}

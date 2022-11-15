@@ -6,18 +6,18 @@ import Button from '../../../components/Button/Button'
 import { Link } from 'react-router-dom'
 import TextInput from '../../../components/Input/TextInput'
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 const AddProductCategory = () => {
-  const [name, setName] = useState("");
-  const navigate = useNavigate();
+  const [name, setName] = useState('')
+  const navigate = useNavigate()
   const addProductCategory = async (e) => {
-    e.preventDefault();
-    const add = await axios.post(`http://localhost:8000/category`, { name });
+    e.preventDefault()
+    const add = await axios.post(`http://localhost:8000/category`, { name })
     if (add) {
-      navigate("/admin/productcategories");
+      navigate('/admin/productcategories')
     } else {
-      alert(`them ko thanh cong!!!`);
+      alert(`them ko thanh cong!!!`)
     }
   }
   return (
@@ -34,13 +34,21 @@ const AddProductCategory = () => {
           onChange={(e) => setName(e.target.value)}
         />
         <div className="mt-10">
-          <Button type="button" btnCSS="h-11 mr-2" icon="add" onClick={addProductCategory}>
+          <Button
+            type="button"
+            btnCSS="h-11 mr-2"
+            icon="add"
+            onClick={addProductCategory}
+          >
             Thêm
           </Button>
-          <Button type="button" btnCSS="h-11" icon="navigate_before">
-            <Link className="hover:text-white" to="../productcategories">
-              Quay về
-            </Link>
+          <Button
+            type="button"
+            btnCSS="h-11"
+            icon="navigate_before"
+            onClick={() => navigate('../productcategories')}
+          >
+            Quay về
           </Button>
         </div>
       </form>
