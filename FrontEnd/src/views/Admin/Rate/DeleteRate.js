@@ -36,37 +36,42 @@ const DeleteProduct = () => {
                 <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Xóa đánh giá</b>
                 </h2>
+                <h1 className='font-googleSansBold mb-10'>Bạn có chắc chắn muốn xóa đánh giá này không?</h1>
                 <div>
+                    <div className="inline-block w-[200px] mr-3">Mã sản phẩm</div>
                     <TextInput
                         placeholder={'Mã sản phẩm'}
                         type="text"
                         defaultValue={rate.productid}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
+                    <div className="inline-block w-[200px] mr-3">Mã user</div>
                     <TextInput
                         placeholder={'Mã user'}
                         type="text"
                         defaultValue={rate.usertid}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
+                    <div className="inline-block w-[200px] mr-3">Điểm</div>
                     <TextInput
                         placeholder={'Điểm'}
                         type="text"
                         defaultValue={rate.point}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
+                    <div className="inline-block w-[200px] mr-3">Nội dung</div>
                     <TextInput
                         placeholder={'Nội dung'}
                         type="text"
                         defaultValue={rate.content}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
                 </div>
-                <div>
+                <div className="mt-5">
                     <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete" onClick={deleteRate}>
                         <a className="hover:text-white">
                             Xóa

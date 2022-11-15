@@ -41,46 +41,55 @@ const DeleteProduct = () => {
                 <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Xóa sản phẩm</b>
                 </h2>
+                <h1 className='font-googleSansBold mb-10'>Bạn có chắc chắn muốn xóa sản phẩm này không?</h1>
                 <div>
+                    <div className="inline-block w-[200px] mr-3">Loại sản phẩm</div>
                     <TextInput
                         placeholder={'Tên sản phẩm'}
                         type="text"
                         defaultValue={rolename}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
+                    <div className="inline-block w-[200px] mr-3">Tên sản phẩm</div>
                     <TextInput
                         placeholder={'Tên sản phẩm'}
                         type="text"
                         defaultValue={product.name}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
+                    <div className="inline-block w-[200px] mr-3">Giá</div>
                     <TextInput
                         placeholder={'Giá'}
                         type="text"
                         defaultValue={product.price}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
-                    /> <br />
-                    <img src={`data:image/png;base64,${image}`} height="300" width="300" />
+                    />
+                    <div className="inline-block w-[200px] mx-3">đ</div>
                     <br />
+                    <div className="inline-block w-[200px] mr-3">Hình ảnh</div>
+                    <img src={`data:image/png;base64,${image}`} height="250" width="250" />
+                    <br />
+                    <div className="inline-block w-[200px] mr-3">Nội dung</div>
                     <TextInput
-                        placeholder={'Noi Dung'}
+                        placeholder={'Nội dung'}
                         type="text"
                         defaultValue={product.describe}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
+                    <div className="inline-block w-[200px] mr-3">Trạng thái</div>
                     <TextInput
-                        placeholder={'Trang thai'}
+                        placeholder={'Trạng thái'}
                         type="text"
                         defaultValue={product.status}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
                 </div>
-                <div>
+                <div className="mt-5">
                     <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete" onClick={deleteProduct}>
                         <a className="hover:text-white">
                             Xóa

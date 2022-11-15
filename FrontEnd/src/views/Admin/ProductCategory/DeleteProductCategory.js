@@ -35,12 +35,14 @@ const DeleteProductCategory = () => {
                 <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Xóa loại sản phẩm</b>
                 </h2>
+                <h1 className='font-googleSansBold mb-10'>Bạn có chắc chắn muốn xóa loại sản phẩm này không?</h1>
                 <div>
+                <div className="inline-block w-[200px] mr-3">Tên loại</div>
                     <TextInput
                         placeholder={'Tên loại sản phẩm'}
                         type="text"
                         defaultValue={category.name}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
                 </div>

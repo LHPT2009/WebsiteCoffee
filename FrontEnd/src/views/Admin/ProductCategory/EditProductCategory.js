@@ -35,13 +35,14 @@ const EditProductCategory = () => {
                     <b>Chỉnh sửa loại sản phẩm</b>
                 </h2>
                 <div>
+                <div className="inline-block w-[200px] mr-3">Tên loại</div>
                     <TextInput
                         placeholder={'Tên loại sản phẩm'}
                         type="text"
                         required={'required'}
                         onChange={(e) => setName(e.target.value)}
                         defaultValue={category.name}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                     />  <br />
                 </div>
                 <div>

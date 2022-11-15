@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from '../../../components/Button/Button'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import TextInput from '../../../components/Input/TextInput';
 const AddDisCount = () => {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
@@ -18,29 +19,53 @@ const AddDisCount = () => {
     }
   }
   return (
-    <div>
+    <div className="font-googleSansRegular">
       <form onSubmit={addProduct}>
-        <h2 className="page-header">
-          <b>Thêm sản phẩm</b>
+        <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
+          <b>Thêm mã giảm giá</b>
         </h2>
         <div>
-          <h1>Tên sản phẩm</h1>
-          <input type={"text"} onChange={(e) => setName(e.target.value)} /> <br />
-          <h1>Giá</h1>
-          <input type={"text"} onChange={(e) => setPrice(e.target.value)} /> <br />
-          <h1>Ngay bat dau</h1>
-          <input type={"date"} onChange={(e) => setStartDate(e.target.value)} /> <br />
-          <h1>Ngay key thuc</h1>
-          <input type={"date"} onChange={(e) => setEndDate(e.target.value)} /> <br />
+          <div className="inline-block w-[200px] mr-3">Tên mã</div>
+          <TextInput
+            placeholder={'Tên mã'}
+            type="text"
+            required={'required'}
+            onChange={(e) => setName(e.target.value)}
+            className="inline-block w-[400px]"
+          /><br/>
+          <div className="inline-block w-[200px] mr-3">Giá</div>
+          <TextInput
+            placeholder={'Giá'}
+            type="text"
+            required={'required'}
+            onChange={(e) => setPrice(e.target.value)}
+            className="inline-block w-[400px]"
+          />
+          <div className="inline-block w-[200px] mx-3">đ</div>
+          <br/>
+          <div className="inline-block w-[200px] mr-3">Ngày bắt đầu</div>
+          <TextInput
+            placeholder={'Ngày bắt đầu'}
+            type="date"
+            required={'required'}
+            onChange={(e) => setStartDate(e.target.value)}
+            className="inline-block w-[400px]"
+          /><br/>
+          <div className="inline-block w-[200px] mr-3">Ngày kết thúc</div>
+          <TextInput
+            placeholder={'Ngày kết thúc'}
+            type="date"
+            required={'required'}
+            onChange={(e) => setEndDate(e.target.value)}
+            className="inline-block w-[400px]"
+          /><br/>
         </div>
-        <div>
-          <Button type="button" onClick={addProduct}>
-            <a>
+        <div className="mt-5">
+          <Button type="button" btnCSS={'h-[44px] mr-2'} icon="add" onClick={addProduct} className="hover:text-white">
               Thêm
-            </a>
           </Button>
-          <Button type="button">
-            <a href="./Products">
+          <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+            <a className="hover:text-white" href="./Discount">
               Quay về
             </a>
           </Button>

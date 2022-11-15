@@ -6,6 +6,8 @@ import Button from '../../../components/Button/Button'
 
 import { useNavigate } from "react-router-dom";
 
+import TextInput from '../../../components/Input/TextInput';
+
 const AddRole = () => {
     const [rolename, setRoleName] = useState("")
     const navigate = useNavigate();
@@ -20,26 +22,27 @@ const AddRole = () => {
         }
     }
     return (
-        <div>
+        <div className="font-googleSansRegular">
             <form onSubmit={addRole}>
-                <h2 className="page-header">
+                <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Thêm loại tài khoản</b>
                 </h2>
                 <div>
-                    <h1>Tên loại</h1>
-                    <input
-                        type={"text"}
+                    <div className="inline-block w-[200px] mr-3">Tên loại</div>
+                    <TextInput
+                        placeholder={'Tên loại'}
+                        type="text"
+                        required={'required'}
                         onChange={(e) => setRoleName(e.target.value)}
-                    /><br />
+                        className="inline-block w-[400px]"
+                    /><br/>
                 </div>
-                <div>
-                    <Button type="button" onClick={addRole}>
-                        <a>
+                <div className="mt-5">
+                    <Button type="button" btnCSS={'h-[44px] mr-2'} icon="add" onClick={addRole} className="hover:text-white">
                             Thêm
-                        </a>
                     </Button>
-                    <Button type="button">
-                        <a href="./Roles">
+                    <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                        <a className="hover:text-white" href="./Roles">
                             Quay về
                         </a>
                     </Button>

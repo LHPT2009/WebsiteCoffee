@@ -4,11 +4,12 @@ import axios from 'axios'
 
 import logo from '../../../assets/images/icon.png'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
 const Rate = () => {
+  const navigate = useNavigate();
   const [rate, setRate] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8000/rate').then((res) => {
@@ -30,7 +31,7 @@ const Rate = () => {
                     <th>Mã sản phẩm</th>
                     <th>Mã User</th>
                     <th>Điểm</th>
-                    <th>Nôi Dung</th>
+                    <th>Nội Dung</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,11 +45,15 @@ const Rate = () => {
                         {/* <Button>
                           <Link to={`/admin/editrate/${item._id}`}>Sửa</Link>
                         </Button> */}
-                        |
-                        <Button>
-                          <Link to={`/admin/deleterate/${item._id}`}>Xóa</Link>
+                        <Button
+                        btnStyle={'btn-outline'}
+                        btnCSS={'h-11 mr-2'}
+                        icon="delete"
+                        onClick={() => {
+                          navigate('../deleterate/' + item._id)
+                        }}>
+                          Xóa
                         </Button>
-                        |
                       </td>
                     </tr>
                   ))}

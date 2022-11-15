@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
+import TextInput from '../../../components/Input/TextInput';
+
 const DeleteRole = () => {
     const [role, setRole] = useState([]);
 
@@ -28,26 +30,28 @@ const DeleteRole = () => {
         }
     }
     return (
-        <div>
+        <div className="font-googleSansRegular">
             <form onSubmit={deleteRole}>
-                <h2 className="page-header">
+                <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Xóa loại tài khoản</b>
                 </h2>
+                <h1 className='font-googleSansBold mb-10'>Bạn có chắc chắn muốn loại tài khoản này không?</h1>
                 <div>
-                    <h1>Tên loại</h1>
-                    <input
-                        type={"text"}
-                        value={role.rolename}
-                    /><br />
+                    <div className="inline-block w-[200px] mr-3">Tên loại</div>
+                    <TextInput
+                        placeholder={'Tên loại'}
+                        type="text"
+                        defaultValue={role.rolename}
+                        className="inline-block w-[400px]"
+                        disabled={'disabled'}
+                    /> <br />
                 </div>
-                <div>
-                    <Button type="button" onClick={deleteRole}>
-                        <a>
+                <div className="mt-5">
+                    <Button type="button" btnCSS={'h-[44px] mr-2'} icon="delete" onClick={deleteRole} className="hover:text-white">
                             Xóa
-                        </a>
                     </Button>
-                    <Button type="button">
-                        <a href="./Roles">
+                    <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                        <a className="hover:text-white" href="../Roles">
                             Quay về
                         </a>
                     </Button>

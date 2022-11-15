@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
+import TextInput from '../../../components/Input/TextInput';
+
 const EditRole = () => {
     const [role, setRole] = useState([]);
     const [rolename, setRoleName] = useState("")
@@ -29,27 +31,28 @@ const EditRole = () => {
         }
     }
     return (
-        <div>
+        <div className="font-googleSansRegular">
             <form onSubmit={editRole}>
-                <h2 className="page-header">
+                <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Chỉnh sửa loại tài khoản</b>
                 </h2>
                 <div>
-                    <h1>Tên loại</h1>
-                    <input
-                        type={"text"}
+                    <div className="inline-block w-[200px] mr-3">Tên loại</div>
+                    <TextInput
+                        placeholder={'Tên loại'}
+                        type="text"
+                        required={'required'}
                         defaultValue={role.rolename}
                         onChange={(e) => setRoleName(e.target.value)}
-                    /><br />
+                        className="inline-block w-[400px]"
+                    /><br/>
                 </div>
-                <div>
-                    <Button type="button" onClick={editRole}>
-                        <a>
+                <div className="mt-5">
+                    <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit" onClick={editRole} className="hover:text-white">
                             Sửa
-                        </a>
                     </Button>
-                    <Button type="button">
-                        <a href="./Roles">
+                    <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                        <a className="hover:text-white" href="../Roles">
                             Quay về
                         </a>
                     </Button>

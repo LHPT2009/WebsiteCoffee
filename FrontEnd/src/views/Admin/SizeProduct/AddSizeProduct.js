@@ -6,6 +6,8 @@ import Button from '../../../components/Button/Button'
 
 import { useNavigate } from "react-router-dom";
 
+import TextInput from '../../../components/Input/TextInput';
+
 const AddSizeProduct = () => {
 
     const navigate = useNavigate();
@@ -26,23 +28,33 @@ const AddSizeProduct = () => {
     return (
         <div>
             <form onSubmit={addSizeProduct}>
-                <h2 className="page-header">
+                <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Thêm kích cỡ</b>
                 </h2>
                 <div>
-                    <h1>Tên kích cỡ</h1>
-                    <input type={"text"} placeholder={"Tên kích cỡ"} onChange={(e) => setName(e.target.value)} /> <br />
-                    <h1>Giá</h1>
-                    <input type={"text"} placeholder={"Giá"} onChange={(e) => setPrice(e.target.value)} /> <br />
+                <div className="inline-block w-[200px] mr-3">Tên kích cỡ</div>
+                <TextInput
+                    placeholder={'Tên kích cỡ'}
+                    type="text"
+                    required={'required'}
+                    onChange={(e) => setName(e.target.value)}
+                    className="inline-block w-[400px]"
+                /><br/>
+                <div className="inline-block w-[200px] mr-3">Giá</div>
+                <TextInput
+                    placeholder={'Giá'}
+                    type="text"
+                    required={'required'}
+                    onChange={(e) => setPrice(e.target.value)}
+                    className="inline-block w-[400px]"
+                /><br/>
                 </div>
-                <div>
-                    <Button type="button" onClick={addSizeProduct}>
-                        <a>
+                <div className="mt-5">
+                    <Button type="button" btnCSS={'h-[44px] mr-2'} icon="add" onClick={addSizeProduct} className="hover:text-white">
                             Thêm
-                        </a>
                     </Button>
-                    <Button type="button">
-                        <a href="./SizeProducts">
+                    <Button type="button" btnCSS={'h-[44px] mr-2'} icon="navigate_before" className="hover:text-white">
+                        <a className="hover:text-white" href="./SizeProducts">
                             Quay về
                         </a>
                     </Button>

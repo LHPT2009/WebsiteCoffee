@@ -38,41 +38,51 @@ const DeleteReceipt = () => {
                 <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Xóa hóa đơn</b>
                 </h2>
+                <h1 className='font-googleSansBold mb-10'>Bạn có chắc chắn muốn xóa hóa đơn này không?</h1>
                 <div>
+                <div className="inline-block w-[200px] mr-3">Mã tài khoản</div>
                     <TextInput
                         placeholder={'Mã tài khoản'}
                         type="text"
                         defaultValue={receipt.userid}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
                     /> <br />
+                <div className="inline-block w-[200px] mr-3">Tổng tiền</div>
                     <TextInput
                         placeholder={'Tổng tiền'}
                         type="text"
                         defaultValue={receipt.price}
-                        className="block w-[400px]"
+                        className="inline-block w-[400px]"
                         disabled={'disabled'}
-                    /> <br />
-                    <select
+                    />
+                <div className="inline-block w-[200px] mx-3">đ</div>
+                    <br />
+                <div className="inline-block w-[200px] mr-3">Trạng thái thanh toán</div>
+                    <select disabled
+                        className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+                        hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
                         placeholder={'Trạng thái thanh toán'}
                         value={receipt.statuspayment}>
-                        <option value="true">Da thanh toan</option>
-                        <option value="false">chua thanh toan</option>
+                        <option value="true">Đã thanh toán</option>
+                        <option value="false">Chưa thanh toán</option>
                     </select>
                     <br />
-                    <select
-                        placeholder={'Trạng thái thanh toán'}
+                <div className="inline-block w-[200px] mr-3">Trạng thái giao hàng</div>
+                    <select disabled
+                    className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+                    hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
+                        placeholder={'Trạng thái giao hàng'}
                         value={receipt.statusdelivery}
                     >
-                        <option value="true">Da thanh toan</option>
-                        <option value="false">chua thanh toan</option>
+                        <option value="true">Đã giao</option>
+                        <option value="false">Chưa giao</option>
                     </select>
                     <br />
-                    <h1>Chi tiết đặt hàng</h1>
+                    <h1 className="font-googleSansBold uppercase text-primary text-[16px] mb-4">Chi tiết đặt hàng</h1>
                     {receiptdetail.map((item) => (
                         <ul>
-                            <li><p>{item.productid.name}</p></li>
-                            <li><p>{item.amount}</p></li>
+                            <li className="font-googleSansRegular text-secondary mb-5 mx-5"><p>• {item.productid.name} - Số lượng: {item.amount}</p></li>
                         </ul>
                     ))}
                     <br />

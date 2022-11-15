@@ -6,6 +6,9 @@ import Button from '../../../components/Button/Button'
 
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+
+import TextInput from '../../../components/Input/TextInput';
+
 const EditUser = () => {
     const [user, setUser] = useState([]);
     const [listrole, setListRole] = useState([]);
@@ -46,43 +49,99 @@ const EditUser = () => {
         }
     }
     return (
-        <div>
+        <div className="font-googleSansRegular">
             <form onSubmit={editUser}>
-                <h2 className="page-header">
+                <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
                     <b>Chỉnh sửa tài khoản</b>
                 </h2>
                 <div>
-                    <h1>username</h1>
-                    <input type={"text"} placeholder={"Email"} defaultValue={user.username} onChange={(e) => setUsername(e.target.value)} /> <br />
-                    <h1>password</h1>
-                    <input type={"text"} placeholder={"Email"} defaultValue={user.password} onChange={(e) => setPassword(e.target.value)} /> <br />
-                    <h1>Email</h1>
-                    <input type={"text"} placeholder={"Email"} defaultValue={user.email} onChange={(e) => setEmail(e.target.value)} /> <br />
-                    <h1>Xac nhan email</h1>
-                    <input type={"text"} placeholder={"Tên"} defaultValue={user.confirmemail} onChange={(e) => setConfirmemail(e.target.value)} /> <br />
-                    <h1>Họ</h1>
-                    <input type={"text"} placeholder={"Tên"} defaultValue={user.lastname} onChange={(e) => setLastname(e.target.value)} /> <br />
-                    <h1>Tên</h1>
-                    <input type={"text"} placeholder={"Tên"} defaultValue={user.firstname} onChange={(e) => setFirstname(e.target.value)} /> <br />
-                    <h1>Số điện thoại</h1>
-                    <input type={"text"} placeholder={"Số điện thoại"} defaultValue={user.numberphone} onChange={(e) => setNumberphone(e.target.value)} /> <br />
-                    <h1>Role</h1>
+                    <div className="inline-block w-[200px] mr-3">Username</div>
+                    <TextInput
+                        placeholder={'Username'}
+                        type="text"
+                        required={'required'}
+                        onChange={(e) => setUsername(e.target.value)}
+                        defaultValue={user.username}
+                        className="inline-block w-[400px]"
+                    />
+                    <br />
+                    <div className="inline-block w-[200px] mr-3">Password</div>
+                    <TextInput
+                        placeholder={'Password'}
+                        type="text"
+                        required={'required'}
+                        onChange={(e) => setPassword(e.target.value)}
+                        defaultValue={user.password}
+                        className="inline-block w-[400px]"
+                    />
+                    <br />
+                    <div className="inline-block w-[200px] mr-3">Email</div>
+                    <TextInput
+                        placeholder={'Email'}
+                        type="text"
+                        required={'required'}
+                        onChange={(e) => setEmail(e.target.value)}
+                        defaultValue={user.email}
+                        className="inline-block w-[400px]"
+                    />
+                    <br />
+                    <div className="inline-block w-[200px] mr-3">Xác nhận email</div>
+                    <TextInput
+                        placeholder={'Xác nhận email'}
+                        type="text"
+                        required={'required'}
+                        onChange={(e) => setConfirmemail(e.target.value)}
+                        defaultValue={user.confirmemail}
+                        className="inline-block w-[400px]"
+                    />
+                    <br />
+                    <div className="inline-block w-[200px] mr-3">Họ</div>
+                    <TextInput
+                        placeholder={'Họ'}
+                        type="text"
+                        required={'required'}
+                        onChange={(e) => setLastname(e.target.value)}
+                        defaultValue={user.lastname}
+                        className="inline-block w-[400px]"
+                    />
+                    <br />
+                    <div className="inline-block w-[200px] mr-3">Tên</div>
+                    <TextInput
+                        placeholder={'Tên'}
+                        type="text"
+                        required={'required'}
+                        onChange={(e) => setFirstname(e.target.value)}
+                        defaultValue={user.firstname}
+                        className="inline-block w-[400px]"
+                    />
+                    <br />
+                    <div className="inline-block w-[200px] mr-3">Số điện thoại</div>
+                    <TextInput
+                        placeholder={'Số điện thoại'}
+                        type="text"
+                        required={'required'}
+                        onChange={(e) => setNumberphone(e.target.value)}
+                        defaultValue={user.numberphone}
+                        className="inline-block w-[400px]"
+                    />
+                    <br />
+                    <div className="inline-block w-[200px] mr-3">Role</div>
                     {/* <input type={"text"} placeholder={"Role"} defaultValue={user.role} onChange={(e) => setRole(e.target.value)} /> <br /> */}
                     <select
+                    className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+                    hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
                         onChange={(e) => setRole(e.target.value)}
                         value={role}
                     >
                         {listrole.map((item) => <option value={item._id}>{item.rolename}</option>)}
                     </select>
                 </div>
-                <div>
-                    <Button type="button" onClick={editUser}>
-                        <a>
+                <div className="mt-5">
+                    <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit" onClick={editUser} className="hover:text-white">
                             Sửa
-                        </a>
                     </Button>
-                    <Button type="button">
-                        <a href="./Users">
+                    <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+                        <a className="hover:text-white" href="../Users">
                             Quay về
                         </a>
                     </Button>

@@ -26,9 +26,10 @@ const AddProductCategory = () => {
         <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           Thêm loại
         </h1>
+        <div className="inline-block w-[200px] mr-3">Tên loại</div>
         <TextInput
           type={'text'}
-          className={'w-[400px]'}
+          className={'inline-block w-[400px]'}
           placeholder={'Tên loại'}
           onChange={(e) => setName(e.target.value)}
         />

@@ -7,6 +7,9 @@ import Button from '../../../components/Button/Button'
 import { useParams } from 'react-router-dom'
 
 import { useNavigate } from 'react-router-dom'
+
+import TextInput from '../../../components/Input/TextInput'
+
 const EditReceipt = () => {
   const [receipt, setReceipt] = useState([]);
   const [receiptdetail, setReceiptDetail] = useState([]);
@@ -42,62 +45,69 @@ const EditReceipt = () => {
     }
   }
   return (
-    <div>
+    <div className="font-googleSansRegular">
       <form onSubmit={editReceipt}>
         <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
-          Chỉnh sửa
+          Chỉnh sửa hóa đơn
         </h1>
         <div>
-          <h1>Mã tài khoản</h1>
-          <input
-            type={'text'}
+        <div className="inline-block w-[200px] mr-3">Mã tài khoản</div>
+          <TextInput
             placeholder={'Mã tài khoản'}
-            defaultValue={receipt.userid}
+            type="text"
+            required={'required'}
             onChange={(e) => setUserId(e.target.value)}
-          />{' '}
-          <br />
-          <h1>Tổng tiền</h1>
-          <input
-            type={'text'}
+            defaultValue={receipt.userid}
+            className="inline-block w-[400px]"
+          />
+          <br/>
+        <div className="inline-block w-[200px] mr-3">Tổng tiền</div>
+          <TextInput
             placeholder={'Tổng tiền'}
-            defaultValue={receipt.price}
+            type="text"
+            required={'required'}
             onChange={(e) => setPrice(e.target.value)}
-          />{' '}
-          <br />
-          <h1>Trạng thái thanh toán</h1>
-
+            defaultValue={receipt.price}
+            className="inline-block w-[400px]"
+          />
+        <div className="inline-block w-[200px] mx-3">đ</div>
+          <br/>
+        <div className="inline-block w-[200px] mr-3">Trạng thái thanh toán</div>
           <select
+            className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+            hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
             placeholder={'Trạng thái thanh toán'}
             value={statuspayment}
             onChange={(e) => setStatusPayment(e.target.value)}>
-            <option value="true">Da thanh toan</option>
-            <option value="false">chua thanh toan</option>
+            <option value="true">Đã thanh toán</option>
+            <option value="false">Chưa thanh toán</option>
           </select>
-          <br />
-          <h1>Trạng thái giao hàng</h1>
+          <br/>
+        <div className="inline-block w-[200px] mr-3">Trạng thái giao hàng</div>
           <select
-            placeholder={'Trạng thái thanh toán'}
+            className='border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+            hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300'
+            placeholder={'Trạng thái giao hàng'}
             value={statusdelivery}
             onChange={(e) => setStatusDelivery(e.target.value)}>
-            <option value="true">Da giao</option>
-            <option value="false">chua giao</option>
+            <option value="true">Đã giao</option>
+            <option value="false">Chưa giao</option>
           </select>
-          <br />
-          <h1>Chi tiết đặt hàng</h1>
+          <br/>
+          <h1 className="font-googleSansBold uppercase text-primary text-[16px] mb-4">Chi tiết đặt hàng</h1>
           {receiptdetail.map((item) => (
             <ul>
-              <li><p>{item.productid.name}</p></li>
-              <li><p>{item.amount}</p></li>
+              <li className="font-googleSansRegular text-secondary mb-5 mx-5"><p>• {item.productid.name} - Số lượng: {item.amount}</p></li>
             </ul>
           ))}
           <br />
         </div>
         <div>
-          <Button type="button" onClick={editReceipt}>
-            <a>Sửa</a>
+          <Button type="button" btnCSS={'h-[44px] mr-2'} icon="edit" onClick={editReceipt}>
+            <a className="hover:text-white">Sửa</a>
           </Button>
-          <Button type="button">
-            <a href="./Receipts">Quay về</a>
+          <Button type="button" btnCSS={'h-[44px]'} icon="navigate_before">
+            <a className="hover:text-white" href="../Receipts">Quay về</a>
           </Button>
         </div>
       </form>
