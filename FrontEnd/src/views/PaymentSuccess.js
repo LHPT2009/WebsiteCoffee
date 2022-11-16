@@ -16,11 +16,11 @@ const PaymentSuccess = () => {
   const price = new URLSearchParams(search).get('amount');
   const statuspayment = true;
   const statusdelivery = false;
-  const discountid = localStorage.getItem('discount') ? JSON.parse(localStorage.getItem('discount'))._id : "";
-  const discountprice = localStorage.getItem('discount') ? JSON.parse(localStorage.getItem('discount')).price : 0;
+  const discountid = localStorage.getItem('discount') ? (JSON.parse(localStorage.getItem('discount'))._id) : ("");
+  const discountprice = localStorage.getItem('discount') ? (JSON.parse(localStorage.getItem('discount')).price) : (0);
 
   if (message == "Successful.") {
-    if (localStorage.getItem('cart') && localStorage.getItem('discount')) {
+    if (localStorage.getItem('cart')) {
       const rec = axios.post('http://localhost:8000/receipt', {
         userid,
         price,
