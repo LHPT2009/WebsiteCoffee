@@ -8,9 +8,21 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
+import Pagination from '../../../components/Admin/table/Pagination'
+
 const Rate = () => {
   const navigate = useNavigate()
   const [rate, setRate] = useState([])
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ratesPerPage] = useState(3);
+
+  const indexOfLastItem = currentPage * ratesPerPage;
+  const indexOfFirstItem = indexOfLastItem - ratesPerPage;
+  const currentRates = rate.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
   useEffect(() => {
     axios.get('http://localhost:8000/rate').then((res) => {
       setRate(res.data)
@@ -35,7 +47,7 @@ const Rate = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {rate.map((item) => (
+                  {currentRates.map((item) => (
                     <tr key={item._id}>
                       <td>{item.productid}</td>
                       <td>{item.usertid}</td>
@@ -45,6 +57,11 @@ const Rate = () => {
                   ))}
                 </tbody>
               </table>
+              <Pagination
+                itemsPerPage={ratesPerPage}
+                totalItems={rate.length}
+                paginate={paginate}
+              />
             </div>
           </div>
         </div>

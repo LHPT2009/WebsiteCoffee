@@ -6,11 +6,23 @@ import { useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
+import Pagination from '../../../components/Admin/table/Pagination'
+
 const Products = (props) => {
   const navigate = useNavigate()
   const [RowData, SetRowData] = useState([])
   const [id, setId] = useState('')
   const [product, setProduct] = useState([])
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(3);
+
+  const indexOfLastItem = currentPage * productsPerPage;
+  const indexOfFirstItem = indexOfLastItem - productsPerPage;
+  const currentProducts = product.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
   useEffect(() => {
     axios.get('http://localhost:8000/product').then((res) => {
       setProduct(res.data)
@@ -45,7 +57,7 @@ const Products = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {product.map((item) => (
+                  {currentProducts.map((item) => (
                     <tr key={item._id}>
                       <td>
                         <img
@@ -74,6 +86,11 @@ const Products = (props) => {
                   ))}
                 </tbody>
               </table>
+              <Pagination
+                itemsPerPage={productsPerPage}
+                totalItems={product.length}
+                paginate={paginate}
+              />
             </div>
           </div>
         </div>
