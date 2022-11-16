@@ -49,6 +49,8 @@ import EditDiscount from './views/Admin/Discount/EditDiscount'
 import Rate from './views/Admin/Rate/Rate'
 import PaymentSuccess from './views/PaymentSuccess'
 
+import EditReceipt from './views/Admin/Receipt/EditReceipt'
+
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
 import EnterEmail from './components/Auth/EnterEmail'
@@ -128,6 +130,8 @@ root.render(
 
               <Route path="adddiscount" element={<AddDiscount />} />
               <Route path="editdiscount/:id" element={<EditDiscount />} />
+
+              <Route path="editreceipt/:id" element={<EditReceipt />} />
             </Route>
           </Routes>
         </BrowserRouter>
