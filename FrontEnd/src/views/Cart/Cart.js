@@ -129,9 +129,18 @@ const Cart = () => {
       </table>
       {/* Card total - discount */}
       <div className="p-6 mt-10 rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var">
-        <div className="text-l2">Giảm giá {discountprice}</div>
-        <div className="text-l2">
-          Tồng tiền
+        {/* Thêm mã giảm giá thì mới render cái này */}
+        {discountprice > 0 && (
+          <div className="mb-2 text-l2">
+            Giảm giá:{' '}
+            {new Intl.NumberFormat('vi-VN', {
+              style: 'currency',
+              currency: 'VND',
+            }).format(discountprice)}
+          </div>
+        )}
+        <div className="text-[18px] font-semibold">
+          Tồng tiền:{' '}
           {new Intl.NumberFormat('vi-VN', {
             style: 'currency',
             currency: 'VND',
@@ -139,17 +148,21 @@ const Cart = () => {
         </div>
       </div>
       {/* Discount - Payment */}
-      <div className="flex justify-between">
-        <form className="mt-5" onSubmit={searchdiscount}>
-          <TextInput
-            value={namediscount}
-            placeholder="Mã giảm giá (nếu có)"
-            onChange={(e) => setNameDisCount(e.target.value)}
-            className="mr-3"
-          />
-          <Button icon={''} onClick={searchdiscount}>
-            Áp dụng
-          </Button>
+      <div className="flex justify-between mt-6">
+        <div className="flex">
+          <div>
+            <TextInput
+              value={namediscount}
+              placeholder="Mã giảm giá (nếu có)"
+              onChange={(e) => setNameDisCount(e.target.value)}
+              className="mr-3"
+            />
+          </div>
+          <div>
+            <Button btnCSS={'h-[50px]'} icon={''} onClick={searchdiscount}>
+              Áp dụng
+            </Button>
+          </div>
           {/* <button
           onClick={() => {
             setNameDisCount('')
@@ -159,9 +172,9 @@ const Cart = () => {
         >
           xóa mã
         </button> */}
-        </form>
-        <div className="flex items-center">
-          <Button icon="" onClick={addOrder}>
+        </div>
+        <div>
+          <Button btnCSS={'h-[50px]'} icon="payments" onClick={addOrder}>
             Thanh toán
           </Button>
         </div>
@@ -170,7 +183,14 @@ const Cart = () => {
   )
 
   const cartEmpty = (
-    <h3 className="text-center font-googleSansMedium">Giỏ hàng rỗng</h3>
+    <div className="text-center font-googleSansMedium">
+      <div className="flex items-center justify-center gap-3">
+        <span className="material-symbols-rounded text-[32px]">
+          shopping_cart
+        </span>
+        <span>Giỏ hàng rỗng</span>
+      </div>
+    </div>
   )
 
   return (

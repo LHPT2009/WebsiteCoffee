@@ -11,10 +11,10 @@
 }
 
 table {
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
   border-radius: 28px;
   border-collapse: inherit;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }
 
 tr:hover {
