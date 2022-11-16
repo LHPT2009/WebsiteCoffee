@@ -12,7 +12,7 @@
     --box-shadow: var(--box-shadow-dark);
 }
 
-.theme-color-blue {
+.theme-color-main {
     --main-color: var(--main-color-blue);
     --second-color: var(--second-color-blue);
 }

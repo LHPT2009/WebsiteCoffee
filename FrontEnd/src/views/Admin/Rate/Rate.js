@@ -39,7 +39,7 @@ const Rate = () => {
                     <tr key={item._id}>
                       <td>{item.productid}</td>
                       <td>{item.usertid}</td>
-                      <td>{item.point}</td>
+                      <td>{item.point}★</td>
                       <td>{item.content}</td>
                     </tr>
                   ))}
