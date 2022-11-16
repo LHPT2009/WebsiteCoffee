@@ -16,6 +16,7 @@ const sizeProductRoute = require("./routes/sizeProduct");
 const disCountRoute = require("./routes/disCount");
 const rateRoute = require("./routes/rate");
 const loadProductRoute = require("./routes/loadProduct");
+const momoRoute = require("./routes/momo");
 
 
 dotenv.config();
@@ -49,6 +50,8 @@ app.use("/rate", rateRoute);
 app.use("/category/one", categoryProductRoute);
 
 app.use("/loadproduct", loadProductRoute);
+app.use("/momo", momoRoute);
+
 
 app.listen(8000, () => {
   console.log("Server is running...");
