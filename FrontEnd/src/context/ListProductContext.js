@@ -1,8 +1,11 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 export const ListProductContext = createContext()
 
 const ListProductProvider = (props) => {
   const [products, setProducts] = useState([])
+  useEffect(() => {
+    setProducts(localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []);
+  }, [])
   const addProduct = async (product) => {
     const existedProduct = products.find((item) => {
       return item.id === product.id && item.name === product.name
@@ -14,13 +17,18 @@ const ListProductProvider = (props) => {
         }
       })
       setProducts([...products])
+      localStorage.setItem('cart', JSON.stringify([...products]));
     } else {
       setProducts([...products, product])
+      localStorage.setItem('cart', JSON.stringify([...products, product]));
     }
   }
 
 
-  const delProduct = (name) => setProducts(products.filter((n) => (n.name !== name)))
+  const delProduct = (name) => {
+    setProducts(products.filter((n) => (n.name !== name)))
+    localStorage.setItem('cart', JSON.stringify(products.filter((n) => (n.name !== name))));
+  }
 
   const upAmount = (id, name) => {
     products.forEach((item) => {
@@ -29,6 +37,7 @@ const ListProductProvider = (props) => {
       }
     })
     setProducts([...products])
+    localStorage.setItem('cart', JSON.stringify([...products]));
   }
 
   const downAmount = (id, name) => {
@@ -41,10 +50,12 @@ const ListProductProvider = (props) => {
       }
     })
     setProducts([...products])
+    localStorage.setItem('cart', JSON.stringify([...products]));
   }
 
   const clearCart = () => {
     setProducts([])
+    localStorage.removeItem('cart');
   }
 
   return (
