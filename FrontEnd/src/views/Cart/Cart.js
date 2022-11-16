@@ -21,11 +21,10 @@ const Cart = () => {
   const [statuspayment, setStatusPayment] = useState(false)
   const [statusdelivery, setStatusDelivery] = useState(false)
   useEffect(() => {
-    setUserId(
-      localStorage.getItem('token')
-        ? jwt_decode(localStorage.getItem('token')).id
-        : ``
-    )
+    setUserId(localStorage.getItem('token') ? jwt_decode(localStorage.getItem('token')).id : ``);
+    setDiscountPrice(localStorage.getItem('discount') ? JSON.parse(localStorage.getItem('discount')).price : 0);
+    setDisCountId(localStorage.getItem('discount') ? JSON.parse(localStorage.getItem('discount'))._id : ``);
+    setNameDisCount(localStorage.getItem('discount') ? JSON.parse(localStorage.getItem('discount')).name : ``);
   }, [])
   useEffect(() => {
     let ans = 0
@@ -38,6 +37,7 @@ const Cart = () => {
     axios
       .post(`http://localhost:8000/discount/one`, { name: namediscount })
       .then((res) => {
+        localStorage.setItem('discount', JSON.stringify(res.data));
         setNameDisCount(res.data.name)
         setDisCountId(res.data._id)
         setDiscountPrice(res.data.price)
@@ -69,6 +69,17 @@ const Cart = () => {
       alert('Thanh toan that bai!!!')
       navigate('/')
     }
+  }
+
+  const addOrderMoMo = async () => {
+    if (!localStorage.getItem('token')) {
+      alert('Ban chua dang nhap, moi dang nhap!!!')
+      return navigate('/signin')
+    }
+    const rec = await axios.post('http://localhost:8000/momo/', {
+      amount: price,
+      orderInfo: "Thanh toán hóa đơn"
+    }).then((res) => window.location.replace(res.data))
   }
 
   const orderList = products.map((n) => (
@@ -176,6 +187,11 @@ const Cart = () => {
         <div>
           <Button btnCSS={'h-[50px]'} icon="payments" onClick={addOrder}>
             Thanh toán
+          </Button>
+        </div>
+        <div className="flex items-center">
+          <Button icon="" onClick={addOrderMoMo}>
+            Thanh toán MoMo
           </Button>
         </div>
       </div>
