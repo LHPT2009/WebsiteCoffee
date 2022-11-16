@@ -1,11 +1,11 @@
 .table-wrapper {
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 table {
     width: 100%;
     min-width: 400px;
-    border-spacing: 0;
+    /* overflow: hidden; */
 }
 
 thead {

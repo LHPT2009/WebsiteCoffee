@@ -83,7 +83,7 @@ const Cart = () => {
   }
 
   const orderList = products.map((n) => (
-    <tr key={n.id}>
+    <tr key={n.id} className='text-l2 bg-background hover:bg-s3'>
       <td>{n.name}</td>
       {/* <td>size: {n.size}</td> */}
       <td>
@@ -93,18 +93,26 @@ const Cart = () => {
         }).format(n.price)}
       </td>
       <td>
-        <div className="flex h-[47px]">
-          <button onClick={() => downAmount(n.id, n.name)}>
-            <span className="material-symbols-rounded">remove</span>
-          </button>
+        <div className="flex">
+          <Button
+          onClick={() => downAmount(n.id, n.name)}
+          btnStyle="btn-tonal"
+          icon="remove"
+          type="button"
+          children=""
+        />
           <input
-            className="mx-2 rounded-full hover:text-black focus:text-black text-center w-20 h-10 bg-[transparent]"
+            className="mx-2 rounded-full bg-transparent text-center w-20 h-10"
             type="text"
             value={n.amount}
           />
-          <button onClick={() => upAmount(n.id, n.name)}>
-            <span className="material-symbols-rounded">add</span>
-          </button>
+          <Button
+          onClick={() => upAmount(n.id, n.name)}
+          btnStyle="btn-tonal"
+          icon="add"
+          type="button"
+          children=""
+        />
         </div>
       </td>
       <td className="lowercase">
@@ -126,37 +134,19 @@ const Cart = () => {
   ))
   const formorderList = (
     <div>
-      <table className="table-auto">
-        <thead>
+      <div className='border-s5 border-[2px] rounded-[24px] border-collapse overflow-hidden'>
+      <table>
+        <thead className='text-l1 text-on-surface bg-s5'>
           <tr>
             <th>Sản phẩm</th>
             <th>Giá bán</th>
             <th>Số lượng</th>
             <th>Tổng tiền (1 sản phẩm)</th>
-            <th>Xóa</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>{orderList}</tbody>
       </table>
-      {/* Card total - discount */}
-      <div className="p-6 mt-10 rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var">
-        {/* Thêm mã giảm giá thì mới render cái này */}
-        {discountprice > 0 && (
-          <div className="mb-2 text-l2">
-            Giảm giá:{' '}
-            {new Intl.NumberFormat('vi-VN', {
-              style: 'currency',
-              currency: 'VND',
-            }).format(discountprice)}
-          </div>
-        )}
-        <div className="text-[18px] font-semibold">
-          Tồng tiền:{' '}
-          {new Intl.NumberFormat('vi-VN', {
-            style: 'currency',
-            currency: 'VND',
-          }).format(price)}
-        </div>
       </div>
       {/* Discount - Payment */}
       <div className="flex justify-between mt-6">
@@ -170,7 +160,7 @@ const Cart = () => {
             />
           </div>
           <div>
-            <Button btnCSS={'h-[50px]'} icon={''} onClick={searchdiscount}>
+            <Button btnStyle="btn-tonal" btnCSS={'h-[50px]'} icon={''} onClick={searchdiscount}>
               Áp dụng
             </Button>
           </div>
@@ -184,8 +174,33 @@ const Cart = () => {
           xóa mã
         </button> */}
         </div>
-        <div>
-          <Button btnCSS={'h-[50px]'} icon="payments" onClick={addOrder}>
+        {/* <div>
+          <Button  btnCSS={'h-[50px]'} icon="payments" onClick={addOrder}>
+            Thanh toán
+          </Button>
+        </div> */}
+      </div>
+      {/* Card total - discount */}
+      <div className="p-6 mt-6 rounded-3xl bg-s5 text-on-surface border-outline-var">
+        {/* Thêm mã giảm giá thì mới render cái này */}
+        {discountprice > 0 && (
+          <div className="mb-2 text-l2">
+            Giảm giá:{' '}
+            {new Intl.NumberFormat('vi-VN', {
+              style: 'currency',
+              currency: 'VND',
+            }).format(discountprice)}
+          </div>
+        )}
+        <div className='flex justify-between items-center'>
+        <div className="text-t1">
+          Tồng tiền:{' '}
+          {new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+          }).format(price)}
+        </div>
+          <Button btnStyle="" btnCSS={'shadow-5'} icon="payments" onClick={addOrder}>
             Thanh toán
           </Button>
         </div>
@@ -195,6 +210,7 @@ const Cart = () => {
           </Button>
         </div>
       </div>
+      
     </div>
   )
 

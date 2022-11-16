@@ -7,7 +7,6 @@
   --white: #f9f9f9;
   --tertiary-container: #c6dff0;
   --tertiary-on-container: #1b2d39;
-
   --warning: #ffd028;
   --danger: #eb3f27;
   --danger-cont:#FAD1DB;
@@ -92,18 +91,18 @@
 }
 /* elevated */
 .btn-elevate {
-  background: rgba(61, 104, 94, 0.05);
+  background: #eceeed;
   color: var(--primary);
   box-shadow: 0px 8px 12px 4px rgba(96, 119, 114, 0.15),
     0px 4px 4px rgba(101, 94, 112, 0.3);
 }
 
 .btn-elevate:hover {
-  background: rgba(61, 104, 94, 0.16);
+  background: #d8dedd;
 }
 
 .btn-elevate:active {
-  background: rgba(61, 104, 94, 0.2);
+  background: #d0d9d7;
   /* Shadow/s3 */
   box-shadow: 0px 4px 8px 3px rgba(96, 119, 114, 0.15),
     0px 1px 3px rgba(101, 94, 112, 0.3);
