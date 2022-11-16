@@ -41,7 +41,7 @@ module.exports = {
       s5: '#dee4e2',
       'on-surface': '#07221B',
       insurface: '#272B2A',
-      'on-insurface': '#FCFDFD',
+      'on-insurface': '#60D2B8',
       //shadowcolor
       sd1: 'rgba(115, 130, 126, 0.6);',
       //outline
@@ -50,6 +50,7 @@ module.exports = {
       //others
       warning: '#E6B91A',
       error: '#DB2450',
+      'error-cont': '#F4B9C7',
       success: '#45B163',
       link: '#527BCB',
       disable: '#E8E8E8',

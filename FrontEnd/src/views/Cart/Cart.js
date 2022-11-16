@@ -104,9 +104,9 @@ const Cart = () => {
       <td>
         <Button
           onClick={() => delProduct(n.name)}
-          btnStyle="btn-outline"
+          btnStyle="btn-danger"
           icon="delete"
-          btnCSS="h-[12px] w-[64px] px-0 leading-3 text-[13px]"
+          btnCSS=""
           type="button"
           children=""
         />
@@ -161,7 +161,7 @@ const Cart = () => {
         btnStyle="btn-fill"
         icon="payments"
         onClick={addOrder}
-        btnCSS={'h-[47px] px-6 py-3'}
+        btnCSS={''}
       >
         Thanh toán
       </Button>

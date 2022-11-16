@@ -48,9 +48,9 @@ const Coffee = () => {
               Menu
             </span>
           </h3>
-          <div className="mb-10">
+          <div className="mb-10 flex flex-row gap-3">
             <Button
-              btnCSS={'h-[44px] mr-2 my-4'}
+              btnCSS={''}
               btnStyle="btn-outline"
               icon=""
               onClick={handleproduct}
@@ -59,7 +59,7 @@ const Coffee = () => {
             </Button>
             {productCate.map((item) => (
               <Button
-                btnCSS={'h-[44px] mr-2'}
+                btnCSS={''}
                 btnStyle="btn-outline"
                 icon=""
                 onClick={() => handleCategories(`${item._id}`)}
@@ -86,7 +86,7 @@ const Coffee = () => {
             <Button
               onClick={() => loadMore()}
               btnStyle={'btn-outline'}
-              btnCSS={'mb-20 h-[44px]'}
+              btnCSS={''}
               icon="expand_more"
             >
               Xem thêm

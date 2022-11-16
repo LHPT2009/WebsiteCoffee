@@ -141,7 +141,7 @@ const ItemDetail = () => {
                 btnStyle="btn-fill"
                 icon="add_shopping_cart"
                 onClick={add}
-                btnCSS={'h-[56px] px-6 py-5'}
+                btnCSS={''}
               >
                 Thêm vào giỏ hàng
               </Button>
@@ -205,16 +205,13 @@ const ItemDetail = () => {
             </form>
           </div>
         ) : (
-          <div className="mt-6 px-4 py-4 bg-insurface text-center text-t2 text-on-insurface rounded-[16px]">
-            Hãy{' '}
-            <span
+          <div className="mt-6 px-4 py-4 bg-insurface text-center text-t2 text-white rounded-[16px]">
+            Hãy<span
               onClick={() => {
-                navigate('/profile')
+                navigate('/signin')
               }}
-            >
-              đăng nhập
-            </span>{' '}
-            để được bình luận😗😗😗
+              className="text-on-insurface cursor-pointer px-3 py-2 rounded-full hover:bg-secondary"
+            >ĐĂNG NHẬP</span>để được bình luận☕😍
           </div>
         )}
         {/* Relate */}
