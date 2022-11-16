@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import Button from '../../components/Button/Button'
+import TextInput from '../../components/Input/TextInput'
 import { ListProductContext } from '../../context/ListProductContext'
 import './cart.css'
 import axios from 'axios'
@@ -106,7 +107,6 @@ const Cart = () => {
           onClick={() => delProduct(n.name)}
           btnStyle="btn-danger"
           icon="delete"
-          btnCSS=""
           type="button"
           children=""
         />
@@ -127,15 +127,30 @@ const Cart = () => {
         </thead>
         <tbody>{orderList}</tbody>
       </table>
-      <form onSubmit={searchdiscount}>
-        <h1>Ma giam gia</h1>
-        <input
-          value={namediscount}
-          placeholder="ma cua ban"
-          onChange={(e) => setNameDisCount(e.target.value)}
-        />
-        <button onClick={searchdiscount}>nhap ma</button>
-        <button
+      {/* Card total - discount */}
+      <div className="p-6 mt-10 rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var">
+        <div className="text-l2">Giảm giá {discountprice}</div>
+        <div className="text-l2">
+          Tồng tiền
+          {new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+          }).format(price)}
+        </div>
+      </div>
+      {/* Discount - Payment */}
+      <div className="flex justify-between">
+        <form className="mt-5" onSubmit={searchdiscount}>
+          <TextInput
+            value={namediscount}
+            placeholder="Mã giảm giá (nếu có)"
+            onChange={(e) => setNameDisCount(e.target.value)}
+            className="mr-3"
+          />
+          <Button icon={''} onClick={searchdiscount}>
+            Áp dụng
+          </Button>
+          {/* <button
           onClick={() => {
             setNameDisCount('')
             setDiscountPrice(0)
@@ -143,28 +158,14 @@ const Cart = () => {
           }}
         >
           xóa mã
-        </button>
-      </form>
-
-      <h2>Mã id:{discountid}</h2>
-      <h2>Tiền giảm:{discountprice}</h2>
-
-      <h1 className="mt-10 mb-5">
-        Tồng tiền:{' '}
-        {new Intl.NumberFormat('vi-VN', {
-          style: 'currency',
-          currency: 'VND',
-        }).format(price)}
-      </h1>
-      <Button
-        type="button"
-        btnStyle="btn-fill"
-        icon="payments"
-        onClick={addOrder}
-        btnCSS={''}
-      >
-        Thanh toán
-      </Button>
+        </button> */}
+        </form>
+        <div className="flex items-center">
+          <Button icon="" onClick={addOrder}>
+            Thanh toán
+          </Button>
+        </div>
+      </div>
     </div>
   )
 

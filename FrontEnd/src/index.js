@@ -47,6 +47,7 @@ import AddDiscount from './views/Admin/Discount/AddDiscount'
 import EditDiscount from './views/Admin/Discount/EditDiscount'
 
 import Rate from './views/Admin/Rate/Rate'
+import PaymentSuccess from './views/PaymentSuccess'
 
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
@@ -89,6 +90,7 @@ root.render(
             <Route path="/enteremail" element={<EnterEmail />} />
             <Route path="/checkcode" element={<CheckCode />} />
             <Route path="/repass" element={<Repass />} />
+            <Route path="/paymentsuccess" element={<PaymentSuccess />} />
 
             <Route path="/admin" element={<Layout />}>
               <Route index element={<Dashboard />} />
