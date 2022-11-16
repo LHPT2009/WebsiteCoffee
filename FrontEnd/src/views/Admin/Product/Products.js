@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
-const Products = () => {
+const Products = (props) => {
   const navigate = useNavigate()
   const [RowData, SetRowData] = useState([])
   const [id, setId] = useState('')
@@ -50,10 +50,10 @@ const Products = () => {
                       <td>
                         <img
                           src={`data:image/png;base64,${btoa(
-                            String.fromCharCode(...new Uint8Array(item.image))
+                            String.fromCharCode(...new Uint8Array(item.image.data.data))
                           )}`}
-                          alt="thumbnail"
-                          width={50}
+                          alt="hinh san pham"
+                          width={60}
                         ></img>
                       </td>
                       <td>{item.name}</td>

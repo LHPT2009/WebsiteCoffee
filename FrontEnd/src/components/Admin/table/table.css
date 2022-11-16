@@ -23,8 +23,7 @@ td {
 }
 
 tbody > tr:hover {
-    background-color: var(--main-color);
-    color: var(--txt-white);
+    background-color: var(--second-color);
 }
 
 .table__pagination {
