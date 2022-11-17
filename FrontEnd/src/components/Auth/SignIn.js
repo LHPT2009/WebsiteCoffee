@@ -18,11 +18,20 @@ const SignIn = () => {
         username,
         password,
       })
-      localStorage.setItem('token', Auth.data.accessToken)
-      if (Auth.data.role.rolename == 'Admin') {
+      if (!Auth) {
+        alert("Thông tin tài khoản và mật khẩu không đúng!!!")
+      }
+      if (Auth.data.role.rolename == 'Admin' && Auth.data.confirmemail == true) {
         navigate('/admin')
-      } else {
-        navigate('/')
+        localStorage.setItem('token', Auth.data.accessToken)
+      }
+      else {
+        if (Auth.data.role.rolename == 'User' && Auth.data.confirmemail == true) {
+          navigate('/')
+          localStorage.setItem('token', Auth.data.accessToken)
+        } else {
+          alert("bạn chưa xác nhận mail")
+        }
       }
     } catch (err) {
       console.log(err)

@@ -60,6 +60,8 @@ import Repass from './components/Auth/Repass'
 import Career from './views/Collections/Career'
 import Profile from './views/Profile'
 
+import ConfirmMail from './views/ConfirmMail'
+
 import ScrollToTop from 'react-scroll-to-top'
 
 const store = createStore(rootReducer)
@@ -93,6 +95,7 @@ root.render(
             <Route path="/checkcode" element={<CheckCode />} />
             <Route path="/repass" element={<Repass />} />
             <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+            <Route path="/confirmmail" element={<ConfirmMail />} />
 
             <Route path="/admin" element={<Layout />}>
               <Route index element={<Dashboard />} />

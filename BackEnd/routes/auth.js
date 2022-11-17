@@ -7,4 +7,6 @@ router.post("/register", authController.registerUser);
 
 router.post("/login", authController.loginUser);
 
+router.get("/confirm/:id", authController.confirmEmail);
+
 module.exports = router;
