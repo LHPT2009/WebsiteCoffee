@@ -74,7 +74,7 @@ const ItemDetail = () => {
     }
   }
   return (
-    <div className="relative min-h-screen pb-24 lg:pb-12">
+    <div className="relative min-h-screen pb-24 lg:pb-12 bg-background">
       <Header />
       <div className="h-20"></div>
       <div className="sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] font-googleSansRegular">
@@ -114,7 +114,7 @@ const ItemDetail = () => {
               ))}
             </div> */}
             {/* test new radio btn */}
-            <h2 className="mt-6 text-black text-l2">Chọn size(bắt buộc)</h2>
+            <h2 className="mt-6 text-black text-l2">Chọn size(chưa ràng buộc bắt buộc)</h2>
             <div className="flex flex-wrap gap-4 mt-3">
               {sizeproduct.map((ele) => (
                 <label className="cursor-pointer">
@@ -156,19 +156,23 @@ const ItemDetail = () => {
         <h4 className="mt-10 mb-5 text-t1">Đánh giá sản phẩm</h4>
         <div className="box-border flex flex-col gap-[16px] rounded-[32px] w-full">
           {ratelist.map((ele) => (
-            <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
-              <span className="text-[14px] font-normal mb-1">
-                {ele.usertid.lastname + ' ' + ele.usertid.firstname}
-              </span>
-              <Rating size="small" readOnly="true" value={ele.point} />
-              <div className="flex items-start gap-2 mt-2 text-left text-l2">
-                <span>{ele.content}</span>
+            <div className="flex flex-col items-start p-6 transition-all ease-out rounded-[24px] bg-s3 text-on-surface hover:bg-s5  hover:rounded-2xl">
+              <div className='flex gap-4'>
+                <span className="text-t2 mb-1">
+                  {ele.usertid.lastname + ' ' + ele.usertid.firstname}
+                </span>|
+                <Rating size="small" readOnly="true" value={ele.point} />
+                
               </div>
+              <div className="flex items-start gap-2 mt-2 text-left text-body">
+                  <span>{ele.content}</span>
+                </div>
             </div>
           ))}
         </div>
         {localStorage.getItem('token') ? (
-          <div className="mt-8">
+          <div className="relative pb-12 my-8 text-on-surface ">
+            <h4 className="text-t1 my-2">Viết đánh giá</h4>
             <form onSubmit={addrate}>
               {/* Star */}
               <div>
@@ -182,20 +186,20 @@ const ItemDetail = () => {
                 />
               </div>
               {/* Content */}
-              <div className="mt-4">
+              <div className="">
                 <textarea
                   name="content"
                   placeholder="Nội dung"
                   value={content}
-                  className="border-[1px] border-outline-var border-solid rounded-3xl text-l2 leading-[24px] mb-[10px] pt-[13px] px-[12px] pb-[13px] hover:border-outline focus:border-[1px] hover:rounded-2xl focus:border-outline focus:rounded-2xl transition-all w-full min-h-[150px] max-h-[150px]"
+                  className="border-[2px] bg-background border-outline-var rounded-[24px] text-l2 mb-3 px-6 py-4 hover:border-outline focus:border-primary focus:rounded-[16px] focus-visible:border-primaryt transition-all w-full min-h-[56px] max-h-[150px]"
                   onChange={(e) => setContent(e.target.value)}
                 />
               </div>
-              <div className="text-right">
+              <div className="absolute right-0 bottom-0">
                 <Button
                   btnStyle={'btn-fill'}
-                  icon=""
-                  btnCSS={'h-[44px] px-6 py-5'}
+                  icon="file_upload"
+                  btnCSS={''}
                   onClick={addrate}
                 >
                   Đăng
@@ -206,12 +210,16 @@ const ItemDetail = () => {
           </div>
         ) : (
           <div className="mt-6 px-4 py-4 bg-insurface text-center text-t2 text-white rounded-[16px]">
-            Hãy<span
+            Hãy
+            <span
               onClick={() => {
                 navigate('/signin')
               }}
               className="text-on-insurface cursor-pointer px-3 py-2 rounded-full hover:bg-secondary"
-            >ĐĂNG NHẬP</span>để được bình luận☕😍
+            >
+              ĐĂNG NHẬP
+            </span>
+            để được bình luận☕😍
           </div>
         )}
         {/* Relate */}

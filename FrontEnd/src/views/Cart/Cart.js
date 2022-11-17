@@ -83,7 +83,7 @@ const Cart = () => {
   }
 
   const orderList = products.map((n) => (
-    <tr key={n.id} className='text-l2 bg-background hover:bg-s3'>
+    <tr key={n.id} className='text-l2 bg-background hover:bg-s1'>
       <td>{n.name}</td>
       {/* <td>size: {n.size}</td> */}
       <td>
@@ -181,7 +181,8 @@ const Cart = () => {
         </div> */}
       </div>
       {/* Card total - discount */}
-      <div className="p-6 mt-6 rounded-3xl bg-s5 text-on-surface border-outline-var">
+      <div className="p-6 my-6 rounded-3xl bg-s5 text-on-surface border-outline-var">
+        
         {/* Thêm mã giảm giá thì mới render cái này */}
         {discountprice > 0 && (
           <div className="mb-2 text-l2">
@@ -214,6 +215,7 @@ const Cart = () => {
     </div>
   )
 
+  // Cart empty state
   const cartEmpty = (
     <div className="text-center font-googleSansMedium">
       <div className="flex items-center justify-center gap-3">
@@ -226,7 +228,7 @@ const Cart = () => {
   )
 
   return (
-    <div className="relative min-h-screen pb-24 lg:pb-12">
+    <div className="relative min-h-screen pb-24 lg:pb-12 bg-background">
       <Header />
       <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {products.length != 0 ? formorderList : cartEmpty}
