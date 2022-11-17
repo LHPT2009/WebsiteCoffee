@@ -29,12 +29,19 @@ const authController = {
           pass: process.env.PASSWORD_MAIL, // generated ethereal password
         },
       });
+      let send = jwt.sign(
+        {
+          id: newUser._id,
+        },
+        process.env.JWT_ACCESS_KEY
+      );
       let info = await transporter.sendMail({
         from: process.env.USERNAME_MAIL, // sender address
         to: req.body.email, // list of receivers
         subject: "Confirm Email", // Subject line
         text: "Confirm Email!", // plain text body
-        html: `<h1>thử demo trang Confirm Email</h1>`, // html body
+        html:
+          `<a href="http://localhost:3000/confirmmail?confirm=${send}">Xac nhan mail</a>`, // html body
       });
     } catch (error) {
       console.log(error);
@@ -75,6 +82,19 @@ const authController = {
         const { password, ...others } = user._doc;
         res.status(200).json({ ...others, accessToken });
       }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  confirmEmail: async (req, res) => {
+    try {
+      const user = await User.findByIdAndUpdate(req.params.id, { confirmemail: true }, {
+        new: true,
+      });
+      if (!user) {
+        return res.status(404).json('Wrong updateUser!');
+      }
+      res.status(200).json(user);
     } catch (err) {
       res.status(500).json(err);
     }
