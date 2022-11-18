@@ -8,7 +8,7 @@ import { ListProductContext } from '../../context/ListProductContext'
 import Footer from '../Footer/Footer'
 import Rating from '@mui/material/Rating'
 import jwt_decode from 'jwt-decode'
-
+import moment from 'moment'
 const ItemDetail = () => {
   const { id } = useParams()
   const [point, setPoint] = React.useState(0)
@@ -22,6 +22,9 @@ const ItemDetail = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
+      setRateList(res.data)
+    })
     axios.get(`http://localhost:8000/product/${id}`).then((res) => {
       setInfo(res.data)
       setImage(
@@ -29,9 +32,6 @@ const ItemDetail = () => {
           String.fromCharCode(...new Uint8Array(res.data.image.data.data))
         )}`
       )
-    })
-    axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
-      setRateList(res.data)
     })
   }, [id])
   const [product, setProduct] = useState([])
@@ -70,6 +70,9 @@ const ItemDetail = () => {
       setPoint(0)
       setContent('')
       alert('Cảm ơn bạn đã đánh giá sản phẩm này!')
+      axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
+        setRateList(res.data)
+      })
     } else {
     }
   }
@@ -156,19 +159,22 @@ const ItemDetail = () => {
         <h4 className="mt-10 mb-5 text-t1">Đánh giá sản phẩm</h4>
         <div className="box-border flex flex-col gap-[16px] rounded-[32px] w-full">
           {ratelist.map((ele) => (
-            <div className="flex flex-col items-start p-6 transition-all ease-out rounded-[24px] bg-s3 text-on-surface hover:bg-s5  hover:rounded-2xl">
-              <div className='flex gap-4'>
-                <span className="text-t2 mb-1">
-                  {ele.usertid.lastname + ' ' + ele.usertid.firstname}
-                </span>|
-                <Rating size="small" readOnly="true" value={ele.point} />
-                
+            <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
+              <span className="text-[14px] font-normal mb-1">
+                {ele.usertid.lastname + ' ' + ele.usertid.firstname}
+              </span>
+              <div className="flex items-start gap-2 mt-2 text-left text-l2">
+                <span>{moment(ele.createdAt).format('DD-MM-YYYY')}</span>
+              </div>
+              <Rating size="small" readOnly="true" value={ele.point} />
+              <div className="flex items-start gap-2 mt-2 text-left text-l2">
+                <span>{ele.content}</span>
               </div>
               <div className="flex items-start gap-2 mt-2 text-left text-body">
                   <span>{ele.content}</span>
                 </div>
             </div>
-          ))}
+          )).reverse(ratelist.createdAt)}
         </div>
         {localStorage.getItem('token') ? (
           <div className="relative pb-12 my-8 text-on-surface ">
