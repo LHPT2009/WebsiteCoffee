@@ -20,6 +20,6 @@ const receiptSchema = new mongoose.Schema({
     statusdelivery: {
         type: Boolean
     }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model("Receipt", receiptSchema);
