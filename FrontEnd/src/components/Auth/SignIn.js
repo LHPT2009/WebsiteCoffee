@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-
+import ReCAPTCHA from 'react-google-recaptcha'
 import Header from '../Header/Header'
 import Button from '../Button/Button'
 import TextInput from '../Input/TextInput'
@@ -10,28 +10,40 @@ import Footer from '../../components/Footer/Footer'
 const SignIn = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [sideKey, setSideKey] = useState('6LdfshcjAAAAAHnu08PuFr0edhzcfFCjILuyM3QA')
+  const [token, setToken] = useState('')
   const navigate = useNavigate()
+
+  if (!window.location.hash) {
+    window.location = window.location + '#loaded';
+    window.location.reload();
+  }
+
   const loginUser = async (e) => {
     e.preventDefault()
     try {
-      const Auth = await axios.post('http://localhost:8000/auth/login', {
-        username,
-        password,
-      })
-      if (!Auth) {
-        alert("Thông tin tài khoản và mật khẩu không đúng!!!")
-      }
-      if (Auth.data.role.rolename == 'Admin' && Auth.data.confirmemail == true) {
-        navigate('/admin')
-        localStorage.setItem('token', Auth.data.accessToken)
-      }
-      else {
-        if (Auth.data.role.rolename == 'User' && Auth.data.confirmemail == true) {
-          navigate('/')
-          localStorage.setItem('token', Auth.data.accessToken)
-        } else {
-          alert("bạn chưa xác nhận mail")
+      if (token) {
+        const Auth = await axios.post('http://localhost:8000/auth/login', {
+          username,
+          password,
+        })
+        if (!Auth) {
+          alert("Thông tin tài khoản và mật khẩu không đúng!!!")
         }
+        if (Auth.data.role.rolename == 'Admin' && Auth.data.confirmemail == true) {
+          navigate('/admin')
+          localStorage.setItem('token', Auth.data.accessToken)
+        }
+        else {
+          if (Auth.data.role.rolename == 'User' && Auth.data.confirmemail == true) {
+            navigate('/')
+            localStorage.setItem('token', Auth.data.accessToken)
+          } else {
+            alert("bạn chưa xác nhận mail")
+          }
+        }
+      } else {
+        alert("Mời bạn nhập Captcha để xác nhận bạn là người dùng")
       }
     } catch (err) {
       console.log(err)
@@ -62,6 +74,12 @@ const SignIn = () => {
             />
           </div>
         </form>
+        <ReCAPTCHA
+          sitekey={sideKey}
+          onChange={token => {
+            setToken(token)
+          }}
+        />
         <Button
           type="button"
           btnStyle="btn-fill"
