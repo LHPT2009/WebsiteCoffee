@@ -66,7 +66,9 @@ const Topnav = () => {
   return (
     <div className="mb-5 topnav">
       <div className="topnav__logo">
-        <img className="h-[48px]" src={logo} alt="logo" />
+        <Link to="/">
+          <img className="h-[48px]" src={logo} alt="logo" />
+        </Link>
       </div>
       <div className="topnav__right">
         <div className="topnav__right-item">

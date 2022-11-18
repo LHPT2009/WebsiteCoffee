@@ -32,17 +32,11 @@ const AddProductCategory = () => {
           onChange={(e) => setName(e.target.value)}
         />
         <div className="flex gap-3 mt-5">
-          <Button
-            type="button"
-            btnCSS="h-11 mr-2"
-            icon="add"
-            onClick={addProductCategory}
-          >
+          <Button type="button" icon="add" onClick={addProductCategory}>
             Thêm
           </Button>
           <Button
             type="button"
-            btnCSS="h-11"
             icon="navigate_before"
             onClick={() => navigate('../productcategories')}
           >

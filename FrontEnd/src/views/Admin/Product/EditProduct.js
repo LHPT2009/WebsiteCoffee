@@ -156,17 +156,11 @@ const EditProduct = () => {
           <br />
         </div>
         <div className="flex gap-3 mt-5">
-          <Button
-            type="button"
-            btnCSS={'h-[44px] mr-2'}
-            icon="edit"
-            onClick={editProduct}
-          >
+          <Button type="button" icon="edit" onClick={editProduct}>
             Sửa
           </Button>
           <Button
             type="button"
-            btnCSS={'h-[44px]'}
             icon="navigate_before"
             onClick={() => {
               navigate('../Products')

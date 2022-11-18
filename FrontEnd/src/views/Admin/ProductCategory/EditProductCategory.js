@@ -48,17 +48,11 @@ const EditProductCategory = () => {
           <br />
         </div>
         <div className="flex gap-3 mt-5">
-          <Button
-            type="button"
-            btnCSS={'h-[44px] mr-2'}
-            icon="edit"
-            onClick={editProductCategory}
-          >
+          <Button type="button" icon="edit" onClick={editProductCategory}>
             Sửa
           </Button>
           <Button
             type="button"
-            btnCSS={'h-[44px]'}
             icon="navigate_before"
             onClick={() => {
               navigate('../ProductCategories')

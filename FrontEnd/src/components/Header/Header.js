@@ -101,7 +101,11 @@ const Header = () => {
                 }}
                 className="h-[48px] px-4 items-center"
               >
-                Chào {jwt_decode(localStorage.getItem('token')).name}
+                Chào{' '}
+                <span className="font-semibold">
+                  {' '}
+                  {jwt_decode(localStorage.getItem('token')).name}
+                </span>
                 {/* <button onClick={logout}> Đăng xuất</button> */}
               </button>
             ) : (

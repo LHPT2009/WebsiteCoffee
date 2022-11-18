@@ -124,7 +124,6 @@ const AddProduct = () => {
           <Button
             type="button"
             onClick={addProduct}
-            btnCSS={'h-[44px] mr-2'}
             icon="add"
             className="hover:text-white"
           >
@@ -132,7 +131,6 @@ const AddProduct = () => {
           </Button>
           <Button
             type="button"
-            btnCSS="h-11"
             icon="navigate_before"
             onClick={() => {
               navigate('../products')
