@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer'
 import Rating from '@mui/material/Rating'
 import jwt_decode from 'jwt-decode'
 import moment from 'moment'
+import Pagination from '../Admin/table/Pagination'
 const ItemDetail = () => {
   const { id } = useParams()
   const [point, setPoint] = React.useState(0)
@@ -20,6 +21,16 @@ const ItemDetail = () => {
   const [pricesize, setPriceSize] = useState(0)
   const [size, setSize] = useState('S')
   const navigate = useNavigate()
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ratesPerPage] = useState(3);
+
+  const indexOfLastItem = currentPage * ratesPerPage;
+  const indexOfFirstItem = indexOfLastItem - ratesPerPage;
+  const currentRates = ratelist.slice(indexOfFirstItem, indexOfLastItem);
+  const reverseRates = ratelist.reverse(ratelist.createdAt);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
@@ -139,9 +150,9 @@ const ItemDetail = () => {
         {/* Rating */}
         <h4 className="mt-10 mb-5 text-t1">Đánh giá sản phẩm</h4>
         <div className="box-border flex flex-col gap-[16px] rounded-[32px] w-full">
-          {ratelist.map((ele) => (
+          {currentRates.map((ele) => (
             <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
-              <span className="text-[14px] font-normal mb-1">
+              <span className="text-[14px] font-bold mb-1">
                 {ele.usertid.lastname + ' ' + ele.usertid.firstname}
               </span>
               <div className="flex items-start gap-2 mt-2 text-left text-l2">
@@ -152,8 +163,13 @@ const ItemDetail = () => {
                 <span>{ele.content}</span>
               </div>
             </div>
-          )).reverse(ratelist.createdAt)}
+          )).sort(ratelist.createdAt)}
         </div>
+        <Pagination
+          itemsPerPage={ratesPerPage}
+          totalItems={ratelist.length}
+          paginate={paginate}
+        />
         {localStorage.getItem('token') ? (
           <div className="relative pb-12 my-8 text-on-surface ">
             <h4 className="text-t1 my-2">Viết đánh giá</h4>
