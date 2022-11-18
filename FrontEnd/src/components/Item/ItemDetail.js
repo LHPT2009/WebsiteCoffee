@@ -8,7 +8,7 @@ import { ListProductContext } from '../../context/ListProductContext'
 import Footer from '../Footer/Footer'
 import Rating from '@mui/material/Rating'
 import jwt_decode from 'jwt-decode'
-
+import moment from 'moment'
 const ItemDetail = () => {
   const { id } = useParams()
   const [point, setPoint] = React.useState(0)
@@ -22,6 +22,9 @@ const ItemDetail = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
+      setRateList(res.data)
+    })
     axios.get(`http://localhost:8000/product/${id}`).then((res) => {
       setInfo(res.data)
       setImage(
@@ -29,9 +32,6 @@ const ItemDetail = () => {
           String.fromCharCode(...new Uint8Array(res.data.image.data.data))
         )}`
       )
-    })
-    axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
-      setRateList(res.data)
     })
   }, [id])
   const [product, setProduct] = useState([])
@@ -70,6 +70,9 @@ const ItemDetail = () => {
       setPoint(0)
       setContent('')
       alert('Cảm ơn bạn đã đánh giá sản phẩm này!')
+      axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
+        setRateList(res.data)
+      })
     } else {
     }
   }
@@ -95,25 +98,6 @@ const ItemDetail = () => {
                 }).format(info.price + pricesize)}
               </span>
             </div>
-            {/* size */}
-            {/* <p>size: {size}</p>
-            <div className="mt-6">
-              <h2 className="mb-2 text-l2">Chọn size(bắt buộc)</h2>
-              {sizeproduct.map((ele) => (
-                <Button
-                  btnStyle="btn-outline"
-                  icon={''}
-                  btnCSS={'h-3 mr-2'}
-                  onClick={() => {
-                    setPriceSize(ele.price)
-                    setSize(ele.name)
-                  }}
-                >
-                  {ele.name}
-                </Button>
-              ))}
-            </div> */}
-            {/* test new radio btn */}
             <h2 className="mt-6 text-black text-l2">Chọn size(bắt buộc)</h2>
             <div className="flex flex-wrap gap-4 mt-3">
               {sizeproduct.map((ele) => (
@@ -160,12 +144,15 @@ const ItemDetail = () => {
               <span className="text-[14px] font-normal mb-1">
                 {ele.usertid.lastname + ' ' + ele.usertid.firstname}
               </span>
+              <div className="flex items-start gap-2 mt-2 text-left text-l2">
+                <span>{moment(ele.createdAt).format('DD-MM-YYYY')}</span>
+              </div>
               <Rating size="small" readOnly="true" value={ele.point} />
               <div className="flex items-start gap-2 mt-2 text-left text-l2">
                 <span>{ele.content}</span>
               </div>
             </div>
-          ))}
+          )).reverse(ratelist.createdAt)}
         </div>
         {localStorage.getItem('token') ? (
           <div className="mt-8">
