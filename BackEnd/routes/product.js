@@ -21,7 +21,7 @@ router.delete("/:id", productController.deleteProduct);
 
 router.post("/", upload.single("image"), productController.addProduct);
 
-router.put("/:id", productController.updateProduct);
+router.put("/:id", upload.single("image"), productController.updateProduct);
 
 
 module.exports = router;
