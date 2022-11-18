@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
 import Button from '../../../components/Button/Button'
-import { Link } from 'react-router-dom'
 import TextInput from '../../../components/Input/TextInput'
-
 import { useNavigate } from 'react-router-dom'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const AddProductCategory = () => {
   const [name, setName] = useState('')
@@ -21,10 +18,11 @@ const AddProductCategory = () => {
     }
   }
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <form onSubmit={addProductCategory}>
         <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
-          Thêm loại
+          Thêm loại sản phẩm
         </h1>
         <div className="inline-block w-[200px] mr-3">Tên loại</div>
         <TextInput
@@ -33,7 +31,7 @@ const AddProductCategory = () => {
           placeholder={'Tên loại'}
           onChange={(e) => setName(e.target.value)}
         />
-        <div className="mt-10">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
             btnCSS="h-11 mr-2"

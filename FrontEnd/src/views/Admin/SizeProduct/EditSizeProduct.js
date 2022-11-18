@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
 import Button from '../../../components/Button/Button'
-
 import { useParams } from 'react-router-dom'
-
 import { useNavigate } from 'react-router-dom'
-
 import TextInput from '../../../components/Input/TextInput'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const EditSizeProduct = () => {
   const [sizeProduct, setSizeProduct] = useState([])
@@ -37,6 +33,7 @@ const EditSizeProduct = () => {
 
   return (
     <div>
+      <Topnav />
       <form onSubmit={editSizeProduct}>
         <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           <b>Chỉnh sửa kích cỡ</b>
@@ -63,10 +60,9 @@ const EditSizeProduct = () => {
           />
           <br />
         </div>
-        <div className="mt-5">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
-            btnCSS={'h-[44px] mr-2'}
             icon="edit"
             onClick={editSizeProduct}
             className="hover:text-white"
@@ -75,7 +71,6 @@ const EditSizeProduct = () => {
           </Button>
           <Button
             type="button"
-            btnCSS={'h-[44px]'}
             icon="navigate_before"
             onClick={() => {
               navigate('../SizeProducts')

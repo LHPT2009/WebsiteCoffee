@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
 import Button from '../../../components/Button/Button'
 import TextInput from '../../../components/Input/TextInput'
-import { Link } from 'react-router-dom'
-
 import { useNavigate } from 'react-router-dom'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const AddProduct = () => {
   const [categoryproduct, setCategoryProduct] = useState([])
@@ -37,12 +34,13 @@ const AddProduct = () => {
     if (add) {
       navigate('/admin/products')
     } else {
-      alert(`them ko thanh cong!!!`)
+      alert(`Thêm thất bại`)
     }
   }
 
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <form onSubmit={addProduct}>
         <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           Thêm sản phẩm
@@ -50,8 +48,7 @@ const AddProduct = () => {
         <div>
           <div className="inline-block w-[200px] mr-3">Loại sản phẩm</div>
           <select
-            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
-          hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
+            className="w-[400px] border-outline-var border-[2px] border-solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-100"
             onChange={(e) => setCategoryProductId(e.target.value)}
             value={categoryproductid}
           >
@@ -79,26 +76,29 @@ const AddProduct = () => {
           />
           <div className="inline-block w-[200px] mx-3">đ</div>
           <br />
-          <div className="inline-block w-[200px] mr-3">Hình ảnh</div>
-          <div className="mt-5">
-            {image && (
-              <div>
-                <img
-                  alt="Không tìm thấy"
-                  width={'250px'}
-                  src={URL.createObjectURL(image)}
+          <div className="flex items-center">
+            <div className="inline-block w-[200px] mr-3">Hình ảnh</div>
+            <div className="mt-2 mb-5">
+              {image && (
+                <div>
+                  <img
+                    className="rounded-3xl"
+                    alt="Không tìm thấy"
+                    width={'250px'}
+                    src={URL.createObjectURL(image)}
+                  />
+                  <br />
+                </div>
+              )}
+              <div className="flex">
+                <label htmlFor="file">File</label>
+                <input
+                  type="file"
+                  id="file"
+                  accept=".png"
+                  onChange={(e) => setImage(e.target.files[0])}
                 />
-                <br />
               </div>
-            )}
-            <div className="flex">
-              <label htmlFor="file">File</label>
-              <input
-                type="file"
-                id="file"
-                accept=".png"
-                onChange={(e) => setImage(e.target.files[0])}
-              />
             </div>
           </div>
           <div className="inline-block w-[200px] mr-3">Nội dung</div>
@@ -112,8 +112,7 @@ const AddProduct = () => {
           <br />
           <div className="inline-block w-[200px] mr-3">Trạng thái</div>
           <select
-            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
-          hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
+            className="w-[400px] border-outline-var border-[2px] border-solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-100"
             onChange={(e) => setStatus(e.target.value)}
             value={status}
           >
@@ -121,7 +120,7 @@ const AddProduct = () => {
             <option value="false">Dừng kinh doanh</option>
           </select>
         </div>
-        <div className="mt-5">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
             onClick={addProduct}

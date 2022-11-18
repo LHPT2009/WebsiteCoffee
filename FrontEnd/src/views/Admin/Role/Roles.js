@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
-import logo from '../../../assets/images/icon.png'
-
-import { Link, useNavigate } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
 import Button from '../../../components/Button/Button'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const Roles = () => {
   const navigate = useNavigate()
@@ -19,6 +15,7 @@ const Roles = () => {
   }, [])
   return (
     <div>
+      <Topnav />
       <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
         Loại tài khoản
       </h1>
@@ -41,7 +38,7 @@ const Roles = () => {
                   <tr>
                     <th>Mã loại</th>
                     <th>Tên loại</th>
-                    <th></th>
+                    <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>

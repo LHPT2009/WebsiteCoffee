@@ -7,6 +7,7 @@ import logo from '../../../assets/images/icon.png'
 import { useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const SizeProducts = () => {
   const navigate = useNavigate()
@@ -19,6 +20,7 @@ const SizeProducts = () => {
   }, [])
   return (
     <div>
+      <Topnav />
       <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
         Kích cỡ
       </h1>
@@ -42,6 +44,7 @@ const SizeProducts = () => {
                     <th>Mã kích cỡ</th>
                     <th>Tên kích cỡ</th>
                     <th>Giá</th>
+                    <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,7 +52,12 @@ const SizeProducts = () => {
                     <tr key={item._id}>
                       <td>{item._id}</td>
                       <td>{item.name}</td>
-                      <td>{item.price}</td>
+                      <td>
+                        {new Intl.NumberFormat('vi-VN', {
+                          style: 'currency',
+                          currency: 'VND',
+                        }).format(item.price)}
+                      </td>
                       <td style={{ minWidth: 100 }}>
                         <Button
                           btnStyle={'btn-outline'}

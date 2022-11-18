@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
 import Button from '../../../components/Button/Button'
-
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-
 import TextInput from '../../../components/Input/TextInput'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const EditUser = () => {
   const [user, setUser] = useState([])
@@ -53,7 +50,8 @@ const EditUser = () => {
     }
   }
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <form onSubmit={editUser}>
         <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           <b>Chỉnh sửa tài khoản</b>
@@ -69,7 +67,7 @@ const EditUser = () => {
             className="inline-block w-[400px]"
           />
           <br />
-          <div className="inline-block w-[200px] mr-3">Password</div>
+          {/* <div className="inline-block w-[200px] mr-3">Password</div>
           <TextInput
             placeholder={'Password'}
             type="text"
@@ -78,7 +76,7 @@ const EditUser = () => {
             defaultValue={user.password}
             className="inline-block w-[400px]"
           />
-          <br />
+          <br /> */}
           <div className="inline-block w-[200px] mr-3">Email</div>
           <TextInput
             placeholder={'Email'}
@@ -97,6 +95,7 @@ const EditUser = () => {
             onChange={(e) => setConfirmemail(e.target.value)}
             defaultValue={user.confirmemail}
             className="inline-block w-[400px]"
+            disabled={true}
           />
           <br />
           <div className="inline-block w-[200px] mr-3">Họ</div>
@@ -132,8 +131,7 @@ const EditUser = () => {
           <div className="inline-block w-[200px] mr-3">Role</div>
           {/* <input type={"text"} placeholder={"Role"} defaultValue={user.role} onChange={(e) => setRole(e.target.value)} /> <br /> */}
           <select
-            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
-                    hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
+            className="border-outline-var w-[400px] border-[2px] border-solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-100"
             onChange={(e) => setRole(e.target.value)}
             value={role}
           >
@@ -142,10 +140,9 @@ const EditUser = () => {
             ))}
           </select>
         </div>
-        <div className="mt-5">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
-            btnCSS={'h-[44px] mr-2'}
             icon="edit"
             onClick={editUser}
             className="hover:text-white"
@@ -154,7 +151,6 @@ const EditUser = () => {
           </Button>
           <Button
             type="button"
-            btnCSS={'h-[44px]'}
             icon="navigate_before"
             onClick={() => navigate('../Users')}
           >

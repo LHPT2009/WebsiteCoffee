@@ -7,6 +7,7 @@ import logo from '../../../assets/images/icon.png'
 import { useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const ProductCategories = () => {
   const navigate = useNavigate()
@@ -18,7 +19,8 @@ const ProductCategories = () => {
     })
   }, [])
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
         Loại sản phẩm
       </h1>
@@ -41,6 +43,7 @@ const ProductCategories = () => {
                   <tr>
                     <th>Mã loại</th>
                     <th>Tên loại</th>
+                    <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>

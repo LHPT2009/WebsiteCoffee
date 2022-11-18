@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
 import Button from '../../../components/Button/Button'
-
 import { useNavigate } from 'react-router-dom'
-
 import TextInput from '../../../components/Input/TextInput'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const AddSizeProduct = () => {
   const navigate = useNavigate()
@@ -28,6 +25,7 @@ const AddSizeProduct = () => {
 
   return (
     <div>
+      <Topnav />
       <form onSubmit={addSizeProduct}>
         <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           <b>Thêm kích cỡ</b>
@@ -52,10 +50,9 @@ const AddSizeProduct = () => {
           />
           <br />
         </div>
-        <div className="mt-5">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
-            btnCSS={'h-[44px] mr-2'}
             icon="add"
             onClick={addSizeProduct}
             className="hover:text-white"
@@ -64,11 +61,10 @@ const AddSizeProduct = () => {
           </Button>
           <Button
             type="button"
-            btnCSS={'h-[44px] mr-2'}
             icon="navigate_before"
             className="hover:text-white"
             onClick={() => {
-              navigate('../SizeProducts')
+              navigate('../sizeproducts')
             }}
           >
             Quay về

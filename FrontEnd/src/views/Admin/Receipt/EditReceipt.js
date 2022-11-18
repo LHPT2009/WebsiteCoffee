@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 import TextInput from '../../../components/Input/TextInput'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const EditReceipt = () => {
   const [receipt, setReceipt] = useState([])
@@ -48,7 +49,8 @@ const EditReceipt = () => {
     }
   }
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <form onSubmit={editReceipt}>
         <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           Chỉnh sửa đơn hàng
@@ -117,21 +119,21 @@ const EditReceipt = () => {
           ))}
           <br />
         </div>
-        <div>
+        <div className="flex gap-3">
           <Button
             type="button"
             btnCSS={'h-[44px] mr-2'}
             icon="edit"
             onClick={editReceipt}
           >
-            <a className="hover:text-white">Sửa</a>
+            Sửa
           </Button>
           <Button
             type="button"
             btnCSS={'h-[44px]'}
             icon="navigate_before"
             onClick={() => {
-              navigate('../Receipts')
+              navigate('../receipts')
             }}
           >
             Quay về

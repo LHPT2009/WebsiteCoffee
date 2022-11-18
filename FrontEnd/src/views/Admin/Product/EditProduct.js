@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
 import Button from '../../../components/Button/Button'
-
-import { Link, useParams } from 'react-router-dom'
-
+import { useParams } from 'react-router-dom'
 import TextInput from '../../../components/Input/TextInput'
-
 import { useNavigate } from 'react-router-dom'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const EditProduct = () => {
   const navigate = useNavigate()
@@ -47,15 +43,19 @@ const EditProduct = () => {
 
   const editProduct = async (e) => {
     e.preventDefault()
-    const edit = await axios.put(`http://localhost:8000/product/${id}`, {
-      categoryproductid: categoryproductid,
-      name: name,
-      price: price,
-      image: image2,
-      describe: describe,
-      status: status,
-      changpicture: changpicture,
-    }, { headers: { 'content-type': 'multipart/form-data' } })
+    const edit = await axios.put(
+      `http://localhost:8000/product/${id}`,
+      {
+        categoryproductid: categoryproductid,
+        name: name,
+        price: price,
+        image: image2,
+        describe: describe,
+        status: status,
+        changpicture: changpicture,
+      },
+      { headers: { 'content-type': 'multipart/form-data' } }
+    )
     if (edit) {
       navigate('/admin/products')
     } else {
@@ -64,7 +64,8 @@ const EditProduct = () => {
   }
 
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <form onSubmit={editProduct}>
         <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           Chỉnh sửa sản phẩm
@@ -72,8 +73,7 @@ const EditProduct = () => {
         <div>
           <div className="inline-block w-[200px] mr-3">Loại sản phẩm</div>
           <select
-            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
-          hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
+            className="border-outline-var border-[2px] border-solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-100 w-[400px]"
             onChange={(e) => setCategoryProductId(e.target.value)}
             value={categoryproductid}
           >
@@ -103,28 +103,34 @@ const EditProduct = () => {
           />
           <div className="inline-block w-[200px] mx-3">đ</div>
           <br />
-          <div className="inline-block w-[200px] mr-3">Hình ảnh</div>
-          <div className="mt-5">
-            {image2 ? (
-              <div>
-                <img src={URL.createObjectURL(image2)} height="250" width="250" />
-                <br />
-              </div>
-            ) : (
-              <div>
-                <img src={image} height="250" width="250" />
-                <br />
-              </div>
-            )}
-            <input
-              type="file"
-              id="file"
-              accept=".png"
-              onChange={(e) => {
-                setImage2(e.target.files[0])
-                setChangPicture(1)
-              }}
-            />
+          <div className="flex">
+            <div className="inline-block w-[200px] mr-3">Hình ảnh</div>
+            <div className="my-3">
+              {image2 ? (
+                <div>
+                  <img
+                    className="rounded-3xl"
+                    src={URL.createObjectURL(image2)}
+                    width="250"
+                  />
+                  <br />
+                </div>
+              ) : (
+                <div>
+                  <img className="rounded-3xl" src={image} width="250" />
+                  <br />
+                </div>
+              )}
+              <input
+                type="file"
+                id="file"
+                accept=".png"
+                onChange={(e) => {
+                  setImage2(e.target.files[0])
+                  setChangPicture(1)
+                }}
+              />
+            </div>
           </div>
           <br />
           <div className="inline-block w-[200px] mr-3">Nội dung</div>
@@ -139,7 +145,7 @@ const EditProduct = () => {
           <br />
           <div className="inline-block w-[200px] mr-3">Trạng thái</div>
           <select
-            className="border-outline-var border-style: solid rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
+            className="border-outline-var border-[2px] border-solid w-[400px] rounded-full text-l2 mb-[16px] pt-[13px] px-[16px] pb-[13px] 
           hover:border-primary hover:rounded-[32px] focus:border-primary focus:rounded-[16px] focus:text-on-primary-cont focus:bg-primary-cont transition-all ease-in duration-300"
             onChange={(e) => setStatus(e.target.value)}
             value={status}
@@ -149,7 +155,7 @@ const EditProduct = () => {
           </select>
           <br />
         </div>
-        <div className="mt-5">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
             btnCSS={'h-[44px] mr-2'}

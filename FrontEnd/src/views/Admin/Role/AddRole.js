@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 
 import TextInput from '../../../components/Input/TextInput'
 
+import Topnav from '../../../components/Admin/topnav/TopNav'
+
 const AddRole = () => {
   const [rolename, setRoleName] = useState('')
   const navigate = useNavigate()
@@ -22,7 +24,8 @@ const AddRole = () => {
     }
   }
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <form onSubmit={addRole}>
         <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           <b>Thêm loại tài khoản</b>
@@ -38,10 +41,9 @@ const AddRole = () => {
           />
           <br />
         </div>
-        <div className="mt-5">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
-            btnCSS={'h-[44px] mr-2'}
             icon="add"
             onClick={addRole}
             className="hover:text-white"
@@ -50,7 +52,6 @@ const AddRole = () => {
           </Button>
           <Button
             type="button"
-            btnCSS={'h-[44px]'}
             icon="navigate_before"
             onClick={() => {
               navigate('../Roles')

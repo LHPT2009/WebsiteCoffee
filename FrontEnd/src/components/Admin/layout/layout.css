@@ -5,9 +5,9 @@
 
 .layout__content {
     padding-left: var(--sidebar-width);
-    background-color: var(--second-bg);
+    /* background-color: var(--second-bg); */
 }
 
 .layout__content-main {
-    padding: 30px;
+    padding: 0px 30px 30px 30px;
 }

@@ -23,11 +23,11 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <Link to={'/'}>
+      {/* <Link to={'/'}>
         <div className="sidebar__logo">
           <img src={logo} alt="cafe bug on" />
         </div>
-      </Link>
+      </Link> */}
       <div className="sidebar__item">
         {sidebarNav.map((nav, index) => {
           return <SubMenu item={nav} key={`nav-${index}`} />

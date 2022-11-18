@@ -3,6 +3,7 @@ import Button from '../../../components/Button/Button'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import TextInput from '../../../components/Input/TextInput'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 const AddDisCount = () => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -24,7 +25,8 @@ const AddDisCount = () => {
     }
   }
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <form onSubmit={addProduct}>
         <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           <b>Thêm mã giảm giá</b>
@@ -68,10 +70,9 @@ const AddDisCount = () => {
           />
           <br />
         </div>
-        <div className="mt-5">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
-            btnCSS={'h-[44px] mr-2'}
             icon="add"
             onClick={addProduct}
             className="hover:text-white"
@@ -80,10 +81,9 @@ const AddDisCount = () => {
           </Button>
           <Button
             type="button"
-            btnCSS={'h-[44px]'}
             icon="navigate_before"
             onClick={() => {
-              navigate('../Discount')
+              navigate('../discount')
             }}
           >
             Quay về

@@ -92,24 +92,6 @@ const Header = () => {
               </div>
             </button>
           </div>
-          {/* Search button */}
-          <div className="hover:bg-s5 rounded-[16px]">
-            <button
-              onClick={() => {
-                navigate('/cart')
-              }}
-              className="hover:bg-s5 rounded-[16px]"
-            >
-              <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center hover:text-primary w-[48] gap-[8px]">
-                <span className="material-symbols-outlined">search</span>
-                {numCart > 0 && (
-                  <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-[12px] pt-[2px] font-googleSansBold">
-                    {numCart}
-                  </div>
-                )}
-              </div>
-            </button>
-          </div>
           {/* User / Sign in */}
           <div className="hover:bg-s5 rounded-[16px]">
             {localStorage.getItem('token') ? (

@@ -14,9 +14,10 @@ import Badge from '../../components/Admin/badge/Badge'
 
 import statusCards from '../../assets/JsonData/status-card-data.json'
 
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom'
 
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode'
+import Topnav from '../../components/Admin/topnav/TopNav'
 
 const chartOptions = {
   series: [
@@ -170,10 +171,14 @@ const renderOrderBody = (item, index) => (
 
 const Dashboard = () => {
   const themeReducer = useSelector((state) => state.ThemeReducer.mode)
-  if (localStorage.getItem("token")) {
-    if (jwt_decode(localStorage.getItem("token")).role == "Admin" || jwt_decode(localStorage.getItem("token")).role == "SuperAdmin") {
+  if (localStorage.getItem('token')) {
+    if (
+      jwt_decode(localStorage.getItem('token')).role == 'Admin' ||
+      jwt_decode(localStorage.getItem('token')).role == 'SuperAdmin'
+    ) {
       return (
         <div>
+          <Topnav />
           <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
             Trang chủ
           </h1>
@@ -198,13 +203,13 @@ const Dashboard = () => {
                   options={
                     themeReducer === 'theme-mode-dark'
                       ? {
-                        ...chartOptions.options,
-                        theme: { mode: 'dark' },
-                      }
+                          ...chartOptions.options,
+                          theme: { mode: 'dark' },
+                        }
                       : {
-                        ...chartOptions.options,
-                        theme: { mode: 'light' },
-                      }
+                          ...chartOptions.options,
+                          theme: { mode: 'light' },
+                        }
                   }
                   series={chartOptions.series}
                   type="line"
@@ -227,18 +232,18 @@ const Dashboard = () => {
                   />
                 </div>
                 <div className="card__footer">
-                  <Link to="./Receipts">Xem tất cả</Link>
+                  <Link to="./receipts">Xem tất cả</Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      );
+      )
     } else {
-      return <Navigate to={"/"} />
+      return <Navigate to={'/'} />
     }
   } else {
-    return <Navigate to={"/"} />
+    return <Navigate to={'/'} />
   }
 }
 

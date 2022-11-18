@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
-import logo from '../../../assets/images/icon.png'
-
-import { Link } from 'react-router-dom'
-
 import Button from '../../../components/Button/Button'
 
 import { useNavigate } from 'react-router-dom'
+
+import Topnav from '../../../components/Admin/topnav/TopNav'
+import SearchAdmin from '../../../components/Admin/topnav/SearchAdmin'
 
 const Receipts = () => {
   const [id, setId] = useState('')
@@ -19,11 +18,92 @@ const Receipts = () => {
       setReceipt(res.data)
     })
   }, [])
+
+  const [filteredData, setFilteredData] = useState([])
+  const [wordEntered, setWordEntered] = useState('')
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value
+    setWordEntered(searchWord)
+    const newFilter = receipt.filter((value) => {
+      return value._id.toLowerCase().includes(searchWord.toLowerCase())
+    })
+    setFilteredData(newFilter)
+  }
+
+  const renderSearch = (
+    <>
+      {filteredData.map((item) => (
+        <tr key={item._id}>
+          <td>{item._id}</td>
+          <td>{item.userid}</td>
+          <td>
+            {new Intl.NumberFormat('vi-VN', {
+              style: 'currency',
+              currency: 'VND',
+            }).format(item.price)}
+          </td>
+          <td style={{ minWidth: 100 }}>
+            <Button
+              btnStyle={'btn-outline'}
+              type="button"
+              btnCSS={'h-11 mr-2'}
+              icon="edit"
+              onClick={() => {
+                navigate('../editreceipt/' + item._id)
+              }}
+            >
+              Sửa
+            </Button>
+          </td>
+        </tr>
+      ))}
+    </>
+  )
+
+  const renderReceipt = (
+    <>
+      {receipt.map((item) => (
+        <tr key={item._id}>
+          <td>{item._id}</td>
+          <td>{item.userid}</td>
+          <td>
+            {new Intl.NumberFormat('vi-VN', {
+              style: 'currency',
+              currency: 'VND',
+            }).format(item.price)}
+          </td>
+          <td style={{ minWidth: 100 }}>
+            <Button
+              btnStyle={'btn-outline'}
+              type="button"
+              btnCSS={'h-11 mr-2'}
+              icon="edit"
+              onClick={() => {
+                navigate('../editreceipt/' + item._id)
+              }}
+            >
+              Sửa
+            </Button>
+          </td>
+        </tr>
+      ))}
+    </>
+  )
+
   return (
     <div>
-      <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
-        Đơn hàng
-      </h1>
+      <Topnav />
+      <div className="flex justify-between mb-10">
+        <h1 className="font-googleSansBold uppercase text-primary text-[24px] flex items-center">
+          Đơn hàng
+        </h1>
+        <SearchAdmin
+          placeholder={'Nhập mã đơn hàng'}
+          onChange={handleFilter}
+          value={wordEntered}
+        />
+      </div>
       <div className="row">
         <div className="col-12">
           <div className="card">
@@ -38,26 +118,7 @@ const Receipts = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {receipt.map((item) => (
-                    <tr key={item._id}>
-                      <td>{item._id}</td>
-                      <td>{item.userid}</td>
-                      <td>{item.price} đ</td>
-                      <td style={{ minWidth: 100 }}>
-                        <Button
-                          btnStyle={'btn-outline'}
-                          type="button"
-                          btnCSS={'h-11 mr-2'}
-                          icon="edit"
-                          onClick={() => {
-                            navigate('../editreceipt/' + item._id)
-                          }}
-                        >
-                          Sửa
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
+                  {wordEntered === '' ? renderReceipt : renderSearch}
                 </tbody>
               </table>
             </div>

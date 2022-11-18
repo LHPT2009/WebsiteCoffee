@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 import TextInput from '../../../components/Input/TextInput'
+import Topnav from '../../../components/Admin/topnav/TopNav'
 
 const EditDisCount = () => {
   const [disCount, setDisCount] = useState([])
@@ -41,7 +42,8 @@ const EditDisCount = () => {
     }
   }
   return (
-    <div className="font-googleSansRegular">
+    <div>
+      <Topnav />
       <form onSubmit={editProduct}>
         <h2 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           <b>Chỉnh sửa mã giảm giá</b>
@@ -89,10 +91,9 @@ const EditDisCount = () => {
           />
           <br />
         </div>
-        <div className="mt-5">
+        <div className="flex gap-3 mt-5">
           <Button
             type="button"
-            btnCSS={'h-[44px] mr-2'}
             icon="edit"
             onClick={editProduct}
             className="hover:text-white"
@@ -101,7 +102,6 @@ const EditDisCount = () => {
           </Button>
           <Button
             type="button"
-            btnCSS={'h-[44px]'}
             icon="navigate_before"
             onClick={() => {
               navigate('../Discount')
