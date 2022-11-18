@@ -22,6 +22,7 @@ const EditProduct = () => {
   const [price, setPrice] = useState(dataProduct.price)
   const [image, setImage] = useState(dataProduct.image)
   const [image2, setImage2] = useState()
+  const [changpicture, setChangPicture] = useState(0)
   const [describe, setDescribe] = useState(dataProduct.describe)
   const [status, setStatus] = useState(dataProduct.status)
 
@@ -36,9 +37,6 @@ const EditProduct = () => {
           String.fromCharCode(...new Uint8Array(res.data.image.data.data))
         )}`
       )
-      console.log(`data:image/png;base64,${btoa(
-        String.fromCharCode(...new Uint8Array(res.data.image.data.data))
-      )}`)
     })
   }, [])
   useEffect(() => {
@@ -56,6 +54,7 @@ const EditProduct = () => {
       image: image2,
       describe: describe,
       status: status,
+      changpicture: changpicture,
     }, { headers: { 'content-type': 'multipart/form-data' } })
     if (edit) {
       navigate('/admin/products')
@@ -121,7 +120,10 @@ const EditProduct = () => {
               type="file"
               id="file"
               accept=".png"
-              onChange={(e) => setImage2(e.target.files[0])}
+              onChange={(e) => {
+                setImage2(e.target.files[0])
+                setChangPicture(1)
+              }}
             />
           </div>
           <br />
