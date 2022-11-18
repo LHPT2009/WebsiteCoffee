@@ -11,11 +11,21 @@ const Header = () => {
   const { products } = useContext(ListProductContext)
   let [open, setOpen] = useState(false)
   const navigate = useNavigate()
-  const numCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')).length : 0;
+  const numCart = localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart')).length
+    : 0
   const logout = (e) => {
     e.preventDefault()
     localStorage.removeItem('token')
     navigate('/')
+  }
+
+  const [openSearch, setOpenSearch] = useState(false)
+  const handleOpenSearch = () => {
+    setOpenSearch(true)
+  }
+  const handleCloseSearch = () => {
+    setOpenSearch(false)
   }
 
   return (
@@ -24,7 +34,7 @@ const Header = () => {
         <div className="flex flex-row items-start gap-[24px] md:gap-[60px]">
           <Link to="/">
             <img
-              className="flex h-[48px] pt-[5px drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]]"
+              className="flex h-[48px] pt-[5px] drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]]"
               src={logo2}
               alt="logo-coffee-bug-on"
             />
@@ -40,8 +50,9 @@ const Header = () => {
             </div>
 
             <ul
-              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[24px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${open ? 'top-[64px]' : 'top-[-420px]'
-                } `}
+              className={`md:flex flex-col md:flex-row absolute md:static md:items-center p-[24px] md:p-0 md:z-auto z-[-100] left-0 w-full md:w-auto gap-[8px] md:gap-[48px] bg-s1 transition-all duration-500 ease-in ${
+                open ? 'top-[64px]' : 'top-[-420px]'
+              } `}
             >
               <button
                 className={`flex px-[16px] items-center text-l2 list-none hover:bg-s5 rounded-[16px] w-screen md:w-auto h-[56px] text-black hover:text-primary`}
@@ -83,17 +94,24 @@ const Header = () => {
           </div>
           {/* Search button */}
           <div className="hover:bg-s5 rounded-[16px]">
-            <div className="flex flex-row justify-between items-center m-[12px]">
-              <Link
-                className="flex flex-row text-center text-black hover:text-primary"
-                to="/search"
-              >
+            <button
+              onClick={() => {
+                navigate('/cart')
+              }}
+              className="hover:bg-s5 rounded-[16px]"
+            >
+              <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center hover:text-primary w-[48] gap-[8px]">
                 <span className="material-symbols-outlined">search</span>
-              </Link>
-            </div>
+                {numCart > 0 && (
+                  <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-[12px] pt-[2px] font-googleSansBold">
+                    {numCart}
+                  </div>
+                )}
+              </div>
+            </button>
           </div>
           {/* User / Sign in */}
-          <div className="hover:bg-s5 hover:text-primary rounded-[16px]">
+          <div className="hover:bg-s5 rounded-[16px]">
             {localStorage.getItem('token') ? (
               <button
                 onClick={() => {
@@ -112,7 +130,7 @@ const Header = () => {
                   }}
                   className="hover:bg-s5 rounded-[16px]"
                 >
-                  <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center w-[48] gap-[8px]">
+                  <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center w-[48] gap-[8px] hover:text-primary">
                     <span className="material-symbols-outlined">person</span>
                   </div>
                 </button>

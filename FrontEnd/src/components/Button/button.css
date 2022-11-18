@@ -9,7 +9,7 @@
   --tertiary-on-container: #1b2d39;
   --warning: #ffd028;
   --danger: #eb3f27;
-  --danger-cont:#FAD1DB;
+  --danger-cont: #feecf0;
   --success: #74fa83;
 }
 
@@ -137,14 +137,16 @@
 
 /* danger */
 .btn-danger {
-  background: var(--danger-cont);
+  background: #FEECF0;
   color: var(--danger);
 }
 
 .btn-danger:hover {
-  background: #F6C1CE;
+  background: #FDD8E1;
+  /**/
+  
 }
 
 .btn-danger:active {
-  background: #F2A6B8;
+  background: #FCCFDA;
 }
