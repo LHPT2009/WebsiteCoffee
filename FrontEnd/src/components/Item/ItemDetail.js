@@ -98,25 +98,6 @@ const ItemDetail = () => {
                 }).format(info.price + pricesize)}
               </span>
             </div>
-            {/* size */}
-            {/* <p>size: {size}</p>
-            <div className="mt-6">
-              <h2 className="mb-2 text-l2">Chọn size(bắt buộc)</h2>
-              {sizeproduct.map((ele) => (
-                <Button
-                  btnStyle="btn-outline"
-                  icon={''}
-                  btnCSS={'h-3 mr-2'}
-                  onClick={() => {
-                    setPriceSize(ele.price)
-                    setSize(ele.name)
-                  }}
-                >
-                  {ele.name}
-                </Button>
-              ))}
-            </div> */}
-            {/* test new radio btn */}
             <h2 className="mt-6 text-black text-l2">Chọn size(chưa ràng buộc bắt buộc)</h2>
             <div className="flex flex-wrap gap-4 mt-3">
               {sizeproduct.map((ele) => (
@@ -170,9 +151,6 @@ const ItemDetail = () => {
               <div className="flex items-start gap-2 mt-2 text-left text-l2">
                 <span>{ele.content}</span>
               </div>
-              <div className="flex items-start gap-2 mt-2 text-left text-body">
-                  <span>{ele.content}</span>
-                </div>
             </div>
           )).reverse(ratelist.createdAt)}
         </div>
