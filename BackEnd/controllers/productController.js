@@ -51,25 +51,42 @@ const ProductController = {
 
     updateProduct: async (req, res) => {
         try {
-            const updateProduct = {
-                categoryproductid: req.body.categoryproductid,
-                name: req.body.name,
-                price: req.body.price,
-                image: {
-                    data: fs.readFileSync("uploads/" + req.file.filename),
-                    contentType: "image/png",
-                },
-                describe: req.body.describe,
-                status: req.body.status
-            };
-            const product = await Product.findByIdAndUpdate(req.params.id, updateProduct, {
-                new: true,
-            });
-
-            if (!product) {
-                return res.status(404).json('Wrong updateProduct!');
+            if (req.body.changpicture == 0) {
+                const updateProduct = {
+                    categoryproductid: req.body.categoryproductid,
+                    name: req.body.name,
+                    price: req.body.price,
+                    image: req.body.image,
+                    describe: req.body.describe,
+                    status: req.body.status
+                };
+                const product = await Product.findByIdAndUpdate(req.params.id, updateProduct, {
+                    new: true,
+                });
+                if (!product) {
+                    return res.status(404).json('Wrong updateProduct!');
+                }
+                res.status(200).json(product);
+            } else {
+                const updateProduct = {
+                    categoryproductid: req.body.categoryproductid,
+                    name: req.body.name,
+                    price: req.body.price,
+                    image: {
+                        data: fs.readFileSync("uploads/" + req.file.filename),
+                        contentType: "image/png",
+                    },
+                    describe: req.body.describe,
+                    status: req.body.status
+                };
+                const product = await Product.findByIdAndUpdate(req.params.id, updateProduct, {
+                    new: true,
+                });
+                if (!product) {
+                    return res.status(404).json('Wrong updateProduct!');
+                }
+                res.status(200).json(product);
             }
-            res.status(200).json(product);
         } catch (error) {
             console.log(error);
             res.status(500).json('Error!!!');
