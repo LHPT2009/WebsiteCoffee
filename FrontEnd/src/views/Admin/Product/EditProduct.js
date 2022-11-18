@@ -21,11 +21,11 @@ const EditProduct = () => {
   const [name, setName] = useState(dataProduct.name)
   const [price, setPrice] = useState(dataProduct.price)
   const [image, setImage] = useState(dataProduct.image)
+  const [image2, setImage2] = useState()
   const [describe, setDescribe] = useState(dataProduct.describe)
   const [status, setStatus] = useState(dataProduct.status)
 
   const { id } = useParams()
-
   useEffect(() => {
     axios.get(`http://localhost:8000/product/${id}`).then((res) => {
       setDataProduct(res.data)
@@ -36,6 +36,9 @@ const EditProduct = () => {
           String.fromCharCode(...new Uint8Array(res.data.image.data.data))
         )}`
       )
+      console.log(`data:image/png;base64,${btoa(
+        String.fromCharCode(...new Uint8Array(res.data.image.data.data))
+      )}`)
     })
   }, [])
   useEffect(() => {
@@ -47,13 +50,13 @@ const EditProduct = () => {
   const editProduct = async (e) => {
     e.preventDefault()
     const edit = await axios.put(`http://localhost:8000/product/${id}`, {
-      categoryproductid,
-      name,
-      price,
-      image,
-      describe,
-      status,
-    })
+      categoryproductid: categoryproductid,
+      name: name,
+      price: price,
+      image: image2,
+      describe: describe,
+      status: status,
+    }, { headers: { 'content-type': 'multipart/form-data' } })
     if (edit) {
       navigate('/admin/products')
     } else {
@@ -103,19 +106,22 @@ const EditProduct = () => {
           <br />
           <div className="inline-block w-[200px] mr-3">Hình ảnh</div>
           <div className="mt-5">
-            {image ? (
+            {image2 ? (
+              <div>
+                <img src={URL.createObjectURL(image2)} height="250" width="250" />
+                <br />
+              </div>
+            ) : (
               <div>
                 <img src={image} height="250" width="250" />
                 <br />
               </div>
-            ) : (
-              ''
             )}
             <input
               type="file"
               id="file"
               accept=".png"
-              onChange={(e) => setImage(e.target.files[0])}
+              onChange={(e) => setImage2(e.target.files[0])}
             />
           </div>
           <br />

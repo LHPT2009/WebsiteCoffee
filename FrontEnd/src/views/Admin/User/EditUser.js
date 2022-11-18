@@ -24,16 +24,11 @@ const EditUser = () => {
   const [numberphone, setNumberphone] = useState(user.numberphone)
 
   const navigate = useNavigate()
-  axios.get(`http://localhost:8000/user/${id}`).then((res) => {
-    setUser(res.data)
-  })
   useEffect(() => {
     axios.get(`http://localhost:8000/user/${id}`).then((res) => {
       setUser(res.data)
       setRole(res.data.role)
     })
-  }, [])
-  useEffect(() => {
     axios.get(`http://localhost:8000/role`).then((res) => {
       setListRole(res.data)
     })
