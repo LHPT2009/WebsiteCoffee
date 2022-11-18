@@ -77,7 +77,7 @@ root.render(
             keyboard_arrow_up
           </span>
         }
-        className="!z-[101] !w-[52px] !h-[52px] !rounded-full hover:!rounded-2xl !bg-primary transition-transform"
+        className="!z-[101] !w-[52px] !h-[52px] !rounded-full hover:!rounded-2xl !bg-primary !transition-all !ease-in !duration-100"
       />
       <ListProductProvider>
         <BrowserRouter>
