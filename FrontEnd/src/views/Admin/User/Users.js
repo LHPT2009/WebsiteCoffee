@@ -7,7 +7,7 @@ import logo from '../../../assets/images/icon.png'
 import { Link, useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
-
+import jwt_decode from 'jwt-decode'
 const Users = () => {
   const navigate = useNavigate()
   const [id, setId] = useState('')
@@ -36,7 +36,7 @@ const Users = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {user.map((item) => (
+                  {user.filter(user => user._id != jwt_decode(localStorage.getItem('token')).id).map((item) => (
                     <tr key={item._id}>
                       <td>{item.email}</td>
                       <td>{item.lastname + ' ' + item.firstname}</td>
