@@ -27,7 +27,7 @@ const ItemDetail = () => {
 
   const indexOfLastItem = currentPage * ratesPerPage;
   const indexOfFirstItem = indexOfLastItem - ratesPerPage;
-  const currentRates = ratelist.slice(indexOfFirstItem, indexOfLastItem);
+  const currentRates = ratelist.filter((rat) => rat.status == true).slice(indexOfFirstItem, indexOfLastItem);
   const reverseRates = ratelist.reverse(ratelist.createdAt);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
