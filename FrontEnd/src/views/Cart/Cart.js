@@ -8,7 +8,7 @@ import './cart.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
-
+import moment from 'moment'
 const Cart = () => {
   const { products, delProduct, upAmount, downAmount, clearCart } =
     useContext(ListProductContext)
@@ -37,10 +37,19 @@ const Cart = () => {
     axios
       .post(`http://localhost:8000/discount/one`, { name: namediscount })
       .then((res) => {
-        localStorage.setItem('discount', JSON.stringify(res.data));
-        setNameDisCount(res.data.name)
-        setDisCountId(res.data._id)
-        setDiscountPrice(res.data.price)
+        var today = moment().format("DD-MM-YYYY")
+        var startday = moment(res.data.startdate).format("DD-MM-YYYY")
+        var endday = moment(res.data.enddate).format("DD-MM-YYYY")
+
+        if (startday <= today && today <= endday) {
+          localStorage.setItem('discount', JSON.stringify(res.data));
+          setNameDisCount(res.data.name)
+          setDisCountId(res.data._id)
+          setDiscountPrice(res.data.price)
+        }
+        else {
+          alert('Mã giãm giá này đã hết hạng')
+        }
       })
   }
 
@@ -95,24 +104,24 @@ const Cart = () => {
       <td>
         <div className="flex">
           <Button
-          onClick={() => downAmount(n.id, n.name)}
-          btnStyle="btn-tonal"
-          icon="remove"
-          type="button"
-          children=""
-        />
+            onClick={() => downAmount(n.id, n.name)}
+            btnStyle="btn-tonal"
+            icon="remove"
+            type="button"
+            children=""
+          />
           <input
             className="mx-2 rounded-full bg-transparent text-center w-20 h-10"
             type="text"
             value={n.amount}
           />
           <Button
-          onClick={() => upAmount(n.id, n.name)}
-          btnStyle="btn-tonal"
-          icon="add"
-          type="button"
-          children=""
-        />
+            onClick={() => upAmount(n.id, n.name)}
+            btnStyle="btn-tonal"
+            icon="add"
+            type="button"
+            children=""
+          />
         </div>
       </td>
       <td className="lowercase">
@@ -135,25 +144,25 @@ const Cart = () => {
   const formorderList = (
     <div>
       <div className='border-s5 border-[2px] rounded-[24px] border-collapse overflow-hidden'>
-      <table>
-        <thead className='text-l1 text-on-surface bg-s5'>
-          <tr>
-            <th>Sản phẩm</th>
-            <th>Giá bán</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền (1 sản phẩm)</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>{orderList}</tbody>
-      </table>
+        <table>
+          <thead className='text-l1 text-on-surface bg-s5'>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>Giá bán</th>
+              <th>Số lượng</th>
+              <th>Tổng tiền (1 sản phẩm)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>{orderList}</tbody>
+        </table>
       </div>
       {/* Discount - Payment */}
       <div className="flex justify-between mt-6">
         <div className="flex">
           <div>
             <TextInput
-              value={namediscount}
+              defaultValue={namediscount}
               placeholder="Mã giảm giá (nếu có)"
               onChange={(e) => setNameDisCount(e.target.value)}
               className="mr-3"
@@ -182,7 +191,7 @@ const Cart = () => {
       </div>
       {/* Card total - discount */}
       <div className="p-6 my-6 rounded-3xl bg-s5 text-on-surface border-outline-var">
-        
+
         {/* Thêm mã giảm giá thì mới render cái này */}
         {discountprice > 0 && (
           <div className="mb-2 text-l2">
@@ -194,13 +203,13 @@ const Cart = () => {
           </div>
         )}
         <div className='flex justify-between items-center'>
-        <div className="text-t1">
-          Tồng tiền:{' '}
-          {new Intl.NumberFormat('vi-VN', {
-            style: 'currency',
-            currency: 'VND',
-          }).format(price)}
-        </div>
+          <div className="text-t1">
+            Tồng tiền:{' '}
+            {new Intl.NumberFormat('vi-VN', {
+              style: 'currency',
+              currency: 'VND',
+            }).format(price)}
+          </div>
           <Button btnStyle="" btnCSS={'shadow-5'} icon="payments" onClick={addOrder}>
             Thanh toán
           </Button>
@@ -211,7 +220,7 @@ const Cart = () => {
           </Button>
         </div>
       </div>
-      
+
     </div>
   )
 
