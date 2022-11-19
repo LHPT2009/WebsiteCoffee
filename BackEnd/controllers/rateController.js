@@ -21,7 +21,16 @@ const RateController = {
 
     getRateByProductId: async (req, res) => {
         try {
-            const rate = await Rate.find({ productid: req.params.id }).populate('usertid');
+            const rate = await Rate.find({ productid: req.params.id }).populate('userid');
+            res.status(200).json(rate);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+
+    getRateById: async (req, res) => {
+        try {
+            const rate = await Rate.findById(req.params.id);
             res.status(200).json(rate);
         } catch (error) {
             res.status(500).json(error);
@@ -32,7 +41,7 @@ const RateController = {
         try {
             const newRate = new Rate({
                 productid: req.body.productid,
-                usertid: req.body.usertid,
+                userid: req.body.userid,
                 point: req.body.point,
                 content: req.body.content,
                 status: true,
@@ -48,7 +57,7 @@ const RateController = {
     updateRate: async (req, res) => {
         try {
             const updateRate = req.body;
-            const rate = await DisCount.findByIdAndUpdate(req.params.id, updateRate, {
+            const rate = await Rate.findByIdAndUpdate(req.params.id, updateRate, {
                 new: true,
             });
 

@@ -73,7 +73,7 @@ const ItemDetail = () => {
     e.preventDefault()
     const addrate = axios.post(`http://localhost:8000/rate`, {
       productid: info._id,
-      usertid: jwt_decode(localStorage.getItem('token')).id,
+      userid: jwt_decode(localStorage.getItem('token')).id,
       point: point,
       content: content,
     })
@@ -153,7 +153,7 @@ const ItemDetail = () => {
           {currentRates.map((ele) => (
             <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
               <span className="text-[14px] font-bold mb-1">
-                {ele.usertid.lastname + ' ' + ele.usertid.firstname}
+                {ele.userid.lastname + ' ' + ele.userid.firstname}
               </span>
               <div className="flex items-start gap-2 mt-2 text-left text-l2">
                 <span>{moment(ele.createdAt).format('DD-MM-YYYY')}</span>

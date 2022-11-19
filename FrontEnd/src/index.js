@@ -47,6 +47,8 @@ import AddDiscount from './views/Admin/Discount/AddDiscount'
 import EditDiscount from './views/Admin/Discount/EditDiscount'
 
 import Rate from './views/Admin/Rate/Rate'
+import EditRate from './views/Admin/Rate/EditRate'
+
 import PaymentSuccess from './views/PaymentSuccess'
 
 import EditReceipt from './views/Admin/Receipt/EditReceipt'
@@ -109,6 +111,7 @@ root.render(
               <Route path="receipts" element={<Receipts />} />
               <Route path="discount" element={<Discount />} />
               <Route path="rate" element={<Rate />} />
+              <Route path="editrate/:id" element={<EditRate />} />
 
               <Route path="addproduct" element={<AddProduct />} />
               <Route path="editproduct/:id" element={<EditProduct />} />

@@ -48,9 +48,19 @@ const Rate = () => {
       {filteredData.map((item) => (
         <tr key={item._id}>
           <td>{item.productid}</td>
-          <td>{item.usertid}</td>
+          <td>{item.userid}</td>
           <td>{item.point}★</td>
           <td>{item.content}</td>
+          <Button
+            btnStyle={'btn-outline'}
+            onClick={() => {
+              navigate('../editrate/' + item._id)
+            }}
+            btnCSS={'h-11 mr-2'}
+            icon="edit"
+          >
+            Sửa
+          </Button>
         </tr>
       ))}
     </>
@@ -60,9 +70,19 @@ const Rate = () => {
       {currentRates.map((item) => (
         <tr key={item._id}>
           <td>{item.productid}</td>
-          <td>{item.usertid}</td>
+          <td>{item.userid}</td>
           <td>{item.point}★</td>
           <td>{item.content}</td>
+          <Button
+            btnStyle={'btn-outline'}
+            onClick={() => {
+              navigate('../editrate/' + item._id)
+            }}
+            btnCSS={'h-11 mr-2'}
+            icon="edit"
+          >
+            Sửa
+          </Button>
         </tr>
       ))}
     </>
