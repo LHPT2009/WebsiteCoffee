@@ -23,9 +23,11 @@ const EditDisCount = () => {
 
   const { id } = useParams()
 
-  axios.get(`http://localhost:8000/discount/${id}`).then((res) => {
-    setDisCount(res.data)
-  })
+  useEffect(() => {
+    axios.get(`http://localhost:8000/discount/${id}`).then((res) => {
+      setDisCount(res.data)
+    })
+  }, [])
 
   const editProduct = async (e) => {
     e.preventDefault()
