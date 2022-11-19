@@ -30,6 +30,7 @@ import Roles from './views/Admin/Role/Roles'
 import SizeProducts from './views/Admin/SizeProduct/SizeProducts'
 import Receipts from './views/Admin/Receipt/Receipts'
 import Cart from './views/Cart/Cart'
+import Purchase from './views/Purchase'
 
 import AddProduct from './views/Admin/Product/AddProduct'
 import EditProduct from './views/Admin/Product/EditProduct'
@@ -90,6 +91,7 @@ root.render(
             <Route path="/cart" element={<Cart />} />
             <Route path="/career" element={<Career />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/purchase" element={<Purchase />} />
 
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />

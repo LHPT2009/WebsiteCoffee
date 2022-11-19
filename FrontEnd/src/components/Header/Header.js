@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './header.css'
 
 import logo2 from '../../assets/images/logo_2.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { ListProductContext } from '../../context/ListProductContext'
-import Button from '../Button/Button'
 import jwt_decode from 'jwt-decode'
 
 const Header = () => {
@@ -18,14 +17,6 @@ const Header = () => {
     e.preventDefault()
     localStorage.removeItem('token')
     navigate('/')
-  }
-
-  const [openSearch, setOpenSearch] = useState(false)
-  const handleOpenSearch = () => {
-    setOpenSearch(true)
-  }
-  const handleCloseSearch = () => {
-    setOpenSearch(false)
   }
 
   return (
