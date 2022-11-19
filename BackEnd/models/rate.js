@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const rateSchema = new mongoose.Schema({
     productid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product"
+        ref: "Products"
     },
-    usertid: {
+    userid: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },

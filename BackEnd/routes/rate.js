@@ -6,6 +6,8 @@ router.get("/", rateController.getAllRates);
 
 router.get("/:id", rateController.getRateByProductId);
 
+router.get("/one/:id", rateController.getRateById);
+
 router.delete("/:id", rateController.deleteRate);
 
 router.post("/", rateController.addRate);
