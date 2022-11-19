@@ -22,15 +22,17 @@ const ItemDetail = () => {
   const [size, setSize] = useState('S')
   const navigate = useNavigate()
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [ratesPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [ratesPerPage] = useState(3)
 
-  const indexOfLastItem = currentPage * ratesPerPage;
-  const indexOfFirstItem = indexOfLastItem - ratesPerPage;
-  const currentRates = ratelist.filter((rat) => rat.status == true).slice(indexOfFirstItem, indexOfLastItem);
-  const reverseRates = ratelist.reverse(ratelist.createdAt);
+  const indexOfLastItem = currentPage * ratesPerPage
+  const indexOfFirstItem = indexOfLastItem - ratesPerPage
+  const currentRates = ratelist
+    .filter((rat) => rat.status == true)
+    .slice(indexOfFirstItem, indexOfLastItem)
+  const reverseRates = ratelist.reverse(ratelist.createdAt)
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   useEffect(() => {
     axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
@@ -109,7 +111,9 @@ const ItemDetail = () => {
                 }).format(info.price + pricesize)}
               </span>
             </div>
-            <h2 className="mt-6 text-black text-l2">Chọn size(chưa ràng buộc bắt buộc)</h2>
+            <h2 className="mt-6 text-black text-l2">
+              Chọn size (chưa ràng buộc bắt buộc)
+            </h2>
             <div className="flex flex-wrap gap-4 mt-3">
               {sizeproduct.map((ele) => (
                 <label className="cursor-pointer">
@@ -129,7 +133,6 @@ const ItemDetail = () => {
                 </label>
               ))}
             </div>
-
             <div className="items-center mt-10">
               <Button
                 type="button"
@@ -144,35 +147,46 @@ const ItemDetail = () => {
           </div>
         </div>
         <div className="mt-16">
-          <h4 className="text-t1 mb-2">Mô tả sản phẩm</h4>
+          <h4 className="mb-2 text-t1">Mô tả sản phẩm</h4>
           <p className="text-body">{info.describe}</p>
         </div>
         {/* Rating */}
         <h4 className="mt-10 mb-5 text-t1">Đánh giá sản phẩm</h4>
         <div className="box-border flex flex-col gap-[16px] rounded-[32px] w-full">
-          {currentRates.map((ele) => (
-            <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
-              <span className="text-[14px] font-bold mb-1">
-                {ele.userid.lastname + ' ' + ele.userid.firstname}
-              </span>
-              <div className="flex items-start gap-2 mt-2 text-left text-l2">
-                <span>{moment(ele.createdAt).format('DD-MM-YYYY')}</span>
-              </div>
-              <Rating size="small" readOnly="true" value={ele.point} />
-              <div className="flex items-start gap-2 mt-2 text-left text-l2">
-                <span>{ele.content}</span>
-              </div>
-            </div>
-          )).sort(ratelist.createdAt)}
+          {currentRates != 0 ? (
+            <>
+              {currentRates
+                .map((ele) => (
+                  <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
+                    <span className="text-[14px] font-bold mb-1">
+                      {ele.userid.lastname + ' ' + ele.userid.firstname}
+                    </span>
+                    <div className="flex items-start gap-2 mt-2 text-left text-l2">
+                      <span>{moment(ele.createdAt).format('DD-MM-YYYY')}</span>
+                    </div>
+                    <Rating size="small" readOnly="true" value={ele.point} />
+                    <div className="flex items-start gap-2 mt-2 text-left text-l2">
+                      <span>{ele.content}</span>
+                    </div>
+                  </div>
+                ))
+                .sort(ratelist.createdAt)}
+            </>
+          ) : (
+            <span className="text-center text-body">Chưa có đánh giá</span>
+          )}
         </div>
-        <Pagination
-          itemsPerPage={ratesPerPage}
-          totalItems={ratelist.length}
-          paginate={paginate}
-        />
+        {/* Khi nào có đánh giá mới hiện Trang */}
+        {ratelist != 0 && (
+          <Pagination
+            itemsPerPage={ratesPerPage}
+            totalItems={ratelist.length}
+            paginate={paginate}
+          />
+        )}
         {localStorage.getItem('token') ? (
           <div className="relative pb-12 my-8 text-on-surface ">
-            <h4 className="text-t1 my-2">Viết đánh giá</h4>
+            <h4 className="my-3 text-t1">Viết đánh giá</h4>
             <form onSubmit={addrate}>
               {/* Star */}
               <div>
@@ -195,7 +209,7 @@ const ItemDetail = () => {
                   onChange={(e) => setContent(e.target.value)}
                 />
               </div>
-              <div className="absolute right-0 bottom-0">
+              <div className="absolute bottom-0 right-0">
                 <Button
                   btnStyle={'btn-fill'}
                   icon="file_upload"
@@ -215,16 +229,16 @@ const ItemDetail = () => {
               onClick={() => {
                 navigate('/signin')
               }}
-              className="text-on-insurface cursor-pointer px-3 py-2 rounded-full hover:bg-secondary"
+              className="px-3 py-2 rounded-full cursor-pointer text-on-insurface hover:bg-secondary"
             >
               ĐĂNG NHẬP
             </span>
-            để được bình luận☕😍
+            để được bình luận ☕ 😍
           </div>
         )}
         {/* Relate */}
         <div className="my-16">
-          <h4 className="mb-5 text-t1">Sản phẩm liên quan</h4>
+          <h4 className="mb-5 text-t1">Sản phẩm khác</h4>
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {product.map((item) => (
               <Link to={`/product/${item._id}`}>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Header from '../Header/Header'
 import Button from '../Button/Button'
@@ -16,11 +16,11 @@ const SignUp = () => {
   const [rePassword, setRePassword] = useState('')
   const [role, setRole] = useState('')
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   useEffect(() => {
     axios.get('http://localhost:8000/role/one').then((res) => {
-      console.log(res.data._id);
-      setRole(res.data._id);
+      console.log(res.data._id)
+      setRole(res.data._id)
     })
   }, [])
 
@@ -36,22 +36,24 @@ const SignUp = () => {
           role,
         })
         .then(function (response) {
-          console.log(response);
-          alert("Mời bạn trở lại trang đăng nhập!");
-          navigate("/signin");
+          console.log(response)
+          alert('Mời bạn trở lại trang đăng nhập')
+          navigate('/signin')
         })
         .catch(function (error) {
           console.log(error)
         })
     } else {
-      alert('password xác nhận của bạn ko đúng!!!')
+      alert('Mật khẩu xác nhận không trùng khớp')
     }
   }
   return (
-    <div className="text-center font-googleSansRegular relative pb-24 lg:pb-12 min-h-screen">
+    <div className="relative min-h-screen pb-24 text-center lg:pb-12">
       <Header />
-      <div className="h-10"></div>
-      <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] justify-center">
+      <div className="uppercase text-[32px] font-googleSansBold text-primary mt-20">
+        Đăng ký
+      </div>
+      <div className="fixed top-[55%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <form onSubmit={addUser}>
           <div>
             <TextInput
@@ -106,15 +108,20 @@ const SignUp = () => {
             />
           </div>
         </form>
-        <Button
-          type="button"
-          btnStyle="btn-fill"
-          icon="login"
-          onClick={addUser}
-          btnCSS={'h-[44px] px-6 py-3 mt-2'}
-        >
-          Tạo tài khoản
-        </Button>
+        <div className="flex justify-center my-5">
+          <Button
+            type="button"
+            btnStyle="btn-fill"
+            btnCSS={'w-[400px]'}
+            icon="login"
+            onClick={addUser}
+          >
+            Tạo tài khoản
+          </Button>
+        </div>
+        <Link to="/signin" className="hover:text-primary">
+          Đăng nhập
+        </Link>
       </div>
       <Footer />
     </div>

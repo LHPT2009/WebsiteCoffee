@@ -37,12 +37,15 @@ const Receipts = () => {
         <tr key={item._id}>
           <td>{item._id}</td>
           <td>{item.userid}</td>
+          <td>{item.createdAt}</td>
+          <td>{item.updatedAt}</td>
           <td>
             {new Intl.NumberFormat('vi-VN', {
               style: 'currency',
               currency: 'VND',
             }).format(item.price)}
           </td>
+          <td>{item.statusdelivery}</td>
           <td style={{ minWidth: 100 }}>
             <Button
               btnStyle={'btn-outline'}
@@ -67,12 +70,15 @@ const Receipts = () => {
         <tr key={item._id}>
           <td>{item._id}</td>
           <td>{item.userid}</td>
+          <td>{item.createdAt}</td>
+          <td>{item.updatedAt}</td>
           <td>
             {new Intl.NumberFormat('vi-VN', {
               style: 'currency',
               currency: 'VND',
             }).format(item.price)}
           </td>
+          <td>{item.statusdelivery}</td>
           <td style={{ minWidth: 100 }}>
             <Button
               btnStyle={'btn-outline'}
@@ -113,8 +119,11 @@ const Receipts = () => {
                   <tr>
                     <th>Mã đơn</th>
                     <th>Mã tài khoản</th>
+                    <th>Ngày đặt</th>
+                    <th>Ngày giao hàng</th>
                     <th>Tổng tiền</th>
-                    <th></th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>

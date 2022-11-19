@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Button from '../../../components/Button/Button'
 
@@ -56,7 +56,12 @@ const Products = (props) => {
               width={60}
             ></img>
           </td>
-          <td>{item.name}</td>
+          <td>
+            {/* Dùng thẻ a để mở tab mới */}
+            <a href={'/product/' + item._id} target="_blank">
+              {item.name}
+            </a>
+          </td>
           <td>
             {new Intl.NumberFormat('vi-VN', {
               style: 'currency',
@@ -92,7 +97,12 @@ const Products = (props) => {
               width={60}
             ></img>
           </td>
-          <td>{item.name}</td>
+          <td>
+            {/* Dùng thẻ a để mở tab mới */}
+            <a href={'/product/' + item._id} target="_blank">
+              {item.name}
+            </a>
+          </td>
           <td>
             {new Intl.NumberFormat('vi-VN', {
               style: 'currency',

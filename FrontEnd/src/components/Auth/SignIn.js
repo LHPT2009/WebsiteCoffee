@@ -10,13 +10,15 @@ import Footer from '../../components/Footer/Footer'
 const SignIn = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [sideKey, setSideKey] = useState('6LdfshcjAAAAAHnu08PuFr0edhzcfFCjILuyM3QA')
+  const [sideKey, setSideKey] = useState(
+    '6LdfshcjAAAAAHnu08PuFr0edhzcfFCjILuyM3QA'
+  )
   const [token, setToken] = useState('')
   const navigate = useNavigate()
 
   if (!window.location.hash) {
-    window.location = window.location + '#loaded';
-    window.location.reload();
+    window.location = window.location + '#loaded'
+    window.location.reload()
   }
 
   const loginUser = async (e) => {
@@ -28,32 +30,39 @@ const SignIn = () => {
           password,
         })
         if (!Auth) {
-          alert("Thông tin tài khoản và mật khẩu không đúng!!!")
+          alert('Sai tên đăng nhập hoặc mật khẩu')
         }
-        if (Auth.data.role.rolename == 'Admin' && Auth.data.confirmemail == true) {
+        if (
+          Auth.data.role.rolename == 'Admin' &&
+          Auth.data.confirmemail == true
+        ) {
           navigate('/admin')
           localStorage.setItem('token', Auth.data.accessToken)
-        }
-        else {
-          if (Auth.data.role.rolename == 'User' && Auth.data.confirmemail == true) {
+        } else {
+          if (
+            Auth.data.role.rolename == 'User' &&
+            Auth.data.confirmemail == true
+          ) {
             navigate('/')
             localStorage.setItem('token', Auth.data.accessToken)
           } else {
-            alert("bạn chưa xác nhận mail")
+            alert('Tài khoản chưa được xác thực')
           }
         }
       } else {
-        alert("Mời bạn nhập Captcha để xác nhận bạn là người dùng")
+        alert('Vui lòng xác nhận Captcha')
       }
     } catch (err) {
       console.log(err)
     }
   }
   return (
-    <div className="relative min-h-screen pb-24 text-center font-googleSansRegular lg:pb-12">
+    <div className="relative min-h-screen pb-24 text-center lg:pb-12">
       <Header />
-      <div className="h-10"></div>
-      <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] justify-center">
+      <div className="uppercase text-[32px] font-googleSansBold text-primary mt-20">
+        Đăng nhập
+      </div>
+      <div className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <form onSubmit={loginUser}>
           <div>
             <TextInput
@@ -74,25 +83,36 @@ const SignIn = () => {
             />
           </div>
         </form>
-        <ReCAPTCHA
-          sitekey={sideKey}
-          onChange={token => {
-            setToken(token)
-          }}
-        />
-        <Button
-          type="button"
-          btnStyle="btn-fill"
-          icon="login"
-          onClick={loginUser}
-          btnCSS={'h-[44px] px-6 py-3 mt-2'}
-        >
-          Đăng nhập
-        </Button>
-        <Link to="/signup" className="block mt-5 hover:text-primary">
-          Tạo tài khoản
-        </Link>
+        <div className="flex justify-center mt-3">
+          <ReCAPTCHA
+            sitekey={sideKey}
+            onChange={(token) => {
+              setToken(token)
+            }}
+            className="block pl-12 pr-5 py-5 w-[400px] bg-s5 rounded-3xl hover:rounded-2xl hover:bg-s2 border-[2px] border-solid border-outline-var"
+          />
+        </div>
+        <div className="flex justify-center mt-5">
+          <Button
+            type="button"
+            btnStyle="btn-fill"
+            btnCSS={'w-[400px]'}
+            icon="login"
+            onClick={loginUser}
+          >
+            Đăng nhập
+          </Button>
+        </div>
+        <div className="flex justify-center mt-5 gap-[100px]">
+          <Link to="/signup" className="hover:text-primary">
+            Tạo tài khoản
+          </Link>
+          <Link to="/enteremail" className="hover:text-primary">
+            Quên mật khẩu?
+          </Link>
+        </div>
       </div>
+
       <Footer />
     </div>
   )

@@ -9,16 +9,13 @@ const AutoplaySlider = withAutoplay(AwesomeSlider)
 const BannerHome = () => {
   const images = [
     {
-      source:
-        'https://file.hstatic.net/1000075078/file/desktop_web_39633030bf10419c865bbc557daa43dd.jpg',
+      source: 'https://i.imgur.com/TZExxgM.png',
     },
     {
-      source:
-        'https://file.hstatic.net/1000075078/file/desktop_a0610a7063ba4d86ad63d8b39e51abff.jpg',
+      source: 'https://i.imgur.com/Mr8A0h6.png',
     },
     {
-      source:
-        'https://file.hstatic.net/1000075078/file/desktop_web_8a5dc640f98342b3bccadb25bed0fd7a.jpg',
+      source: 'https://i.imgur.com/EoMTm4S.png',
     },
   ]
 

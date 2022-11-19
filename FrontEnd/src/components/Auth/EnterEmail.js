@@ -4,6 +4,7 @@ import TextInput from '../Input/TextInput'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
 
 const EnterEmail = () => {
   const [email, setEmail] = useState('')
@@ -26,25 +27,29 @@ const EnterEmail = () => {
     }
   }
   return (
-    <div className="text-center relative pb-24 lg:pb-12 min-h-screen">
-      <form onSubmit={SendMailUser}>
-        <div>
-          <TextInput
-            onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            placeholder="Nhập email"
-          />
-        </div>
-        <div>
-          <Button
-            onClick={SendMailUser}
-            icon={'navigate_next'}
-            btnCSS={'h-[44px] px-6 py-3'}
-          >
-            Tiếp tục
-          </Button>
-        </div>
-      </form>
+    <div className="relative min-h-screen pb-24 text-center lg:pb-12">
+      <Header />
+      <div className="fixed top-[45%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <form onSubmit={SendMailUser}>
+          <div>
+            <TextInput
+              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              placeholder="Nhập email"
+              className={'w-[400px]'}
+            />
+          </div>
+          <div className="flex justify-center">
+            <Button
+              onClick={SendMailUser}
+              icon={'navigate_next'}
+              btnCSS={'w-[400px]'}
+            >
+              Tiếp tục
+            </Button>
+          </div>
+        </form>
+      </div>
       <Footer />
     </div>
   )

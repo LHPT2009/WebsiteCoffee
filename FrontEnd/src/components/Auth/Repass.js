@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode'
 import { Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
 
 const Repass = () => {
   const [password, setPassword] = useState('')
@@ -33,34 +34,39 @@ const Repass = () => {
   }
   if (localStorage.getItem('checksuccess')) {
     return (
-      <div className="text-center relative pb-24 lg:pb-12 min-h-screen">
-        <form onSubmit={ResetPass}>
-          <div>
-            <TextInput
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Mật khẩu mới"
-            />
-          </div>
-          <div>
-            <TextInput
-              name="re-password"
-              onChange={(e) => setrePassword(e.target.value)}
-              type="password"
-              placeholder="Xác nhận mật khẩu"
-            />
-          </div>
-          <div>
-            <Button
-              icon={'navigate_next'}
-              onClick={ResetPass}
-              btnCSS={'h-[44px] px-6 py-3'}
-            >
-              Tiếp tục
-            </Button>
-          </div>
-        </form>
+      <div className="relative min-h-screen pb-24 text-center lg:pb-12">
+        <Header />
+        <div className='fixed top-[35%] left-[50%] translate-x-[-50%] translate-y-[-50%]"'>
+          <form onSubmit={ResetPass}>
+            <div>
+              <TextInput
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Mật khẩu mới"
+                className={'w-[400px]'}
+              />
+            </div>
+            <div>
+              <TextInput
+                name="re-password"
+                onChange={(e) => setrePassword(e.target.value)}
+                type="password"
+                placeholder="Xác nhận mật khẩu"
+                className={'w-[400px]'}
+              />
+            </div>
+            <div>
+              <Button
+                icon={'navigate_next'}
+                onClick={ResetPass}
+                btnCSS={'w-[400px]'}
+              >
+                Tiếp tục
+              </Button>
+            </div>
+          </form>
+        </div>
         <Footer />
       </div>
     )
