@@ -15,6 +15,9 @@ const rateSchema = new mongoose.Schema({
     content: {
         type: String
     },
+    status: {
+        type: Boolean
+    },
 }, { timestamps: true }
 );
 

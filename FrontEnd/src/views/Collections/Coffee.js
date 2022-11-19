@@ -12,7 +12,7 @@ const Coffee = () => {
   const [product, setProduct] = useState([])
   const [productCate, setProductCate] = useState([])
   const [noOfElement, setNoOfElement] = useState(4)
-  const slice = product.slice(0, noOfElement)
+  const slice = product.filter((pro) => pro.status == true).slice(0, noOfElement)
   const loadMore = () => {
     setNoOfElement(noOfElement + noOfElement)
   }
