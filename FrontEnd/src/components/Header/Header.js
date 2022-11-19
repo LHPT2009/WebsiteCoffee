@@ -95,6 +95,70 @@ const Header = () => {
           {/* User / Sign in */}
           <div className="hover:bg-s5 rounded-[16px]">
             {localStorage.getItem('token') ? (
+              // Dropdown
+              <div className="relative inline-block dropdown">
+                <button className="h-[48px] px-4 items-center">
+                  Chào{' '}
+                  <span className="font-semibold">
+                    {jwt_decode(localStorage.getItem('token')).name}
+                  </span>
+                </button>
+                <ul className="absolute hidden pt-2 text-black dropdown-menu">
+                  <div className="bg-s5 rounded-2xl w-[148px] p-5 text-body shadow-md">
+                    <li>
+                      <Link
+                        className="flex items-center justify-between whitespace-no-wrap"
+                        to="/profile"
+                      >
+                        <span className="material-symbols-outlined text-[20px]">
+                          person
+                        </span>
+                        Tài khoản
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="flex items-center justify-between py-3 pr-1 whitespace-no-wrap"
+                        to="/purchase"
+                      >
+                        <span className="material-symbols-outlined text-[20px]">
+                          receipt
+                        </span>
+                        Đơn mua
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        className="flex items-center justify-between text-black whitespace-no-wrap hover:text-primary"
+                        onClick={logout}
+                      >
+                        <span className="mr-[15px] material-symbols-outlined text-[20px]">
+                          logout
+                        </span>
+                        Đăng xuất
+                      </button>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            ) : (
+              // End dropdown
+              <div className="hover:bg-s5 rounded-[16px]">
+                <button
+                  onClick={() => {
+                    navigate('/signin')
+                  }}
+                  className="hover:bg-s5 rounded-[16px]"
+                >
+                  <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center w-[48] gap-[8px] hover:text-primary">
+                    <span className="material-symbols-outlined">person</span>
+                  </div>
+                </button>
+              </div>
+            )}
+          </div>
+          {/* <div className="hover:bg-s5 rounded-[16px]">
+            {localStorage.getItem('token') ? (
               <button
                 onClick={() => {
                   navigate('/profile')
@@ -106,7 +170,7 @@ const Header = () => {
                   {' '}
                   {jwt_decode(localStorage.getItem('token')).name}
                 </span>
-                {/* <button onClick={logout}> Đăng xuất</button> */}
+                
               </button>
             ) : (
               <div className="hover:bg-s5 rounded-[16px]">
@@ -122,7 +186,7 @@ const Header = () => {
                 </button>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </header>
