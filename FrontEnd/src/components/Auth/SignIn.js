@@ -30,14 +30,19 @@ const SignIn = () => {
   }
 
   const onSuccess = (res) => {
-    const Auth = axios.post('http://localhost:8000/auth/google', {
-      lastname: res.profileObj.familyName,
-      firstname: res.profileObj.givenName,
-      email: res.profileObj.email
-    }).then((res) => {
-      navigate('/');
-      localStorage.setItem('token', res.data);
-    })
+    if (token) {
+      const Auth = axios.post('http://localhost:8000/auth/google', {
+        lastname: res.profileObj.familyName,
+        firstname: res.profileObj.givenName,
+        email: res.profileObj.email
+      }).then((res) => {
+        navigate('/');
+        localStorage.setItem('token', res.data);
+      })
+    }
+    else {
+      alert('Vui lòng xác nhận Captcha')
+    }
   }
   const loginUser = async (e) => {
     e.preventDefault()
