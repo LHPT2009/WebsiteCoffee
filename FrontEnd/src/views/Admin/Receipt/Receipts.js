@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Topnav from '../../../components/Admin/topnav/TopNav'
 import SearchAdmin from '../../../components/Admin/topnav/SearchAdmin'
-
+import { CSVLink } from 'react-csv'
 const Receipts = () => {
   const [id, setId] = useState('')
   const navigate = useNavigate()
@@ -110,6 +110,12 @@ const Receipts = () => {
           value={wordEntered}
         />
       </div>
+      <CSVLink
+        data={receipt.filter((rec) => rec.statuspayment == true)}
+        filename="Doanh thu của quán Cafe"
+      >
+        Xuất file Excel
+      </CSVLink>
       <div className="row">
         <div className="col-12">
           <div className="card">
