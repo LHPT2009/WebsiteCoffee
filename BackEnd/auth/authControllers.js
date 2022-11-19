@@ -86,6 +86,32 @@ const authController = {
       res.status(500).json(err);
     }
   },
+
+  loginGoogle: async (req, res) => {
+    try {
+      const user = await User.findOne({ email: req.body.email }).populate("role");
+      if (user) {
+        const accessToken = authController.generateAccessToken(user);
+        res.status(200).json(accessToken);
+      } else {
+        const newUser = new User({
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          username: "Thông tin bảo mật từ Google",
+          email: req.body.email,
+          confirmemail: true,
+          password: "Thông tin bảo mật từ Google",
+          role: "6335369ee1caa255ab840cd4",
+          numberphone: "",
+        });
+        await newUser.save();
+        const accessToken = authController.generateAccessToken(newUser);
+        res.status(200).json(accessToken);
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
   confirmEmail: async (req, res) => {
     try {
       const user = await User.findByIdAndUpdate(req.params.id, { confirmemail: true }, {
