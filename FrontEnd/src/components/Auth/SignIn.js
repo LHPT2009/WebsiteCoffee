@@ -6,8 +6,10 @@ import Header from '../Header/Header'
 import Button from '../Button/Button'
 import TextInput from '../Input/TextInput'
 import Footer from '../../components/Footer/Footer'
-
+import GoogleLogin from 'react-google-login'
+import { gapi } from 'gapi-script'
 const SignIn = () => {
+  const clientId = "78527833894-ao0e2761t8gbk4qijevpihcamn5ltlj9.apps.googleusercontent.com";
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [sideKey, setSideKey] = useState(
@@ -16,11 +18,27 @@ const SignIn = () => {
   const [token, setToken] = useState('')
   const navigate = useNavigate()
 
+  useEffect(() => {
+    gapi.load("client:auth2", () => {
+      gapi.auth2.init({ clientId: clientId })
+    })
+  }, [])
+
   if (!window.location.hash) {
     window.location = window.location + '#loaded'
     window.location.reload()
   }
 
+  const onSuccess = (res) => {
+    const Auth = axios.post('http://localhost:8000/auth/google', {
+      lastname: res.profileObj.familyName,
+      firstname: res.profileObj.givenName,
+      email: res.profileObj.email
+    }).then((res) => {
+      navigate('/');
+      localStorage.setItem('token', res.data);
+    })
+  }
   const loginUser = async (e) => {
     e.preventDefault()
     try {
@@ -83,6 +101,11 @@ const SignIn = () => {
             />
           </div>
         </form>
+        <GoogleLogin clientId={clientId}
+          buttonText="Đăng nhập bằng GOOGLE"
+          scope='https://www.googleapis.com/auth/drive.file'
+          onSuccess={onSuccess}
+        />
         <div className="flex justify-center mt-3">
           <ReCAPTCHA
             sitekey={sideKey}
