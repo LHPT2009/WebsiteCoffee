@@ -35,6 +35,7 @@ const RateController = {
                 usertid: req.body.usertid,
                 point: req.body.point,
                 content: req.body.content,
+                status: true,
             });
 
             await newRate.save();
