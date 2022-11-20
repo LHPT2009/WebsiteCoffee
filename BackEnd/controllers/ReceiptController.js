@@ -1,5 +1,7 @@
 const Receipt = require('../models/receipt');
 const ReceiptDetail = require('../models/receiptDetails');
+const Rate = require('../models/rate');
+
 const ReceiptController = {
     getAllReceipts: async (req, res) => {
         try {
@@ -28,6 +30,16 @@ const ReceiptController = {
             res.status(500).json(error);
         }
     },
+
+    getReceiptByUserId: async (req, res) => {
+        try {
+            const receipt = await Receipt.find({ userid: req.body.userid });
+            res.status(200).json(receipt);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+
 
     getReceiptDetailById: async (req, res) => {
         try {
@@ -58,6 +70,22 @@ const ReceiptController = {
                     amount: ele.amount
                 });
                 newReceiptDetail.save();
+            });
+            var productid = "";
+            (req.body.products).forEach(ele => {
+                if (productid != ele.id) {
+                    const newRate = new Rate({
+                        userid: req.body.userid,
+                        productid: ele.id,
+                        receiptid: newReceipt._id,
+                        point: 0,
+                        content: "",
+                        status: false,
+                        statusrate: false,
+                    });
+                    newRate.save();
+                    productid = ele.id;
+                }
             });
             res.status(200).json('Add successfully');
         } catch (error) {

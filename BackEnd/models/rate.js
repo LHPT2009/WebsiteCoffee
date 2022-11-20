@@ -9,6 +9,10 @@ const rateSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
+    receiptid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Receipt"
+    },
     point: {
         type: Number
     },
@@ -16,6 +20,9 @@ const rateSchema = new mongoose.Schema({
         type: String
     },
     status: {
+        type: Boolean
+    },
+    statusrate: {
         type: Boolean
     },
 }, { timestamps: true }

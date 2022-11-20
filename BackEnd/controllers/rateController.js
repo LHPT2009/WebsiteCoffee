@@ -21,7 +21,16 @@ const RateController = {
 
     getRateByProductId: async (req, res) => {
         try {
-            const rate = await Rate.find({ productid: req.params.id }).populate('userid');
+            const rate = await Rate.find({ productid: req.params.id }).populate('receiptid');
+            res.status(200).json(rate);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+
+    getRateByReceiptid: async (req, res) => {
+        try {
+            const rate = await Rate.find({ receiptid: req.body.receiptid }).populate('productid', ['name']);
             res.status(200).json(rate);
         } catch (error) {
             res.status(500).json(error);
@@ -57,6 +66,31 @@ const RateController = {
     updateRate: async (req, res) => {
         try {
             const updateRate = req.body;
+            const rate = await Rate.findByIdAndUpdate(req.params.id, updateRate, {
+                new: true,
+            });
+
+            if (!rate) {
+                return res.status(404).json('Wrong updaterate!');
+            }
+            res.status(200).json(rate);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json('Error!!!');
+        }
+    },
+
+    updateReceiptRate: async (req, res) => {
+        try {
+            const updateRate = {
+                productid: req.body.productid,
+                userid: req.body.userid,
+                receiptid: req.body.receiptid,
+                point: req.body.point,
+                content: req.body.content,
+                status: true,
+                statusrate: true,
+            };
             const rate = await Rate.findByIdAndUpdate(req.params.id, updateRate, {
                 new: true,
             });

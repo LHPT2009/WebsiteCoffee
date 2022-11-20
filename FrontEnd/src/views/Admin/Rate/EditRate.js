@@ -10,11 +10,13 @@ const EditRate = () => {
     const [rate, setRate] = useState([])
 
     const { id } = useParams()
+    const [receiptid, setReceiptId] = useState(rate.receiptid)
     const [productid, setProductId] = useState(rate.productid)
     const [userid, setUserId] = useState(rate.usertid)
     const [point, setPoint] = useState(rate.point)
     const [content, setContent] = useState(rate.content)
     const [status, setStatus] = useState(rate.status)
+    const [statusrate, setStatusRate] = useState(rate.statusrate)
 
     const navigate = useNavigate()
     useEffect(() => {
@@ -27,11 +29,13 @@ const EditRate = () => {
     const editRate = async (e) => {
         e.preventDefault()
         const edit = await axios.put(`http://localhost:8000/rate/${id}`, {
+            receiptid,
             productid,
             userid,
             point,
             content,
             status,
+            statusrate,
         })
         if (edit) {
             navigate('/admin/rate')
@@ -47,6 +51,16 @@ const EditRate = () => {
                     <b>Chỉnh sửa đánh giá người dùng</b>
                 </h2>
                 <div>
+                    <div className="inline-block w-[200px] mr-3">Mã hóa đơn</div>
+                    <TextInput
+                        placeholder={'Mã hóa đơn'}
+                        type="text"
+                        required={'required'}
+                        onChange={(e) => setReceiptId(e.target.value)}
+                        defaultValue={rate.receiptid}
+                        className="inline-block w-[400px]"
+                    />
+                    <br />
                     <div className="inline-block w-[200px] mr-3">Mã sản phẩm</div>
                     <TextInput
                         placeholder={'Mã sản phẩm'}
