@@ -2,24 +2,24 @@ import React from 'react'
 
 const Introduce = () => {
   return (
-    <section className="pt-12 px-0 pb-11 font-normal">
+    <section className="px-0 pt-12 font-normal pb-11">
       {/* block right */}
       <div className="mb-2">
         {/* container */}
-        <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
+        <div>
           {/* flex */}
-          <div className="justify-between items-center flex-wrap flex">
+          <div className="flex flex-wrap items-center justify-between">
             {/* info block */}
             <div className="order-2 w-[49%] flex-grow-0 flex-shrink-0 basis-[49%]">
               <div className="mb-3">
                 <img
-                  className="border-none max-w-full h-auto"
+                  className="h-auto max-w-full border-none"
                   src="https://file.hstatic.net/1000075078/file/cloudtea_tagline_1_c39d8fd0d46b4144be9cebd05e318796.png"
                   alt="img-title"
                 />
               </div>
               {/* description */}
-              <div className="text-base text-black mb-4">
+              <div className="mb-4 text-base text-black">
                 Vừa êm mượt dịu dàng, vừa bùng nổ nồng nàn, BST Trà Sữa CloudTea
                 Hương Vị Nụ Hôn Đầu mang đến trải nghiệm đầy mới mẻ. Chạm môi là
                 foam béo mịn bồng bềnh, càng thêm đậm đà nhờ topping vụn bánh

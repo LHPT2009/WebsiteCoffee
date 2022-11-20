@@ -13,21 +13,26 @@ function MenuHome() {
   }, [])
 
   return (
-    <section className="pb-8 relative">
+    <section className="relative pb-8">
       {/* container */}
-      <div className="z-[1] relative mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
+      <div className="z-[1]">
+        {/* <div className="z-[1] relative mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]"> */}
         {/* menu list */}
-        <div className="grid gap-[32px] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {product.filter((pro) => pro.status == true).map((item) => (
-            <Link to={'/product/' + item._id}>
-              <ItemCard
-                key={item._id}
-                title={item.name}
-                price={item.price}
-                image={`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(item.image.data.data)))}`}
-              />
-            </Link>
-          ))}
+        <div className="grid gap-5 md:grid-cols-3 xl:grid-cols-4 2xl:w-[1500px] mx-auto xs:grid-cols-2">
+          {product
+            .filter((pro) => pro.status == true)
+            .map((item) => (
+              <Link to={'/product/' + item._id}>
+                <ItemCard
+                  key={item._id}
+                  title={item.name}
+                  price={item.price}
+                  image={`data:image/png;base64,${btoa(
+                    String.fromCharCode(...new Uint8Array(item.image.data.data))
+                  )}`}
+                />
+              </Link>
+            ))}
         </div>
       </div>
     </section>

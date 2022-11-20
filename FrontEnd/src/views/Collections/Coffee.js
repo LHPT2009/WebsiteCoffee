@@ -12,7 +12,9 @@ const Coffee = () => {
   const [product, setProduct] = useState([])
   const [productCate, setProductCate] = useState([])
   const [noOfElement, setNoOfElement] = useState(4)
-  const slice = product.filter((pro) => pro.status == true).slice(0, noOfElement)
+  const slice = product
+    .filter((pro) => pro.status == true)
+    .slice(0, noOfElement)
   const loadMore = () => {
     setNoOfElement(noOfElement + noOfElement)
   }
@@ -94,7 +96,8 @@ const Coffee = () => {
           <div className="text-[18px] uppercase text-primary font-googleSansBold mb-5">
             Menu
           </div>
-          <div className="flex gap-3 mb-2 lg:justify-between">
+          {/* Filter - Search */}
+          <div className="gap-3 mb-2 lg:flex lg:justify-between">
             <div className="flex gap-3 h-[50px]">
               <Button btnStyle="btn-outline" icon="" onClick={handleproduct}>
                 Tất cả
@@ -119,6 +122,7 @@ const Coffee = () => {
               />
             </div>
           </div>
+          {/* End Filter - Search */}
           <div className="grid gap-4 mb-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {wordEntered === '' ? renderPaging : renderSearch}
           </div>
