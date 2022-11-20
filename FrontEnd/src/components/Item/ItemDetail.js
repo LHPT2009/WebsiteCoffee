@@ -139,7 +139,6 @@ const ItemDetail = () => {
                 btnStyle="btn-fill"
                 icon="add_shopping_cart"
                 onClick={add}
-                btnCSS={''}
               >
                 Thêm vào giỏ hàng
               </Button>

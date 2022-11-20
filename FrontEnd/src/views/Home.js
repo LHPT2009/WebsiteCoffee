@@ -13,12 +13,13 @@ const Home = () => {
     <>
       {/* <Career/> */}
       <Header />
-       <BannerHome />
-       <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
-         <MenuHome />
-         <Introduce />
-       </div>
-       <Footer />
+      <BannerHome />
+      <div className="xs:mx-6 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
+        {/* <div className="mx-[-15px] xs:mx-5 sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]"> */}
+        <MenuHome />
+        <Introduce />
+      </div>
+      <Footer />
     </>
   )
 }
