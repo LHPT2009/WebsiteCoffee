@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-1 z-[999] text-l2">
-      <div className="flex items-start justify-between w-full py-3 xs:px-4 md:px-5 xl:px-6 md:py-2 bg-s1">
+      <div className="flex items-start justify-between w-full py-3 px-4 sm:px-6 md:px-8 lg:px-28 md:py-2 bg-s1">
         <div className="flex flex-row items-center xs:gap-2 md:gap-3 xl:gap-4">
           <Link to="/">
             <img
