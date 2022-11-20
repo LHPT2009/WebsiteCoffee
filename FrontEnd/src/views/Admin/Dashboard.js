@@ -98,7 +98,7 @@ const Dashboard = () => {
                     count={receipt
                       .filter((rec) => rec.statuspayment == true)
                       .reduce((a, v) => (a = a + v.price), 0)}
-                    title={'Doanh thu'}
+                    title={'Doanh thu (đ)'}
                   />
                 </div>
                 <div className="col-6">
