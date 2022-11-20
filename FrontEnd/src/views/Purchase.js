@@ -7,8 +7,14 @@ import axios from 'axios'
 import moment from 'moment'
 import Pagination from '../components/Admin/table/Pagination'
 
+import Rating from '@mui/material/Rating'
+import Button from '../components/Button/Button'
+import logo from '../assets/images/logo_2.png'
+import RatingProduct from '../components/Item/RatingProduct'
+
 const Purchase = () => {
   const [receipt, setReceipt] = useState([])
+  const [rate, setRate] = useState([])
 
   const [currentPage, setCurrentPage] = useState(1)
   const [purchasesPerPage] = useState(3)
@@ -22,7 +28,7 @@ const Purchase = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   useEffect(() => {
-    axios.get('http://localhost:8000/receipt').then((res) => {
+    axios.post('http://localhost:8000/receipt/userid', { userid: localStorage.getItem('token') ? jwt_decode(localStorage.getItem('token')).id : '' }).then((res) => {
       setReceipt(res.data)
     })
   }, [])
@@ -40,11 +46,10 @@ const Purchase = () => {
           <div className="flex items-center justify-between p-4 bg-s5 text-[16px] font-semibold rounded-t-3xl border-[2px] border-b-0 border-solid border-s5">
             <div>Mã đơn: {item._id}</div>
             <div
-              className={`px-4 py-2 rounded-full ${
-                item.statusdelivery === true
-                  ? 'bg-tertiary-cont'
-                  : 'bg-[#eb5353] text-white'
-              }`}
+              className={`px-4 py-2 rounded-full ${item.statusdelivery === true
+                ? 'bg-tertiary-cont'
+                : 'bg-[#eb5353] text-white'
+                }`}
             >
               {item.statusdelivery === true ? 'Đã giao' : 'Đã hủy'}
             </div>
@@ -60,6 +65,8 @@ const Purchase = () => {
                 }).format(item.price)}
               </div>
             </div>
+            <h4 className="my-3 text-t1">Đánh giá sản phẩm</h4>
+            <RatingProduct receiptid={item._id} />
           </div>
         </div>
       )).sort(receipt.createdAt)}

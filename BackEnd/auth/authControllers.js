@@ -19,6 +19,7 @@ const authController = {
         password: hashed,
         role: req.body.role,
         numberphone: "",
+        address: "",
       });
       res.status(200).json(newUser);
       await newUser.save();
@@ -103,6 +104,7 @@ const authController = {
           password: "Thông tin bảo mật từ Google",
           role: "6335369ee1caa255ab840cd4",
           numberphone: "",
+          address: "",
         });
         await newUser.save();
         const accessToken = authController.generateAccessToken(newUser);

@@ -16,18 +16,18 @@ const ListProductProvider = (props) => {
           item.amount += 1
         }
       })
-      setProducts([...products])
-      localStorage.setItem('cart', JSON.stringify([...products]));
+      setProducts([...products].sort((a, b) => a.name > b.name ? 1 : -1))
+      localStorage.setItem('cart', JSON.stringify([...products].sort((a, b) => a.name > b.name ? 1 : -1)));
     } else {
-      setProducts([...products, product])
-      localStorage.setItem('cart', JSON.stringify([...products, product]));
+      setProducts([...products, product].sort((a, b) => a.name > b.name ? 1 : -1))
+      localStorage.setItem('cart', JSON.stringify([...products, product].sort((a, b) => a.name > b.name ? 1 : -1)));
     }
   }
 
 
   const delProduct = (name) => {
-    setProducts(products.filter((n) => (n.name !== name)))
-    localStorage.setItem('cart', JSON.stringify(products.filter((n) => (n.name !== name))));
+    setProducts(products.filter((n) => (n.name !== name)).sort((a, b) => a.name > b.name ? 1 : -1))
+    localStorage.setItem('cart', JSON.stringify(products.filter((n) => (n.name !== name)).sort((a, b) => a.name > b.name ? 1 : -1)));
   }
 
   const upAmount = (id, name) => {
@@ -36,8 +36,8 @@ const ListProductProvider = (props) => {
         item.amount += 1
       }
     })
-    setProducts([...products])
-    localStorage.setItem('cart', JSON.stringify([...products]));
+    setProducts([...products].sort((a, b) => a.name > b.name ? 1 : -1))
+    localStorage.setItem('cart', JSON.stringify([...products].sort((a, b) => a.name > b.name ? 1 : -1)));
   }
 
   const downAmount = (id, name) => {
@@ -49,8 +49,8 @@ const ListProductProvider = (props) => {
         }
       }
     })
-    setProducts([...products])
-    localStorage.setItem('cart', JSON.stringify([...products]));
+    setProducts([...products].sort((a, b) => a.name > b.name ? 1 : -1))
+    localStorage.setItem('cart', JSON.stringify([...products].sort((a, b) => a.name > b.name ? 1 : -1)));
   }
 
   const clearCart = () => {

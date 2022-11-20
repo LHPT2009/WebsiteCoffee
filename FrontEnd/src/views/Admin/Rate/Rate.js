@@ -71,7 +71,7 @@ const Rate = () => {
   )
   const renderRate = (
     <>
-      {currentRates.map((item) => (
+      {currentRates.filter((cur) => cur.statusrate == true).map((item) => (
         <tr key={item._id}>
           <a href={'/product/' + item.productid} target="_blank">
             {item.productid}
