@@ -9,10 +9,22 @@ import { useNavigate } from 'react-router-dom'
 import Topnav from '../../../components/Admin/topnav/TopNav'
 import SearchAdmin from '../../../components/Admin/topnav/SearchAdmin'
 import { CSVLink } from 'react-csv'
+
+import Pagination from '../../../components/Admin/table/Pagination'
 const Receipts = () => {
   const [id, setId] = useState('')
   const navigate = useNavigate()
   const [receipt, setReceipt] = useState([])
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [receiptsPerPage] = useState(3)
+
+  const indexOfLastItem = currentPage * receiptsPerPage
+  const indexOfFirstItem = indexOfLastItem - receiptsPerPage
+  const currentReceipts = receipt.slice(indexOfFirstItem, indexOfLastItem)
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   useEffect(() => {
     axios.get('http://localhost:8000/receipt').then((res) => {
       setReceipt(res.data)
@@ -66,7 +78,7 @@ const Receipts = () => {
 
   const renderReceipt = (
     <>
-      {receipt.map((item) => (
+      {currentReceipts.map((item) => (
         <tr key={item._id}>
           <td>{item._id}</td>
           <td>{item.userid}</td>
@@ -139,6 +151,11 @@ const Receipts = () => {
                   {wordEntered === '' ? renderReceipt : renderSearch}
                 </tbody>
               </table>
+              <Pagination
+                itemsPerPage={receiptsPerPage}
+                totalItems={receipt.length}
+                paginate={paginate}
+              />
             </div>
           </div>
         </div>

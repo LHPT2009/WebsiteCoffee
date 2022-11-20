@@ -76,7 +76,6 @@ const Rate = () => {
           <a href={'/product/' + item.productid} target="_blank">
             {item.productid}
           </a>
-          <td>{item.productid}</td>
           <td>{item.userid}</td>
           <td>{item.point} ★</td>
           <td>{item.content}</td>
@@ -120,6 +119,7 @@ const Rate = () => {
                     <th>Mã user</th>
                     <th>Điểm</th>
                     <th>Nội dung</th>
+                    <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>{wordEntered === '' ? renderRate : renderSearch}</tbody>

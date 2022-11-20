@@ -63,7 +63,7 @@ const Cart = () => {
           setDisCountId(res.data._id)
           setDiscountPrice(res.data.price)
         } else {
-          alert('Mã giãm giá này đã hết hạng')
+          alert('Mã giãm giá này đã hết hạn')
         }
       })
   }
@@ -264,7 +264,10 @@ const Cart = () => {
   return (
     <div className="relative min-h-screen pb-24 lg:pb-12 bg-background">
       <Header />
-      <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
+      <div className="text-center uppercase text-[32px] font-googleSansBold text-primary mt-5">
+        Giỏ hàng
+      </div>
+      <div className="mt-5 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {products.length != 0 ? formorderList : cartEmpty}
       </div>
       <Footer />
