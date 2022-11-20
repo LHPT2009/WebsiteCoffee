@@ -86,13 +86,13 @@ const SignIn = () => {
   return (
     <div className="relative min-h-screen pb-24 text-center lg:pb-12 bg-secondary-cont sm:bg-background">
       <Header />
-      <div className="mx-2 sm:mx-8 my-[64px] bg-secondary-cont sm:bg-background lg:mx-40">
+      <div className="mx-2 sm:mx-8 my-[64px] bg-secondary-cont sm:bg-background lg:mx-28">
         <div className="flex flex-col gap-10 text-center">
           {/* col-2-2 */}
           <div className="grid grid-cols-12 gap-6 h-full lg:h-full">
             {/* col-tilte */}
             <div className="hidden  md:flex md:flex-col col-span-12 lg:col-span-6 justify-center text-left items-start gap-[24px]">
-              <h2 className="text-h2 text-primary">Bug Ổn xin chào!!!</h2>
+              <h2 className="text-h2 text-primary">Bug Ổn xin chào</h2>
               <d1 className="text-d1 text-black">Đăng nhập để trải nghiệm trọn vẹn☕</d1>
               
             </div>
@@ -181,7 +181,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-      {/* SignIn old */}
+
 
       <Footer />
     </div>

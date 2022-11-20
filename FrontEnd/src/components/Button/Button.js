@@ -1,7 +1,7 @@
 import React from 'react'
 import './button.css'
 
-const STYLES = ['btn-fill', 'btn-outline', 'btn-text', 'btn-elevate', 'btn-tonal', 'btn-danger']
+const STYLES = ['btn-fill', 'btn-outline', 'btn-text', 'btn-elevate', 'btn-tonal','btn-tertiary', 'btn-danger']
 const TYPE = ['button']
 
 const Button = ({ children, type, icon, onClick, btnStyle, btnCSS }) => {

@@ -239,9 +239,10 @@ const Cart = () => {
           >
             Thanh toán
           </Button>
-        </div>
-        <div className="flex items-center">
-          <Button icon="" onClick={addOrderMoMo}>
+          <Button 
+          btnCSS={'bg-[#a50064] text-[#a50064]'}
+          icon="" 
+          onClick={addOrderMoMo}>
             Thanh toán MoMo
           </Button>
         </div>

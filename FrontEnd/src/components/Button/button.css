@@ -5,6 +5,7 @@
   --outline: #79747e;
   --outline-variant: rgba(115, 130, 126, 0.6);
   --white: #f9f9f9;
+  --tertiary: #384954;
   --tertiary-container: #c6dff0;
   --tertiary-on-container: #1b2d39;
   --warning: #ffd028;
@@ -50,6 +51,24 @@
   box-shadow: 0px 1px 2px rgba(96, 119, 114, 0.15),
     0px 1px 3px 1px rgba(101, 94, 112, 0.15);
 }
+/* tertiary */
+.btn-tertiary {
+  background-color: var(--tertiary);
+}
+
+.btn-tertiary:hover {
+  border-radius: 0.75rem;
+  box-shadow: 0px 6px 10px 3px rgba(96, 119, 114, 0.15),
+    0px 2px 3px rgba(101, 94, 112, 0.3);
+}
+
+.btn-tertiary:active {
+  background-color: #546773;
+  border-radius: 2rem;
+  box-shadow: 0px 1px 2px rgba(96, 119, 114, 0.15),
+    0px 1px 3px 1px rgba(101, 94, 112, 0.15);
+}
+
 /* outlined */
 .btn-outline {
   box-sizing: border-box;
@@ -137,16 +156,15 @@
 
 /* danger */
 .btn-danger {
-  background: #FEECF0;
+  background: #feecf0;
   color: var(--danger);
 }
 
 .btn-danger:hover {
-  background: #FDD8E1;
+  background: #fdd8e1;
   /**/
-  
 }
 
 .btn-danger:active {
-  background: #FCCFDA;
+  background: #fccfda;
 }
