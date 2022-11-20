@@ -110,12 +110,15 @@ const Receipts = () => {
           value={wordEntered}
         />
       </div>
-      <CSVLink
-        data={receipt.filter((rec) => rec.statuspayment == true)}
-        filename="Doanh thu của quán Cafe"
-      >
-        Xuất file Excel
-      </CSVLink>
+      {/* Bug: Click vô text mới run */}
+      <Button btnStyle={'btn-outline'} btnCSS={'h-11 mb-10'} icon="">
+        <CSVLink
+          data={receipt.filter((rec) => rec.statuspayment == true)}
+          filename="Doanh thu của quán Cafe"
+        >
+          Xuất file Excel
+        </CSVLink>
+      </Button>
       <div className="row">
         <div className="col-12">
           <div className="card">

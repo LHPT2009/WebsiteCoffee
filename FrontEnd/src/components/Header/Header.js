@@ -107,6 +107,20 @@ const Header = () => {
                         Tài khoản
                       </Link>
                     </li>
+                    {jwt_decode(localStorage.getItem('token')).role.rolename ===
+                      'Admin' && (
+                      <li>
+                        <Link
+                          className="flex items-center justify-between whitespace-no-wrap"
+                          to="/profile"
+                        >
+                          <span className="material-symbols-outlined text-[20px]">
+                            panel
+                          </span>
+                          Bảng quản trị
+                        </Link>
+                      </li>
+                    )}
                     <li>
                       <Link
                         className="flex items-center justify-between py-3 pr-1 whitespace-no-wrap"
@@ -148,36 +162,6 @@ const Header = () => {
               </div>
             )}
           </div>
-          {/* <div className="hover:bg-s5 rounded-[16px]">
-            {localStorage.getItem('token') ? (
-              <button
-                onClick={() => {
-                  navigate('/profile')
-                }}
-                className="h-[48px] px-4 items-center"
-              >
-                Chào{' '}
-                <span className="font-semibold">
-                  {' '}
-                  {jwt_decode(localStorage.getItem('token')).name}
-                </span>
-                
-              </button>
-            ) : (
-              <div className="hover:bg-s5 rounded-[16px]">
-                <button
-                  onClick={() => {
-                    navigate('/signin')
-                  }}
-                  className="hover:bg-s5 rounded-[16px]"
-                >
-                  <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center w-[48] gap-[8px] hover:text-primary">
-                    <span className="material-symbols-outlined">person</span>
-                  </div>
-                </button>
-              </div>
-            )}
-          </div> */}
         </div>
       </div>
     </header>

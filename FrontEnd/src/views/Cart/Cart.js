@@ -21,10 +21,26 @@ const Cart = () => {
   const [statuspayment, setStatusPayment] = useState(false)
   const [statusdelivery, setStatusDelivery] = useState(false)
   useEffect(() => {
-    setUserId(localStorage.getItem('token') ? jwt_decode(localStorage.getItem('token')).id : ``);
-    setDiscountPrice(localStorage.getItem('discount') ? JSON.parse(localStorage.getItem('discount')).price : 0);
-    setDisCountId(localStorage.getItem('discount') ? JSON.parse(localStorage.getItem('discount'))._id : ``);
-    setNameDisCount(localStorage.getItem('discount') ? JSON.parse(localStorage.getItem('discount')).name : ``);
+    setUserId(
+      localStorage.getItem('token')
+        ? jwt_decode(localStorage.getItem('token')).id
+        : ``
+    )
+    setDiscountPrice(
+      localStorage.getItem('discount')
+        ? JSON.parse(localStorage.getItem('discount')).price
+        : 0
+    )
+    setDisCountId(
+      localStorage.getItem('discount')
+        ? JSON.parse(localStorage.getItem('discount'))._id
+        : ``
+    )
+    setNameDisCount(
+      localStorage.getItem('discount')
+        ? JSON.parse(localStorage.getItem('discount')).name
+        : ``
+    )
   }, [])
   useEffect(() => {
     let ans = 0
@@ -37,17 +53,16 @@ const Cart = () => {
     axios
       .post(`http://localhost:8000/discount/one`, { name: namediscount })
       .then((res) => {
-        var today = moment().format("DD-MM-YYYY")
-        var startday = moment(res.data.startdate).format("DD-MM-YYYY")
-        var endday = moment(res.data.enddate).format("DD-MM-YYYY")
+        var today = moment().format('DD-MM-YYYY')
+        var startday = moment(res.data.startdate).format('DD-MM-YYYY')
+        var endday = moment(res.data.enddate).format('DD-MM-YYYY')
 
         if (startday <= today && today <= endday) {
-          localStorage.setItem('discount', JSON.stringify(res.data));
+          localStorage.setItem('discount', JSON.stringify(res.data))
           setNameDisCount(res.data.name)
           setDisCountId(res.data._id)
           setDiscountPrice(res.data.price)
-        }
-        else {
+        } else {
           alert('Mã giãm giá này đã hết hạng')
         }
       })
@@ -85,14 +100,16 @@ const Cart = () => {
       alert('Ban chua dang nhap, moi dang nhap!!!')
       return navigate('/signin')
     }
-    const rec = await axios.post('http://localhost:8000/momo/', {
-      amount: price,
-      orderInfo: "Thanh toán hóa đơn"
-    }).then((res) => window.location.replace(res.data))
+    const rec = await axios
+      .post('http://localhost:8000/momo/', {
+        amount: price,
+        orderInfo: 'Thanh toán hóa đơn',
+      })
+      .then((res) => window.location.replace(res.data))
   }
 
   const orderList = products.map((n) => (
-    <tr key={n.id} className='text-l2 bg-background hover:bg-s1'>
+    <tr key={n.id} className="text-l2 bg-background hover:bg-s1">
       <td>{n.name}</td>
       {/* <td>size: {n.size}</td> */}
       <td>
@@ -111,7 +128,7 @@ const Cart = () => {
             children=""
           />
           <input
-            className="mx-2 rounded-full bg-transparent text-center w-20 h-10"
+            className="w-20 h-10 mx-2 text-center bg-transparent rounded-full"
             type="text"
             value={n.amount}
           />
@@ -143,9 +160,9 @@ const Cart = () => {
   ))
   const formorderList = (
     <div>
-      <div className='border-s5 border-[2px] rounded-[24px] border-collapse overflow-hidden'>
+      <div className="border-s5 border-[2px] rounded-[24px] border-collapse overflow-hidden">
         <table>
-          <thead className='text-l1 text-on-surface bg-s5'>
+          <thead className="text-l1 text-on-surface bg-s5">
             <tr>
               <th>Sản phẩm</th>
               <th>Giá bán</th>
@@ -162,14 +179,19 @@ const Cart = () => {
         <div className="flex">
           <div>
             <TextInput
-              defaultValue={namediscount}
+              // defaultValue={namediscount}
               placeholder="Mã giảm giá (nếu có)"
               onChange={(e) => setNameDisCount(e.target.value)}
               className="mr-3"
             />
           </div>
           <div>
-            <Button btnStyle="btn-tonal" btnCSS={'h-[50px]'} icon={''} onClick={searchdiscount}>
+            <Button
+              btnStyle="btn-tonal"
+              btnCSS={'h-[50px]'}
+              icon={''}
+              onClick={searchdiscount}
+            >
               Áp dụng
             </Button>
           </div>
@@ -191,7 +213,6 @@ const Cart = () => {
       </div>
       {/* Card total - discount */}
       <div className="p-6 my-6 rounded-3xl bg-s5 text-on-surface border-outline-var">
-
         {/* Thêm mã giảm giá thì mới render cái này */}
         {discountprice > 0 && (
           <div className="mb-2 text-l2">
@@ -202,7 +223,7 @@ const Cart = () => {
             }).format(discountprice)}
           </div>
         )}
-        <div className='flex justify-between items-center'>
+        <div className="flex items-center justify-between">
           <div className="text-t1">
             Tồng tiền:{' '}
             {new Intl.NumberFormat('vi-VN', {
@@ -210,7 +231,12 @@ const Cart = () => {
               currency: 'VND',
             }).format(price)}
           </div>
-          <Button btnStyle="" btnCSS={'shadow-5'} icon="payments" onClick={addOrder}>
+          <Button
+            btnStyle=""
+            btnCSS={'shadow-5'}
+            icon="payments"
+            onClick={addOrder}
+          >
             Thanh toán
           </Button>
         </div>
@@ -220,7 +246,6 @@ const Cart = () => {
           </Button>
         </div>
       </div>
-
     </div>
   )
 
