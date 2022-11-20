@@ -9,7 +9,8 @@ import Footer from '../../components/Footer/Footer'
 import GoogleLogin from 'react-google-login'
 import { gapi } from 'gapi-script'
 const SignIn = () => {
-  const clientId = "78527833894-ao0e2761t8gbk4qijevpihcamn5ltlj9.apps.googleusercontent.com";
+  const clientId =
+    '78527833894-ao0e2761t8gbk4qijevpihcamn5ltlj9.apps.googleusercontent.com'
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [sideKey, setSideKey] = useState(
@@ -19,7 +20,7 @@ const SignIn = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    gapi.load("client:auth2", () => {
+    gapi.load('client:auth2', () => {
       gapi.auth2.init({ clientId: clientId })
     })
   }, [])
@@ -31,16 +32,17 @@ const SignIn = () => {
 
   const onSuccess = (res) => {
     if (token) {
-      const Auth = axios.post('http://localhost:8000/auth/google', {
-        lastname: res.profileObj.familyName,
-        firstname: res.profileObj.givenName,
-        email: res.profileObj.email
-      }).then((res) => {
-        navigate('/');
-        localStorage.setItem('token', res.data);
-      })
-    }
-    else {
+      const Auth = axios
+        .post('http://localhost:8000/auth/google', {
+          lastname: res.profileObj.familyName,
+          firstname: res.profileObj.givenName,
+          email: res.profileObj.email,
+        })
+        .then((res) => {
+          navigate('/')
+          localStorage.setItem('token', res.data)
+        })
+    } else {
       alert('Vui lòng xác nhận Captcha')
     }
   }
@@ -106,11 +108,6 @@ const SignIn = () => {
             />
           </div>
         </form>
-        <GoogleLogin clientId={clientId}
-          buttonText="Đăng nhập bằng GOOGLE"
-          scope='https://www.googleapis.com/auth/drive.file'
-          onSuccess={onSuccess}
-        />
         <div className="flex justify-center mt-3">
           <ReCAPTCHA
             sitekey={sideKey}
@@ -138,6 +135,15 @@ const SignIn = () => {
           <Link to="/enteremail" className="hover:text-primary">
             Quên mật khẩu?
           </Link>
+        </div>
+        <div className="border-[2px] border-solid border-outline-var rounded-full hover:border-outline">
+          <GoogleLogin
+            clientId={clientId}
+            buttonText="Đăng nhập bằng Google"
+            scope="https://www.googleapis.com/auth/drive.file"
+            onSuccess={onSuccess}
+            className="w-[390px] h-[46px] !shadow-none flex justify-center !text-black !bg-[#fff] !rounded-full"
+          />
         </div>
       </div>
 

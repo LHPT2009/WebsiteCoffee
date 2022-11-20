@@ -80,7 +80,7 @@ root.render(
             keyboard_arrow_up
           </span>
         }
-        className="!z-[101] !w-[52px] !h-[52px] !rounded-full hover:!rounded-2xl !bg-primary !transition-all !ease-in !duration-100"
+        className="!z-[101] !w-[52px] !h-[52px] !rounded-full hover:!rounded-2xl !bg-primary !transition-all !ease-out !duration-200 xs:!bottom-[107px] lg:!bottom-[59px]"
       />
       <ListProductProvider>
         <BrowserRouter>
