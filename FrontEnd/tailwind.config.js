@@ -71,7 +71,7 @@ module.exports = {
       d1: [
         '60px',
         {
-          lineHeight: '115%',
+          lineHeight: '130%',
           letterSpacing: '-0.04em',
           fontWeight: '700',
         },
