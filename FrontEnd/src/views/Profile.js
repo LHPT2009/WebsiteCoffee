@@ -19,8 +19,7 @@ const Profile = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/user/${
-          jwt_decode(localStorage.getItem('token')).id
+        `http://localhost:8000/user/${jwt_decode(localStorage.getItem('token')).id
         }`
       )
       .then((res) => {
@@ -31,21 +30,23 @@ const Profile = () => {
   const [firstname, setFirstname] = useState(currUser.firstname)
   const [lastname, setLastname] = useState(currUser.lastname)
   const [numberphone, setNumberphone] = useState(currUser.numberphone)
+  const [address, setAddress] = useState(currUser.address)
 
   const editUser = async (e) => {
     e.preventDefault()
     const edit = await axios.put(
-      `http://localhost:8000/user/${
-        jwt_decode(localStorage.getItem('token')).id
+      `http://localhost:8000/user/${jwt_decode(localStorage.getItem('token')).id
       }`,
       {
         email,
         firstname,
         lastname,
         numberphone,
+        address
       }
     )
     if (edit) {
+      alert('update du lieu thanh cong!!!')
       navigate('/profile')
     } else {
       alert('Sua ko thanh cong!!!')
@@ -125,8 +126,8 @@ const Profile = () => {
             <div className="flex items-center box-border w-full h-[40%] overflow-hidden">
               <TextInput
                 className="flex-1 !mb-0"
-                onChange={''}
-                defaultValue={''}
+                onChange={(e) => setAddress(e.target.value)}
+                defaultValue={currUser.address}
               />
             </div>
           </div>
