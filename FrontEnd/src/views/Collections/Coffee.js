@@ -91,18 +91,44 @@ const Coffee = () => {
   return (
     <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
       <Header />
-      <div className="pt-10 pb-[50px]">
-        <div className="mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
-          <div className="text-[18px] uppercase text-primary font-googleSansBold mb-5">
+      
+        <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
+          <div className="text-h2 uppercase text-primary mb-5">
             Menu
           </div>
           {/* Filter - Search */}
           <div className="gap-3 mb-2 lg:flex lg:justify-between">
             <div className="flex gap-3 h-[50px]">
-              <Button btnStyle="btn-outline" icon="" onClick={handleproduct}>
-                Tất cả
-              </Button>
-              <div className="flex gap-3 h-[50px]">
+              <label className="cursor-pointer">
+                  <input
+                    id="default-radio-1"
+                    type="radio"
+                    name="default-radio"
+                    class="peer sr-only"
+                    onClick={handleproduct}
+                  ></input>
+                  <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
+                  Tất cả
+                  </div>
+                </label>
+              {/* new tag filter */}
+              {productCate.map((item) => (
+                <label className="cursor-pointer">
+                  <input
+                    id="default-radio-1"
+                    type="radio"
+                    name="default-radio"
+                    class="peer sr-only"
+                    onClick={() => handleCategories(`${item._id}`)}
+                  ></input>
+                  <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
+                  {item.name}
+                  </div>
+                </label>
+              ))}
+
+              {/* old tag filter */}
+              {/* <div className="flex gap-3 h-[50px]">
                 {productCate.map((item) => (
                   <Button
                     btnStyle="btn-outline"
@@ -112,9 +138,9 @@ const Coffee = () => {
                     {item.name}
                   </Button>
                 ))}
-              </div>
+              </div> */}
             </div>
-            
+
             {/* Search bar */}
             <div>
               <Search
@@ -139,7 +165,6 @@ const Coffee = () => {
             </Button>
           ) : null}
         </div>
-      </div>
       <Footer />
     </div>
   )
