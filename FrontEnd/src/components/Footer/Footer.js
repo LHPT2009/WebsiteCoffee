@@ -5,8 +5,8 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <footer className="absolute bottom-0 justify-center items-center xs:px-5 md:px-4 py-[8] border-t-[1px] border-outline-var bg-s1 w-full z-[100]">
-      <div className="flex flex-col justify-between w-full lg:flex-row items-left lg:items-center">
+    <footer className="absolute flex bottom-0 justify-center items-center border-t-[1px] border-outline-var bg-s1 w-full z-[100]">
+      <div className="flex flex-col justify-between max-w-[1440px] w-full py-2 px-4 sm:px-6 md:py-2 lg:flex-row items-left lg:items-center">
         <div className="flex flex-row justify-between items-center gap-[24px]">
           <img className=" h-[32px]" src={logoBugOn} alt="logo-coffee-bug-on" />
           <div className="flex flex-row justify-between gap-[32px] items-center mt-[8px]">

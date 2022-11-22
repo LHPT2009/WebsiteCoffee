@@ -64,7 +64,7 @@ import Career from './views/Collections/Career'
 import Profile from './views/Profile'
 
 import ConfirmMail from './views/ConfirmMail'
-
+import Button from './components/Button/Button'
 import ScrollToTop from 'react-scroll-to-top'
 
 const store = createStore(rootReducer)
@@ -76,11 +76,17 @@ root.render(
         smooth
         top={480}
         component={
-          <span className="material-symbols-rounded !text-[32px] !text-white">
-            keyboard_arrow_up
-          </span>
+          // <span className="material-symbols-rounded !text-[32px] !text-white">
+          //   keyboard_arrow_up
+          // </span>
+          <Button 
+          btnStyle="btn-elevate"
+          btnCSS={''}
+          icon="arrow_upward"
+          children="">
+          </Button>
         }
-        className="!z-[101] !w-[52px] !h-[52px] !rounded-full hover:!rounded-2xl !bg-primary !transition-all !ease-out !duration-200 xs:!bottom-[107px] lg:!bottom-[59px]"
+        className="!z-[101] !w-[48px] !h-[48px] !rounded-full  !transition-all !ease-out !duration-200 !bottom-[10%]"
       />
       <ListProductProvider>
         <BrowserRouter>

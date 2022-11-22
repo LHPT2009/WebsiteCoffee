@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-center items-start bg-s1 sticky top-0 left-0 w-full shadow-1 z-[999] text-l2">
-      <div className="flex items-start justify-between w-full py-3 px-4 sm:px-6 md:px-8 lg:px-28 md:py-2 bg-s1">
+      <div className="flex items-start justify-between max-w-[1440px] w-full py-2 px-4 sm:px-6 md:py-2 bg-s1">
         <div className="flex flex-row items-center xs:gap-2 md:gap-3 xl:gap-4">
           <Link to="/">
             <img
@@ -85,7 +85,7 @@ const Header = () => {
               <div className="justify-between items-center p-[12] m-[12px] flex flex-row text-black text-center hover:text-primary w-[48] gap-[8px]">
                 <span className="material-symbols-outlined">shopping_cart</span>
                 {numCart > 0 && (
-                  <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-[12px] pt-[2px] font-googleSansBold">
+                  <div className="w-[40px] h-[24px] bg-tertiary-cont text-on-tertiary-cont rounded-[12px] pt-[2px] text-l2 font-[700]">
                     {numCart}
                   </div>
                 )}
@@ -99,18 +99,18 @@ const Header = () => {
               <div className="relative inline-block dropdown">
                 <button className="h-[48px] px-4 items-center text-black">
                   Chào{' '}
-                  <span className="font-semibold">
+                  <span className="text-l2 font-[700]">
                     {jwt_decode(localStorage.getItem('token')).name}
                   </span>
                 </button>
-                <ul className="absolute hidden pt-2 text-black dropdown-menu">
-                  <div className="bg-s5 rounded-2xl w-[148px] p-5 text-body shadow-md">
+                <ul className="absolute hidden dropdown-menu pt-1">
+                  <div className="bg-s1 text-on-secondary-cont rounded-[16px] w-full p-5 text-body shadow-4">
                     <li>
                       <Link
                         className="flex items-center justify-between whitespace-no-wrap"
                         to="/profile"
                       >
-                        <span className="material-symbols-outlined text-[20px]">
+                        <span className="material-symbols-outlined">
                           person
                         </span>
                         Tài khoản
@@ -123,7 +123,7 @@ const Header = () => {
                           className="flex items-center justify-between whitespace-no-wrap"
                           to="/profile"
                         >
-                          <span className="material-symbols-outlined text-[20px]">
+                          <span className="material-symbols-outlined">
                             panel
                           </span>
                           Bảng quản trị
@@ -135,7 +135,7 @@ const Header = () => {
                         className="flex items-center justify-between py-3 pr-1 whitespace-no-wrap"
                         to="/purchase"
                       >
-                        <span className="material-symbols-outlined text-[20px]">
+                        <span className="material-symbols-outlined">
                           receipt
                         </span>
                         Đơn mua
