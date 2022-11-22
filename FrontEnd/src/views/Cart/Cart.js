@@ -162,7 +162,7 @@ const Cart = () => {
     <div>
       <div className="border-s5 border-[2px] rounded-[24px] border-collapse overflow-hidden">
         <table>
-          <thead className="text-l1 text-on-surface bg-s5">
+          <thead className="text-l2 sm:text-l1 text-on-surface bg-s5">
             <tr>
               <th>Sản phẩm</th>
               <th>Giá bán</th>
@@ -205,11 +205,6 @@ const Cart = () => {
           xóa mã
         </button> */}
         </div>
-        {/* <div>
-          <Button  btnCSS={'h-[50px]'} icon="payments" onClick={addOrder}>
-            Thanh toán
-          </Button>
-        </div> */}
       </div>
       {/* Card total - discount */}
       <div className="p-6 my-6 rounded-3xl bg-s5 text-on-surface border-outline-var">
@@ -231,7 +226,8 @@ const Cart = () => {
               currency: 'VND',
             }).format(price)}
           </div>
-          <Button
+          <div className='flex flex-col gap-2'>
+            <Button
             btnStyle=""
             btnCSS={'shadow-5'}
             icon="payments"
@@ -240,11 +236,14 @@ const Cart = () => {
             Thanh toán
           </Button>
           <Button 
-          btnCSS={'bg-[#a50064] text-[#a50064]'}
-          icon="" 
+          btnStyle=""
+          btnCSS={'!bg-[#d41f8d] shadow-5'}
+          icon="wallet" 
           onClick={addOrderMoMo}>
-            Thanh toán MoMo
+            Momo
           </Button>
+          </div>
+          
         </div>
       </div>
     </div>

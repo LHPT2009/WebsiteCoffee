@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
 import Button from '../../../components/Button/Button'
-
+import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
-
 import Topnav from '../../../components/Admin/topnav/TopNav'
 import SearchAdmin from '../../../components/Admin/topnav/SearchAdmin'
 import { CSVLink } from 'react-csv'
 import { Link } from 'react-router-dom'
 
 import Pagination from '../../../components/Admin/table/Pagination'
+
 const Receipts = () => {
   const [id, setId] = useState('')
   const navigate = useNavigate()
@@ -50,8 +48,8 @@ const Receipts = () => {
         <tr key={item._id}>
           <td>{item._id}</td>
           <td>{item.userid}</td>
-          <td>{item.createdAt}</td>
-          <td>{item.updatedAt}</td>
+          <td>{moment(item.createdAt).format('DD.MM.YYYY')}</td>
+          <td>{moment(item.updatedAt).format('DD.MM.YYYY')}</td>
           <td>
             {new Intl.NumberFormat('vi-VN', {
               style: 'currency',
@@ -83,15 +81,15 @@ const Receipts = () => {
         <tr key={item._id}>
           <td>{item._id}</td>
           <td>{item.userid}</td>
-          <td>{item.createdAt}</td>
-          <td>{item.updatedAt}</td>
+          <td>{moment(item.createdAt).format('DD.MM.YYYY')}</td>
+          <td>{moment(item.updatedAt).format('DD.MM.YYYY')}</td>
           <td>
             {new Intl.NumberFormat('vi-VN', {
               style: 'currency',
               currency: 'VND',
             }).format(item.price)}
           </td>
-          <td>{item.statusdelivery}</td>
+          <td>{item.statusdelivery === true ? 'Đã giao' : ''}</td>
           <td style={{ minWidth: 100 }}>
             <Link
               // btnStyle={'btn-outline'}

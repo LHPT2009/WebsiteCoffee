@@ -56,7 +56,7 @@ const SignUp = () => {
           <div className="grid grid-cols-12 gap-6 h-full lg:h-full">
             {/* col-tilte */}
             <div className="hidden  md:flex md:flex-col col-span-12 lg:col-span-6 justify-center text-left items-start gap-[24px]">
-              <h2 className="text-h2 text-tertỉay">Bug Ổn xin chào</h2>
+              <h2 className="text-h2 text-tertiary">Bug Ổn xin chào</h2>
               <d1 className="text-d1 text-black">
                 Trở thành thanh viên của Bug ổn chỉ với vài bước❤️
               </d1>

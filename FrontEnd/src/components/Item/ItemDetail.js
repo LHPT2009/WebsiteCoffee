@@ -21,7 +21,7 @@ const ItemDetail = () => {
   const [pricesize, setPriceSize] = useState(0)
   const [size, setSize] = useState('S')
   const navigate = useNavigate()
-
+  const [category, setCategory] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [ratesPerPage] = useState(3)
 
@@ -45,8 +45,11 @@ const ItemDetail = () => {
           String.fromCharCode(...new Uint8Array(res.data.image.data.data))
         )}`
       )
+      setCategory(res.data.categoryproductid._id)
+      // console.log(res.data.categoryproductid._id)
     })
   }, [id])
+  // console.log(info)
   const [product, setProduct] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8000/product').then((res) => {
@@ -89,6 +92,7 @@ const ItemDetail = () => {
     } else {
     }
   }
+
   return (
     <div className="relative min-h-screen pb-24 lg:pb-12 bg-background">
       <Header />
@@ -183,74 +187,29 @@ const ItemDetail = () => {
             paginate={paginate}
           />
         )}
-        {localStorage.getItem('token') ? (
-          <div className="relative pb-12 my-8 text-on-surface ">
-            <h4 className="my-3 text-t1">Viết đánh giá</h4>
-            <form onSubmit={addrate}>
-              {/* Star */}
-              <div>
-                <Rating
-                  size="large"
-                  name="simple-controlled"
-                  value={point}
-                  onChange={(event, newValue) => {
-                    setPoint(newValue)
-                  }}
-                />
-              </div>
-              {/* Content */}
-              <div className="">
-                <textarea
-                  name="content"
-                  placeholder="Nội dung"
-                  value={content}
-                  className="border-[2px] bg-background border-outline-var rounded-[24px] text-l2 mb-3 px-6 py-4 hover:border-outline focus:border-primary focus:rounded-[16px] focus-visible:border-primaryt transition-all w-full min-h-[56px] max-h-[150px]"
-                  onChange={(e) => setContent(e.target.value)}
-                />
-              </div>
-              <div className="absolute bottom-0 right-0">
-                <Button
-                  btnStyle={'btn-fill'}
-                  icon="file_upload"
-                  btnCSS={''}
-                  onClick={addrate}
-                >
-                  Đăng
-                </Button>
-              </div>
-              {/* End Content */}
-            </form>
-          </div>
-        ) : (
-          <div className="mt-6 px-4 py-4 bg-insurface text-center text-t2 text-white rounded-[16px]">
-            Hãy
-            <span
-              onClick={() => {
-                navigate('/signin')
-              }}
-              className="px-3 py-2 rounded-full cursor-pointer text-on-insurface hover:bg-secondary"
-            >
-              ĐĂNG NHẬP
-            </span>
-            để được bình luận ☕ 😍
-          </div>
-        )}
+
         {/* Relate */}
         <div className="my-16">
           <h4 className="mb-5 text-t1">Sản phẩm khác</h4>
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {product.map((item) => (
-              <Link to={`/product/${item._id}`}>
-                <ItemCard
-                  key={item._id}
-                  title={item.name}
-                  price={item.price}
-                  image={`data:image/png;base64,${btoa(
-                    String.fromCharCode(...new Uint8Array(item.image.data.data))
-                  )}`}
-                />
-              </Link>
-            ))}
+            {product
+              .filter((cate) => {
+                return cate.categoryproductid._id == category
+              })
+              .map((item) => (
+                <Link to={`/product/${item._id}`}>
+                  <ItemCard
+                    key={item._id}
+                    title={item.name}
+                    price={item.price}
+                    image={`data:image/png;base64,${btoa(
+                      String.fromCharCode(
+                        ...new Uint8Array(item.image.data.data)
+                      )
+                    )}`}
+                  />
+                </Link>
+              ))}
           </div>
         </div>
       </div>
