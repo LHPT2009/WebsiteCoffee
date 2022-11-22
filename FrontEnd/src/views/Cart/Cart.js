@@ -174,8 +174,7 @@ const Cart = () => {
           <tbody>{orderList}</tbody>
         </table>
       </div>
-      <div>
-      </div>
+      <div></div>
       {/* Discount - Payment */}
       <div className="flex justify-between mt-6">
         <div className="flex">
@@ -196,16 +195,19 @@ const Cart = () => {
             >
               Áp dụng
             </Button>
+            {/* <Button
+              btnStyle="btn-danger"
+              btnCSS={'h-[50px]'}
+              icon={''}
+              onClick={() => {
+                setNameDisCount('')
+                setDiscountPrice(0)
+                setDisCountId('')
+              }}
+            >
+              Xóa mã
+            </Button> */}
           </div>
-          {/* <button
-          onClick={() => {
-            setNameDisCount('')
-            setDiscountPrice(0)
-            setDisCountId('')
-          }}
-        >
-          xóa mã
-        </button> */}
         </div>
       </div>
       {/* Card total - discount */}
@@ -228,24 +230,24 @@ const Cart = () => {
               currency: 'VND',
             }).format(price)}
           </div>
-          <div className='flex flex-col gap-2'>
+          <div className="flex flex-col gap-2">
             <Button
-            btnStyle=""
-            btnCSS={'shadow-5'}
-            icon="payments"
-            onClick={addOrder}
-          >
-            Thanh toán
-          </Button>
-          <Button 
-          btnStyle=""
-          btnCSS={'!bg-[#d41f8d] shadow-5'}
-          icon="wallet" 
-          onClick={addOrderMoMo}>
-            Momo
-          </Button>
+              btnStyle=""
+              btnCSS={'shadow-5'}
+              icon="payments"
+              onClick={addOrder}
+            >
+              Thanh toán
+            </Button>
+            <Button
+              btnStyle=""
+              btnCSS={'!bg-[#d41f8d] shadow-5'}
+              icon="wallet"
+              onClick={addOrderMoMo}
+            >
+              Momo
+            </Button>
           </div>
-          
         </div>
       </div>
     </div>
@@ -262,6 +264,10 @@ const Cart = () => {
       </div>
     </div>
   )
+
+  useEffect(() => {
+    document.title = `Giỏ hàng - Coffee Bug Ổn`
+  }, [])
 
   return (
     <div className="relative min-h-screen pb-24 lg:pb-12 bg-background">

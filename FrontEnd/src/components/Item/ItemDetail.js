@@ -10,6 +10,7 @@ import Rating from '@mui/material/Rating'
 import jwt_decode from 'jwt-decode'
 import moment from 'moment'
 import Pagination from '../Admin/table/Pagination'
+
 const ItemDetail = () => {
   const { id } = useParams()
   const [point, setPoint] = React.useState(0)
@@ -46,10 +47,8 @@ const ItemDetail = () => {
         )}`
       )
       setCategory(res.data.categoryproductid._id)
-      // console.log(res.data.categoryproductid._id)
     })
   }, [id])
-  // console.log(info)
   const [product, setProduct] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8000/product').then((res) => {
@@ -92,6 +91,10 @@ const ItemDetail = () => {
     } else {
     }
   }
+
+  useEffect(() => {
+    document.title = `${info.name} - Coffee Bug Ổn`
+  }, [info._id])
 
   return (
     <div className="relative min-h-screen pb-24 lg:pb-12 bg-background">

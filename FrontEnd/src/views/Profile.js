@@ -19,7 +19,8 @@ const Profile = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/user/${jwt_decode(localStorage.getItem('token')).id
+        `http://localhost:8000/user/${
+          jwt_decode(localStorage.getItem('token')).id
         }`
       )
       .then((res) => {
@@ -35,14 +36,15 @@ const Profile = () => {
   const editUser = async (e) => {
     e.preventDefault()
     const edit = await axios.put(
-      `http://localhost:8000/user/${jwt_decode(localStorage.getItem('token')).id
+      `http://localhost:8000/user/${
+        jwt_decode(localStorage.getItem('token')).id
       }`,
       {
         email,
         firstname,
         lastname,
         numberphone,
-        address
+        address,
       }
     )
     if (edit) {
@@ -52,6 +54,10 @@ const Profile = () => {
       alert('Sua ko thanh cong!!!')
     }
   }
+
+  useEffect(() => {
+    document.title = `Tài khoản - Coffee Bug Ổn`
+  }, [])
 
   return (
     <div className="relative min-h-screen pb-24 lg:pb-12">

@@ -21,20 +21,21 @@ const BannerHome = () => {
   ]
 
   return (
-    <Link to={'/product'}>
-      <AutoplaySlider
-        className="lg:h-[410px] xs:h-[150px] xl:h-[581px] mb-10 xs:mb-6"
-        bullets={false}
-        cssModule={AwesomeSliderStyles}
-        play={true}
-        cancelOnInteraction={true}
-        interval={3000}
-      >
-        {images.map((item) => (
-          <div data-src={item.source} />
-        ))}
-      </AutoplaySlider>
-    </Link>
+    <AutoplaySlider
+      className="lg:h-[410px] xs:h-[150px] xl:h-[581px] mb-10 xs:mb-6"
+      bullets={false}
+      cssModule={AwesomeSliderStyles}
+      play={true}
+      cancelOnInteraction={true}
+      interval={3000}
+    >
+      {images.map((item) => (
+        <div>
+          {/* <div data-src={item.source} /> */}
+          <img src={item.source} alt="slider" />
+        </div>
+      ))}
+    </AutoplaySlider>
   )
 }
 

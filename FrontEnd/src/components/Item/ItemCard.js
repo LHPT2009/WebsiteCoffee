@@ -1,5 +1,4 @@
 import React from 'react'
-import newLabel from '../../assets/images/newLabel.png'
 
 const ItemCard = ({ title, price, image }) => {
   return (
@@ -10,7 +9,9 @@ const ItemCard = ({ title, price, image }) => {
         alt="image-product"
       />
       <div className="flex flex-col items-start gap-[8px] self-stretch px-6 py-4">
-        <span className="text-l2 font-[700] sm:text-l1 text-left truncate">{title}</span>
+        <span className="text-l2 font-[700] sm:text-l1 text-left truncate">
+          {title}
+        </span>
         <span className="text-caption sm:text-l2 text-grey">
           {new Intl.NumberFormat('vi-VN', {
             style: 'currency',

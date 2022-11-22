@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import BannerHome from '../components/Main/BannerHome'
 import Introduce from '../components/Main/Introduce'
 import MenuHome from '../components/Main/MenuHome'
-import Button from '../components/Button/Button'
-import CheckCode from '../components/Auth/CheckCode'
-import Career from './Collections/Career'
 
 const Home = () => {
+  useEffect(() => {
+    document.title = 'Coffee Bug Ổn'
+  }, [])
   return (
     <>
       <Header />

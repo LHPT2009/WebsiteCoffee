@@ -52,7 +52,7 @@ const Header = () => {
                   navigate('/product')
                 }}
               >
-                Thực đơn
+                Menu
               </button>
               <button
                 className={`flex px-[16px] items-center text-l2 hover:bg-s5 rounded-[16px] md:w-auto h-[56px] text-black hover:text-primary xs:w-full`}
@@ -103,7 +103,7 @@ const Header = () => {
                     {jwt_decode(localStorage.getItem('token')).name}
                   </span>
                 </button>
-                <ul className="absolute hidden dropdown-menu pt-1">
+                <ul className="absolute hidden pt-1 dropdown-menu">
                   <div className="bg-s1 text-on-secondary-cont rounded-[16px] w-full p-5 text-body shadow-4">
                     <li>
                       <Link

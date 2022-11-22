@@ -25,6 +25,10 @@ const Coffee = () => {
   }, [])
 
   useEffect(() => {
+    document.title = 'Menu - Coffee Bug Ổn'
+  }, [])
+
+  useEffect(() => {
     axios.get('http://localhost:8000/category').then((res) => {
       setProductCate(res.data)
     })
@@ -91,44 +95,42 @@ const Coffee = () => {
   return (
     <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
       <Header />
-      
-        <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
-          <div className="text-h2 uppercase text-primary mb-5">
-            Menu
-          </div>
-          {/* Filter - Search */}
-          <div className="gap-3 mb-2 lg:flex lg:justify-between">
-            <div className="flex gap-3 h-[50px]">
-              <label className="cursor-pointer">
-                  <input
-                    id="default-radio-1"
-                    type="radio"
-                    name="default-radio"
-                    class="peer sr-only"
-                    onClick={handleproduct}
-                  ></input>
-                  <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
-                  Tất cả
-                  </div>
-                </label>
-              {/* new tag filter */}
-              {productCate.map((item) => (
-                <label className="cursor-pointer">
-                  <input
-                    id="default-radio-1"
-                    type="radio"
-                    name="default-radio"
-                    class="peer sr-only"
-                    onClick={() => handleCategories(`${item._id}`)}
-                  ></input>
-                  <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
-                  {item.name}
-                  </div>
-                </label>
-              ))}
 
-              {/* old tag filter */}
-              {/* <div className="flex gap-3 h-[50px]">
+      <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
+        <div className="mb-5 uppercase text-h2 text-primary">Menu</div>
+        {/* Filter - Search */}
+        <div className="gap-3 mb-2 lg:flex lg:justify-between">
+          <div className="flex gap-3 h-[50px]">
+            <label className="cursor-pointer">
+              <input
+                id="default-radio-1"
+                type="radio"
+                name="default-radio"
+                class="peer sr-only"
+                onClick={handleproduct}
+              ></input>
+              <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
+                Tất cả
+              </div>
+            </label>
+            {/* new tag filter */}
+            {productCate.map((item) => (
+              <label className="cursor-pointer">
+                <input
+                  id="default-radio-1"
+                  type="radio"
+                  name="default-radio"
+                  class="peer sr-only"
+                  onClick={() => handleCategories(`${item._id}`)}
+                ></input>
+                <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
+                  {item.name}
+                </div>
+              </label>
+            ))}
+
+            {/* old tag filter */}
+            {/* <div className="flex gap-3 h-[50px]">
                 {productCate.map((item) => (
                   <Button
                     btnStyle="btn-outline"
@@ -139,32 +141,32 @@ const Coffee = () => {
                   </Button>
                 ))}
               </div> */}
-            </div>
+          </div>
 
-            {/* Search bar */}
-            <div>
-              <Search
-                onChange={handleFilter}
-                placeholder={'Tìm kiếm....'}
-                value={wordEntered}
-              />
-            </div>
+          {/* Search bar */}
+          <div>
+            <Search
+              onChange={handleFilter}
+              placeholder={'Tìm kiếm....'}
+              value={wordEntered}
+            />
           </div>
-          {/* End Filter - Search */}
-          <div className="grid gap-4 mb-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {wordEntered === '' ? renderPaging : renderSearch}
-          </div>
-          {product.length > noOfElement ? (
-            <Button
-              onClick={() => loadMore()}
-              btnStyle={'btn-outline'}
-              btnCSS={''}
-              icon="expand_more"
-            >
-              Xem thêm
-            </Button>
-          ) : null}
         </div>
+        {/* End Filter - Search */}
+        <div className="grid gap-4 mb-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          {wordEntered === '' ? renderPaging : renderSearch}
+        </div>
+        {product.length > noOfElement ? (
+          <Button
+            onClick={() => loadMore()}
+            btnStyle={'btn-outline'}
+            btnCSS={''}
+            icon="expand_more"
+          >
+            Xem thêm
+          </Button>
+        ) : null}
+      </div>
       <Footer />
     </div>
   )

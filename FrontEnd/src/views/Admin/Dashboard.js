@@ -54,7 +54,9 @@ const Dashboard = () => {
   const [receipt, setReceipt] = useState([])
   const [user, setUser] = useState([])
   const [rate, setRate] = useState([])
-
+  useEffect(() => {
+    document.title = `Bảng quản trị - Coffee Bug Ổn`
+  }, [])
   useEffect(() => {
     axios
       .get('http://localhost:8000/receipt')
@@ -117,13 +119,13 @@ const Dashboard = () => {
                   options={
                     themeReducer === 'theme-mode-dark'
                       ? {
-                        ...chartOptions.options,
-                        theme: { mode: 'dark' },
-                      }
+                          ...chartOptions.options,
+                          theme: { mode: 'dark' },
+                        }
                       : {
-                        ...chartOptions.options,
-                        theme: { mode: 'light' },
-                      }
+                          ...chartOptions.options,
+                          theme: { mode: 'light' },
+                        }
                   }
                   series={chartOptions.series}
                   type="line"

@@ -1,32 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import barista2 from '../../assets/images/barista_2.png'
 
 const Career = () => {
+  useEffect(() => {
+    document.title = 'Tuyển dụng - Coffee Bug Ổn'
+  }, [])
   return (
     <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
       <Header />
       <div className="mx-8 my-[64px] bg-background lg:mx-40">
         <div className="flex flex-col gap-10 text-center">
-          <div className='grid grid-cols-12 gap-6 h-full lg:h-4/5'>
-            <div className='flex flex-col col-span-12 lg:col-span-5 justify-center text-left items-start gap-[24px]'>
-              <h2 className='text-h2 text-primary'>Tuyển dụng</h2>
-              <d1 className='text-d1 text-black'>Bạn đang tìm vị trí ở Bug Ổn?</d1>
-              <p className='text-body text-black'>Ở ngôi nhà Bug Ổn chúng tôi luôn có vị trí cho bạn. Hãy tham gia ngay. Các vị trí Bug Ổn đang tuyển dụng nằm ở phía dưới. </p>
+          <div className="grid h-full grid-cols-12 gap-6 lg:h-4/5">
+            <div className="flex flex-col col-span-12 lg:col-span-5 justify-center text-left items-start gap-[24px]">
+              <h2 className="text-h2 text-primary">Tuyển dụng</h2>
+              <d1 className="text-black text-d1">
+                Bạn đang tìm vị trí ở Bug Ổn?
+              </d1>
+              <p className="text-black text-body">
+                Ở ngôi nhà Bug Ổn chúng tôi luôn có vị trí cho bạn. Hãy tham gia
+                ngay. Các vị trí Bug Ổn đang tuyển dụng nằm ở phía dưới.{' '}
+              </p>
             </div>
-            <div className='lg:col-span-1'></div>
-            <div className='relative mx-20 lg:mx-0 bg-secondary-cont col-span-12 lg:col-span-6  rounded-[24px] h-[500px]'>
-                <img className='absolute w-[490px] h-auto left-[-40px] top-[-9px]
+            <div className="lg:col-span-1"></div>
+            <div className="relative mx-20 lg:mx-0 bg-secondary-cont col-span-12 lg:col-span-6  rounded-[24px] h-[500px]">
+              <img
+                className="absolute w-[490px] h-auto left-[-40px] top-[-9px]
                 lg:left-[-46px] lg:top-[-8px]  
-                z-10'
+                z-10"
                 src={barista2}
-                />
-                <circle className='absolute w-[56px] h-[56px] right-[56px] top-[150px] bg-on-primary-cont rounded-full'></circle>
-                <div className='absolute rounded-full border-secondary border-[10px] h-[200px] w-auto right-[-40px] left-[28.98%] bottom-[-36px] z-0'></div>
+              />
+              <circle className="absolute w-[56px] h-[56px] right-[56px] top-[150px] bg-on-primary-cont rounded-full"></circle>
+              <div className="absolute rounded-full border-secondary border-[10px] h-[200px] w-auto right-[-40px] left-[28.98%] bottom-[-36px] z-0"></div>
             </div>
           </div>
-          <div className='box-border flex flex-col bg-outline-var mx-60 md:mx-72 py-[2px] my-32 rounded-full'></div>
+          <div className="box-border flex flex-col bg-outline-var mx-60 md:mx-72 py-[2px] my-32 rounded-full"></div>
           {/* articleblock 1 */}
           <div className="box-border flex flex-col gap-[16px] bg-primary-cont text-on-primary-cont px-16 py-12 rounded-[32px] lg:mx-32 border-[2px] border-primary-cont hover:border-outline-var ease-in transition-all">
             <h2 className="text-h1">TẦM NHÌN</h2>

@@ -100,6 +100,10 @@ const Purchase = () => {
     </>
   )
 
+  useEffect(() => {
+    document.title = `Lịch sử mua hàng - Coffee Bug Ổn`
+  }, [])
+
   return (
     <div className="relative min-h-screen pb-24 lg:pb-12">
       <Header />
