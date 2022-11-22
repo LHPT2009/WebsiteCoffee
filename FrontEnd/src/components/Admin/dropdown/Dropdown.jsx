@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 
 import './dropdown.css'
 
@@ -22,7 +22,7 @@ const Dropdown = props => {
     const dropdown_content_el = useRef(null)
 
     clickOutsideRef(dropdown_content_el, dropdown_toggle_el)
-    
+
     return (
         <div className='dropdown'>
             <button ref={dropdown_toggle_el} className="dropdown__toggle">

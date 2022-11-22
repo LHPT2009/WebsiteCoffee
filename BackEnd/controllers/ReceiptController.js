@@ -1,6 +1,7 @@
 const Receipt = require('../models/receipt');
 const ReceiptDetail = require('../models/receiptDetails');
 const Rate = require('../models/rate');
+const Notification = require('../models/Notification');
 
 const ReceiptController = {
     getAllReceipts: async (req, res) => {
@@ -87,6 +88,12 @@ const ReceiptController = {
                     productid = ele.id;
                 }
             });
+
+            const newNotification = new Notification({
+                receiptid: newReceipt._id,
+                status: false
+            });
+            await newNotification.save();
             res.status(200).json('Add successfully');
         } catch (error) {
             res.status(500).json(error);

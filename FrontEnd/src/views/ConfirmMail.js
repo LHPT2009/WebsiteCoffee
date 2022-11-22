@@ -15,8 +15,7 @@ const ConfirmMail = () => {
       <Header />
       <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         <div className="text-center text-[100px] font-bold">Cảm ơn bạn đã xác nhận mail của mình!</div>
-        <div className="text-center text-[10px] font-bold">{userid}</div>
-        <Link to={"/signin"}>Đăng nhập</Link>
+        <Link to={"/signin"}> Mời trở về đăng nhập</Link>
       </div>
       <Footer />
     </div>

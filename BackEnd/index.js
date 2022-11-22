@@ -17,17 +17,18 @@ const disCountRoute = require("./routes/disCount");
 const rateRoute = require("./routes/rate");
 const loadProductRoute = require("./routes/loadProduct");
 const momoRoute = require("./routes/momo");
+const notificationRoute = require("./routes/notification");
 
 dotenv.config();
 const app = express();
 
-mongoose.connect(process.env.MONGOOSE_URL, () => {
-  console.log("DB connected");
-});
-
-// mongoose.connect(process.env.MONGOOSE_URL_LOCALHOST, () => {
+// mongoose.connect(process.env.MONGOOSE_URL, () => {
 //   console.log("DB connected");
 // });
+
+mongoose.connect(process.env.MONGOOSE_URL_LOCALHOST, () => {
+  console.log("DB connected");
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -45,6 +46,8 @@ app.use("/receipt", receiptRoute);
 app.use("/sizeproduct", sizeProductRoute);
 app.use("/discount", disCountRoute);
 app.use("/rate", rateRoute);
+app.use("/notification", notificationRoute);
+
 
 app.use("/category/one", categoryProductRoute);
 
