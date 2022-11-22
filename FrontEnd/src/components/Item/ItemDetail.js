@@ -158,7 +158,7 @@ const ItemDetail = () => {
         {/* Rating */}
         <h4 className="mt-10 mb-5 text-t1">Đánh giá sản phẩm</h4>
         <div className="box-border flex flex-col gap-[16px] rounded-[32px] w-full">
-          {currentRates != 0 ? (
+          {currentRates.length != 0 ? (
             <>
               {currentRates
                 .map((ele) => (
