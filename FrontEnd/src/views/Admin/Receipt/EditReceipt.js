@@ -31,7 +31,7 @@ const EditReceipt = () => {
       .get(`http://localhost:8000/receipt/detail/${id}`)
       .then((res) => setReceiptDetail(res.data))
     axios.put(`http://localhost:8000/notification/${id}`, {})
-  }, [])
+  }, [id])
 
   const editReceipt = async (e) => {
     e.preventDefault()

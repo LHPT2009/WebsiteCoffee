@@ -91,15 +91,15 @@ const Receipts = () => {
           </td>
           <td>{item.statusdelivery === true ? 'Đã giao' : ''}</td>
           <td style={{ minWidth: 100 }}>
-            <Link
-              // btnStyle={'btn-outline'}
-              // type="button"
-              // btnCSS={'h-11 mr-2'}
-              // icon="edit"
-              to={`/admin/editreceipt/${item._id}`}
+            <Button
+              btnStyle={'btn-outline'}
+              type="button"
+              btnCSS={'h-11 mr-2'}
+              icon="edit"
+              onClick={() => { navigate(`/admin/editreceipt/${item._id}`) }}
             >
               Sửa
-            </Link>
+            </Button>
           </td>
         </tr>
       ))}
