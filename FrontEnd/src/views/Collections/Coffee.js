@@ -114,6 +114,8 @@ const Coffee = () => {
                 ))}
               </div>
             </div>
+            
+            {/* Search bar */}
             <div>
               <Search
                 onChange={handleFilter}

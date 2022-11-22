@@ -84,9 +84,9 @@ const SignIn = () => {
     }
   }
   return (
-    <div className="relative min-h-screen pb-24 text-center lg:pb-12 bg-secondary-cont sm:bg-background">
+    <div className="relative min-h-screen pb-24 items-center text-center lg:pb-12 bg-secondary-cont sm:bg-background">
       <Header />
-      <div className="mx-2 sm:mx-8 my-[64px] bg-secondary-cont sm:bg-background lg:mx-28">
+      <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-secondary-cont sm:bg-background ">
         <div className="flex flex-col gap-10 text-center">
           {/* col-2-2 */}
           <div className="grid grid-cols-12 gap-6 h-full lg:h-full">

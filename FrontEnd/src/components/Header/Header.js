@@ -107,7 +107,7 @@ const Header = () => {
                   <div className="bg-s1 text-on-secondary-cont rounded-[16px] w-full p-5 text-body shadow-4">
                     <li>
                       <Link
-                        className="flex items-center justify-between whitespace-no-wrap"
+                        className="flex items-center justify-between whitespace-nowrap"
                         to="/profile"
                       >
                         <span className="material-symbols-outlined">
@@ -120,7 +120,7 @@ const Header = () => {
                       'Admin' && (
                       <li>
                         <Link
-                          className="flex items-center justify-between whitespace-no-wrap"
+                          className="flex items-center justify-between whitespace-nowrap"
                           to="/profile"
                         >
                           <span className="material-symbols-outlined">
@@ -132,7 +132,7 @@ const Header = () => {
                     )}
                     <li>
                       <Link
-                        className="flex items-center justify-between py-3 pr-1 whitespace-no-wrap"
+                        className="flex items-center justify-between py-3 pr-1 whitespace-nowrap"
                         to="/purchase"
                       >
                         <span className="material-symbols-outlined">
@@ -143,7 +143,7 @@ const Header = () => {
                     </li>
                     <li>
                       <button
-                        className="flex items-center justify-between text-black whitespace-no-wrap hover:text-primary"
+                        className="flex items-center justify-between text-black whitespace-nowrap hover:text-primary"
                         onClick={logout}
                       >
                         <span className="mr-[15px] material-symbols-outlined text-[20px]">

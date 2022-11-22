@@ -50,15 +50,15 @@ const SignUp = () => {
   return (
     <div className="relative min-h-screen pb-24 text-center lg:pb-12 bg-tertiary-cont sm:bg-background">
       <Header />
-      <div className="mx-2 sm:mx-8 my-[64px] bg-tertiary-cont sm:bg-background lg:mx-28">
+      <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-tertiary-cont sm:bg-background">
         <div className="flex flex-col gap-10 text-center">
           {/* col-2-2 */}
           <div className="grid grid-cols-12 gap-6 h-full lg:h-full">
             {/* col-tilte */}
-            <div className="hidden  md:flex md:flex-col col-span-12 lg:col-span-6 justify-center text-left items-start gap-[24px]">
+            <div className="hidden md:flex md:flex-col col-span-12 lg:col-span-6 justify-center text-left items-start gap-[24px]">
               <h2 className="text-h2 text-tertiary">Bug Ổn xin chào</h2>
               <d1 className="text-d1 text-black">
-                Trở thành thanh viên của Bug ổn chỉ với vài bước❤️
+                Đăng kí thành viên của Bug ổn với vài bước❤️
               </d1>
             </div>
             {/* col-signin */}

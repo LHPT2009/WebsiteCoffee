@@ -76,9 +76,6 @@ root.render(
         smooth
         top={480}
         component={
-          // <span className="material-symbols-rounded !text-[32px] !text-white">
-          //   keyboard_arrow_up
-          // </span>
           <Button 
           btnStyle="btn-elevate"
           btnCSS={''}

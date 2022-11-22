@@ -115,8 +115,10 @@ const ItemDetail = () => {
                 }).format(info.price + pricesize)}
               </span>
             </div>
+
+            {/* Pick size */}
             <h2 className="mt-6 text-black text-l2">
-              Chọn size (chưa ràng buộc bắt buộc)
+              Chọn size (mặc định size S)
             </h2>
             <div className="flex flex-wrap gap-4 mt-3">
               {sizeproduct.map((ele) => (
