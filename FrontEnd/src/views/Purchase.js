@@ -22,7 +22,6 @@ const Purchase = () => {
   const indexOfLastItem = currentPage * purchasesPerPage
   const indexOfFirstItem = indexOfLastItem - purchasesPerPage
   const currentPurchases = receipt.slice(indexOfFirstItem, indexOfLastItem)
-  const reversePurchases = receipt.reverse(receipt.createdAt)
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
@@ -52,11 +51,10 @@ const Purchase = () => {
             <div className="flex items-center justify-between p-4 bg-s5 text-[16px] font-semibold rounded-t-3xl border-[2px] border-b-0 border-solid border-s5">
               <div>Mã đơn: {item._id}</div>
               <div
-                className={`px-4 py-2 rounded-full ${
-                  item.statusdelivery === true
-                    ? 'bg-tertiary-cont'
-                    : 'bg-[#eb5353] text-white'
-                }`}
+                className={`px-4 py-2 rounded-full ${item.statusdelivery === true
+                  ? 'bg-tertiary-cont'
+                  : 'bg-[#eb5353] text-white'
+                  }`}
               >
                 {item.statusdelivery === true
                   ? 'Hoàn thành'
@@ -76,8 +74,11 @@ const Purchase = () => {
                   }).format(item.price)}
                 </div>
               </div>
-              <h4 className="my-3 text-t1">Đánh giá sản phẩm</h4>
-              <RatingProduct receiptid={item._id} />
+              {(item.statuspayment == true && item.statusdelivery == true) ? <div>
+                <h4 className="my-3 text-t1">Đánh giá sản phẩm</h4>
+                <RatingProduct receiptid={item._id} />
+              </div>
+                : ""}
             </div>
           </div>
         ))

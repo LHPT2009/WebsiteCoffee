@@ -21,7 +21,7 @@ const Rate = () => {
 
   const indexOfLastItem = currentPage * ratesPerPage
   const indexOfFirstItem = indexOfLastItem - ratesPerPage
-  const currentRates = rate.slice(indexOfFirstItem, indexOfLastItem)
+  const currentRates = rate.filter((rate) => rate.statusrate == true).slice(indexOfFirstItem, indexOfLastItem)
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
@@ -71,7 +71,7 @@ const Rate = () => {
   )
   const renderRate = (
     <>
-      {currentRates.filter((cur) => cur.statusrate == true).map((item) => (
+      {currentRates.map((item) => (
         <tr key={item._id}>
           <a href={'/product/' + item.productid} target="_blank">
             {item.productid}
@@ -126,7 +126,7 @@ const Rate = () => {
               </table>
               <Pagination
                 itemsPerPage={ratesPerPage}
-                totalItems={rate.length}
+                totalItems={rate.filter((rate) => rate.statusrate == true).length}
                 paginate={paginate}
               />
             </div>

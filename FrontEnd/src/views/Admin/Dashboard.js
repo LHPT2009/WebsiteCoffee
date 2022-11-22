@@ -88,7 +88,7 @@ const Dashboard = () => {
                 <div className="col-6">
                   <StatusCard
                     icon={'bx bx-star'}
-                    count={rate.length}
+                    count={rate.filter((rec) => rec.statusrate == true).length}
                     title={'Đánh giá'}
                   />
                 </div>
@@ -117,13 +117,13 @@ const Dashboard = () => {
                   options={
                     themeReducer === 'theme-mode-dark'
                       ? {
-                          ...chartOptions.options,
-                          theme: { mode: 'dark' },
-                        }
+                        ...chartOptions.options,
+                        theme: { mode: 'dark' },
+                      }
                       : {
-                          ...chartOptions.options,
-                          theme: { mode: 'light' },
-                        }
+                        ...chartOptions.options,
+                        theme: { mode: 'light' },
+                      }
                   }
                   series={chartOptions.series}
                   type="line"
