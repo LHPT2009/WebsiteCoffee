@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import Topnav from '../../../components/Admin/topnav/TopNav'
 import SearchAdmin from '../../../components/Admin/topnav/SearchAdmin'
 import { CSVLink } from 'react-csv'
+import { Link } from 'react-router-dom'
+
 import Pagination from '../../../components/Admin/table/Pagination'
 
 const Receipts = () => {
@@ -89,17 +91,15 @@ const Receipts = () => {
           </td>
           <td>{item.statusdelivery === true ? 'Đã giao' : ''}</td>
           <td style={{ minWidth: 100 }}>
-            <Button
-              btnStyle={'btn-outline'}
-              type="button"
-              btnCSS={'h-11 mr-2'}
-              icon="edit"
-              onClick={() => {
-                navigate('../editreceipt/' + item._id)
-              }}
+            <Link
+              // btnStyle={'btn-outline'}
+              // type="button"
+              // btnCSS={'h-11 mr-2'}
+              // icon="edit"
+              to={`/admin/editreceipt/${item._id}`}
             >
               Sửa
-            </Button>
+            </Link>
           </td>
         </tr>
       ))}
