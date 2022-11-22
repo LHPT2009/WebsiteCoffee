@@ -81,7 +81,11 @@ const Purchase = () => {
                   }).format(item.price)}
                 </div>
               </div>
-              <RatingProduct receiptid={item._id} />
+              {item.statuspayment == true && item.statusdelivery == true && (
+                <>
+                  <RatingProduct receiptid={item._id} />
+                </>
+              )}
             </div>
           </div>
         ))
