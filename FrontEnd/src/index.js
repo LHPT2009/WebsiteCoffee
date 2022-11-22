@@ -66,6 +66,8 @@ import Profile from './views/Profile'
 import ConfirmMail from './views/ConfirmMail'
 import Button from './components/Button/Button'
 import ScrollToTop from 'react-scroll-to-top'
+import AboutUs from './views/Collections/AboutUs'
+import TeamBugOn from './views/Collections/TeamBugOn'
 
 const store = createStore(rootReducer)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -76,12 +78,12 @@ root.render(
         smooth
         top={480}
         component={
-          <Button 
-          btnStyle="btn-elevate"
-          btnCSS={''}
-          icon="arrow_upward"
-          children="">
-          </Button>
+          <Button
+            btnStyle="btn-elevate"
+            btnCSS={''}
+            icon="arrow_upward"
+            children=""
+          ></Button>
         }
         className="!z-[101] !w-[48px] !h-[48px] !rounded-full  !transition-all !ease-out !duration-200 !bottom-[10%]"
       />
@@ -95,6 +97,8 @@ root.render(
             <Route path="/career" element={<Career />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/purchase" element={<Purchase />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/bugonteam" element={<TeamBugOn />} />
 
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
