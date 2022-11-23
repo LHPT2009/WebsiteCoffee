@@ -22,13 +22,13 @@ const notificationRoute = require("./routes/notification");
 dotenv.config();
 const app = express();
 
-mongoose.connect(process.env.MONGOOSE_URL, () => {
-  console.log("DB connected");
-});
-
-// mongoose.connect(process.env.MONGOOSE_URL_LOCALHOST, () => {
+// mongoose.connect(process.env.MONGOOSE_URL, () => {
 //   console.log("DB connected");
 // });
+
+mongoose.connect(process.env.MONGOOSE_URL_LOCALHOST, () => {
+  console.log("DB connected");
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
