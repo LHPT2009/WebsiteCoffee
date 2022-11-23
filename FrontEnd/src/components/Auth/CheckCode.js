@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode'
 import { Navigate, useNavigate } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
+import Swal from 'sweetalert2'
 
 const CheckCode = () => {
   const [Code, setCode] = useState('')
@@ -18,8 +19,19 @@ const CheckCode = () => {
     if (Code == codeser) {
       localStorage.setItem('checksuccess', true)
       navigate('/repass')
+      Swal.fire({
+        icon: 'success',
+        title: 'Mời bạn nhập mật khẩu mới.',
+        confirmButtonColor: '#3d685e'
+      })
     } else {
       navigate('/checkcode')
+      Swal.fire({
+        icon: 'error',
+        title: 'Mã không hợp lệ!',
+        text: 'Vui lòng nhập lại',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
   if (localStorage.getItem('tokenreset')) {

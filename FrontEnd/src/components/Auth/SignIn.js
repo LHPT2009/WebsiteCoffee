@@ -63,6 +63,12 @@ const SignIn = () => {
         const Auth = await axios.post('http://localhost:8000/auth/login', {
           username,
           password,
+        }).catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Đăng nhập thất bại!',
+            text: 'Bạn đã nhập sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại!'
+          })
         })
         if (!Auth) {
           Swal.fire({

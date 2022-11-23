@@ -6,11 +6,23 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
+import Swal from 'sweetalert2'
 
 const Repass = () => {
   const [password, setPassword] = useState('')
   const [rePassword, setrePassword] = useState('')
   const navigate = useNavigate()
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   const ResetPass = async (e) => {
     e.preventDefault()
@@ -25,11 +37,20 @@ const Repass = () => {
         localStorage.removeItem('checksuccess')
         localStorage.removeItem('tokenreset')
         navigate('/signin')
-      } else {
-        navigate('/repass')
+        Toast.fire({
+          icon: 'success',
+          title: 'Thay đổi mật khẩu thành công!',
+          text: 'Vui lòng đăng nhập lại.'
+        })
       }
     } else {
       navigate('/repass')
+      Swal.fire({
+        icon: 'error',
+        title: 'Mật khẩu xác nhận không đúng!',
+        text: 'Vui lòng nhập lại',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
   if (localStorage.getItem('checksuccess')) {

@@ -38,14 +38,13 @@ const SignUp = () => {
           role,
         })
         .then(function (response) {
-          console.log(response)
+          navigate('/signin')
           Swal.fire({
             icon: 'success',
             title: 'Đăng ký thành công',
-            text: 'Mời bạn quay về trang đăng nhập.',
+            text: 'Mời bạn xác nhận Email trước khi đăng nhập.',
             confirmButtonColor: '#3d685e'
           })
-          navigate('/signin')
         })
         .catch(function (error) {
           console.log(error)
@@ -166,7 +165,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-      </div>      
+      </div>
       <Footer />
     </div>
   )
