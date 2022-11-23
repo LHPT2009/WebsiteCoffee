@@ -16,7 +16,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rePassword, setRePassword] = useState('')
-  const [role, setRole] = useState('')
+  const [role, setRole] = useState('6335369ee1caa255ab840cd4')
 
   const navigate = useNavigate()
   useEffect(() => {
@@ -38,13 +38,16 @@ const SignUp = () => {
           role,
         })
         .then(function (response) {
-          navigate('/signin')
           Swal.fire({
             icon: 'success',
             title: 'Đăng ký thành công',
-            text: 'Mời bạn xác nhận Email trước khi đăng nhập.',
-            confirmButtonColor: '#3d685e',
+            text: 'Mời bạn xác nhận Email trước khi đăng nhập',
+            // text: 'Tự động chuyển về trang đăng nhập...',
+            showConfirmButton: false,
           })
+          setTimeout(() => {
+            navigate('/signin')
+          }, 5000);
         })
         .catch(function (error) {
           console.log(error)
