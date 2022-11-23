@@ -22,7 +22,8 @@ const BannerHome = () => {
 
   return (
     <AutoplaySlider
-      className="lg:h-[410px] xs:h-[150px] xl:h-[581px] mb-10 xs:mb-6"
+      className="h-[581px] mb-10 xs:mb-6"
+      // className="lg:h-[410px] xs:h-[150px] xl:h-[581px] mb-10 xs:mb-6"
       bullets={false}
       cssModule={AwesomeSliderStyles}
       play={true}
@@ -30,10 +31,7 @@ const BannerHome = () => {
       interval={3000}
     >
       {images.map((item) => (
-        <div>
-          {/* <div data-src={item.source} /> */}
-          <img src={item.source} alt="slider" />
-        </div>
+        <div data-src={item.source} />
       ))}
     </AutoplaySlider>
   )
