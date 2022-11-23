@@ -10,6 +10,7 @@ import Rating from '@mui/material/Rating'
 import jwt_decode from 'jwt-decode'
 import moment from 'moment'
 import Pagination from '../Admin/table/Pagination'
+import Swal from 'sweetalert2'
 
 const ItemDetail = () => {
   const { id } = useParams()
@@ -34,6 +35,18 @@ const ItemDetail = () => {
   const reverseRates = ratelist.reverse(ratelist.createdAt)
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   useEffect(() => {
     axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
@@ -66,11 +79,15 @@ const ItemDetail = () => {
   const add = (e) => {
     e.preventDefault()
     const id = info._id
-    const name = info.name + ' size:' + size
+    const name = info.name + ' (Size: ' + size + ')'
     const price = info.price + pricesize
     const amount = 1
     const product = { id, name, price, amount }
     addProduct(product)
+    Toast.fire({
+      icon: 'success',
+      title: 'Đã thêm vào đơn hàng'
+    })
   }
 
   const addrate = (e) => {

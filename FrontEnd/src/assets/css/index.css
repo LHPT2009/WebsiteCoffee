@@ -91,6 +91,7 @@ input:focus {
 .card {
     padding: 30px;
     margin-bottom: 30px;
+    margin-left: 30px;
     background-color: var(--main-bg);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);

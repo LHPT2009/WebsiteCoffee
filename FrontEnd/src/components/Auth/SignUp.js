@@ -7,6 +7,8 @@ import Button from '../Button/Button'
 import TextInput from '../Input/TextInput'
 import Footer from '../Footer/Footer'
 
+import Swal from 'sweetalert2'
+
 const SignUp = () => {
   const [firstname, setFirstName] = useState('')
   const [lastname, setLastName] = useState('')
@@ -37,14 +39,24 @@ const SignUp = () => {
         })
         .then(function (response) {
           console.log(response)
-          alert('Mời bạn trở lại trang đăng nhập')
+          Swal.fire({
+            icon: 'success',
+            title: 'Đăng ký thành công',
+            text: 'Mời bạn quay về trang đăng nhập.',
+            confirmButtonColor: '#3d685e'
+          })
           navigate('/signin')
         })
         .catch(function (error) {
           console.log(error)
         })
     } else {
-      alert('Mật khẩu xác nhận không trùng khớp')
+      Swal.fire({
+        icon: 'error',
+        title: 'Sai mật khẩu xác nhận',
+        text: 'Mật khẩu xác nhận không trùng khớp.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
   return (

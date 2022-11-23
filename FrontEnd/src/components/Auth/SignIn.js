@@ -10,6 +10,7 @@ import GoogleLogin from 'react-google-login'
 import { gapi } from 'gapi-script'
 import barista2 from '../../assets/images/barista_2.png'
 import SignUp from './SignUp'
+import Swal from 'sweetalert2'
 const SignIn = () => {
   const clientId =
     '78527833894-ao0e2761t8gbk4qijevpihcamn5ltlj9.apps.googleusercontent.com'
@@ -45,7 +46,13 @@ const SignIn = () => {
           localStorage.setItem('token', res.data)
         })
     } else {
-      alert('Vui lòng xác nhận Captcha')
+      Swal.fire({
+        icon: 'warning',
+        title: 'Captcha chưa xác nhận!',
+        text: 'Vui lòng xác nhận Captcha để đăng nhập.',
+        confirmButtonColor: '#3d685e'
+      })
+      // alert('Vui lòng xác nhận Captcha')
     }
   }
   const loginUser = async (e) => {
@@ -57,12 +64,33 @@ const SignIn = () => {
           password,
         })
         if (!Auth) {
-          alert('Sai tên đăng nhập hoặc mật khẩu')
+          Swal.fire({
+            icon: 'error',
+            title: 'Đăng nhập thất bại!',
+            text: 'Bạn đã nhập sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại!'
+          })
+          // alert('Sai tên đăng nhập hoặc mật khẩu')
         }
         if (
           Auth.data.role.rolename == 'Admin' &&
           Auth.data.confirmemail == true
         ) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Đăng nhập thành công!'
+          })
           navigate('/admin')
           localStorage.setItem('token', Auth.data.accessToken)
         } else {
@@ -73,11 +101,23 @@ const SignIn = () => {
             navigate('/')
             localStorage.setItem('token', Auth.data.accessToken)
           } else {
-            alert('Tài khoản chưa được xác thực')
+            Swal.fire({
+              icon: 'warning',
+              title: 'Tài khoản chưa được xác thực!',
+              text: 'Vui lòng xác thực tài khoản để đăng nhập.'
+            })
+            // alert('Tài khoản chưa được xác thực')
           }
         }
       } else {
-        alert('Vui lòng xác nhận Captcha')
+        Swal.fire({
+          icon: 'warning',
+          title: 'Captcha chưa xác nhận!',
+          text: 'Vui lòng xác nhận Captcha để đăng nhập.',
+          confirmButtonColor: '#3d685e',
+          width: '30em'
+        })
+        // alert('Vui lòng xác nhận Captcha')
       }
     } catch (err) {
       console.log(err)

@@ -4,6 +4,7 @@ import Button from '../Button/Button'
 import logo from '../../assets/images/logo_2.png'
 import axios from 'axios'
 import Dialog from '@mui/material/Dialog'
+import Swal from 'sweetalert2'
 
 const RatingProduct = ({ receiptid, isOpen }) => {
   const [rate, setRate] = useState([])
@@ -15,6 +16,18 @@ const RatingProduct = ({ receiptid, isOpen }) => {
   const [check, setCheck] = useState(0)
   const [showRate, setShowRate] = useState(false)
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
   const addrate = (id) => {
     if (localStorage.getItem('check')) {
       const put = axios.put(`http://localhost:8000/rate/receiptrate/${id}`, {
@@ -25,7 +38,11 @@ const RatingProduct = ({ receiptid, isOpen }) => {
         content,
       })
       if (put) {
-        alert('Cảm ơn bạn đã đánh giá')
+        Toast.fire({
+          icon: 'success',
+          title: 'Đánh giá thành công!',
+          text: 'Cảm ơn bạn đã đánh giá.'
+        })
         localStorage.removeItem('check')
         axios
           .post('http://localhost:8000/rate/receiptid', {
