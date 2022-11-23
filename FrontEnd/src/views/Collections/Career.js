@@ -14,7 +14,7 @@ const Career = () => {
       <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-background">
         <div className="flex flex-col gap-10 text-center">
           <div className="grid h-full grid-cols-12 gap-6 lg:h-4/5">
-            <div className="flex flex-col col-span-12 lg:col-span-5 justify-center text-left items-start gap-[24px]">
+            <div className="flex flex-col col-span-12 lg:col-span-5 justify-center text-left items-start gap-4">
               <h2 className="text-h2 text-primary">Tuyển dụng</h2>
               <d1 className="text-d2 font-[700] sm:text-black sm:text-d1">
                 Bạn đang tìm vị trí ở Bug Ổn?

@@ -7,6 +7,7 @@ import TextInput from '../components/Input/TextInput'
 import Button from '../components/Button/Button'
 import { useNavigate, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import profile from '../assets/images/Profile.png'
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -82,88 +83,89 @@ const Profile = () => {
   }, [])
 
   return (
-    <div className="relative min-h-screen pb-24 lg:pb-12">
+    <div className="relative items-center text-center min-h-screen pb-24 lg:pb-12 bg-s3 sm:bg-background">
       <Header />
-      <div className="text-center uppercase text-[32px] font-googleSansBold text-primary mt-20">
-        Tài khoản của tôi
-      </div>
-      <div className="fixed top-[45%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[600px]">
-        <div className="flex items-center justify-end">
-          <div className="w-[20%] text-left overflow-hidden">Tên đăng nhập</div>
-          <div className="w-[80%] box-border pl-5">
-            <div className="flex items-center box-border w-full h-[40%] overflow-hidden">
-              <TextInput
-                className="flex-1 !mb-0 hover:border-outline-var"
-                disabled={'disabled'}
-                defaultValue={currUser.username}
+      {/* new account detail */}
+      <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-s3 sm:bg-background ">
+        <div className="flex flex-col gap-10 text-center">
+          {/* col-2-2 - wrapper */}
+          <div className="grid grid-cols-12 gap-6 h-full lg:h-full">
+            {/* col-tilte - image */}
+            <div className="hidden lg:flex lg:flex-col col-span-12 lg:col-span-6 justify-center text-left items-start gap-4">
+              <h2 className="text-h2 text-primary">Tài khoản</h2>
+              <div className='grow items-center'>
+              <img
+                className="w-[80%] h-auto py-4"
+                src={profile}
               />
+              </div>
+              
+            </div>
+            {/* col-account info */}
+            <div className="grid grid-cols-2 items-center mx-0 sm:mx-20 !py-20 lg:mx-0 !px-4 sm:!px-14 bg-s3 col-span-12 lg:col-span-6 rounded-[24px] text-body text-black gap-1">
+            <h1 className='text-h2 text-on-secondary-cont col-span-2 text-left'>Thông tin tài khoản</h1>
+                <div className='flex flex-col items-start col-span-2'>
+                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Tên đăng nhập</h3>
+                  <TextInput
+                    className={'w-[100%]'}
+                    disabled={'disabled'}
+                    defaultValue={currUser.username}
+                  />
+                </div>
+                <div className='flex flex-col items-start col-span-2'>
+                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Email</h3>
+                  <TextInput
+                    className={'w-[100%]'}
+                    onChange={(e) => setEmail(e.target.value)}
+                    defaultValue={currUser.email}
+                  />
+                </div>
+                <div className='flex flex-col items-start col-span-2'>
+                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Họ</h3>
+                  <TextInput
+                    className={'w-[100%]'}
+                    onChange={(e) => setLastname(e.target.value)}
+                    defaultValue={currUser.lastname}
+                  />
+                </div>
+                <div className='flex flex-col items-start col-span-2'>
+                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Tên</h3>
+                  <TextInput
+                    className={'w-[100%]'}
+                    onChange={(e) => setFirstname(e.target.value)}
+                    defaultValue={currUser.firstname}
+                  />
+                </div>
+                <div className='flex flex-col items-start col-span-2'>
+                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Số điện thoại</h3>
+                  <TextInput
+                    className={'w-[100%]'}
+                    onChange={(e) => setNumberphone(e.target.value)}
+                    defaultValue={currUser.numberphone}
+                  />
+                </div>
+                <div className='flex flex-col items-start col-span-2'>
+                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Địa chỉ</h3>
+                  <TextInput
+                    className={'w-[100%]'}
+                    onChange={(e) => setAddress(e.target.value)}
+                    defaultValue={currUser.address}
+                  />
+                </div>
+
+              <div className="flex justify-center col-span-2">
+                <Button
+                  type="button"
+                  btnStyle="btn-fill"
+                  btnCSS={'w-full'}
+                  icon="login"
+                  onClick={editUser}
+                >
+                  Lưu
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex items-center justify-end mt-4">
-          <div className="w-[20%] text-left overflow-hidden">Email</div>
-          <div className="w-[80%] box-border pl-5">
-            <div className="flex items-center box-border w-full h-[40%] overflow-hidden">
-              <TextInput
-                className="flex-1 !mb-0"
-                onChange={(e) => setEmail(e.target.value)}
-                defaultValue={currUser.email}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center justify-end mt-4">
-          <div className="w-[20%] text-left overflow-hidden">Họ</div>
-          <div className="w-[80%] box-border pl-5">
-            <div className="flex items-center box-border w-full h-[40%] overflow-hidden">
-              <TextInput
-                className="flex-1 !mb-0"
-                onChange={(e) => setLastname(e.target.value)}
-                defaultValue={currUser.lastname}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center justify-end mt-4">
-          <div className="w-[20%] text-left overflow-hidden">Tên</div>
-          <div className="w-[80%] box-border pl-5">
-            <div className="flex items-center box-border w-full h-[40%] overflow-hidden">
-              <TextInput
-                className="flex-1 !mb-0"
-                onChange={(e) => setFirstname(e.target.value)}
-                defaultValue={currUser.firstname}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center justify-end mt-4">
-          <div className="w-[20%] text-left overflow-hidden">Số điện thoại</div>
-          <div className="w-[80%] box-border pl-5">
-            <div className="flex items-center box-border w-full h-[40%] overflow-hidden">
-              <TextInput
-                className="flex-1 !mb-0"
-                onChange={(e) => setNumberphone(e.target.value)}
-                defaultValue={currUser.numberphone}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center justify-end mt-4">
-          <div className="w-[20%] text-left overflow-hidden">Địa chỉ</div>
-          <div className="w-[80%] box-border pl-5">
-            <div className="flex items-center box-border w-full h-[40%] overflow-hidden">
-              <TextInput
-                className="flex-1 !mb-0"
-                onChange={(e) => setAddress(e.target.value)}
-                defaultValue={currUser.address}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-end mt-5">
-          <Button icon="" onClick={editUser}>
-            Lưu
-          </Button>
         </div>
       </div>
       <Footer />

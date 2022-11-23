@@ -95,7 +95,6 @@ const Coffee = () => {
   return (
     <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
       <Header />
-
       <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
         <div className="mb-5 uppercase text-h2 text-primary">Menu</div>
         {/* Filter - Search */}

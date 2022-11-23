@@ -70,7 +70,7 @@ const Header = () => {
                   navigate('/product')
                 }}
               >
-                Menu
+                Thức uống
               </button>
               <button
                 className={`flex px-[16px] items-center text-l2 hover:bg-s5 rounded-[16px] md:w-auto h-[56px] text-black hover:text-primary xs:w-full`}
