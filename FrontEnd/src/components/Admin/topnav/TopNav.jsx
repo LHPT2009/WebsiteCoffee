@@ -60,7 +60,7 @@ const Topnav = () => {
   const renderNotificationItem = (item, index) => (
     <Link to={`/admin/editreceipt/${item.receiptid}`}>
       <div className="notification-item" key={index}>
-        <span>{item.receiptid}</span>
+        <span>Đơn hàng mới từ <br />{item.userid.lastname + " " + item.userid.firstname}</span>
         {item.status == false ? <p>Chưa xem</p> : <p>Đã xem</p>}
       </div >
     </Link >
@@ -87,7 +87,7 @@ const Topnav = () => {
             badge={notifi.filter((noti) => noti.status == false).length}
             contentData={notifi}
             renderItems={(item, index) => renderNotificationItem(item, index)}
-            renderFooter={() => <Link to="/">Xem tất cả</Link>}
+            renderFooter={() => <Link to="/admin/receipts">Xem tất cả</Link>}
           />
           {/* dropdown here */}
         </div>
