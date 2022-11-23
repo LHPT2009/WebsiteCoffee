@@ -167,7 +167,7 @@ const ItemDetail = () => {
                 .map((ele) => (
                   <div className="flex flex-col items-start p-6 transition-all ease-out rounded-3xl bg-secondary-cont text-on-secondary-cont border-outline-var hover:bg-secondary hover:text-white hover:rounded-2xl">
                     <span className="text-[14px] font-bold mb-1">
-                      {/* {ele.userid.lastname + ' ' + ele.userid.firstname} */}
+                      {ele.userid.lastname + ' ' + ele.userid.firstname}
                     </span>
                     <div className="flex items-start gap-2 mt-2 text-left text-l2">
                       <span>{moment(ele.createdAt).format('DD-MM-YYYY')}</span>

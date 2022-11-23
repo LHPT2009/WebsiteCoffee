@@ -89,7 +89,7 @@ const Receipts = () => {
               currency: 'VND',
             }).format(item.price)}
           </td>
-          <td>{item.statusdelivery === true ? 'Đã giao' : ''}</td>
+          <td>{item.statusdelivery === true ? 'Đã giao' : 'Chưa giao'}</td>
           <td style={{ minWidth: 100 }}>
             <Button
               btnStyle={'btn-outline'}
