@@ -1,12 +1,11 @@
 const nodemailer = require("nodemailer");
-const dotenv = require('dotenv');
-const User = require('../models/user');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const dotenv = require("dotenv");
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 dotenv.config();
 const Mail = {
-
   SendMail: async (req, res) => {
     try {
       const { email } = req.body;
@@ -23,20 +22,22 @@ const Mail = {
         // StringRandom
         var Stext = "";
         var length = 5;
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var possible =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         for (var i = 0; i < length; i++)
           Stext += possible.charAt(Math.floor(Math.random() * possible.length));
 
         // send mail with defined transport object
-        let info = await transporter.sendMail({
-          from: process.env.USERNAME_MAIL, // sender address
-          to: `${email}`, // list of receivers
-          subject: "Reset Password!", // Subject line
-          text: "Reset Password!", // plain text body
-          html: `<body style="margin: 0px; background-color: #F5F5F5; font-size: 16px; border: 1px solid rgba(115, 130, 126, 0.6);">
-          <div style="margin: 40px; color: #1F1F1F;">
+        let info = await transporter.sendMail(
+          {
+            from: process.env.USERNAME_MAIL, // sender address
+            to: `${email}`, // list of receivers
+            subject: "Reset Password!", // Subject line
+            text: "Reset Password!", // plain text body
+            html: `<body style="margin: 0px; background-color: #F5F5F5; font-size: 16px; border: 1px solid rgba(115, 130, 126, 0.6);">
+          <div style="margin: 40px; color: #1F1F1F;max-width: 512px;">
               <div style="display: flex; flex-direction: row; align-items: center; margin-bottom: 24px;">
-                  <img src="../img/Logo.png" alt="">
+                  <img src="https://i.imgur.com/MiYjZYF.png" alt="logo-bug-on">
               </div>
               <div style="width: fit-content;">
                   <h2 style="line-height: 135%;">Thân gửi Khách hàng,</h2>
@@ -61,7 +62,7 @@ const Mail = {
                   padding: 16px 24px;
                   margin: 56px 0px;
                   border-left: 2px solid #3D685E;">
-                      <p style="letter-spacing: 0.04em">Trân thành cảm ơn,<br>
+                      <p style="letter-spacing: 0.04em">Chân thành cảm ơn,<br>
                           Bug Ổn Team</p>
                   </div>
                   <div style="height: 0px;
@@ -78,17 +79,17 @@ const Mail = {
                       list-style: none;">
                           <li>
                               <a href="#" target="_blank">
-                                  <img src="../img/Facebook.png">
+                                  <img src="https://i.imgur.com/nwpLYiW.png">
                               </a>
                           </li>
                           <li>
                               <a href="#" target="_blank">
-                                  <img src="../img/Instagram.png">
+                                  <img src="https://i.imgur.com/pmgrgRf.png">
                               </a>
                           </li>
                           <li>
                               <a href="#" target="_blank">
-                                  <img src="../img/Youtube.png">
+                                  <img src="https://i.imgur.com/SScCr1k.png">
                               </a>
                           </li>
                       </ul>
@@ -96,28 +97,28 @@ const Mail = {
               </div>
           </div>
       </body>`, // html body
-        }, (err) => {
-          if (err) {
-            return res.json({
-              message: "Lỗi",
-              err,
-            });
+          },
+          (err) => {
+            if (err) {
+              return res.json({
+                message: "Lỗi",
+                err,
+              });
+            }
+            const tokenreset = jwt.sign(
+              {
+                email: email,
+                passcode: Stext,
+              },
+              process.env.JWT_ACCESS_KEY,
+              { expiresIn: "60s" }
+            );
+            return res.status(200).json(tokenreset);
           }
-          const tokenreset = jwt.sign(
-            {
-              email: email,
-              passcode: Stext
-            },
-            process.env.JWT_ACCESS_KEY,
-            { expiresIn: '60s' }
-          )
-          return res.status(200).json(tokenreset);
-        });
-      }
-      else {
+        );
+      } else {
         res.status(500).json("error email");
       }
-
     } catch (error) {
       console.log(error);
       res.status(500).json(error);
@@ -131,14 +132,16 @@ const Mail = {
     const salt = await bcrypt.genSalt(10);
     const hashed = await bcrypt.hash(pass, salt);
 
-    const user = await User.findOneAndUpdate({ email: email }, { password: hashed });
+    const user = await User.findOneAndUpdate(
+      { email: email },
+      { password: hashed }
+    );
 
     if (user) {
       res.status(200).json(user);
+    } else {
+      res.status(404).json("Có gì đó ko ổn!!!");
     }
-    else {
-      res.status(404).json("có gì đó ko ổn!!!");
-    }
-  }
+  },
 };
 module.exports = Mail;

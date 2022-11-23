@@ -91,21 +91,23 @@ const Coffee = () => {
       ))}
     </>
   )
+  const [fil, setFil] = useState(false)
 
   return (
     <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
       <Header />
       <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
-        <div className="mb-5 uppercase text-h2 text-primary">Menu</div>
+        <div className="mb-5 text-h2 text-primary">Thức uống</div>
         {/* Filter - Search */}
-        <div className="gap-3 mb-2 lg:flex lg:justify-between">
-          <div className="flex gap-3 h-[50px]">
+        <div className="flex flex-wrap justify-between gap-3 mb-2">
+          {/* filter by id */}
+          <div className="flex flex-wrap gap-3 xs:mb-10 md:mb-0 h-[50px]">
             <label className="cursor-pointer">
               <input
                 id="default-radio-1"
                 type="radio"
                 name="default-radio"
-                class="peer sr-only"
+                className="sr-only peer"
                 onClick={handleproduct}
               ></input>
               <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
@@ -113,6 +115,7 @@ const Coffee = () => {
               </div>
             </label>
             {/* new tag filter */}
+
             {productCate.map((item) => (
               <label className="cursor-pointer">
                 <input
@@ -142,12 +145,15 @@ const Coffee = () => {
               </div> */}
           </div>
 
+          {/* End filter by id */}
+
           {/* Search bar */}
-          <div>
+          <div className="xs:w-full xs:relative">
             <Search
               onChange={handleFilter}
               placeholder={'Tìm kiếm....'}
               value={wordEntered}
+              className="h-[36px] xs:w-full"
             />
           </div>
         </div>

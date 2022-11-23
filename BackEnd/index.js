@@ -48,7 +48,6 @@ app.use("/discount", disCountRoute);
 app.use("/rate", rateRoute);
 app.use("/notification", notificationRoute);
 
-
 app.use("/category/one", categoryProductRoute);
 
 app.use("/loadproduct", loadProductRoute);

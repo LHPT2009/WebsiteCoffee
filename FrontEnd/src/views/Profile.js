@@ -28,7 +28,7 @@ const Profile = () => {
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
       toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
+    },
   })
 
   useEffect(() => {
@@ -64,22 +64,22 @@ const Profile = () => {
     )
     if (edit) {
       Toast.fire({
-            icon: 'success',
-            title: 'Lưu thông tin thành công!'
-          })
+        icon: 'success',
+        title: 'Lưu thông tin thành công!',
+      })
       navigate('/profile')
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Lưu thông tin thất bại!',
         text: 'Vui lòng thử lại.',
-        confirmButtonColor: '#3d685e'
+        confirmButtonColor: '#3d685e',
       })
     }
   }
 
   useEffect(() => {
-    document.title = `Tài khoản - Coffee Bug Ổn`
+    document.title = 'Tài khoản - Coffee Bug Ổn'
   }, [])
 
   return (

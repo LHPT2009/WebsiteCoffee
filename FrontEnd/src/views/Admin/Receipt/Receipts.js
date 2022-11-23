@@ -56,7 +56,12 @@ const Receipts = () => {
               currency: 'VND',
             }).format(item.price)}
           </td>
-          <td>{item.statusdelivery}</td>
+          <td>
+            {item.statusdelivery === true ? 'Đã giao' : 'Chưa hoàn thành'}
+          </td>
+          <td>
+            {item.statuspayment === true ? 'Đã thanh toán' : 'Chưa thanh toán'}
+          </td>
           <td style={{ minWidth: 100 }}>
             <Button
               btnStyle={'btn-outline'}
@@ -89,14 +94,21 @@ const Receipts = () => {
               currency: 'VND',
             }).format(item.price)}
           </td>
-          <td>{item.statusdelivery === true ? 'Đã giao' : 'Chưa giao'}</td>
+          <td>
+            {item.statusdelivery === true ? 'Đã giao' : 'Chưa hoàn thành'}
+          </td>
+          <td>
+            {item.statuspayment === true ? 'Đã thanh toán' : 'Chưa thanh toán'}
+          </td>
           <td style={{ minWidth: 100 }}>
             <Button
               btnStyle={'btn-outline'}
               type="button"
               btnCSS={'h-11 mr-2'}
               icon="edit"
-              onClick={() => { navigate(`/admin/editreceipt/${item._id}`) }}
+              onClick={() => {
+                navigate(`/admin/editreceipt/${item._id}`)
+              }}
             >
               Sửa
             </Button>
@@ -141,6 +153,7 @@ const Receipts = () => {
                     <th>Ngày giao hàng</th>
                     <th>Tổng tiền</th>
                     <th>Trạng thái</th>
+                    <th>Thanh toán</th>
                     <th>Thao tác</th>
                   </tr>
                 </thead>
