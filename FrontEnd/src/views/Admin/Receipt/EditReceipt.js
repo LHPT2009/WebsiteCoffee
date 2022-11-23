@@ -35,16 +35,20 @@ const EditReceipt = () => {
 
   const editReceipt = async (e) => {
     e.preventDefault()
-    const edit = await axios.put(`http://localhost:8000/receipt/${id}`, {
-      userid,
-      price,
-      statuspayment,
-      statusdelivery,
-    })
-    if (edit) {
-      navigate('/admin/receipts')
+    if (statuspayment) {
+      const edit = await axios.put(`http://localhost:8000/receipt/${id}`, {
+        userid,
+        price,
+        statuspayment,
+        statusdelivery,
+      })
+      if (edit) {
+        navigate('/admin/receipts')
+      } else {
+        alert('sua ko thanh cong!!!')
+      }
     } else {
-      alert('sua ko thanh cong!!!')
+      alert('Không thể thay đổi trạng thái vận chuyển khi chưa được thanh toán!')
     }
   }
   return (

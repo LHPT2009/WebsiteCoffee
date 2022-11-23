@@ -61,6 +61,8 @@ const ReceiptController = {
                 discountprice: req.body.discountprice,
                 statuspayment: req.body.statuspayment,
                 statusdelivery: req.body.statusdelivery,
+                numberphone: req.body.numberphone,
+                address: req.body.address,
             });
             await newReceipt.save();
 

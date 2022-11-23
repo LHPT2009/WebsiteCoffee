@@ -19,7 +19,13 @@ const receiptSchema = new mongoose.Schema({
     },
     statusdelivery: {
         type: Boolean
-    }
+    },
+    numberphone: {
+        type: String
+    },
+    address: {
+        type: String
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Receipt", receiptSchema);

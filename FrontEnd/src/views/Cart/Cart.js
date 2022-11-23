@@ -20,6 +20,9 @@ const Cart = () => {
   const [discountprice, setDiscountPrice] = useState(0)
   const [statuspayment, setStatusPayment] = useState(false)
   const [statusdelivery, setStatusDelivery] = useState(false)
+  const [numberphone, setNumberphone] = useState('')
+  const [address, setAddress] = useState('')
+
   useEffect(() => {
     setUserId(
       localStorage.getItem('token')
@@ -73,25 +76,37 @@ const Cart = () => {
       alert('Ban chua dang nhap, moi dang nhap!!!')
       return navigate('/signin')
     }
-    const rec = await axios.post('http://localhost:8000/receipt', {
-      userid,
-      price,
-      products,
-      discountid,
-      discountprice,
-      statuspayment,
-      statusdelivery,
-    })
-    setNameDisCount('')
-    setDiscountPrice(0)
-    setDisCountId('')
-    if (rec) {
-      alert('Thanh toan thanh cong!')
-      clearCart()
-      navigate('/')
-    } else {
-      alert('Thanh toan that bai!!!')
-      navigate('/')
+    if (localStorage.getItem('token')) {
+      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`);
+      if (infoUser.data) {
+        if (infoUser.data.numberphone == "" && infoUser.data.address == "") {
+          alert("mời bạn cập nhật thêm SDT và địa chỉ đầy đủ!")
+          navigate('/profile')
+        } else {
+          const rec = await axios.post('http://localhost:8000/receipt', {
+            userid,
+            price,
+            products,
+            discountid,
+            discountprice,
+            statuspayment,
+            statusdelivery,
+            numberphone: infoUser.data.numberphone,
+            address: infoUser.data.address,
+          })
+          setNameDisCount('')
+          setDiscountPrice(0)
+          setDisCountId('')
+          if (rec) {
+            alert('Thanh toan thanh cong!')
+            clearCart()
+            navigate('/')
+          } else {
+            alert('Thanh toan that bai!!!')
+            navigate('/')
+          }
+        }
+      }
     }
   }
 
@@ -100,12 +115,22 @@ const Cart = () => {
       alert('Ban chua dang nhap, moi dang nhap!!!')
       return navigate('/signin')
     }
-    const rec = await axios
-      .post('http://localhost:8000/momo/', {
-        amount: price,
-        orderInfo: 'Thanh toán hóa đơn',
-      })
-      .then((res) => window.location.replace(res.data))
+    if (localStorage.getItem('token')) {
+      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`);
+      if (infoUser.data) {
+        if (infoUser.data.numberphone == "" && infoUser.data.address == "") {
+          alert("mời bạn cập nhật thêm SDT và địa chỉ đầy đủ!")
+          navigate('/profile')
+        } else {
+          const rec = await axios
+            .post('http://localhost:8000/momo/', {
+              amount: price,
+              orderInfo: 'Thanh toán hóa đơn',
+            })
+            .then((res) => window.location.replace(res.data))
+        }
+      }
+    }
   }
 
   const orderList = products.map((n) => (
