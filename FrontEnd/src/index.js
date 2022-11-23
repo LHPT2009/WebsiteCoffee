@@ -85,7 +85,7 @@ root.render(
             children=""
           ></Button>
         }
-        className="!z-[101] !w-[48px] !h-[48px] !rounded-full  !transition-all !ease-out !duration-200 !bottom-[10%]"
+        className="!z-[101] !w-[48px] !h-[48px] !rounded-full  !transition-all !ease-out !duration-200 !bottom-[5%] !right-[5%]"
       />
       <ListProductProvider>
         <BrowserRouter>

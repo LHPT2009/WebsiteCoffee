@@ -47,7 +47,7 @@ module.exports = {
       sd1: 'rgba(115, 130, 126, 0.6);',
       //outline
       outline: '#5E6E6A',
-      'outline-var': 'rgba(115, 130, 126, 0.6);',
+      'outline-var': 'rgba(115, 130, 126, 0.4);',
       //others
       warning: '#E6B91A',
       error: '#DB2450',
