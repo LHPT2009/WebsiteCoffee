@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import moment from 'moment'
 import Swal from 'sweetalert2'
+import Empty from '../../assets/images/Empty.png'
+
 const Cart = () => {
   const { products, delProduct, upAmount, downAmount, clearCart } =
     useContext(ListProductContext)
@@ -324,14 +326,23 @@ const Cart = () => {
 
   // Cart empty state
   const cartEmpty = (
-    <div className="text-center font-googleSansMedium">
-      <div className="flex items-center justify-center gap-3">
-        <span className="material-symbols-rounded text-[32px]">
-          shopping_cart
-        </span>
-        <span>Giỏ hàng rỗng</span>
+    <div className="flex flex-col gap-4 items-center mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
+      <img
+                className="w-[260px] sm:w-[320px] h-auto py-4"
+                src={Empty}
+              />
+        <div className="text-center text-black text-h2 sm:text-d2">Bạn chưa có sản phẩm nào😓</div>
+        <Button
+        type="button"
+        btnStyle="btn-fill"
+        btnCSS={''}
+        icon="shopping_bag"
+        onClick={() => {
+          navigate('/product')
+        }}
+        >Bắt đầu mua hàng
+        </Button>
       </div>
-    </div>
   )
 
   useEffect(() => {
@@ -339,7 +350,7 @@ const Cart = () => {
   }, [])
 
   return (
-    <div className="relative min-h-screen pb-24 lg:pb-12 bg-background">
+    <div className="relative items-center text-center min-h-screen pb-24 lg:pb-12 bg-background">
       <Header />
       <div className="mt-5 mx-0 sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {products.length != 0 ? formorderList : cartEmpty}
