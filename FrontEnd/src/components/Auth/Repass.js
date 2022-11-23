@@ -36,12 +36,16 @@ const Repass = () => {
       if (updateUser) {
         localStorage.removeItem('checksuccess')
         localStorage.removeItem('tokenreset')
-        navigate('/signin')
         Toast.fire({
           icon: 'success',
           title: 'Thay đổi mật khẩu thành công!',
-          text: 'Vui lòng đăng nhập lại.'
+          text: 'Vui lòng đăng nhập lại.',
+          // text: 'Tự động chuyển về trang đăng nhập...',
+          showConfirmButton: false,
         })
+        setTimeout(() => {
+          navigate('/signin')
+        }, 5000);
       }
     } else {
       navigate('/repass')

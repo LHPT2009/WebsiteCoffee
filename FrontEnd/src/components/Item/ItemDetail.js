@@ -78,7 +78,7 @@ const ItemDetail = () => {
 
   const add = (e) => {
     e.preventDefault()
-    if (category == '6370b341e976458830064695') {
+    if (category == '637e3bbed2fdfaec4bc7c829') {
       const id = info._id
       const name = info.name
       const price = info.price
@@ -146,7 +146,7 @@ const ItemDetail = () => {
             </div>
 
             {/* Pick size */}
-            {category == "6370b341e976458830064695" ? (
+            {category == "637e3bbed2fdfaec4bc7c829" ? (
               ""
             ) : (
               <>
