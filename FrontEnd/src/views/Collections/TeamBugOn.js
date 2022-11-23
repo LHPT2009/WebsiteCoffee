@@ -40,12 +40,12 @@ const TeamBugOn = () => {
                   alt="image-founder"
                 />
                 <div className="flex flex-col items-start gap-[8px] self-stretch px-6 py-4">
-                  <span className="text-l2 font-[700] sm:text-l1 text-left truncate">
+                  <div className="text-l2 font-[700] sm:text-l1 text-left">
                     Nguyễn Trường Tồn
-                  </span>
-                  <span className="text-caption font-[700] text-left truncate">
+                  </div>
+                  <div className="text-caption font-[700] text-left">
                     Frontend Developer
-                  </span>
+                  </div>
                   <span className="text-caption font-[500]">Lớp 19DTHD4</span>
                 </div>
               </div>
@@ -58,12 +58,12 @@ const TeamBugOn = () => {
                   alt="image-founder"
                 />
                 <div className="flex flex-col items-start gap-[8px] self-stretch px-6 py-4">
-                  <span className="text-l2 font-[700] sm:text-l1 text-left truncate">
+                  <div className="text-l2 font-[700] sm:text-l1 text-left">
                     Nguyễn Việt Hoàng
-                  </span>
-                  <span className="text-caption font-[700] text-left truncate">
+                  </div>
+                  <div className="text-caption font-[700] text-left">
                     Frontend Developer
-                  </span>
+                  </div>
                   <span className="text-caption font-[500]">Lớp 19DTHA6</span>
                 </div>
               </div>
@@ -76,12 +76,12 @@ const TeamBugOn = () => {
                   alt="image-founder"
                 />
                 <div className="flex flex-col items-start gap-[8px] self-stretch px-6 py-4">
-                  <span className="text-l2 font-[700] sm:text-l1 text-left truncate">
+                  <div className="text-l2 font-[700] sm:text-l1 text-left">
                     Lê Huỳnh Phương Tùng
-                  </span>
-                  <span className="text-caption font-[700] text-left truncate">
+                  </div>
+                  <div className="text-caption font-[700] text-left">
                     Backend Developer
-                  </span>
+                  </div>
                   <span className="text-caption font-[500]">Lớp 19DTHD4</span>
                 </div>
               </div>
@@ -94,12 +94,12 @@ const TeamBugOn = () => {
                   alt="image-founder"
                 />
                 <div className="flex flex-col items-start gap-[8px] self-stretch px-6 py-4">
-                  <span className="text-l2 font-[700] sm:text-l1 text-left truncate">
+                  <div className="text-l2 font-[700] sm:text-l1 text-left">
                     Nguyễn Diệp Thanh Tùng
-                  </span>
-                  <span className="text-caption font-[700] text-left truncate">
+                  </div>
+                  <div className="text-caption font-[700] text-left">
                     Frontend Developer
-                  </span>
+                  </div>
                   <span className="text-caption font-[500]">Lớp 19DTHD4</span>
                 </div>
               </div>
