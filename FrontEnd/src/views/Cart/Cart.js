@@ -21,6 +21,9 @@ const Cart = () => {
   const [discountprice, setDiscountPrice] = useState(0)
   const [statuspayment, setStatusPayment] = useState(false)
   const [statusdelivery, setStatusDelivery] = useState(false)
+  const [numberphone, setNumberphone] = useState('')
+  const [address, setAddress] = useState('')
+  
   const Toast = Swal.mixin({
     toast: true,
     position: 'bottom-end',
@@ -32,6 +35,7 @@ const Cart = () => {
       toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
   })
+  
   useEffect(() => {
     setUserId(
       localStorage.getItem('token')
@@ -99,33 +103,49 @@ const Cart = () => {
       })
       return navigate('/signin')
     }
-    const rec = await axios.post('http://localhost:8000/receipt', {
-      userid,
-      price,
-      products,
-      discountid,
-      discountprice,
-      statuspayment,
-      statusdelivery,
-    })
-    setNameDisCount('')
-    setDiscountPrice(0)
-    setDisCountId('')
-    if (rec) {
-      Toast.fire({
-        icon: 'success',
-        title: 'Thanh toán thành công!'
-      })
-      clearCart()
-      navigate('/')
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Thanh toán thất bại',
-        text: 'Vui lòng thử lại sau.',
-        confirmButtonColor: '#3d685e'
-      })
-      navigate('/')
+    if (localStorage.getItem('token')) {
+      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`);
+      if (infoUser.data) {
+        if (infoUser.data.numberphone == "" && infoUser.data.address == "") {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Vui lòng cập nhật SĐT và địa chỉ đầy đủ!',
+            confirmButtonColor: '#3d685e'
+          })
+          navigate('/profile')
+        } else {
+          const rec = await axios.post('http://localhost:8000/receipt', {
+            userid,
+            price,
+            products,
+            discountid,
+            discountprice,
+            statuspayment,
+            statusdelivery,
+            numberphone: infoUser.data.numberphone,
+            address: infoUser.data.address,
+          })
+          setNameDisCount('')
+          setDiscountPrice(0)
+          setDisCountId('')
+          if (rec) {
+            Toast.fire({
+              icon: 'success',
+              title: 'Thanh toán thành công!'
+            })
+            clearCart()
+            navigate('/')
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Thanh toán thất bại',
+              text: 'Vui lòng thử lại sau.',
+              confirmButtonColor: '#3d685e'
+            })
+            navigate('/')
+          }
+        }
+      }
     }
   }
 
@@ -139,12 +159,22 @@ const Cart = () => {
       })
       return navigate('/signin')
     }
-    const rec = await axios
-      .post('http://localhost:8000/momo/', {
-        amount: price,
-        orderInfo: 'Thanh toán hóa đơn',
-      })
-      .then((res) => window.location.replace(res.data))
+    if (localStorage.getItem('token')) {
+      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`);
+      if (infoUser.data) {
+        if (infoUser.data.numberphone == "" && infoUser.data.address == "") {
+          alert("mời bạn cập nhật thêm SDT và địa chỉ đầy đủ!")
+          navigate('/profile')
+        } else {
+          const rec = await axios
+            .post('http://localhost:8000/momo/', {
+              amount: price,
+              orderInfo: 'Thanh toán hóa đơn',
+            })
+            .then((res) => window.location.replace(res.data))
+        }
+      }
+    }
   }
 
   const orderList = products.map((n) => (

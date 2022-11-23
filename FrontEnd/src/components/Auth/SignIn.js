@@ -184,7 +184,7 @@ const SignIn = () => {
                 <div className='h-[2px] w-full bg-outline-var mx-6'></div>
                 
               </div>
-              <div className="flex justify-center border-[2px] bg-[#fff] px-4 border-solid border-outline-var rounded-full hover:border-outline col-span-2">
+              <div className="flex justify-center border-[2px] bg-[#fff] px-4 border-solid border-outline-var rounded-full hover:border-outline col-span-2 transition-all ease-in duration-150">
                 <GoogleLogin
                   clientId={clientId}
                   buttonText="Đăng nhập bằng Google"

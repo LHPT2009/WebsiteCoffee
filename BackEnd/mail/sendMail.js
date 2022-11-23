@@ -34,7 +34,7 @@ const Mail = {
         html: `<body style="margin: 0px; background-color: #F5F5F5; font-size: 16px; border: 1px solid rgba(115, 130, 126, 0.6);">
         <div style="margin: 40px; color: #1F1F1F;">
             <div style="display: flex; flex-direction: row; align-items: center; margin-bottom: 24px;">
-                <img src="img/Logo.png" alt="">
+                <img src="../img/Logo.png" alt="">
             </div>
             <div style="width: fit-content;">
                 <h2 style="line-height: 135%;">Thân gửi Khách hàng,</h2>
@@ -76,17 +76,17 @@ const Mail = {
                     list-style: none;">
                         <li>
                             <a href="#" target="_blank">
-                                <img src="/img/Facebook.png">
+                                <img src="../img/Facebook.png">
                             </a>
                         </li>
                         <li>
                             <a href="#" target="_blank">
-                                <img src="/img/Instagram.png">
+                                <img src="../img/Instagram.png">
                             </a>
                         </li>
                         <li>
                             <a href="#" target="_blank">
-                                <img src="/img/Youtube.png">
+                                <img src="../img/Youtube.png">
                             </a>
                         </li>
                     </ul>
