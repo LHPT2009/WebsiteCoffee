@@ -107,7 +107,8 @@ const authController = {
           address: "",
         });
         await newUser.save();
-        const accessToken = authController.generateAccessToken(newUser);
+        const user = await User.findOne({ email: req.body.email }).populate("role");
+        const accessToken = authController.generateAccessToken(user);
         res.status(200).json(accessToken);
       }
     } catch (err) {

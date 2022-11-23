@@ -33,18 +33,19 @@ const SignIn = () => {
     window.location.reload()
   }
 
-  const onSuccess = (res) => {
+  const onSuccess = async (res) => {
     if (token) {
-      const Auth = axios
+      const Auth = await axios
         .post('http://localhost:8000/auth/google', {
-          lastname: res.profileObj.familyName,
-          firstname: res.profileObj.givenName,
+          lastname: res.profileObj.familyName ? res.profileObj.familyName : "",
+          firstname: res.profileObj.givenName ? res.profileObj.givenName : "",
           email: res.profileObj.email,
         })
-        .then((res) => {
-          navigate('/')
-          localStorage.setItem('token', res.data)
-        })
+      if (Auth) {
+        console.log(Auth.data)
+        localStorage.setItem('token', Auth.data)
+        navigate("/");
+      }
     } else {
       Swal.fire({
         icon: 'warning',
@@ -86,7 +87,7 @@ const SignIn = () => {
               toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
           })
-          
+
           Toast.fire({
             icon: 'success',
             title: 'Đăng nhập thành công!'
@@ -134,11 +135,11 @@ const SignIn = () => {
             <div className="hidden  md:flex md:flex-col col-span-12 lg:col-span-6 justify-center text-left items-start gap-[24px]">
               <h2 className="text-h2 text-primary">Bug Ổn xin chào</h2>
               <d1 className="text-d1 text-black">Đăng nhập để trải nghiệm trọn vẹn☕</d1>
-              
+
             </div>
             {/* col-signin */}
             <div className="grid grid-cols-2 items-center mx-0 sm:mx-20 !py-20 lg:mx-0 !px-4 sm:!px-14 bg-secondary-cont col-span-12 lg:col-span-6 rounded-[24px] gap-4">
-              <h1 className='text-h2 text-on-secondary-cont col-span-2 text-left'>Đăng nhập</h1> 
+              <h1 className='text-h2 text-on-secondary-cont col-span-2 text-left'>Đăng nhập</h1>
               <form onSubmit={loginUser} className='col-span-2'>
                 <div>
                   <TextInput
@@ -159,14 +160,14 @@ const SignIn = () => {
                   />
                 </div>
               </form>
-              
-                <ReCAPTCHA
-                  sitekey={sideKey}
-                  onChange={(token) => {
-                    setToken(token)
-                  }}
-                  className="flex justify-center bg-secondary-cont rounded-[16px] col-span-2"
-                />
+
+              <ReCAPTCHA
+                sitekey={sideKey}
+                onChange={(token) => {
+                  setToken(token)
+                }}
+                className="flex justify-center bg-secondary-cont rounded-[16px] col-span-2"
+              />
               <div className="flex justify-center col-span-2">
                 <Button
                   type="button"
@@ -182,7 +183,7 @@ const SignIn = () => {
                 <div className='h-[2px] w-full bg-outline-var mx-6'></div>
                 Hoặc
                 <div className='h-[2px] w-full bg-outline-var mx-6'></div>
-                
+
               </div>
               <div className="flex justify-center border-[2px] bg-[#fff] px-4 border-solid border-outline-var rounded-full hover:border-outline col-span-2 transition-all ease-in duration-150">
                 <GoogleLogin
@@ -191,7 +192,7 @@ const SignIn = () => {
                   scope="https://www.googleapis.com/auth/drive.file"
                   onSuccess={onSuccess}
                   className="flex gap-[8px] !shadow-none justify-center !text-black !bg-[#fff] !rounded-full"
-                />  
+                />
               </div>
               <div className="flex justify-between m-3 col-span-2 ">
                 <Button
