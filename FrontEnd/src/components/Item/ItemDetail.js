@@ -78,12 +78,21 @@ const ItemDetail = () => {
 
   const add = (e) => {
     e.preventDefault()
-    const id = info._id
-    const name = info.name + ' (Size: ' + size + ')'
-    const price = info.price + pricesize
-    const amount = 1
-    const product = { id, name, price, amount }
-    addProduct(product)
+    if (category == '6370b341e976458830064695') {
+      const id = info._id
+      const name = info.name
+      const price = info.price
+      const amount = 1
+      const product = { id, name, price, amount }
+      addProduct(product)
+    } else {
+      const id = info._id
+      const name = info.name + ' (Size: ' + size + ')'
+      const price = info.price + pricesize
+      const amount = 1
+      const product = { id, name, price, amount }
+      addProduct(product)
+    }
     Toast.fire({
       icon: 'success',
       title: 'Đã thêm vào đơn hàng'
@@ -137,28 +146,35 @@ const ItemDetail = () => {
             </div>
 
             {/* Pick size */}
-            <h2 className="mt-6 text-black text-l2">
-              Chọn size (mặc định size S)
-            </h2>
-            <div className="flex flex-wrap gap-4 mt-3">
-              {sizeproduct.map((ele) => (
-                <label className="cursor-pointer">
-                  <input
-                    id="default-radio-1"
-                    type="radio"
-                    name="default-radio"
-                    class="peer sr-only"
-                    onClick={() => {
-                      setPriceSize(ele.price)
-                      setSize(ele.name)
-                    }}
-                  ></input>
-                  <div className="px-4 py-2.5 items-center text-center text-l2 bg-s4 text-grey border-[1.5px] border-outline-var rounded-full peer-checked:bg-secondary peer-checked:text-white">
-                    {ele.name}
-                  </div>
-                </label>
-              ))}
-            </div>
+            {category == "6370b341e976458830064695" ? (
+              ""
+            ) : (
+              <>
+                <h2 className="mt-6 text-black text-l2">
+                  Chọn size (mặc định size S)
+                </h2>
+                <div className="flex flex-wrap gap-4 mt-3">
+                  {sizeproduct.map((ele) => (
+                    <label className="cursor-pointer">
+                      <input
+                        id="default-radio-1"
+                        type="radio"
+                        name="default-radio"
+                        class="peer sr-only"
+                        onClick={() => {
+                          setPriceSize(ele.price)
+                          setSize(ele.name)
+                        }}
+                      ></input>
+                      <div className="px-4 py-2.5 items-center text-center text-l2 bg-s4 text-grey border-[1.5px] border-outline-var rounded-full peer-checked:bg-secondary peer-checked:text-white">
+                        {ele.name}
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </>
+            )}
+
             <div className="items-center mt-10">
               <Button
                 type="button"

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
+import Swal from 'sweetalert2'
 
 const EnterEmail = () => {
   const [email, setEmail] = useState('')
@@ -15,12 +16,24 @@ const EnterEmail = () => {
     try {
       const tokenreset = await axios.post('http://localhost:8000/mail', {
         email: email,
+      }).catch(err => {
+        navigate('/enteremail')
+        Swal.fire({
+          icon: 'error',
+          title: 'Email không tồn tại!',
+          text: 'Vui lòng nhập lại',
+          confirmButtonColor: '#3d685e'
+        })
       })
       localStorage.setItem('tokenreset', tokenreset.data)
       if (tokenreset) {
         navigate('/checkcode')
-      } else {
-        navigate('/enteremail')
+        Swal.fire({
+          icon: 'success',
+          title: 'Đã gừi mã tới mail của bạn!',
+          text: 'Vui lòng kiểm tra mã trong mail.',
+          confirmButtonColor: '#3d685e'
+        })
       }
     } catch (err) {
       console.log(err)
