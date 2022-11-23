@@ -23,7 +23,7 @@ const Cart = () => {
   const [statusdelivery, setStatusDelivery] = useState(false)
   const [numberphone, setNumberphone] = useState('')
   const [address, setAddress] = useState('')
-  
+
   const Toast = Swal.mixin({
     toast: true,
     position: 'bottom-end',
@@ -33,9 +33,9 @@ const Cart = () => {
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
       toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
+    },
   })
-  
+
   useEffect(() => {
     setUserId(
       localStorage.getItem('token')
@@ -80,14 +80,14 @@ const Cart = () => {
           setDiscountPrice(res.data.price)
           Toast.fire({
             icon: 'success',
-            title: 'Giảm giá thành công!'
+            title: 'Giảm giá thành công!',
           })
         } else {
           Swal.fire({
             icon: 'error',
             title: 'Mã giảm giá hết hạn!',
             text: 'Vui lòng nhập mã giảm giá khác.',
-            confirmButtonColor: '#3d685e'
+            confirmButtonColor: '#3d685e',
           })
         }
       })
@@ -99,18 +99,18 @@ const Cart = () => {
         icon: 'error',
         title: 'Chưa đăng nhập tài khoản!',
         text: 'Vui lòng đăng nhập để thanh toán.',
-        confirmButtonColor: '#3d685e'
+        confirmButtonColor: '#3d685e',
       })
       return navigate('/signin')
     }
     if (localStorage.getItem('token')) {
-      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`);
+      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`)
       if (infoUser.data) {
-        if (infoUser.data.numberphone == "" && infoUser.data.address == "") {
+        if (infoUser.data.numberphone == '' && infoUser.data.address == '') {
           Swal.fire({
             icon: 'warning',
             title: 'Vui lòng cập nhật SĐT và địa chỉ đầy đủ!',
-            confirmButtonColor: '#3d685e'
+            confirmButtonColor: '#3d685e',
           })
           navigate('/profile')
         } else {
@@ -131,16 +131,16 @@ const Cart = () => {
           if (rec) {
             Toast.fire({
               icon: 'success',
-              title: 'Thanh toán thành công!'
+              title: 'Thanh toán thành công!',
             })
             clearCart()
-            navigate('/')
+            navigate('/paymentsuccess')
           } else {
             Swal.fire({
               icon: 'error',
               title: 'Thanh toán thất bại',
               text: 'Vui lòng thử lại sau.',
-              confirmButtonColor: '#3d685e'
+              confirmButtonColor: '#3d685e',
             })
             navigate('/')
           }
@@ -155,15 +155,15 @@ const Cart = () => {
         icon: 'error',
         title: 'Chưa đăng nhập tài khoản!',
         text: 'Vui lòng đăng nhập để thanh toán.',
-        confirmButtonColor: '#3d685e'
+        confirmButtonColor: '#3d685e',
       })
       return navigate('/signin')
     }
     if (localStorage.getItem('token')) {
-      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`);
+      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`)
       if (infoUser.data) {
-        if (infoUser.data.numberphone == "" && infoUser.data.address == "") {
-          alert("mời bạn cập nhật thêm SDT và địa chỉ đầy đủ!")
+        if (infoUser.data.numberphone == '' && infoUser.data.address == '') {
+          alert('mời bạn cập nhật thêm SDT và địa chỉ đầy đủ!')
           navigate('/profile')
         } else {
           const rec = await axios

@@ -43,7 +43,7 @@ const SignUp = () => {
             icon: 'success',
             title: 'Đăng ký thành công',
             text: 'Mời bạn xác nhận Email trước khi đăng nhập.',
-            confirmButtonColor: '#3d685e'
+            confirmButtonColor: '#3d685e',
           })
         })
         .catch(function (error) {
@@ -54,7 +54,7 @@ const SignUp = () => {
         icon: 'error',
         title: 'Sai mật khẩu xác nhận',
         text: 'Mật khẩu xác nhận không trùng khớp.',
-        confirmButtonColor: '#3d685e'
+        confirmButtonColor: '#3d685e',
       })
     }
   }
@@ -64,17 +64,17 @@ const SignUp = () => {
       <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-tertiary-cont sm:bg-background">
         <div className="flex flex-col gap-10 text-center">
           {/* col-2-2 */}
-          <div className="grid grid-cols-12 gap-6 h-full lg:h-full">
+          <div className="grid h-full grid-cols-12 gap-6 lg:h-full">
             {/* col-tilte */}
             <div className="hidden md:flex md:flex-col col-span-12 lg:col-span-6 justify-center text-left items-start gap-[24px]">
               <h2 className="text-h2 text-tertiary">Bug Ổn xin chào</h2>
-              <d1 className="text-d1 text-black">
-                Đăng kí thành viên của Bug ổn với vài bước❤️
+              <d1 className="text-black text-d1">
+                Đăng kí thành viên của Bug ổn với vài bước ❤️
               </d1>
             </div>
             {/* col-signin */}
             <div className="grid grid-cols-2 items-center mx-0 sm:mx-20 !py-20 lg:mx-0 !px-4 sm:!px-14 bg-tertiary-cont col-span-12 lg:col-span-6 rounded-[24px] gap-4">
-              <h1 className="text-h2 text-on-secondary-cont col-span-2 text-left">
+              <h1 className="col-span-2 text-left text-h2 text-on-secondary-cont">
                 Tạo tài khoản
               </h1>
               <form
@@ -149,7 +149,7 @@ const SignUp = () => {
                 </Button>
               </div>
 
-              <div className="flex justify-between m-3 col-span-2 ">
+              <div className="flex justify-between col-span-2 m-3 ">
                 <Button
                   type="button"
                   btnStyle="btn-tonal"
