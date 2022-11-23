@@ -9,6 +9,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import moment from 'moment'
+import Swal from 'sweetalert2'
 const Cart = () => {
   const { products, delProduct, upAmount, downAmount, clearCart } =
     useContext(ListProductContext)
@@ -20,6 +21,17 @@ const Cart = () => {
   const [discountprice, setDiscountPrice] = useState(0)
   const [statuspayment, setStatusPayment] = useState(false)
   const [statusdelivery, setStatusDelivery] = useState(false)
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
   useEffect(() => {
     setUserId(
       localStorage.getItem('token')
@@ -62,15 +74,29 @@ const Cart = () => {
           setNameDisCount(res.data.name)
           setDisCountId(res.data._id)
           setDiscountPrice(res.data.price)
+          Toast.fire({
+            icon: 'success',
+            title: 'Giảm giá thành công!'
+          })
         } else {
-          alert('Mã giãm giá này đã hết hạn')
+          Swal.fire({
+            icon: 'error',
+            title: 'Mã giảm giá hết hạn!',
+            text: 'Vui lòng nhập mã giảm giá khác.',
+            confirmButtonColor: '#3d685e'
+          })
         }
       })
   }
 
   const addOrder = async () => {
     if (!localStorage.getItem('token')) {
-      alert('Ban chua dang nhap, moi dang nhap!!!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Chưa đăng nhập tài khoản!',
+        text: 'Vui lòng đăng nhập để thanh toán.',
+        confirmButtonColor: '#3d685e'
+      })
       return navigate('/signin')
     }
     const rec = await axios.post('http://localhost:8000/receipt', {
@@ -86,18 +112,31 @@ const Cart = () => {
     setDiscountPrice(0)
     setDisCountId('')
     if (rec) {
-      alert('Thanh toan thanh cong!')
+      Toast.fire({
+        icon: 'success',
+        title: 'Thanh toán thành công!'
+      })
       clearCart()
       navigate('/')
     } else {
-      alert('Thanh toan that bai!!!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Thanh toán thất bại',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonColor: '#3d685e'
+      })
       navigate('/')
     }
   }
 
   const addOrderMoMo = async () => {
     if (!localStorage.getItem('token')) {
-      alert('Ban chua dang nhap, moi dang nhap!!!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Chưa đăng nhập tài khoản!',
+        text: 'Vui lòng đăng nhập để thanh toán.',
+        confirmButtonColor: '#3d685e'
+      })
       return navigate('/signin')
     }
     const rec = await axios

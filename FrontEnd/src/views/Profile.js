@@ -6,6 +6,7 @@ import Header from '../components/Header/Header'
 import TextInput from '../components/Input/TextInput'
 import Button from '../components/Button/Button'
 import { useNavigate, useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -16,6 +17,19 @@ const Profile = () => {
   }
 
   const [currUser, setCurrUser] = useState([])
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
   useEffect(() => {
     axios
       .get(
@@ -48,10 +62,18 @@ const Profile = () => {
       }
     )
     if (edit) {
-      alert('update du lieu thanh cong!!!')
+      Toast.fire({
+            icon: 'success',
+            title: 'Lưu thông tin thành công!'
+          })
       navigate('/profile')
     } else {
-      alert('Sua ko thanh cong!!!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Lưu thông tin thất bại!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
 

@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ListProductContext } from '../../context/ListProductContext'
 import jwt_decode from 'jwt-decode'
 
+import Swal from 'sweetalert2'
+
 const Header = () => {
   const { products } = useContext(ListProductContext)
   let [open, setOpen] = useState(false)
@@ -16,6 +18,22 @@ const Header = () => {
   const logout = (e) => {
     e.preventDefault()
     localStorage.removeItem('token')
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'Đăng xuất thành công!'
+    })
     navigate('/')
   }
 
