@@ -5,6 +5,8 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 import { useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
+import thank from '../assets/images/Thankyou.png'
+import Button from '../components/Button/Button';
 
 const PaymentSuccess = () => {
   const navigate = useNavigate();
@@ -37,10 +39,24 @@ const PaymentSuccess = () => {
     }
   }
   return (
-    <div className="relative min-h-screen pb-24 lg:pb-12">
+    <div className="relative items-center text-center min-h-screen pb-24 lg:pb-12 bg-background">
       <Header />
-      <div className="mt-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
-        <div className="text-center text-[100px] font-bold">Thanh toán thành công!!!</div>
+      <div className="flex flex-col gap-4 items-center mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
+      <img
+                className="w-[260px] sm:w-[320px] h-auto py-4"
+                src={thank}
+              />
+        <div className="text-center text-black text-h2 sm:text-d2">Thanh toán thành công</div>
+        <Button
+        type="button"
+        btnStyle="btn-fill"
+        btnCSS={''}
+        icon="shopping_bag"
+        onClick={() => {
+          navigate('/product')
+        }}
+        >Tiếp tục mua sắm
+        </Button>
       </div>
       <Footer />
     </div>
