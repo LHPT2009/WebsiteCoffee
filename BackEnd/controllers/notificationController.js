@@ -3,7 +3,7 @@ const Notification = require("../models/Notification");
 const NotificationController = {
     getAllNotifications: async (req, res) => {
         try {
-            const notification = await Notification.find();
+            const notification = await Notification.find().populate('userid');
             res.status(200).json(notification);
         } catch (err) {
             res.status(500).json(err);

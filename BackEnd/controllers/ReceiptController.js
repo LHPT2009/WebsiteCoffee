@@ -93,6 +93,7 @@ const ReceiptController = {
 
             const newNotification = new Notification({
                 receiptid: newReceipt._id,
+                userid: req.body.userid,
                 status: false
             });
             await newNotification.save();
