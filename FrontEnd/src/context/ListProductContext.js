@@ -26,7 +26,8 @@ const ListProductProvider = (props) => {
 
 
   const delProduct = (name) => {
-    setProducts(products.filter((n) => (n.name !== name)).sort((a, b) => a.name > b.name ? 1 : -1))
+    // setProducts(products.filter((n) => (n.name !== name)).sort((a, b) => a.name > b.name ? 1 : -1))
+    window.location.reload();
     localStorage.setItem('cart', JSON.stringify(products.filter((n) => (n.name !== name)).sort((a, b) => a.name > b.name ? 1 : -1)));
   }
 
