@@ -96,12 +96,11 @@ const Coffee = () => {
   return (
     <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
       <Header />
-      <div className="flex flex-col mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
-        <div className="mb-5 text-h2 text-primary">Thức uống</div>
+      <div className="flex flex-col mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-6 max-w-[1440px] ">
         {/* Filter - Search */}
-        <div className="flex flex-col justify-between gap-3 mb-2">
+        <div className="mb-5 text-h2 text-primary">Thức uống</div>
+        <div className="flex flex-wrap gap-2 pt-2 mb-2 sm:sticky sm:top-[71px] bg-background z-[998]">
           {/* filter by id */}
-          <div className="flex flex-wrap gap-3 ">
             <label className="cursor-pointer">
               <input
                 id="default-radio-1"
@@ -115,7 +114,6 @@ const Coffee = () => {
               </div>
             </label>
             {/* new tag filter */}
-
             {productCate.map((item) => (
               <label className="cursor-pointer">
                 <input
@@ -130,24 +128,31 @@ const Coffee = () => {
                 </div>
               </label>
             ))}
-            {/* Search bar */}
-            <div className="w-full xs:block">
             <Search
               onChange={handleFilter}
               placeholder={'Tìm kiếm....'}
               value={wordEntered}
-              className="h-[36px] w-full sm:w-[360px]"
+              className="h-[36px] bg-transparent w-full sm:w-[360px] sticky top-[56px]"
             />
-            </div>
+            {/* Search bar */}
+            {/* <div className="w-full block">
+            <Search
+              onChange={handleFilter}
+              placeholder={'Tìm kiếm....'}
+              value={wordEntered}
+              className="h-[36px] bg-transparent w-full sm:w-[360px] sticky top-[56px]"
+            />
+            </div> */}
             {/* End Filter - Search */}
-          </div>
+          
           {/* End filter by id */}
         </div>
         
         <div className="grid gap-4 mb-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {wordEntered === '' ? renderPaging : renderSearch}
         </div>
-        {product.length > noOfElement ? (
+        <div>
+          {product.length > noOfElement ? (
           <Button
             onClick={() => loadMore()}
             btnStyle={'btn-outline'}
@@ -157,6 +162,8 @@ const Coffee = () => {
             Xem thêm
           </Button>
         ) : null}
+        </div>
+        
       </div>
       <Footer />
     </div>
