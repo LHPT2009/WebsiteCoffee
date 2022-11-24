@@ -96,12 +96,12 @@ const Coffee = () => {
   return (
     <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
       <Header />
-      <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
+      <div className="flex flex-col mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
         <div className="mb-5 text-h2 text-primary">Thức uống</div>
         {/* Filter - Search */}
-        <div className="flex flex-wrap justify-between gap-3 mb-2">
+        <div className="flex flex-col justify-between gap-3 mb-2">
           {/* filter by id */}
-          <div className="flex flex-wrap gap-3 xs:mb-10 md:mb-0 h-[50px]">
+          <div className="flex flex-wrap gap-3 ">
             <label className="cursor-pointer">
               <input
                 id="default-radio-1"
@@ -130,34 +130,20 @@ const Coffee = () => {
                 </div>
               </label>
             ))}
-
-            {/* old tag filter */}
-            {/* <div className="flex gap-3 h-[50px]">
-                {productCate.map((item) => (
-                  <Button
-                    btnStyle="btn-outline"
-                    icon=""
-                    onClick={() => handleCategories(`${item._id}`)}
-                  >
-                    {item.name}
-                  </Button>
-                ))}
-              </div> */}
-          </div>
-
-          {/* End filter by id */}
-
-          {/* Search bar */}
-          <div className="xs:w-full xs:relative">
+            {/* Search bar */}
+            <div className="w-full xs:block">
             <Search
               onChange={handleFilter}
               placeholder={'Tìm kiếm....'}
               value={wordEntered}
-              className="h-[36px] xs:w-full"
+              className="h-[36px] w-full sm:w-[360px]"
             />
+            </div>
+            {/* End Filter - Search */}
           </div>
+          {/* End filter by id */}
         </div>
-        {/* End Filter - Search */}
+        
         <div className="grid gap-4 mb-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {wordEntered === '' ? renderPaging : renderSearch}
         </div>

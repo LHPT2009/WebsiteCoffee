@@ -125,16 +125,17 @@ const ItemDetail = () => {
   return (
     <div className="relative min-h-screen pb-24 lg:pb-12 bg-background">
       <Header />
-      <div className="h-20"></div>
-      <div className="sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] font-googleSansRegular">
+      {/* <div className="h-20"></div> */}
+      {/* <div className="sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px] font-googleSansRegular"> */}
+      <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
         <div className="grid grid-cols-2 md:gap-10 sm:gap-8">
           <img
-            className="rounded-[1.5rem] hover:rounded-[2rem] transition-all"
+            className="col-span-2 sm:col-span-1 rounded-[1.5rem] hover:rounded-[2rem] transition-all"
             src={image}
             alt="product-thumbnail"
             width={570}
           />
-          <div className="pt-5">
+          <div className="pt-5 col-span-2 sm:col-span-1 m-4 sm:mx-0">
             <p className="text-h2 text-black font-[700]">{info.name}</p>
             <div className="">
               <span className="text-h2 text-primary font-[700]">
@@ -179,6 +180,7 @@ const ItemDetail = () => {
               <Button
                 type="button"
                 btnStyle="btn-fill"
+                btnCSS={'w-full sm:w-fit'}
                 icon="add_shopping_cart"
                 onClick={add}
               >
