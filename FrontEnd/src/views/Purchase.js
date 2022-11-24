@@ -57,10 +57,11 @@ const Purchase = () => {
             <div className="flex items-center justify-between p-4 bg-s5 text-[16px] font-semibold rounded-t-3xl border-[2px] border-b-0 border-solid border-s5">
               <div>Mã đơn: {item._id}</div>
               <div
-                className={`px-4 py-2 rounded-full ${item.statusdelivery === true
-                  ? 'bg-tertiary-cont'
-                  : 'bg-[#eb5353] text-white'
-                  }`}
+                className={`xs:px-1 text-center xs:py-1 md:px-4 md:py-2 rounded-full ${
+                  item.statusdelivery === true
+                    ? 'bg-tertiary-cont'
+                    : 'bg-[#eb5353] text-white'
+                }`}
               >
                 {item.statusdelivery === true
                   ? 'Hoàn thành'
@@ -72,12 +73,8 @@ const Purchase = () => {
                 <div className="p-2">
                   Ngày đặt hàng: {moment(item.createdAt).format('DD.MM.YYYY')}
                 </div>
-                <div className="p-2">
-                  Số điện thoại: {item.numberphone}
-                </div>
-                <div className="p-2">
-                  Địa chỉ: {item.address}
-                </div>
+                <div className="p-2">Số điện thoại: {item.numberphone}</div>
+                <div className="p-2">Địa chỉ: {item.address}</div>
                 <div className="p-2">
                   Tổng tiền:{' '}
                   {new Intl.NumberFormat('vi-VN', {
@@ -112,7 +109,7 @@ const Purchase = () => {
   return (
     <div className="relative min-h-screen pb-24 lg:pb-12">
       <Header />
-      <div className="my-10 mx-[-15px] sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
+      <div className="my-10 mx-[-15px] xs:px-5 sm:mx-5 md:mx-[50px] lg:mx-[100px] xl:mx-[150px]">
         {renderPurchase}
       </div>
       <Footer />
