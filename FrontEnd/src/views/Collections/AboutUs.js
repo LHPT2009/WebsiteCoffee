@@ -12,14 +12,13 @@ const AboutUs = () => {
     document.title = 'Về chúng tôi - Coffee Bug Ổn'
   }, [])
   return (
-    <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
+    <div className="relative min-h-screen pb-24 bg-background lg:pb-12 overflow-hidden">
       <Header />
-      <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-background transition-all ease-in-out duration-300">
-        <div className="flex flex-col gap-10 text-center items-center">
+      <div className="text-center items-center lg:flex lg:flex-col mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-background transition-all ease-in-out duration-300">
           <div className="grid h-full grid-cols-12 gap-6 lg:h-4/5">
             <div className="flex flex-col col-span-12 lg:col-span-5 justify-center text-left items-start gap-[24px]">
               <h2 className="text-h2 text-primary">Về chúng tôi</h2>
-              <d1 className="text-black text-d1">Quán cà phê Bug Ổn</d1>
+              <d1 className="text-h1 sm:text-black sm:text-d1">Quán cà phê Bug Ổn</d1>
               <p className="text-black text-bodylg">
                 Chúng tôi rất thích uống cà phê, nên chúng tôi muốn làm một thứ
                 gì đó với nó. Mở một cửa hàng để bán? Chúng tôi còn là sinh viên
@@ -30,7 +29,7 @@ const AboutUs = () => {
               </p>
             </div>
             <div className="lg:col-span-1"></div>
-            <div className="relative mx-20 lg:mx-0 bg-secondary-cont col-span-12 lg:col-span-6 rounded-[24px] h-[500px]">
+            <div className="relative mx-0 lg:mx-0 bg-secondary-cont col-span-12 lg:col-span-6 rounded-[24px] h-[500px]">
               <img
                 className="absolute w-[490px] h-auto left-[2%] top-[-5%]
                 lg:left-[-8%] lg:top-[-3%]  
@@ -46,9 +45,9 @@ const AboutUs = () => {
           </div>
 
           {/* body--------------------------------------- */}
-          <bodywrapper className="flex flex-col max-w-[1024px] gap-4 text-black">
+          <wrapper className="items-center gap-4 w-full text-black max-w-[1024px]">
             {/* article 1 */}
-            <articlewrap className="flex flex-col gap-2">
+            <articlewrap className="flex flex-col ">
               <h1 className="text-h1">
                 Tên là <span className="text-primary">Bug Ổn</span>
               </h1>
@@ -75,7 +74,7 @@ const AboutUs = () => {
               <Divider />
             </div>
             {/* article 2 */}
-            <articlewrap className="flex flex-col gap-2">
+            <articlewrap className="">
               <h1 className="text-h1 my-4">
                 <span className='text-primary'>Bug Ổn</span> một cách mới mẻ
               </h1>
@@ -126,8 +125,7 @@ const AboutUs = () => {
             >
               Gặp gỡ những người bạn đã tạo nên Coffee Bug Ổn
             </button>
-          </bodywrapper>
-        </div>
+          </wrapper>
       </div>
       <Footer />
     </div>

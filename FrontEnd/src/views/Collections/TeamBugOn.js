@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import Divider from '../../components/Divider'
-import { useNavigate } from 'react-router-dom'
 
 const TeamBugOn = () => {
   useEffect(() => {
@@ -10,13 +9,13 @@ const TeamBugOn = () => {
   }, [])
 
   return (
-    <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
+    <div className="relative min-h-screen pb-24 bg-background lg:pb-12 overflow-hidden">
       <Header />
       <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-background text-bodylg transition-all ease-in-out duration-300">
         <div className="flex flex-col gap-10 text-center items-center">
           <div className="flex flex-col col-span-12 lg:col-span-5 justify-center text-left items-start gap-[24px]">
             <h2 className="text-h2 text-primary">Đồ Án Chuyên Ngành</h2>
-            <d1 className="text-black text-d1">
+            <d1 className="text-h1 sm:text-black sm:text-d1">
               Những người bạn tạo nên Bug Ổn
             </d1>
             <p className="text-black">

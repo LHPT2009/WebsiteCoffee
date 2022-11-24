@@ -9,14 +9,14 @@ const Career = () => {
     document.title = 'Tuyển dụng - Coffee Bug Ổn'
   }, [])
   return (
-    <div className="relative min-h-screen pb-24 bg-background lg:pb-12">
+    <div className="relative min-h-screen pb-24 bg-background lg:pb-12 overflow-hidden">
       <Header />
       <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-background transition-all ease-in-out duration-300">
         <div className="flex flex-col gap-10 text-center">
           <div className="grid h-full grid-cols-12 gap-6 lg:h-4/5">
             <div className="flex flex-col col-span-12 lg:col-span-5 justify-center text-left items-start gap-4">
               <h2 className="text-h2 text-primary">Tuyển dụng</h2>
-              <d1 className="text-d2 font-[700] sm:text-black sm:text-d1">
+              <d1 className="text-h1 sm:text-black sm:text-d1">
                 Bạn đang tìm vị trí ở Bug Ổn?
               </d1>
               <p className="text-black text-bodylg">
@@ -69,8 +69,8 @@ const Career = () => {
             <Divider />
           </div>
           {/* Vi tri tuyen dung */}
-          <div className="box-border bg-s3 flex flex-col gap-[16px] px-16 py-12 rounded-[32px] lg:mx-32">
-            <h2 className="text-center text-d2 text-on-surface">
+          <div className="box-border bg-s3 flex flex-col gap-[16px] px-2 sm:px-16 py-12 rounded-[32px] lg:mx-32">
+            <h2 className="text-center text-h1 font-[500] sm:text-d2 text-on-surface">
               Các vị trí hiện tại
             </h2>
             <div className="flex flex-col items-start p-6 rounded-[16px] bg-secondary-cont text-on-secondary-cont border-outline-var border-[2px] hover:bg-tertiary-cont hover:text-on-tertiary-cont transition-all ease-out">
