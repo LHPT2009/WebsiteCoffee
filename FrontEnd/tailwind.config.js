@@ -68,6 +68,14 @@ module.exports = {
           fontWeight: '400',
         },
       ],
+      bodylg: [
+        '20px',
+        {
+          lineHeight: '32px',
+          letterSpacing: '0.05em',
+          fontWeight: '400',
+        },
+      ],
       //display
       d1: [
         '60px',
@@ -98,8 +106,8 @@ module.exports = {
         '32px',
         {
           lineHeight: '142%',
-          letterSpacing: '0.02em',
-          fontWeight: '500',
+          letterSpacing: '0.03em',
+          fontWeight: '700',
         },
       ],
       //title
