@@ -9,7 +9,7 @@ const TeamBugOn = () => {
   }, [])
 
   return (
-    <div className="relative min-h-screen pb-24 bg-background lg:pb-12 overflow-hidden">
+    <div className="relative min-h-screen pb-24 bg-background lg:pb-12 overflow-clip">
       <Header />
       <div className="mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-background text-bodylg transition-all ease-in-out duration-300">
         <div className="flex flex-col gap-10 text-center items-center">

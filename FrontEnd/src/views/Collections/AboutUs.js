@@ -12,7 +12,7 @@ const AboutUs = () => {
     document.title = 'Về chúng tôi - Coffee Bug Ổn'
   }, [])
   return (
-    <div className="relative min-h-screen pb-24 bg-background lg:pb-12 overflow-hidden">
+    <div className="relative min-h-screen pb-24 bg-background lg:pb-12 overflow-clip">
       <Header />
       <div className="text-center items-center lg:flex lg:flex-col mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px] bg-background transition-all ease-in-out duration-300">
           <div className="grid h-full grid-cols-12 gap-6 lg:h-4/5">
