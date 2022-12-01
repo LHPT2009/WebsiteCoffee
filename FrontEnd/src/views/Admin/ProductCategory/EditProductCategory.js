@@ -12,13 +12,13 @@ const EditProductCategory = () => {
   const { id } = useParams()
   const [name, setName] = useState(category.name)
 
-  axios.get(`http://localhost:8000/category/${id}`).then((res) => {
+  axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category/${id}`).then((res) => {
     setCategory(res.data)
   })
 
   const editProductCategory = async (e) => {
     e.preventDefault()
-    const edit = await axios.put(`http://localhost:8000/category/${id}`, {
+    const edit = await axios.put(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category/${id}`, {
       name,
     })
     if (edit) {

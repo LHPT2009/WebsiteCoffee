@@ -14,7 +14,7 @@ const SizeProducts = () => {
   const [id, setId] = useState('')
   const [sizeProduct, setSizeProduct] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:8000/sizeproduct').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/sizeproduct`).then((res) => {
       setSizeProduct(res.data)
     })
   }, [])

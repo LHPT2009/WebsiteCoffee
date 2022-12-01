@@ -9,7 +9,7 @@ const Roles = () => {
   const [id, setId] = useState('')
   const [role, setRole] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:8000/role').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/role`).then((res) => {
       setRole(res.data)
     })
   }, [])

@@ -12,13 +12,13 @@ const EditRole = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  axios.get(`http://localhost:8000/role/${id}`).then((res) => {
+  axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/role/${id}`).then((res) => {
     setRole(res.data)
   })
 
   const editRole = async (e) => {
     e.preventDefault()
-    const edit = await axios.put(`http://localhost:8000/role/${id}`, {
+    const edit = await axios.put(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/role/${id}`, {
       rolename,
     })
     if (edit) {

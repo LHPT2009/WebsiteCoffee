@@ -30,7 +30,7 @@ const RatingProduct = ({ receiptid, isOpen }) => {
 
   const addrate = (id) => {
     if (localStorage.getItem('check')) {
-      const put = axios.put(`http://localhost:8000/rate/receiptrate/${id}`, {
+      const put = axios.put(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate/receiptrate/${id}`, {
         productid,
         receiptid: recid,
         userid,
@@ -45,7 +45,7 @@ const RatingProduct = ({ receiptid, isOpen }) => {
         })
         localStorage.removeItem('check')
         axios
-          .post('http://localhost:8000/rate/receiptid', {
+          .post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate/receiptid`, {
             receiptid: receiptid,
           })
           .then((res) => {
@@ -61,7 +61,7 @@ const RatingProduct = ({ receiptid, isOpen }) => {
   }
   useEffect(() => {
     axios
-      .post('http://localhost:8000/rate/receiptid', { receiptid: receiptid })
+      .post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate/receiptid`, { receiptid: receiptid })
       .then((res) => {
         setRate(res.data)
         setProductId(res.data.productid)

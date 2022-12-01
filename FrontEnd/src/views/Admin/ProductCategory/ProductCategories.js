@@ -14,7 +14,7 @@ const ProductCategories = () => {
   const [id, setId] = useState('')
   const [productCategory, setProductCategory] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:8000/category').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category`).then((res) => {
       setProductCategory(res.data)
     })
   }, [])

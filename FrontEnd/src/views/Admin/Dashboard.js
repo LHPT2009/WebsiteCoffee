@@ -59,10 +59,10 @@ const Dashboard = () => {
   }, [])
   useEffect(() => {
     axios
-      .get('http://localhost:8000/receipt')
+      .get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt`)
       .then((res) => setReceipt(res.data))
-    axios.get('http://localhost:8000/user').then((res) => setUser(res.data))
-    axios.get('http://localhost:8000/rate').then((res) => setRate(res.data))
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user`).then((res) => setUser(res.data))
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate`).then((res) => setRate(res.data))
   }, [])
 
   const themeReducer = useSelector((state) => state.ThemeReducer.mode)
@@ -119,13 +119,13 @@ const Dashboard = () => {
                   options={
                     themeReducer === 'theme-mode-dark'
                       ? {
-                          ...chartOptions.options,
-                          theme: { mode: 'dark' },
-                        }
+                        ...chartOptions.options,
+                        theme: { mode: 'dark' },
+                      }
                       : {
-                          ...chartOptions.options,
-                          theme: { mode: 'light' },
-                        }
+                        ...chartOptions.options,
+                        theme: { mode: 'light' },
+                      }
                   }
                   series={chartOptions.series}
                   type="line"

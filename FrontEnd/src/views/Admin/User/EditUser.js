@@ -22,18 +22,18 @@ const EditUser = () => {
 
   const navigate = useNavigate()
   useEffect(() => {
-    axios.get(`http://localhost:8000/user/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user/${id}`).then((res) => {
       setUser(res.data)
       setRole(res.data.role)
     })
-    axios.get(`http://localhost:8000/role`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/role`).then((res) => {
       setListRole(res.data)
     })
   }, [])
 
   const editUser = async (e) => {
     e.preventDefault()
-    const edit = await axios.put(`http://localhost:8000/user/${id}`, {
+    const edit = await axios.put(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user/${id}`, {
       username,
       email,
       password,

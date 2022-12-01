@@ -19,7 +19,7 @@ const AddProduct = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/category`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category`).then((res) => {
       setCategoryProduct(res.data)
     })
   }, [])
@@ -27,7 +27,7 @@ const AddProduct = () => {
   const addProduct = async (e) => {
     e.preventDefault()
     const add = await axios.post(
-      `http://localhost:8000/product`,
+      `${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product`,
       { categoryproductid, name, price, image, describe, status },
       { headers: { 'content-type': 'multipart/form-data' } }
     )

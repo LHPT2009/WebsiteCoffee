@@ -26,14 +26,14 @@ const EditRate = () => {
         timer: 3000,
         timerProgressBar: false,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-      })
+    })
 
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get(`http://localhost:8000/rate/one/${id}`).then((res) => {
+        axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate/one/${id}`).then((res) => {
             setRate(res.data)
             setStatus(res.data.status)
         })
@@ -41,7 +41,7 @@ const EditRate = () => {
 
     const editRate = async (e) => {
         e.preventDefault()
-        const edit = await axios.put(`http://localhost:8000/rate/${id}`, {
+        const edit = await axios.put(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate/${id}`, {
             receiptid,
             productid,
             userid,
@@ -54,7 +54,7 @@ const EditRate = () => {
             Toast.fire({
                 icon: 'success',
                 title: 'Chỉnh sửa thành công!'
-              })
+            })
             navigate('/admin/rate')
         } else {
             Swal.fire({
@@ -62,7 +62,7 @@ const EditRate = () => {
                 title: 'Chỉnh sửa thất bại!',
                 text: 'Vui lòng thử lại.',
                 confirmButtonColor: '#3d685e'
-              })
+            })
         }
     }
     return (

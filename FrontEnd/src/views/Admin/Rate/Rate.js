@@ -26,7 +26,7 @@ const Rate = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   useEffect(() => {
-    axios.get('http://localhost:8000/rate').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate`).then((res) => {
       setRate(res.data)
     })
   }, [])

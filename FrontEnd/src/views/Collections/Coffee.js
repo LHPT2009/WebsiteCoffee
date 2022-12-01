@@ -19,7 +19,7 @@ const Coffee = () => {
     setNoOfElement(noOfElement + noOfElement)
   }
   useEffect(() => {
-    axios.get('http://localhost:8000/product').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product`).then((res) => {
       setProduct(res.data)
     })
   }, [])
@@ -29,19 +29,19 @@ const Coffee = () => {
   }, [])
 
   useEffect(() => {
-    axios.get('http://localhost:8000/category').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category`).then((res) => {
       setProductCate(res.data)
     })
   }, [])
 
   const handleCategories = (cateid) => {
-    axios.get(`http://localhost:8000/loadproduct/${cateid}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/loadproduct/${cateid}`).then((res) => {
       setProduct(res.data)
     })
   }
 
   const handleproduct = () => {
-    axios.get('http://localhost:8000/product').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product`).then((res) => {
       setProduct(res.data)
     })
   }
@@ -101,41 +101,41 @@ const Coffee = () => {
         <div className="mb-5 text-h2 text-primary">Thức uống</div>
         <div className="flex flex-wrap gap-2 pt-2 mb-2 sm:sticky sm:top-[71px] bg-background z-[998]">
           {/* filter by id */}
+          <label className="cursor-pointer">
+            <input
+              id="default-radio-1"
+              type="radio"
+              name="default-radio"
+              className="sr-only peer"
+              onClick={handleproduct}
+            ></input>
+            <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
+              Tất cả
+            </div>
+          </label>
+          {/* new tag filter */}
+          {productCate.map((item) => (
             <label className="cursor-pointer">
               <input
                 id="default-radio-1"
                 type="radio"
                 name="default-radio"
-                className="sr-only peer"
-                onClick={handleproduct}
+                class="peer sr-only"
+                onClick={() => handleCategories(`${item._id}`)}
               ></input>
               <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
-                Tất cả
+                {item.name}
               </div>
             </label>
-            {/* new tag filter */}
-            {productCate.map((item) => (
-              <label className="cursor-pointer">
-                <input
-                  id="default-radio-1"
-                  type="radio"
-                  name="default-radio"
-                  class="peer sr-only"
-                  onClick={() => handleCategories(`${item._id}`)}
-                ></input>
-                <div className="px-4 py-1 truncate items-center text-caption text-center bg-[#E9E9E9] text-outline border-[2px] border-background rounded-full active:border-outline peer-checked:bg-secondary-cont peer-checked:text-on-secondary-cont peer-checked:border-outline-var">
-                  {item.name}
-                </div>
-              </label>
-            ))}
-            <Search
-              onChange={handleFilter}
-              placeholder={'Tìm kiếm....'}
-              value={wordEntered}
-              className="h-[36px] bg-transparent w-full sm:w-[360px] sticky top-[56px]"
-            />
-            {/* Search bar */}
-            {/* <div className="w-full block">
+          ))}
+          <Search
+            onChange={handleFilter}
+            placeholder={'Tìm kiếm....'}
+            value={wordEntered}
+            className="h-[36px] bg-transparent w-full sm:w-[360px] sticky top-[56px]"
+          />
+          {/* Search bar */}
+          {/* <div className="w-full block">
             <Search
               onChange={handleFilter}
               placeholder={'Tìm kiếm....'}
@@ -143,27 +143,27 @@ const Coffee = () => {
               className="h-[36px] bg-transparent w-full sm:w-[360px] sticky top-[56px]"
             />
             </div> */}
-            {/* End Filter - Search */}
-          
+          {/* End Filter - Search */}
+
           {/* End filter by id */}
         </div>
-        
+
         <div className="grid gap-4 mb-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {wordEntered === '' ? renderPaging : renderSearch}
         </div>
         <div>
           {product.length > noOfElement ? (
-          <Button
-            onClick={() => loadMore()}
-            btnStyle={'btn-outline'}
-            btnCSS={''}
-            icon="expand_more"
-          >
-            Xem thêm
-          </Button>
-        ) : null}
+            <Button
+              onClick={() => loadMore()}
+              btnStyle={'btn-outline'}
+              btnCSS={''}
+              icon="expand_more"
+            >
+              Xem thêm
+            </Button>
+          ) : null}
         </div>
-        
+
       </div>
       <Footer />
     </div>

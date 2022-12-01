@@ -14,13 +14,13 @@ const EditSizeProduct = () => {
 
   const { id } = useParams()
 
-  axios.get(`http://localhost:8000/sizeproduct/${id}`).then((res) => {
+  axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/sizeproduct/${id}`).then((res) => {
     setSizeProduct(res.data)
   })
 
   const editSizeProduct = async (e) => {
     e.preventDefault()
-    const edit = await axios.patch(`http://localhost:8000/sizeproduct/${id}`, {
+    const edit = await axios.patch(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/sizeproduct/${id}`, {
       name: name,
       price: price,
     })

@@ -12,7 +12,7 @@ const AddDisCount = () => {
   const navigate = useNavigate()
   const addProduct = async (e) => {
     e.preventDefault()
-    const add = await axios.post(`http://localhost:8000/discount`, {
+    const add = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/discount`, {
       name,
       price,
       startdate,

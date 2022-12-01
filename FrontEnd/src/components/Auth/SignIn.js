@@ -36,7 +36,7 @@ const SignIn = () => {
   const onSuccess = async (res) => {
     if (token) {
       const Auth = await axios
-        .post('http://localhost:8000/auth/google', {
+        .post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/auth/google`, {
           lastname: res.profileObj.familyName ? res.profileObj.familyName : "",
           firstname: res.profileObj.givenName ? res.profileObj.givenName : "",
           email: res.profileObj.email,
@@ -60,7 +60,7 @@ const SignIn = () => {
     e.preventDefault()
     try {
       if (token) {
-        const Auth = await axios.post('http://localhost:8000/auth/login', {
+        const Auth = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/auth/login`, {
           username,
           password,
         }).catch(err => {

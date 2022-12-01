@@ -14,7 +14,7 @@ const EnterEmail = () => {
   const SendMailUser = async (e) => {
     e.preventDefault()
     try {
-      const tokenreset = await axios.post('http://localhost:8000/mail', {
+      const tokenreset = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/mail`, {
         email: email,
       }).catch(err => {
         navigate('/enteremail')

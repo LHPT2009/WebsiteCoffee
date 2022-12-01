@@ -26,7 +26,7 @@ const Products = (props) => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   useEffect(() => {
-    axios.get('http://localhost:8000/product').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product`).then((res) => {
       setProduct(res.data)
     })
   }, [])

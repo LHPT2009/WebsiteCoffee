@@ -20,7 +20,7 @@ const SignUp = () => {
 
   const navigate = useNavigate()
   useEffect(() => {
-    axios.get('http://localhost:8000/role/one').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/role/one`).then((res) => {
       console.log(res.data._id)
       setRole(res.data._id)
     })
@@ -29,7 +29,7 @@ const SignUp = () => {
   const addUser = () => {
     if (password == rePassword) {
       axios
-        .post('http://localhost:8000/auth/register', {
+        .post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/auth/register`, {
           firstname,
           lastname,
           username,
