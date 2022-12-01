@@ -49,10 +49,10 @@ const ItemDetail = () => {
   })
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate/${id}`).then((res) => {
       setRateList(res.data)
     })
-    axios.get(`http://localhost:8000/product/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product/${id}`).then((res) => {
       setInfo(res.data)
       setImage(
         `data:image/png;base64,${btoa(
@@ -64,12 +64,12 @@ const ItemDetail = () => {
   }, [id])
   const [product, setProduct] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:8000/product').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product`).then((res) => {
       setProduct(res.data)
     })
   }, [])
   useEffect(() => {
-    axios.get('http://localhost:8000/sizeproduct').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/sizeproduct`).then((res) => {
       setSizeProduct(res.data)
     })
   }, [])
@@ -101,7 +101,7 @@ const ItemDetail = () => {
 
   const addrate = (e) => {
     e.preventDefault()
-    const addrate = axios.post(`http://localhost:8000/rate`, {
+    const addrate = axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate`, {
       productid: info._id,
       userid: jwt_decode(localStorage.getItem('token')).id,
       point: point,
@@ -111,7 +111,7 @@ const ItemDetail = () => {
       setPoint(0)
       setContent('')
       alert('Cảm ơn bạn đã đánh giá sản phẩm này!')
-      axios.get(`http://localhost:8000/rate/${id}`).then((res) => {
+      axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate/${id}`).then((res) => {
         setRateList(res.data)
       })
     } else {

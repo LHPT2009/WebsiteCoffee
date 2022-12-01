@@ -22,21 +22,21 @@ const EditReceipt = () => {
   const [statusdelivery, setStatusDelivery] = useState(receipt.statusdelivery)
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/receipt/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt/${id}`).then((res) => {
       setReceipt(res.data)
       setStatusPayment(res.data.statuspayment)
       setStatusDelivery(res.data.statusdelivery)
     })
     axios
-      .get(`http://localhost:8000/receipt/detail/${id}`)
+      .get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt/detail/${id}`)
       .then((res) => setReceiptDetail(res.data))
-    axios.put(`http://localhost:8000/notification/${id}`, {})
+    axios.put(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/notification/${id}`, {})
   }, [id])
 
   const editReceipt = async (e) => {
     e.preventDefault()
     if (statuspayment) {
-      const edit = await axios.put(`http://localhost:8000/receipt/${id}`, {
+      const edit = await axios.put(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt/${id}`, {
         userid,
         price,
         statuspayment,

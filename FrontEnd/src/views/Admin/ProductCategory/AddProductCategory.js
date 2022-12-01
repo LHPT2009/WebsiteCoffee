@@ -10,7 +10,7 @@ const AddProductCategory = () => {
   const navigate = useNavigate()
   const addProductCategory = async (e) => {
     e.preventDefault()
-    const add = await axios.post(`http://localhost:8000/category`, { name })
+    const add = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category`, { name })
     if (add) {
       navigate('/admin/productcategories')
     } else {

@@ -33,7 +33,7 @@ const Purchase = () => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:8000/receipt/userid', {
+      .post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt/userid`, {
         userid: localStorage.getItem('token')
           ? jwt_decode(localStorage.getItem('token')).id
           : '',
@@ -57,11 +57,10 @@ const Purchase = () => {
             <div className="flex items-center justify-between p-4 bg-s5 text-[16px] font-semibold rounded-t-3xl border-[2px] border-b-0 border-solid border-s5">
               <div>Mã đơn: {item._id}</div>
               <div
-                className={`xs:px-1 text-center xs:py-1 md:px-4 md:py-2 rounded-full ${
-                  item.statusdelivery === true
+                className={`xs:px-1 text-center xs:py-1 md:px-4 md:py-2 rounded-full ${item.statusdelivery === true
                     ? 'bg-tertiary-cont'
                     : 'bg-[#eb5353] text-white'
-                }`}
+                  }`}
               >
                 {item.statusdelivery === true
                   ? 'Hoàn thành'

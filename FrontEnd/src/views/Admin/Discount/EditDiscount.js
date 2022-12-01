@@ -24,14 +24,14 @@ const EditDisCount = () => {
   const { id } = useParams()
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/discount/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/discount/${id}`).then((res) => {
       setDisCount(res.data)
     })
   }, [])
 
   const editProduct = async (e) => {
     e.preventDefault()
-    const edit = await axios.put(`http://localhost:8000/discount/${id}`, {
+    const edit = await axios.put(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/discount/${id}`, {
       name,
       price,
       startdate,

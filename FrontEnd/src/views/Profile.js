@@ -34,8 +34,7 @@ const Profile = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/user/${
-          jwt_decode(localStorage.getItem('token')).id
+        `${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user/${jwt_decode(localStorage.getItem('token')).id
         }`
       )
       .then((res) => {
@@ -51,8 +50,7 @@ const Profile = () => {
   const editUser = async (e) => {
     e.preventDefault()
     const edit = await axios.put(
-      `http://localhost:8000/user/${
-        jwt_decode(localStorage.getItem('token')).id
+      `${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user/${jwt_decode(localStorage.getItem('token')).id
       }`,
       {
         email,
@@ -94,64 +92,64 @@ const Profile = () => {
             <div className="hidden lg:flex lg:flex-col col-span-12 lg:col-span-6 justify-center text-left items-start gap-4">
               <h2 className="text-h2 text-primary">Tài khoản</h2>
               <div className='grow items-center'>
-              <img
-                className="w-[80%] h-auto py-4"
-                src={profile}
-              />
+                <img
+                  className="w-[80%] h-auto py-4"
+                  src={profile}
+                />
               </div>
-              
+
             </div>
             {/* col-account info */}
             <div className="grid grid-cols-2 items-center mx-0 sm:mx-20 !py-20 lg:mx-0 !px-4 sm:!px-14 bg-s3 col-span-12 lg:col-span-6 rounded-[24px] text-body text-black gap-1">
-            <h1 className='text-h2 text-on-secondary-cont col-span-2 text-left'>Thông tin tài khoản</h1>
-                <div className='flex flex-col items-start col-span-2'>
-                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Tên đăng nhập</h3>
-                  <TextInput
-                    className={'w-[100%]'}
-                    disabled={'disabled'}
-                    defaultValue={currUser.username}
-                  />
-                </div>
-                <div className='flex flex-col items-start col-span-2'>
-                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Email</h3>
-                  <TextInput
-                    className={'w-[100%]'}
-                    onChange={(e) => setEmail(e.target.value)}
-                    defaultValue={currUser.email}
-                  />
-                </div>
-                <div className='flex flex-col items-start col-span-2'>
-                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Họ</h3>
-                  <TextInput
-                    className={'w-[100%]'}
-                    onChange={(e) => setLastname(e.target.value)}
-                    defaultValue={currUser.lastname}
-                  />
-                </div>
-                <div className='flex flex-col items-start col-span-2'>
-                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Tên</h3>
-                  <TextInput
-                    className={'w-[100%]'}
-                    onChange={(e) => setFirstname(e.target.value)}
-                    defaultValue={currUser.firstname}
-                  />
-                </div>
-                <div className='flex flex-col items-start col-span-2'>
-                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Số điện thoại</h3>
-                  <TextInput
-                    className={'w-[100%]'}
-                    onChange={(e) => setNumberphone(e.target.value)}
-                    defaultValue={currUser.numberphone}
-                  />
-                </div>
-                <div className='flex flex-col items-start col-span-2'>
-                  <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Địa chỉ</h3>
-                  <TextInput
-                    className={'w-[100%]'}
-                    onChange={(e) => setAddress(e.target.value)}
-                    defaultValue={currUser.address}
-                  />
-                </div>
+              <h1 className='text-h2 text-on-secondary-cont col-span-2 text-left'>Thông tin tài khoản</h1>
+              <div className='flex flex-col items-start col-span-2'>
+                <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Tên đăng nhập</h3>
+                <TextInput
+                  className={'w-[100%]'}
+                  disabled={'disabled'}
+                  defaultValue={currUser.username}
+                />
+              </div>
+              <div className='flex flex-col items-start col-span-2'>
+                <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Email</h3>
+                <TextInput
+                  className={'w-[100%]'}
+                  onChange={(e) => setEmail(e.target.value)}
+                  defaultValue={currUser.email}
+                />
+              </div>
+              <div className='flex flex-col items-start col-span-2'>
+                <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Họ</h3>
+                <TextInput
+                  className={'w-[100%]'}
+                  onChange={(e) => setLastname(e.target.value)}
+                  defaultValue={currUser.lastname}
+                />
+              </div>
+              <div className='flex flex-col items-start col-span-2'>
+                <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Tên</h3>
+                <TextInput
+                  className={'w-[100%]'}
+                  onChange={(e) => setFirstname(e.target.value)}
+                  defaultValue={currUser.firstname}
+                />
+              </div>
+              <div className='flex flex-col items-start col-span-2'>
+                <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Số điện thoại</h3>
+                <TextInput
+                  className={'w-[100%]'}
+                  onChange={(e) => setNumberphone(e.target.value)}
+                  defaultValue={currUser.numberphone}
+                />
+              </div>
+              <div className='flex flex-col items-start col-span-2'>
+                <h3 className='text-outline top-[-10px] bg-s3 ml-2 px-1 text-caption'>Địa chỉ</h3>
+                <TextInput
+                  className={'w-[100%]'}
+                  onChange={(e) => setAddress(e.target.value)}
+                  defaultValue={currUser.address}
+                />
+              </div>
 
               <div className="flex justify-center col-span-2">
                 <Button

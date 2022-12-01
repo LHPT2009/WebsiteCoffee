@@ -12,7 +12,7 @@ const Discount = () => {
   const navigate = useNavigate()
   const [disCount, setDisCount] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:8000/discount').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/discount`).then((res) => {
       setDisCount(res.data)
     })
   }, [])

@@ -24,7 +24,7 @@ const EditProduct = () => {
 
   const { id } = useParams()
   useEffect(() => {
-    axios.get(`http://localhost:8000/product/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product/${id}`).then((res) => {
       setDataProduct(res.data)
       setCategoryProductId(res.data.categoryproductid._id)
       setStatus(res.data.status)
@@ -36,7 +36,7 @@ const EditProduct = () => {
     })
   }, [])
   useEffect(() => {
-    axios.get(`http://localhost:8000/category`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category`).then((res) => {
       setCategoryProduct(res.data)
     })
   }, [])
@@ -44,7 +44,7 @@ const EditProduct = () => {
   const editProduct = async (e) => {
     e.preventDefault()
     const edit = await axios.put(
-      `http://localhost:8000/product/${id}`,
+      `${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product/${id}`,
       {
         categoryproductid: categoryproductid,
         name: name,

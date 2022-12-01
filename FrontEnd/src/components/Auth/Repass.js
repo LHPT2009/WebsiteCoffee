@@ -29,7 +29,7 @@ const Repass = () => {
     const rstoken = localStorage.getItem('tokenreset')
     const email = jwt_decode(rstoken).email
     if (password == rePassword) {
-      const updateUser = await axios.post('http://localhost:8000/mail/reset', {
+      const updateUser = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/mail/reset`, {
         email: email,
         password: password,
       })

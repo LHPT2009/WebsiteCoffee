@@ -25,7 +25,7 @@ const Receipts = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   useEffect(() => {
-    axios.get('http://localhost:8000/receipt').then((res) => {
+    axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt`).then((res) => {
       setReceipt(res.data)
     })
   }, [])

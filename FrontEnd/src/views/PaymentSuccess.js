@@ -23,7 +23,7 @@ const PaymentSuccess = () => {
 
   if (message == "Successful.") {
     if (localStorage.getItem('cart')) {
-      const rec = axios.post('http://localhost:8000/receipt', {
+      const rec = axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt`, {
         userid,
         price,
         products,
@@ -42,19 +42,19 @@ const PaymentSuccess = () => {
     <div className="relative items-center text-center min-h-screen pb-24 lg:pb-12 bg-background">
       <Header />
       <div className="flex flex-col gap-4 items-center mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
-      <img
-                className="w-[260px] sm:w-[320px] h-auto py-4"
-                src={thank}
-              />
+        <img
+          className="w-[260px] sm:w-[320px] h-auto py-4"
+          src={thank}
+        />
         <div className="text-center text-black text-h2 sm:text-d2">Thanh toán thành công</div>
         <Button
-        type="button"
-        btnStyle="btn-fill"
-        btnCSS={''}
-        icon="shopping_bag"
-        onClick={() => {
-          navigate('/product')
-        }}
+          type="button"
+          btnStyle="btn-fill"
+          btnCSS={''}
+          icon="shopping_bag"
+          onClick={() => {
+            navigate('/product')
+          }}
         >Tiếp tục mua sắm
         </Button>
       </div>

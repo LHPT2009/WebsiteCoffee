@@ -69,7 +69,7 @@ const Cart = () => {
   const searchdiscount = (e) => {
     e.preventDefault()
     axios
-      .post(`http://localhost:8000/discount/one`, { name: namediscount })
+      .post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/discount/one`, { name: namediscount })
       .then((res) => {
         var today = moment().format('DD-MM-YYYY')
         var startday = moment(res.data.startdate).format('DD-MM-YYYY')
@@ -106,7 +106,7 @@ const Cart = () => {
       return navigate('/signin')
     }
     if (localStorage.getItem('token')) {
-      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`)
+      const infoUser = await axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user/${userid}`)
       if (infoUser.data) {
         if (infoUser.data.numberphone == '' && infoUser.data.address == '') {
           Swal.fire({
@@ -116,7 +116,7 @@ const Cart = () => {
           })
           navigate('/profile')
         } else {
-          const rec = await axios.post('http://localhost:8000/receipt', {
+          const rec = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt`, {
             userid,
             price,
             products,
@@ -162,14 +162,14 @@ const Cart = () => {
       return navigate('/signin')
     }
     if (localStorage.getItem('token')) {
-      const infoUser = await axios.get(`http://localhost:8000/user/${userid}`)
+      const infoUser = await axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user/${userid}`)
       if (infoUser.data) {
         if (infoUser.data.numberphone == '' && infoUser.data.address == '') {
           alert('mời bạn cập nhật thêm SDT và địa chỉ đầy đủ!')
           navigate('/profile')
         } else {
           const rec = await axios
-            .post('http://localhost:8000/momo/', {
+            .post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/momo`, {
               amount: price,
               orderInfo: 'Thanh toán hóa đơn',
             })
@@ -328,11 +328,11 @@ const Cart = () => {
   const cartEmpty = (
     <div className="flex flex-col gap-4 items-center mx-2 sm:mx-8 lg:mx-auto lg:px-24 my-[64px] max-w-[1440px]">
       <img
-                className="w-[260px] sm:w-[320px] h-auto py-4"
-                src={Empty}
-              />
-        <div className="text-center text-black text-h2 sm:text-d2">Bạn chưa có sản phẩm nào😓</div>
-        <Button
+        className="w-[260px] sm:w-[320px] h-auto py-4"
+        src={Empty}
+      />
+      <div className="text-center text-black text-h2 sm:text-d2">Bạn chưa có sản phẩm nào😓</div>
+      <Button
         type="button"
         btnStyle="btn-fill"
         btnCSS={''}
@@ -340,9 +340,9 @@ const Cart = () => {
         onClick={() => {
           navigate('/product')
         }}
-        >Bắt đầu mua hàng
-        </Button>
-      </div>
+      >Bắt đầu mua hàng
+      </Button>
+    </div>
   )
 
   useEffect(() => {

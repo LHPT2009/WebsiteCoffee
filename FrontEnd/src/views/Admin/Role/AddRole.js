@@ -16,7 +16,7 @@ const AddRole = () => {
 
   const addRole = async (e) => {
     e.preventDefault()
-    const add = await axios.post(`http://localhost:8000/role`, { rolename })
+    const add = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/role`, { rolename })
     if (add) {
       navigate('/admin/roles')
     } else {
