@@ -1,5 +1,5 @@
-const Receipt = require('../models/receipt');
-const ReceiptDetail = require('../models/receiptDetails');
+const Receipt = require('../models/Receipt');
+const ReceiptDetail = require('../models/ReceiptDetails');
 const Rate = require('../models/rate');
 const Notification = require('../models/Notification');
 

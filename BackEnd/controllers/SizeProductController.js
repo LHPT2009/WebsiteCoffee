@@ -1,4 +1,4 @@
-const SizeProduct = require("../models/sizeProduct");
+const SizeProduct = require("../models/SizeProduct");
 
 const SizeProductController = {
     getAllSizeProducts: async (req, res) => {
