@@ -85,7 +85,7 @@ const Receipts = () => {
       {currentReceipts.map((item) => (
         <tr key={item._id}>
           <td>{item._id}</td>
-          <td>{item.userid}</td>
+          <td>{item.userid._id}</td>
           <td>{moment(item.createdAt).format('DD.MM.YYYY')}</td>
           <td>{moment(item.updatedAt).format('DD.MM.YYYY')}</td>
           <td>
@@ -131,7 +131,6 @@ const Receipts = () => {
           value={wordEntered}
         />
       </div>
-      {/* Bug: Click vô text mới run */}
       <Button btnStyle={'btn-outline'} btnCSS={'h-11 mb-10'} icon="">
         <CSVLink
           data={receipt.filter((rec) => rec.statuspayment == true)}

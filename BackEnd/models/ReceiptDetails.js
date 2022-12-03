@@ -9,7 +9,13 @@ const receiptdetailsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Receipt"
     },
+    name: {
+        type: String
+    },
     amount: {
+        type: Number
+    },
+    price: {
         type: Number
     }
 }, { timestamps: true }

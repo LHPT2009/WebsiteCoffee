@@ -125,7 +125,7 @@ const EditReceipt = () => {
             <ul>
               <li className="mx-5 mb-5 font-googleSansRegular text-secondary">
                 <p>
-                  • {item.productid.name} - Số lượng: {item.amount}
+                  • {item.name} - Số lượng: {item.amount}
                 </p>
               </li>
             </ul>
