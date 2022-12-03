@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+
+import { useReactToPrint } from 'react-to-print';
 
 import axios from 'axios'
 
@@ -51,6 +53,14 @@ const EditReceipt = () => {
       alert('Không thể thay đổi trạng thái vận chuyển khi chưa được thanh toán!')
     }
   }
+
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'emp-data',
+    onAfterPrint: () => alert('Xuất hóa đơn thành công!')
+  });
+
   return (
     <div>
       <Topnav />
@@ -58,7 +68,7 @@ const EditReceipt = () => {
         <h1 className="font-googleSansBold mb-10 uppercase text-primary text-[24px]">
           Chỉnh sửa đơn hàng
         </h1>
-        <div>
+        <div ref={componentRef}>
           <div className="inline-block w-[200px] mr-3">Mã tài khoản</div>
           <TextInput
             placeholder={'Mã tài khoản'}
@@ -123,6 +133,9 @@ const EditReceipt = () => {
           <br />
         </div>
         <div className="flex gap-3">
+          <Button type="button" icon="photo" onClick={handlePrint}>
+            Xuất hóa đơn
+          </Button>
           <Button type="button" icon="edit" onClick={editReceipt}>
             Sửa
           </Button>
