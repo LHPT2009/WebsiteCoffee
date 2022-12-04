@@ -9,7 +9,7 @@ const User = require("../models/User");
 const ReceiptController = {
     getAllReceipts: async (req, res) => {
         try {
-            const receipt = await Receipt.find().populate(`userid`, [`email`]);
+            const receipt = await Receipt.find();
             res.status(200).json(receipt);
         } catch (err) {
             res.status(500).json(receipt);
@@ -57,6 +57,7 @@ const ReceiptController = {
 
     addReceipt: async (req, res) => {
         try {
+            const user = await User.findById(req.body.userid);
             const newReceipt = new Receipt({
                 userid: req.body.userid,
                 price: req.body.price,
@@ -64,8 +65,8 @@ const ReceiptController = {
                 discountprice: req.body.discountprice,
                 statuspayment: req.body.statuspayment,
                 statusdelivery: req.body.statusdelivery,
-                numberphone: req.body.numberphone,
-                address: req.body.address,
+                numberphone: user.numberphone,
+                address: user.address,
             });
             await newReceipt.save();
 
