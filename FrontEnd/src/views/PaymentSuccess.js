@@ -12,18 +12,6 @@ const PaymentSuccess = () => {
   const navigate = useNavigate();
   const search = useLocation().search;
   const message = new URLSearchParams(search).get('message');
-  const address = '';
-  const numberphone = '';
-  axios
-  .get(
-    `${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user/${jwt_decode(localStorage.getItem('token')).id
-    }`
-  )
-  .then((res) => {
-    // setCurrUser(res.data)
-    address = res.data.address;
-    numberphone = res.data.numberphone;
-  })
   const products = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
   const userid = localStorage.getItem('token') ? jwt_decode(localStorage.getItem('token')).id : "";
   const price = new URLSearchParams(search).get('amount');
@@ -40,9 +28,7 @@ const PaymentSuccess = () => {
         discountid,
         discountprice,
         statuspayment,
-        statusdelivery,
-        numberphone,
-        address
+        statusdelivery
       })
       localStorage.removeItem('cart');
       localStorage.removeItem('discount');

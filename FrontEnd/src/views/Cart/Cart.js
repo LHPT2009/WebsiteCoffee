@@ -123,9 +123,7 @@ const Cart = () => {
             discountid,
             discountprice,
             statuspayment,
-            statusdelivery,
-            numberphone: infoUser.data.numberphone,
-            address: infoUser.data.address,
+            statusdelivery
           })
           setNameDisCount('')
           setDiscountPrice(0)

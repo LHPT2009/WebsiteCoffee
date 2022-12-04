@@ -36,6 +36,7 @@ const Receipts = () => {
   const handleFilter = (event) => {
     const searchWord = event.target.value
     setWordEntered(searchWord)
+    console.log(searchWord)
     const newFilter = receipt.filter((value) => {
       return value._id.toLowerCase().includes(searchWord.toLowerCase())
     })
