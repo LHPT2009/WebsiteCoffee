@@ -12,7 +12,18 @@ const PaymentSuccess = () => {
   const navigate = useNavigate();
   const search = useLocation().search;
   const message = new URLSearchParams(search).get('message');
-
+  const address = '';
+  const numberphone = '';
+  axios
+  .get(
+    `${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user/${jwt_decode(localStorage.getItem('token')).id
+    }`
+  )
+  .then((res) => {
+    // setCurrUser(res.data)
+    address = res.data.address;
+    numberphone = res.data.numberphone;
+  })
   const products = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
   const userid = localStorage.getItem('token') ? jwt_decode(localStorage.getItem('token')).id : "";
   const price = new URLSearchParams(search).get('amount');
@@ -20,7 +31,6 @@ const PaymentSuccess = () => {
   const statusdelivery = false;
   const discountid = localStorage.getItem('discount') ? (JSON.parse(localStorage.getItem('discount'))._id) : ("");
   const discountprice = localStorage.getItem('discount') ? (JSON.parse(localStorage.getItem('discount')).price) : (0);
-
   if (message == "Successful.") {
     if (localStorage.getItem('cart')) {
       const rec = axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt`, {
@@ -31,8 +41,9 @@ const PaymentSuccess = () => {
         discountprice,
         statuspayment,
         statusdelivery,
+        numberphone,
+        address
       })
-      console.log("thu danh dau", message);
       localStorage.removeItem('cart');
       localStorage.removeItem('discount');
       navigate("/paymentsuccess");

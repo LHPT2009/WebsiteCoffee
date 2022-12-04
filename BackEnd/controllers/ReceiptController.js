@@ -80,10 +80,6 @@ const ReceiptController = {
                 newReceiptDetail.save();
             });
 
-            const listdetail = (req.body.products).map((item) => (
-                      `•`+`${item.name}`- `Số lượng:`+`${item.amount}`
-              ))
-
             var productid = "";
             (req.body.products).forEach(ele => {
                 if (productid != ele.id) {
@@ -146,9 +142,9 @@ const ReceiptController = {
                                     <h1>Hóa đơn của bạn(Mã: ${newReceipt._id})</h1>
                                 </div>
                                 <h2>Chi tiết hóa đơn</h2>
-                                ${listdetail}
+                                ${(req.body.products).map(ele => { return ele.name+` - Số lượng: `+ ele.amount})}
                                 <h3>Tổng tiền: ${req.body.price}</h3>
-                                <h3>Tình trạng thanh toán: Chưa</h3>
+                                <h3>Tình trạng thanh toán: ${req.body.statuspayment == true? "Hoàn thành":"Chưa"}</h3>
 
                                 <div style="box-sizing: border-box;
                                 display: flex;

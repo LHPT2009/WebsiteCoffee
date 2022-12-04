@@ -6,50 +6,7 @@ import { Navigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import axios from 'axios'
 import Topnav from '../../components/Admin/topnav/TopNav'
-
-const chartOptions = {
-  series: [
-    {
-      name: 'Doanh thu',
-      data: [40, 30, 70, 80, 40, 16, 40, 20, 51, 62, 22, 78],
-    },
-  ],
-  options: {
-    color: ['#6ab04c', '#2980b9'],
-    chart: {
-      background: 'transparent',
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      curve: 'smooth',
-    },
-    xaxis: {
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ],
-    },
-    legend: {
-      position: 'top',
-    },
-    grid: {
-      show: false,
-    },
-  },
-}
-
+import moment from'moment'
 const Dashboard = () => {
   const [receipt, setReceipt] = useState([])
   const [user, setUser] = useState([])
@@ -65,6 +22,36 @@ const Dashboard = () => {
     axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/rate`).then((res) => setRate(res.data))
   }, [])
 
+  const chartOptions = {
+    series: [
+      {
+        name: 'Doanh thu',
+        data: 
+        receipt.map(ele => ele.price),
+      },
+    ],
+    options: {
+      color: ['#6ab04c', '#2980b9'],
+      chart: {
+        background: 'transparent',
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        curve: 'smooth',
+      },
+      xaxis: {
+        categories: receipt.map(ele => moment(ele.createdAt).format('DD/MM HH:mm:ss')),
+      },
+      legend: {
+        position: 'top',
+      },
+      grid: {
+        show: false,
+      },
+    },
+  }
   const themeReducer = useSelector((state) => state.ThemeReducer.mode)
   if (localStorage.getItem('token')) {
     if (
