@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import TextInput from '../../../components/Input/TextInput'
 import { useNavigate } from 'react-router-dom'
 import Topnav from '../../../components/Admin/topnav/TopNav'
+import Swal from 'sweetalert2'
 
 const EditProduct = () => {
   const navigate = useNavigate()
@@ -21,6 +22,18 @@ const EditProduct = () => {
   const [changpicture, setChangPicture] = useState(0)
   const [describe, setDescribe] = useState(dataProduct.describe)
   const [status, setStatus] = useState(dataProduct.status)
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   const { id } = useParams()
   useEffect(() => {
@@ -57,9 +70,18 @@ const EditProduct = () => {
       { headers: { 'content-type': 'multipart/form-data' } }
     )
     if (edit) {
+      Toast.fire({
+        icon: 'success',
+        title: 'Chỉnh sửa thành công!'
+      })
       navigate('/admin/products')
     } else {
-      alert(`Sửa ko thanh cong!!!`)
+      Swal.fire({
+        icon: 'error',
+        title: 'Chỉnh sửa thất bại!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
 

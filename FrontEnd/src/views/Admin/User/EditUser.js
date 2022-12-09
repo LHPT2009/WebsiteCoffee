@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import TextInput from '../../../components/Input/TextInput'
 import Topnav from '../../../components/Admin/topnav/TopNav'
+import Swal from 'sweetalert2'
 
 const EditUser = () => {
   const [user, setUser] = useState([])
@@ -19,6 +20,18 @@ const EditUser = () => {
   const [firstname, setFirstname] = useState(user.firstname)
   const [lastname, setLastname] = useState(user.lastname)
   const [numberphone, setNumberphone] = useState(user.numberphone)
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   const navigate = useNavigate()
   useEffect(() => {
@@ -44,9 +57,18 @@ const EditUser = () => {
       numberphone,
     })
     if (edit) {
+      Toast.fire({
+        icon: 'success',
+        title: 'Chỉnh sửa thành công!'
+      })
       navigate('/admin/users')
     } else {
-      alert('Sua ko thanh cong!!!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Chỉnh sửa thất bại!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
   return (

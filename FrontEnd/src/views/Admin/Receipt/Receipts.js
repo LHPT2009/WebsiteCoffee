@@ -7,6 +7,7 @@ import Topnav from '../../../components/Admin/topnav/TopNav'
 import SearchAdmin from '../../../components/Admin/topnav/SearchAdmin'
 import { CSVLink } from 'react-csv'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 import Pagination from '../../../components/Admin/table/Pagination'
 
@@ -32,6 +33,18 @@ const Receipts = () => {
 
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState('')
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   const handleFilter = (event) => {
     const searchWord = event.target.value
@@ -132,7 +145,16 @@ const Receipts = () => {
           value={wordEntered}
         />
       </div>
-      <Button btnStyle={'btn-outline'} btnCSS={'h-11 mb-10'} icon="">
+      <Button  
+        btnStyle={'btn-outline'} 
+        btnCSS={'h-11 mb-10'} 
+        icon="" 
+        onClick={() => {
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Xuất file thành công!'
+                  })
+                }}>
         <CSVLink
           data={receipt.filter((rec) => rec.statuspayment == true)}
           filename="Doanh thu của quán Cafe"

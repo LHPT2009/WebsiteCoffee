@@ -5,12 +5,25 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import TextInput from '../../../components/Input/TextInput'
 import Topnav from '../../../components/Admin/topnav/TopNav'
+import Swal from 'sweetalert2'
 
 const EditRole = () => {
   const [role, setRole] = useState([])
   const [rolename, setRoleName] = useState('')
   const { id } = useParams()
   const navigate = useNavigate()
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/role/${id}`).then((res) => {
     setRole(res.data)
@@ -22,9 +35,18 @@ const EditRole = () => {
       rolename,
     })
     if (edit) {
+      Toast.fire({
+        icon: 'success',
+        title: 'Chỉnh sửa thành công!'
+      })
       navigate('/admin/roles')
     } else {
-      alert('Sua ko thanh cong!!!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Chỉnh sửa thất bại!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
   return (

@@ -4,11 +4,24 @@ import Button from '../../../components/Button/Button'
 import { useNavigate } from 'react-router-dom'
 import TextInput from '../../../components/Input/TextInput'
 import Topnav from '../../../components/Admin/topnav/TopNav'
+import Swal from 'sweetalert2'
 
 const AddSizeProduct = () => {
   const navigate = useNavigate()
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   const addSizeProduct = async (e) => {
     e.preventDefault()
@@ -17,9 +30,18 @@ const AddSizeProduct = () => {
       price,
     })
     if (add) {
+      Toast.fire({
+        icon: 'success',
+        title: 'Thêm thành công!'
+      })
       navigate('/admin/sizeproducts')
     } else {
-      alert(`them ko thanh cong!!!`)
+      Swal.fire({
+        icon: 'error',
+        title: 'Thêm thất bại!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
 

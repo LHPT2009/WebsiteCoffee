@@ -4,12 +4,26 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import TextInput from '../../../components/Input/TextInput'
 import Topnav from '../../../components/Admin/topnav/TopNav'
+import Swal from 'sweetalert2'
 const AddDisCount = () => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [startdate, setStartDate] = useState('')
   const [enddate, setEndDate] = useState('')
   const navigate = useNavigate()
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
   const addProduct = async (e) => {
     e.preventDefault()
     const add = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/discount`, {
@@ -19,9 +33,18 @@ const AddDisCount = () => {
       enddate,
     })
     if (add) {
-      navigate('/admin/discount')
+      Toast.fire({
+        icon: 'success',
+        title: 'Thêm thành công!'
+      })
+    navigate('/admin/discount')
     } else {
-      alert('them ko thanh cong!!!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Thêm thất bại!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
   return (

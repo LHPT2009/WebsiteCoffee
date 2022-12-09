@@ -30,7 +30,7 @@ const Introduce = () => {
               </div>
               <a
                 className="block max-w-[282px] bg-primary text-center text-[16px] leading-10 px-4 py-0 font-semibold rounded-full text-white items-center hover:text-white active:rounded-xl hover:rounded-xl transition-all"
-                href="https://order.thecoffeehouse.com/Cloud-tea"
+                href="./product"
                 target="_blank"
               >
                 <span>Thử ngay</span>

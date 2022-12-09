@@ -7,10 +7,21 @@ import { useNavigate } from 'react-router-dom'
 import Button from '../../../components/Button/Button'
 import Topnav from '../../../components/Admin/topnav/TopNav'
 import SearchAdmin from '../../../components/Admin/topnav/SearchAdmin'
+import Pagination from '../../../components/Admin/table/Pagination'
 
 const Discount = () => {
   const navigate = useNavigate()
   const [disCount, setDisCount] = useState([])
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [discountsPerPage] = useState(3)
+
+  const indexOfLastItem = currentPage * discountsPerPage
+  const indexOfFirstItem = indexOfLastItem - discountsPerPage
+  const currentDiscounts = disCount.slice(indexOfFirstItem, indexOfLastItem)
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/discount`).then((res) => {
       setDisCount(res.data)
@@ -60,7 +71,7 @@ const Discount = () => {
   )
   const renderDiscount = (
     <>
-      {disCount.map((item) => (
+      {currentDiscounts.map((item) => (
         <tr key={item._id}>
           <td>{item.name}</td>
           <td>
@@ -130,6 +141,11 @@ const Discount = () => {
                   {wordEntered === '' ? renderDiscount : renderSearch}
                 </tbody>
               </table>
+              <Pagination
+                itemsPerPage={discountsPerPage}
+                totalItems={disCount.length}
+                paginate={paginate}
+              />
             </div>
           </div>
         </div>

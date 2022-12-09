@@ -5,12 +5,24 @@ import TextInput from '../../../components/Input/TextInput'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import Topnav from '../../../components/Admin/topnav/TopNav'
+import Swal from 'sweetalert2'
 
 const EditProductCategory = () => {
   const [category, setCategory] = useState([])
   const navigate = useNavigate()
   const { id } = useParams()
   const [name, setName] = useState(category.name)
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category/${id}`).then((res) => {
     setCategory(res.data)
@@ -22,9 +34,18 @@ const EditProductCategory = () => {
       name,
     })
     if (edit) {
+      Toast.fire({
+        icon: 'success',
+        title: 'Chỉnh sửa thành công!'
+      })
       navigate('/admin/productcategories')
     } else {
-      alert(`Sửa ko thanh cong!!!`)
+      Swal.fire({
+        icon: 'error',
+        title: 'Chỉnh sửa thất bại!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
 

@@ -5,11 +5,22 @@ import Button from '../../../components/Button/Button'
 import jwt_decode from 'jwt-decode'
 import Topnav from '../../../components/Admin/topnav/TopNav'
 import SearchAdmin from '../../../components/Admin/topnav/SearchAdmin'
+import Pagination from '../../../components/Admin/table/Pagination'
 
 const Users = () => {
   const navigate = useNavigate()
   const [id, setId] = useState('')
   const [user, setUser] = useState([])
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [usersPerPage] = useState(3)
+
+  const indexOfLastItem = currentPage * usersPerPage
+  const indexOfFirstItem = indexOfLastItem - usersPerPage
+  const currentUsers = user.slice(indexOfFirstItem, indexOfLastItem)
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/user`).then((res) => {
       setUser(res.data)
@@ -59,7 +70,7 @@ const Users = () => {
 
   const renderUser = (
     <>
-      {user
+      {currentUsers
         .filter(
           (user) => user._id != jwt_decode(localStorage.getItem('token')).id
         )
@@ -115,6 +126,11 @@ const Users = () => {
                 </thead>
                 <tbody>{wordEntered === '' ? renderUser : renderSearch}</tbody>
               </table>
+              <Pagination
+                itemsPerPage={usersPerPage}
+                totalItems={user.length}
+                paginate={paginate}
+              />
             </div>
           </div>
         </div>

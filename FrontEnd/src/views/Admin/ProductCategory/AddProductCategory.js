@@ -4,17 +4,38 @@ import Button from '../../../components/Button/Button'
 import TextInput from '../../../components/Input/TextInput'
 import { useNavigate } from 'react-router-dom'
 import Topnav from '../../../components/Admin/topnav/TopNav'
+import Swal from 'sweetalert2'
 
 const AddProductCategory = () => {
   const [name, setName] = useState('')
   const navigate = useNavigate()
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
   const addProductCategory = async (e) => {
     e.preventDefault()
     const add = await axios.post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/category`, { name })
     if (add) {
+      Toast.fire({
+        icon: 'success',
+        title: 'Thêm thành công!'
+      })
       navigate('/admin/productcategories')
     } else {
-      alert(`them ko thanh cong!!!`)
+      Swal.fire({
+        icon: 'error',
+        title: 'Thêm thất bại!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
   return (

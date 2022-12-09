@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom'
 
 import TextInput from '../../../components/Input/TextInput'
 import Topnav from '../../../components/Admin/topnav/TopNav'
+import Swal from 'sweetalert2'
 
 const EditReceipt = () => {
   const [receipt, setReceipt] = useState([])
@@ -22,6 +23,18 @@ const EditReceipt = () => {
   const [price, setPrice] = useState(receipt.price)
   const [statuspayment, setStatusPayment] = useState(receipt.statuspayment)
   const [statusdelivery, setStatusDelivery] = useState(receipt.statusdelivery)
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/receipt/${id}`).then((res) => {
@@ -45,12 +58,26 @@ const EditReceipt = () => {
         statusdelivery,
       })
       if (edit) {
+        Toast.fire({
+          icon: 'success',
+          title: 'Chỉnh sửa thành công!'
+        })
         navigate('/admin/receipts')
       } else {
-        alert('sua ko thanh cong!!!')
+        Swal.fire({
+          icon: 'error',
+          title: 'Chỉnh sửa thất bại!',
+          text: 'Vui lòng thử lại.',
+          confirmButtonColor: '#3d685e'
+        })
       }
     } else {
-      alert('Không thể thay đổi trạng thái vận chuyển khi chưa được thanh toán!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Không thể thay đổi trạng thái vận chuyển khi chưa được thanh toán!',
+        text: 'Vui lòng thử lại.',
+        confirmButtonColor: '#3d685e'
+      })
     }
   }
 
@@ -58,7 +85,11 @@ const EditReceipt = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     documentTitle: 'emp-data',
-    onAfterPrint: () => alert('Xuất hóa đơn thành công!')
+    onAfterPrint: () => Swal.fire({
+      icon: 'success',
+      title: 'Xuất hóa đơn thành công!',
+      confirmButtonColor: '#3d685e'
+    })
   });
 
   return (
